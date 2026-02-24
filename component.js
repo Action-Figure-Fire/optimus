@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>OPTIMUS v10</title>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
-<body style="margin:0;background:#09090b">
-<div id="root"></div>
-<script type="text/babel">
 const { useState } = React;
 
 const SCAN_DATA = {
@@ -107,49 +94,6 @@ const SCAN_DATA = {
         {emoji:"🇮🇹",city:"Milan, Italy",venue:"Unipol Dome",date:"Mar 30, 2027",why:"Only Italy date. All of Southern Europe funnels here — Italian prog rock scene is massive (Italy literally invented prog). Rush hasn't played Italy since 2013. Destination show for Mediterranean fans."},
       ],
       region: "INTL"
-    },
-    {
-      name: "Jerry Seinfeld — 2026 Theater Tour", tier: "A", score: 83, category: "Comedy Premium — Legacy Act", genre: "Stand-Up Comedy",
-      streams: "Highest-earning comedian of all time. Netflix specials. 'Seinfeld' catalog drives perpetual cultural relevance.", lastTour: "Ongoing (continuous touring since the 90s)", scarcity: "HIGH — Playing 1,500-3,500 cap theaters and performing arts centers. Multiple shows per city (double headers in Worcester, Minneapolis, Newark, Austin, Las Vegas, Sarasota). Small venues for an act of this magnitude = extreme scarcity per show.",
-      venueSize: "Theater / PAC (1,500-4,200 cap)", saleStatus: "🔴 MULTIPLE ONSALES THIS WEEK — Feb 27 onwards",
-      saleDetails: "30+ dates Feb-Jul 2026. Utica NY (Feb 27), Worcester MA (Feb 28 x2), Tulsa OK (Mar 6), Des Moines IA (Mar 7), Bowling Green KY (Mar 13), Knoxville TN (Mar 14), Sioux Falls SD (Mar 20), Minneapolis MN (Mar 21 x2), Birmingham AL (Mar 27), Columbus GA (Mar 28), Reading PA (Apr 10), Newark NJ (Apr 11 x2), Lake Tahoe NV (Apr 16), Las Vegas Caesars (Apr 17-18), Austin TX (May 29 x2), and more.",
-      reasoning: "Seinfeld is the GOAT of comedy touring — he's been selling out theaters for 30+ years and never stopped. His routing is BRILLIANT for resale: he targets small-to-mid theaters (1,500-3,500 cap) in overlooked markets like Utica, Bowling Green, Sioux Falls, Columbus GA where demand massively exceeds supply. The double-header format (two shows same night) actually HELPS resale because it signals he expects sellouts. His demo (35-65, high income) pays premium without blinking. Las Vegas Caesars Colosseum dates (Apr 17-18, Jun 26-27) are the prestige plays. The overlooked markets (Bowling Green KY, Columbus GA, Sioux Falls SD) are where margins are best — zero broker competition.",
-      action: "BUY OVERLOOKED MARKETS — Skip Newark/Vegas where brokers compete. Target: Bowling Green KY (tiny SKyPAC venue), Columbus GA (small RiverCenter), Sioux Falls SD (only Dakota date), Knoxville TN (Southeast gap). These will sell out and flip 1.5-2x.",
-      targetCities: [
-        {emoji:"🎳",city:"Bowling Green, KY",venue:"The SKyPAC",date:"Mar 13",why:"TINY venue in a college town. Only Kentucky date. Nashville/Louisville fans funnel here. Zero broker competition. Best margin on the tour."},
-        {emoji:"🍑",city:"Columbus, GA",venue:"RiverCenter for the Performing Arts",date:"Mar 28",why:"Small venue, only Deep South date besides Birmingham. Atlanta fans who miss Birmingham will drive here. Overlooked market."},
-        {emoji:"🌾",city:"Sioux Falls, SD",venue:"Washington Pavilion",date:"Mar 20",why:"Only Dakota/Nebraska date. Entire upper plains funnels here. Wealthy agricultural demo pays premium for entertainment."},
-        {emoji:"🎵",city:"Knoxville, TN",venue:"Knoxville Civic Auditorium",date:"Mar 14",why:"Southeast corridor gap play — between Nashville and Charlotte with no other Seinfeld dates. Strong university demo."},
-      ],
-      region: "NA"
-    },
-    {
-      name: "Brooks & Dunn — 2026 Tour", tier: "A", score: 80, category: "Country Legacy — Arena/Amphitheater", genre: "Country",
-      streams: "20+ #1 country hits. 'Boot Scootin' Boogie,' 'Neon Moon,' 'My Maria' = generational anthems. Over 30M albums sold. Country Music Hall of Fame inductees (2019).", lastTour: "2025 (Las Vegas residency + select dates)", scarcity: "HIGH — They've been primarily doing Vegas residency shows. Any touring dates outside Vegas are scarce and pull from massive country fanbases across multiple states.",
-      venueSize: "Arena / Amphitheater (8-20K cap)", saleStatus: "🔴 ONSALE THIS WEEK — Check Ticketmaster for specific dates",
-      saleDetails: "2026 touring dates on sale now via Ticketmaster. Expect amphitheater and arena routing. Vegas residency dates ongoing.",
-      reasoning: "Brooks & Dunn are the best-selling country duo of ALL TIME. Period. Country Music Hall of Fame since 2019. Their demo (35-60 country fans) is in peak earning years and treats B&D shows as bucket-list nostalgia events. The key insight: they've been doing mostly Vegas residency shows, so any TOURING dates outside Vegas create extreme scarcity. Country fans will drive 3-5 hours for a Brooks & Dunn show. The 90s/2000s country nostalgia wave is in full force (see: Garth Brooks, George Strait selling out stadiums). Support acts on country package tours add value. Every amphitheater date will sell out in the Sun Belt and Midwest.",
-      action: "BUY ANY NON-VEGAS TOURING DATES — These are scarce by definition. Target: any Southeast amphitheater dates (Nashville corridor fans are starved), any Texas dates (massive country market), any Midwest amphitheater dates. Vegas residency dates are reliable but lower margin due to higher face values.",
-      targetCities: [
-        {emoji:"🤠",city:"Any Southeast date",venue:"Amphitheater",date:"TBD",why:"Southeast country fans have been underserved by B&D since they went residency-heavy. Any date in TN/AL/GA/SC will pull from a 5-state radius."},
-        {emoji:"🐂",city:"Any Texas date",venue:"Amphitheater/Arena",date:"TBD",why:"Texas is the #1 country market. B&D are royalty there. Any TX date sells out instantly."},
-        {emoji:"🌽",city:"Any Midwest date",venue:"Amphitheater",date:"TBD",why:"Midwest country fans have limited options for legacy acts. B&D touring through IN/OH/MO/IA = extreme demand."},
-      ],
-      region: "NA"
-    },
-    {
-      name: "CeCe Winans — 2026 Tour", tier: "B+", score: 74, category: "Gospel/CCM — Niche Premium", genre: "Gospel / Contemporary Christian",
-      streams: "15 Grammy Awards. Best-selling female gospel artist of all time. New album 'More Than This' (2024). 12M+ career album sales.", lastTour: "2025 (church/theater circuit)", scarcity: "HIGH — Gospel tours operate on a completely different circuit than mainstream music. Venues are 1,500-5,000 cap churches, theaters, and PACs. Limited dates, loyal fanbase, and almost ZERO broker competition.",
-      venueSize: "Theater / Church / PAC (1,500-5,000 cap)", saleStatus: "🟡 DATES TBA — No current dates listed, announcement expected",
-      saleDetails: "No dates currently listed on cecewinans.com. New album 'More Than This' suggests touring cycle imminent. Monitor for announcement.",
-      reasoning: "CeCe Winans is a SLEEPER play that most brokers completely ignore because gospel operates outside mainstream touring infrastructure. But here's the thing: she's the BEST-SELLING female gospel artist ever with 15 Grammys. Her fanbase (35-65, churchgoing, predominantly Black women) is FIERCELY loyal, has high disposable income, and will pay premium prices. Gospel concerts at 2-3K cap theaters sell out with zero marketing because the church network IS the marketing. New album 'More Than This' signals a touring cycle is coming. When dates drop, they'll sell through church networks before brokers even notice. The margins are excellent because face values are moderate ($40-$80) but secondary demand from sold-out shows pushes 2-3x. This is the comedy equivalent for gospel — brokers ignore it, fans are rabid, venues are small.",
-      action: "SET ALERTS — When CeCe Winans announces 2026 touring dates, buy immediately. Target any 1,500-3,000 cap theater dates. Southern cities (Atlanta, Houston, Dallas, Memphis, Nashville) will sell out fastest. This is a zero-competition play.",
-      targetCities: [
-        {emoji:"⛪",city:"Atlanta, GA",venue:"TBD Theater/Church",date:"TBD",why:"Atlanta is the gospel music capital. Any CeCe date here sells out through church networks alone."},
-        {emoji:"🙏",city:"Houston, TX",venue:"TBD Theater/Church",date:"TBD",why:"Houston's megachurch culture = massive built-in audience. Joel Osteen's Lakewood alone could fill a theater."},
-        {emoji:"🎵",city:"Nashville, TN",venue:"TBD Theater/Church",date:"TBD",why:"Gospel Nashville is huge and underserved by touring. Ryman Auditorium would be the dream venue."},
-      ],
-      region: "NA"
     },
   ],
   alreadyOnSale: [
@@ -451,62 +395,6 @@ const SCAN_DATA = {
       saleDetails: "Not Red Rocks proper but Fiddler's Green Amphitheatre (18K cap) in Greenwood Village CO. Artist presale Feb 17. General onsale Feb 20.",
       reasoning: "Caamp is playing Fiddler's Green (2 nights) not Red Rocks this cycle. 2025 tour sold out 200K+ tickets. Denver is strong market — they sold out Fiddler's Green in 2025. Two nights signals high demand.",
       action: "BUY PRESALE FEB 17 — Two nights = they expect to sell both. Night 1 typically sells faster. Good flip potential for a folk act with loyal following.",
-      region: "NA"
-    },
-    {
-      name: "CRANKDAT", tier: "B", score: 72, category: "Electronic — Bass Music", genre: "Bass / Dubstep",
-      showDate: "Mar 27, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Fri Mar 27, 7:00 PM. Support: Dr. Fresch, Smoakland, Capochino, HerShe. Via RedRocksOnline.com.",
-      reasoning: "CRANKDAT headlining Red Rocks is a venue upgrade milestone. Dr. Fresch support adds credibility. Denver bass community is one of the strongest in the country. Early season Red Rocks energy.",
-      action: "MONITOR — Buy at face, flip modest premium. Bass community is reliable.",
-      region: "NA"
-    },
-    {
-      name: "Ravenscoon & Jantsen", tier: "B", score: 69, category: "Electronic — Bass Music", genre: "Bass / Dubstep",
-      showDate: "Mar 28, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Sat Mar 28, 6:00 PM. Support: WonkyWilla, Jason Leech, CHOZEN b2b Noetika, DEV. Via RedRocksOnline.com.",
-      reasoning: "Co-headline on Saturday night. Denver bass community is loyal. Saturday Red Rocks shows rarely lose money.",
-      action: "LOW RISK — Buy small allocation at face. Saturday slot helps.",
-      region: "NA"
-    },
-    {
-      name: "INZO + What So Not", tier: "B+", score: 76, category: "Electronic — Viral Crossover", genre: "Bass / Future Bass",
-      showDate: "Apr 3, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Fri Apr 3, 6:00 PM. Support: Lumasi, Daggz, Common Creation, Spenny. Via RedRocksOnline.com.",
-      reasoning: "INZO's 'Overthinker' (500M+ streams) crossed from EDM into wellness/meditation TikTok — pulls non-traditional EDM demo. What So Not adds core credibility. Red Rocks at sunset with this music = spiritual experience for target demo.",
-      action: "MODERATE BUY — Unique crossover audience. GA will move. Buy face and sell if hype builds.",
-      region: "NA"
-    },
-    {
-      name: "John Mulaney — Mister Whatever", tier: "A", score: 84, category: "Comedy Premium", genre: "Stand-Up Comedy",
-      showDate: "Apr 15, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Wed Apr 15, 7:30 PM via RedRocksOnline.com / Ticketmaster.",
-      reasoning: "Hottest comedian in America at the most iconic outdoor venue. Comedy at Red Rocks is RARE and always commands premium. 9,525 cap is nothing for Mulaney's demand level. This is a bucket-list show.",
-      action: "🚨 PRIORITY BUY — Comedy at Red Rocks flips hard. Every seat is premium.",
-      region: "NA"
-    },
-    {
-      name: "bbno$ + Oliver Tree", tier: "B+", score: 78, category: "Viral Co-Headline", genre: "Alt Hip-Hop / Comedy Rap",
-      showDate: "Apr 16, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Thu Apr 16, 6:30 PM. Support: Kaarija, YNG Martyr, Jungle Bobby. Via RedRocksOnline.com.",
-      reasoning: "Gen Z dream lineup. bbno$ ('Edamame' 1B+ streams) + Oliver Tree (viral TikTok king) + Kaarija (Eurovision viral sensation). Maximum internet culture energy. Combined social reach is insane. FOMO-driven secondary demand.",
-      action: "BUY — Gen Z viral acts at Red Rocks = reliable sellout. GA moves fastest.",
-      region: "NA"
-    },
-    {
-      name: "Sublime — 2-Night Run", tier: "A", score: 81, category: "Legacy Rock", genre: "Ska Punk / Reggae",
-      showDate: "Apr 17-18, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Night 1 Thu Apr 17: Common Kings, Bumpin Uglies, Fayuca. Night 2 Fri Apr 18: Pepper, Codefendants. 6:30 PM. Via RedRocksOnline.com.",
-      reasoning: "Sublime's catalog is immortal — 'Santeria' alone has 1.5B+ streams. 2-night run with different support = completist demand. Red Rocks + ska-punk + spring weather = perfect pairing. 30-40 demo has peak disposable income.",
-      action: "BUY BOTH NIGHTS — Friday (Night 2) = higher demand. 2-night Red Rocks runs always command premium.",
-      region: "NA"
-    },
-    {
-      name: "Wiz Khalifa + 2 Chainz", tier: "A", score: 82, category: "Hip-Hop Co-Headline", genre: "Hip-Hop / Rap",
-      showDate: "Apr 19, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Sun Apr 19, 5:30 PM. Support: Berner, The Underachievers, Chevy Woods, DJ Bonics. Via RedRocksOnline.com.",
-      reasoning: "Stacked hip-hop lineup at Red Rocks. Wiz (15M+ monthly) + 2 Chainz = star power. Sunday evening catches weekend tourism tail. Wiz's 420 brand plays perfectly in Colorado. Hip-hop at Red Rocks consistently sells out.",
-      action: "BUY NOW — Hip-hop at Red Rocks is reliable. GA and premium reserved both flip well.",
       region: "NA"
     }
   ],
@@ -904,7 +792,7 @@ function Card({ a, i, exp, toggle, sport, dead, onArchive }) {
           <div style={{padding:"10px 14px",background:"rgba(255,255,255,0.03)",border:`1px solid ${s}33`,borderRadius:6,marginBottom:14,fontSize:12,color:"#d4d4d8",lineHeight:1.5}}>
             <span style={{color:s,fontWeight:700,fontSize:10,letterSpacing:"1.5px"}}>SALE INFO: </span>{a.saleDetails}
           </div>
-          <div className="stat-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,marginBottom:16}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,marginBottom:16}}>
             {[{l:sport?"RECORD":"STREAMS",v:a.streams},{l:sport?"LAST RUN":"LAST TOUR",v:a.lastTour},{l:"SCARCITY",v:a.scarcity}].map(x=>(
               <div key={x.l} style={{background:"#0f0f11",borderRadius:6,padding:"10px 12px"}}>
                 <div style={{fontSize:10,color:"#52525b",letterSpacing:"1.5px",marginBottom:4}}>{x.l}</div>
@@ -936,7 +824,7 @@ function Card({ a, i, exp, toggle, sport, dead, onArchive }) {
           {a.pipelineFrom&&(
             <div style={{marginTop:12,padding:"12px 14px",background:"rgba(99,102,241,0.06)",border:"1px solid rgba(99,102,241,0.2)",borderRadius:8}}>
               <div style={{fontSize:10,fontWeight:700,letterSpacing:"2px",color:"#818cf8",marginBottom:6}}>🔗 PIPELINE TRACKING</div>
-              <div className="pipeline-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
                 <div style={{fontSize:11,color:"#a1a1aa"}}><span style={{color:"#818cf8",fontWeight:600}}>FROM:</span> {a.pipelineFrom}</div>
                 <div style={{fontSize:11,color:"#a1a1aa"}}><span style={{color:"#818cf8",fontWeight:600}}>WINDOW:</span> {a.pipelineWindow}</div>
               </div>
@@ -1030,23 +918,14 @@ function OptimusDashboard() {
         @keyframes glitch{0%,90%,100%{transform:translate(0)}92%{transform:translate(-2px,1px)}94%{transform:translate(2px,-1px)}96%{transform:translate(-1px,-2px)}98%{transform:translate(1px,2px)}}
         .sl{position:fixed;top:0;left:0;right:0;height:2px;background:rgba(255,45,85,.15);animation:scanline 4s linear infinite;pointer-events:none;z-index:100}
         .gb{position:fixed;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(255,45,85,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,45,85,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
-        @media(max-width:768px){
-          .tier-grid{grid-template-columns:repeat(2,1fr)!important}
-          .tab-bar{flex-wrap:wrap!important}
-          .tab-bar button{padding:8px 10px!important;font-size:10px!important}
-          .stat-grid{grid-template-columns:1fr!important}
-          .main-wrap{padding:14px 10px!important}
-          .optimus-title{font-size:28px!important}
-          .pipeline-grid{grid-template-columns:1fr!important}
-        }
       `}</style>
       <div className="sl"/><div className="gb"/>
-      <div className="main-wrap" style={{position:"relative",zIndex:1,maxWidth:1100,margin:"0 auto",padding:"24px 20px"}}>
+      <div style={{position:"relative",zIndex:1,maxWidth:1100,margin:"0 auto",padding:"24px 20px"}}>
 
         <div style={{marginBottom:32}}>
           <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:8}}>
             <div style={{width:10,height:10,borderRadius:"50%",background:"#30d158",boxShadow:"0 0 12px #30d158",animation:"pulse 2s ease-in-out infinite"}}/>
-            <h1 className="optimus-title" style={{fontFamily:"'Anybody',sans-serif",fontSize:40,fontWeight:800,letterSpacing:"-1px",background:"linear-gradient(135deg,#ff2d55,#ff6b35,#ff2d55)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",animation:"glitch 8s ease-in-out infinite"}}>OPTIMUS</h1>
+            <h1 style={{fontFamily:"'Anybody',sans-serif",fontSize:40,fontWeight:800,letterSpacing:"-1px",background:"linear-gradient(135deg,#ff2d55,#ff6b35,#ff2d55)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",animation:"glitch 8s ease-in-out infinite"}}>OPTIMUS</h1>
             <span style={{fontSize:11,color:"#71717a",letterSpacing:"3px",marginTop:12}}>v10 · INTEL EDITION</span>
           </div>
           <div style={{fontSize:12,color:"#52525b",borderLeft:"2px solid #27272a",paddingLeft:12}}>
@@ -1067,7 +946,7 @@ function OptimusDashboard() {
           )}
         </div>
 
-        <div className="tier-grid" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:28}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:28}}>
           {Object.entries(tierColors).map(([t,c])=>(
             <div key={t} style={{background:"#18181b",border:"1px solid #27272a",borderRadius:8,padding:"14px 16px",textAlign:"center"}}>
               <div style={{fontSize:26,fontWeight:700,color:c.bg,textShadow:`0 0 20px ${c.glow}`,fontFamily:"'Anybody',sans-serif"}}>{tc[t]}</div>
@@ -1076,7 +955,7 @@ function OptimusDashboard() {
           ))}
         </div>
 
-        <div className="tab-bar" style={{display:"flex",gap:4,marginBottom:24,borderBottom:"1px solid #18181b",overflowX:"auto",WebkitOverflowScrolling:"touch",scrollbarWidth:"none"}}>
+        <div style={{display:"flex",gap:4,marginBottom:24,borderBottom:"1px solid #18181b",overflowX:"auto"}}>
           {tabs.map(t=>(
             <button key={t.id} onClick={()=>setTab(t.id)} style={{
               background:tab===t.id?"#18181b":"transparent",
@@ -1101,7 +980,7 @@ function OptimusDashboard() {
 
             {(tab==="dashboard"||tab==="thisweek")&&(<>
               <H color="#ff2d55" title="PRESALE / ONSALE THIS WEEK" sub="Week of Feb 10–16, 2026" pulse/>
-              <A emoji="🔴" title="Presales and onsales dropping NOW — check each card for timing" sub="Multiple artists with presales live this week. Act fast on time-sensitive opportunities." color="#ff6b81"/>
+              <A emoji="🚨" title="URGENT: Diljit Dosanjh general sale TOMORROW 10am" sub="Artist presale code 'AURA' live now. Most brokers don't track South Asian market." color="#ff6b81"/>
               <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
                 {(showDead?sortDead(SCAN_DATA.thisWeek):SCAN_DATA.thisWeek.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`tw${a.name}`} a={a} i={i} exp={e1===a.name} toggle={()=>se1(e1===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
               </div>
@@ -1324,9 +1203,3 @@ function OptimusDashboard() {
     </div>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(React.createElement(OptimusDashboard));
-</script>
-</body>
-</html>
