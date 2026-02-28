@@ -14,7 +14,7 @@
 const { useState } = React;
 
 const SCAN_DATA = {
-  lastRun: "February 28, 2026 — Weekly Scan v13 · NORTH AMERICA ONLY · INTELLIGENCE EDITION",
+  lastRun: "February 28, 2026 — Weekly Scan v14 · NORTH AMERICA ONLY · INTELLIGENCE EDITION",
   nextWeek: [
     {
       name: "Metallica — Life Burns Faster at the Sphere", tier: "S", score: 96, category: "Metal Legends — Sphere Residency", genre: "Heavy Metal / Thrash",
@@ -99,183 +99,84 @@ const SCAN_DATA = {
       action: "BUY SF MASONIC DATES — Hometown premium + 3,300 cap + tech demo = guaranteed flip. Any newly added US dates are good buys before they sell through.",
       region: "NA"
     },
+    {
+      name: "Koe Wetzel — Night Champion World Tour", tier: "A", score: 83, category: "Country-Rock Arena/Amphitheater — 45 Dates", genre: "Country-Rock / Texas Country",
+      streams: "12M+ monthly. '9 Lives' album. 'High Road,' 'Cabo,' 'Drunk Driving' = anthems. Texas country crossover king.", lastTour: "2025 (headlining amphitheaters/arenas)", scarcity: "MEDIUM-HIGH — 45 dates across 3 countries but amphitheater/arena routing keeps per-show supply tight. Red Rocks Oct 28. Support acts rotate: Shane Smith & The Saints, Wyatt Flores, Corey Kent, Ole 60, Wade Bowen.",
+      venueSize: "Amphitheater / Arena (5-20K cap)", saleStatus: "🔴 ARTIST PRESALE TUE MAR 10 10AM — ONSALE FRI MAR 13 10AM LOCAL",
+      saleDetails: "Register at koewetzelmusic.com for early access. Artist presale Tue Mar 10 10am local. General onsale Fri Mar 13 10am local. 30+ NA dates Jul-Oct. Red Rocks Oct 28. AU dates May 3-9. Canada Jul 8-11.",
+      reasoning: "Koe Wetzel is the biggest name in Texas country-rock and his touring draws are massive. 45 dates across 3 countries is his biggest tour ever. The routing has some INCREDIBLE gap plays: Nampa ID (Jul 23) is tiny, Bend OR (Jul 31) is boutique with wealthy outdoor demo, Evansville IN (Aug 7) is deep Midwest with zero country-rock competition, Bonner Springs KS (Aug 6) absorbs KC demand. Wyatt Flores as support on select dates adds indie-country crossover. The Red Rocks date (Oct 28) is back-to-back with Tucker Wetmore (Oct 27) — country fans may want both nights.",
+      action: "REGISTER FOR PRESALE NOW — Target: Nampa ID (smallest market), Bend OR (boutique venue, wealthy demo), Evansville IN (Midwest gap), Penticton BC (tiny Canadian market). Skip Nashville/NYC where brokers compete.",
+      targetCities: [
+        {emoji:"🏔️",city:"Nampa, ID",venue:"Ford Idaho Center Amphitheater",date:"Jul 23",why:"SMALLEST US market on tour. Idaho + MT + eastern OR funnels here. Jason Aldean also plays here Jul 31 — proof this venue is scarcity gold."},
+        {emoji:"🌲",city:"Bend, OR",venue:"Hayden Homes Amphitheater (8K cap)",date:"Jul 31",why:"Boutique venue with wealthy outdoor recreation demo. Central Oregon is underserved. Premium pricing culture."},
+        {emoji:"🌽",city:"Evansville, IN",venue:"Ford Center",date:"Aug 7",why:"Deep Midwest with zero country-rock competition. Southern IN + western KY + southern IL funnel. Arena date in small market."},
+        {emoji:"🍷",city:"Penticton, BC",venue:"South Okanagan Event Center",date:"Jul 10",why:"TINY Canadian venue in wine country. Entire BC interior funnels here. Koe Wetzel in a small Canadian market = extreme scarcity."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Tucker Wetmore — Red Rocks Headline Debut", tier: "A", score: 80, category: "Country Breakout — First Red Rocks", genre: "Country",
+      streams: "Rising fast. 'Wine Into Whiskey' = breakout hit. The Brunette World Tour.", lastTour: "2025-26 (first major headline tour)", scarcity: "EXTREME — First-EVER Red Rocks headline. 9,525 cap. One night only (Oct 27). Country breakout at Red Rocks = milestone show energy.",
+      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🔴 PRESALE TUE MAR 4 — ONSALE FRI MAR 6 10AM MT",
+      saleDetails: "Presale starts Tue Mar 4. General onsale Fri Mar 6 10am MT via RedRocksOnline.com. One night: Oct 27. Part of The Brunette World Tour.",
+      reasoning: "Tucker Wetmore's first Red Rocks headline is a milestone show. 'Wine Into Whiskey' has been climbing country radio and streaming charts. First Red Rocks shows for breakout artists generate massive FOMO — fans know the artist will never play a venue this intimate again once they scale up. The Oct 27 date is the night BEFORE Koe Wetzel's Red Rocks show (Oct 28), creating a potential 2-night country weekend at Red Rocks. This is the pipeline play: Tucker at 9,525 today = Tucker at 15K amphitheaters by 2027.",
+      action: "🚨 BUY PRESALE MAR 4 — First Red Rocks for a breakout country act = guaranteed sellout. GA and premium reserved will flip well.",
+      region: "NA"
+    },
+    {
+      name: "Darius Rucker — Songs of Summer Tour (Select March Onsales)", tier: "B+", score: 76, category: "Country Legacy — Amphitheater", genre: "Country / Pop-Country",
+      streams: "10M+ monthly. Country Music Hall of Famer. Diamond-certified 'Wagon Wheel.' Hootie & the Blowfish legacy.", lastTour: "2025 (amphitheater circuit)", scarcity: "MEDIUM — 20 amphitheater dates. Support rotates: Lauren Alaina, Old Crow Medicine Show, George Birge, Robert Randolph. Red Rocks Jul 2 + Bethel Woods = premium venue plays.",
+      venueSize: "Amphitheater (5-15K cap)", saleStatus: "🟡 SELECT CITIES ON SALE IN MARCH (most went on sale Feb 27)",
+      saleDetails: "Most dates went on sale Feb 27. Select cities on sale in March — check DariusRucker.com for which cities. 20 dates Jun 4 – Aug 23. Red Rocks Jul 2. Bethel Woods Jun 11.",
+      reasoning: "Rucker is a reliable amphitheater draw with a broad demo (30-60, country + Hootie nostalgia). The March onsale cities are the opportunity — these are the dates that weren't included in the Feb 27 drop, likely smaller or more recently confirmed markets. Red Rocks (Jul 2) with Old Crow Medicine Show is the premium date — Americana crossover audience at an iconic venue. Toledo Zoo Amphitheatre (Jun 4) is interesting — tiny venue, unique setting. Wilmington NC and Greensboro NC are the overlooked Southeast plays.",
+      action: "MONITOR FOR MARCH ONSALE CITIES — Buy Red Rocks Jul 2 immediately. Target: Toledo Zoo Amphitheatre (tiny, unique venue), Wilmington NC (coastal demand), Grand Rapids MI (underserved Midwest).",
+      targetCities: [
+        {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks Amphitheatre",date:"Jul 2",why:"Red Rocks + Darius + Old Crow Medicine Show = perfect Americana crossover. 9,525 cap. Summer date."},
+        {emoji:"🐻",city:"Toledo, OH",venue:"Toledo Zoo Amphitheatre",date:"Jun 4",why:"TOUR OPENER at a tiny, unique zoo venue. First show energy + small cap = scarcity."},
+        {emoji:"🌊",city:"Wilmington, NC",venue:"Live Oak Bank Pavilion",date:"Jun 19",why:"Coastal NC. Summer beach town demand. Only eastern NC date."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Steve Hofstetter — 2026 Theater Tour (70+ dates, VENUE UPGRADES)", tier: "B+", score: 74, category: "Viral Comedian — Venue Upgrades", genre: "Stand-Up Comedy",
+      streams: "976K YouTube subscribers. 289M+ YouTube views. Massive online following converting to live.", lastTour: "2025 (clubs → now upgrading to theaters)", scarcity: "HIGH — 70+ NA dates starting Mar 7 (Columbia SC). Upgrading from clubs to theaters = streaming-to-touring gap in comedy. 1-3K cap theaters across major and mid-tier cities.",
+      venueSize: "Theater (1-3K cap)", saleStatus: "🟢 ON SALE NOW — Tour starts Mar 7",
+      saleDetails: "70+ dates starting Mar 7 Columbia SC. Major cities: NYC, Chicago, Boston, LA, plus dozens of mid-tier markets. Tickets via stevehofstetter.com.",
+      reasoning: "Hofstetter is the comedy equivalent of a streaming gap play. 976K YouTube subscribers and 289M views but was playing comedy clubs. Now upgrading to 1-3K theaters across 70+ cities — that's a MASSIVE scale-up. His online audience is proven (YouTube comments = real fans, not bots). Comedy theater dates have the best flip margins because brokers ignore comedy entirely. 70+ dates means he's hitting markets other comedians skip. The overlooked mid-tier cities are where margins are best.",
+      action: "BUY MID-TIER CITY DATES — Skip NYC/LA/Chicago. Target any 1-2K cap theater in markets like Columbia SC, Knoxville, Des Moines, Boise where his YouTube audience exists but live comedy options don't.",
+      region: "NA"
+    },
+    {
+      name: "Big East Tournament at MSG (St. John's Fever)", tier: "S", score: 90, category: "College Basketball — MSG Event", genre: "NCAA Men's Basketball — Big East",
+      streams: "St. John's Red Storm: 9-game win streak, tied for #1 Big East. Playing AT MSG — their HOME court.", lastTour: "Annual (2025 Big East Tournament)", scarcity: "EXTREME — MSG capacity for Big East is ~18K. If St. John's is the #1 seed, they're playing the entire tournament at their HOME BUILDING. NYC basketball fever + MSG + March Madness implications = hottest basketball ticket in the city.",
+      venueSize: "MSG (~18K cap)", saleStatus: "🔴 MARCH 11-14 — TICKETS ON SALE",
+      saleDetails: "Big East Tournament at MSG Mar 11-14, 2026. Quarter/semi/finals sessions. Ticketmaster.",
+      reasoning: "UPDATE: St. John's is STILL rolling — they could enter the Big East Tournament as the #1 seed, meaning they'd play every game at THEIR HOME COURT (MSG). This hasn't happened with this much hype in years. NYC basketball fever is real — the Knicks connection, the Garden atmosphere, the March Madness bubble implications. If St. John's makes a deep run at MSG, each subsequent round's tickets become exponentially more valuable. The finals session (Mar 14) is the crown jewel. Even if St. John's loses early, UConn/Marquette/Creighton keep demand strong.",
+      action: "🚨 BUY ALL-SESSION PASSES NOW — If St. John's goes deep at home, individual session resale goes 5-10x. Even without St. John's, Big East at MSG is always premium. Finals session is the target.",
+      region: "NA"
+    },
+    {
+      name: "Big Ten Tournament (Indianapolis) — March Madness Precursor", tier: "A", score: 82, category: "College Basketball — Conference Tournament", genre: "NCAA Men's Basketball — Big Ten",
+      streams: "Big Ten has 5+ tournament-bound teams. Illinois, Purdue, Michigan State, Wisconsin all contenders.", lastTour: "Annual", scarcity: "HIGH — Gainbridge Fieldhouse (18K cap). Big Ten is the deepest conference. Indianapolis = neutral site but Purdue/Indiana fans dominate. Selection Sunday follows (Mar 15).",
+      venueSize: "Gainbridge Fieldhouse (18K cap)", saleStatus: "🟢 ON SALE NOW — Mar 10-15",
+      saleDetails: "Gainbridge Fieldhouse, Indianapolis. Mar 10-15. All-session and single-session via Ticketmaster/ScoreBig.",
+      reasoning: "The Big Ten Tournament in Indianapolis is always premium because: (1) Indiana is basketball country — local demand is automatic, (2) Big Ten has the most March Madness-bound teams of any conference, (3) bubble teams playing for their tournament lives creates drama that drives casual fans to buy, (4) Indianapolis as a city is easy to travel to from most Big Ten markets. If a bubble team like Michigan State or Wisconsin needs a deep run to make the NCAA Tournament, those session tickets spike.",
+      action: "BUY SEMIFINAL + FINAL SESSIONS — These have the highest resale because only the best teams remain. All-session passes are the safe play.",
+      region: "NA"
+    },
+    {
+      name: "March Madness First Four + First/Second Round (Mar 17-22)", tier: "S", score: 88, category: "NCAA Tournament — Opening Rounds", genre: "NCAA Men's Basketball",
+      streams: "Arizona 25-0, #1 overall seed. Nebraska best season ever. Selection Sunday Mar 15.", lastTour: "Annual", scarcity: "EXTREME — First/Second round venues are smaller arenas (12-18K). Arizona as undefeated #1 seed makes their bracket region the hottest ticket. Nebraska's historic run (never won a tournament game) adds Cinderella narrative demand.",
+      venueSize: "Arena (12-18K cap)", saleStatus: "🟡 SELECTION SUNDAY MAR 15 — TICKETS RELEASED AFTER BRACKET",
+      saleDetails: "Selection Sunday Mar 15. First Four: Dayton OH Mar 17-18. First/Second rounds Mar 19-22 at 8 venues (TBA). Tickets via NCAA.com after bracket reveal.",
+      reasoning: "This is the biggest annual ticket event in American sports. Arizona at 25-0 as the #1 overall seed means their bracket region will have the highest demand — fans chasing an undefeated championship (last: Indiana 2025, tickets were astronomical). Nebraska's historic run (never won a tournament game, projected #2 seed) creates massive narrative demand — if they win game 1, it's the #1 story in all of sports and round 2 tickets explode. KEY STRATEGY: Buy tickets in the VENUE where Arizona and Nebraska are placed before prices spike. First Four in Dayton is always underpriced relative to demand.",
+      action: "🚨 WAIT FOR BRACKET (Mar 15) THEN BUY IMMEDIATELY — Target: (1) Arizona's bracket region venue, (2) Nebraska's bracket region venue, (3) Any venue with 2+ strong upset candidates. Buy within MINUTES of bracket reveal — prices spike fast.",
+      region: "NA"
+    },
   ],
   thisWeek: [
   ],
   alreadyOnSale: [
-    {
-      name: "Bruce Springsteen & E Street Band",
-      tier: "A", score: 88, category: "Legacy Arena Run", genre: "Rock / Americana",
-      streams: "5M tickets, $729M gross on last tour cycle", lastTour: "2025 (Europe)", scarcity: "20 NA dates only, 2-ticket floor limit, no presale",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 20-21. Dynamic pricing active.",
-      reasoning: "Only 20 NA dates with 'in defense of America' political framing. DC Nationals Park finale = crown jewel. Floor 2-ticket limit = brutal scarcity. Dynamic pricing risk — base $220-$400 is the buy.",
-      action: "SECONDARY — Monitor floor pricing. DC finale, MSG, Newark are premium targets.",
-      region: "NA"
-    },
-    {
-      name: "Hilary Duff — The Lucky Me Tour",
-      tier: "A", score: 80, category: "Hiatus Return", genre: "Pop / Nostalgia",
-      streams: "15M+ monthly", lastTour: "2008", scarcity: "18-year gap, Vegas Voltaire SOLD OUT",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 20. MSG, Kia Forum, Red Rocks.",
-      reasoning: "First headline tour in 18 years. Millennial nostalgia demo. Red Rocks, SLC, Nashville = targets.",
-      action: "Monitor secondary — Red Rocks and SLC likely selling fast.",
-      region: "NA"
-    },
-    {
-      name: "J. Cole — The Fall-Off Tour",
-      tier: "A", score: 78, category: "Farewell Tour", genre: "Hip-Hop / Rap",
-      streams: "35M+ monthly", lastTour: "2017 solo headline", scarcity: "FINAL album tour, 5-year gap, 32 NA arena dates",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 20.",
-      reasoning: "Farewell psychology + Fayetteville hometown finale + Charlotte opener = premium.",
-      action: "SECONDARY — Fayetteville finale, Charlotte opener, Denver, Baltimore.",
-      region: "NA"
-    },
-    {
-      name: "John Mulaney — Mister Whatever (Summer Dates)",
-      tier: "A", score: 82, category: "Comedy Premium", genre: "Stand-Up Comedy",
-      streams: "700K+ tickets, $51.4M gross", lastTour: "2025-26 ongoing", scarcity: "Wrigley Field = FIRST COMEDIAN EVER. Ozarks 2.5K, Ledge 6K.",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Summer amphitheater dates onsale completed Feb 20.",
-      reasoning: "Hottest comedian in America. Small amphitheater dates = best margin play.",
-      action: "Monitor — Ozarks and Ledge likely instant sellouts. Wrigley premium seats flippable.",
-      region: "NA"
-    },
-    {
-      name: "Fuerza Regida — Stadium Tour",
-      tier: "A", score: 79, category: "Genre Breakout", genre: "Música Mexicana",
-      streams: "39M+ monthly", lastTour: "2025 arenas", scarcity: "FIRST stadium tour, only 9 dates",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 20. Dodger Stadium, Citi Field, Allegiant.",
-      reasoning: "Biggest act in música mexicana. 9 stadium dates = extreme scarcity. Seattle + Phoenix = massive regional pull.",
-      action: "SECONDARY — Target field sections. Watch high stadium face values eating margins.",
-      region: "NA"
-    },
-    {
-      name: "Caamp — Summer Amphitheater Tour",
-      tier: "B", score: 70, category: "Indie Breakout", genre: "Folk-Rock / Americana",
-      streams: "4.3M+ monthly", lastTour: "2025 sold out 200K+", scarcity: "Scaling to amphitheaters from sold-out theaters",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 20.",
-      reasoning: "Sold out Radio City, Greek Theatre in 2025. Columbus hometown + Fiddler's Green 2-nighter = best plays.",
-      action: "Monitor Columbus Schottenstein and Fiddler's Green.",
-      region: "NA"
-    },
-    {
-      name: "Tame Impala — Deadbeat Tour",
-      tier: "B", score: 68, category: "Arena Run", genre: "Psychedelic Rock / Indie",
-      streams: "30M+ monthly", lastTour: "2025", scarcity: "EU sold out. Djo + Dominic Fike support.",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 20. Arena dates Jul-Sep.",
-      reasoning: "Grammy winner. Baltimore 2-nighter absorbs DC corridor. Premium floor only.",
-      action: "SELECTIVE — Premium floor in Baltimore, Nashville, Portland, Denver.",
-      region: "NA"
-    },
-    {
-      name: "The Kid LAROI — A Perfect World Tour",
-      tier: "B", score: 66, category: "Young Headliner", genre: "Melodic Rap / Pop",
-      streams: "36M+ monthly", lastTour: "2024 theaters", scarcity: "Medium — 25+ NA dates, 2-6K cap. Tommy Richman support.",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 20.",
-      reasoning: "36M listeners in 2-5K rooms = streaming-to-venue gap. Brooklyn Paramount and Marathon Music Works (1.5K) = instant sellouts.",
-      action: "SELECTIVE — Smallest rooms only (Marathon Nashville, Brooklyn Paramount).",
-      region: "NA"
-    },
-{
-      name: "Diljit Dosanjh",
-      tier: "S", score: 95, category: "International Crossover", genre: "Punjabi Pop / Bhangra",
-      streams: "28M+ monthly", lastTour: "2024 (sold out)", scarcity: "First stadium tour",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 12 10am local. 13-city NA stadium tour.",
-      reasoning: "First Punjabi artist to headline stadiums globally. NA dates: BC Place, MetLife, Rogers Centre. Most brokers completely overlook South Asian market. Massive diaspora fanbase with extreme willingness to pay.",
-      action: "Monitor secondary pricing — South Asian market is underserved by brokers.",
-      region: "NA"
-    },
-    {
-      name: "Noah Kahan",
-      tier: "A", score: 88, category: "Festival-to-Headline", genre: "Folk / Indie Pop",
-      streams: "55M+ monthly", lastTour: "2024–2025", scarcity: "First stadium tour — 23+ stadium dates",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 12. 4th Fenway date added due to demand. ⚠️ Face Value Exchange active.",
-      reasoning: "4 Fenway, 2 Citi Field, Wrigley, Citizens Bank Park. BUT Face Value Exchange blocks resale markup on TM.",
-      action: "⚠️ LOW RESALE UPSIDE — FVE blocks markup. Only play: states with transfer laws (NY, CO, IL) via StubHub.",
-      region: "NA"
-    },
-    {
-      name: "Simple Plan / Bowling for Soup / 3OH!3",
-      tier: "C", score: 52, category: "Nostalgia Package", genre: "Pop-Punk / Rock",
-      streams: "8M+ combined", lastTour: "2024", scarcity: "Low — regular tourers",
-      saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "General onsale completed Feb 13. NA amphitheater routing.",
-      reasoning: "Nostalgia package. Moderate demand. All three tour regularly. Thin margins.",
-      action: "SKIP — low scarcity, modest demand, thin margins.",
-      region: "NA"
-    },
-    {
-      name: "BTS", tier: "S", score: 98, category: "Hiatus Return", genre: "K-Pop / Pop",
-      streams: "54M+ monthly", lastTour: "2021–2022", scarcity: "4-year gap",
-      saleStatus: "SOLD OUT — secondary only",
-      saleDetails: "NA stadium dates sold out in under 15 min. Added Tampa + Stanford. Secondary $1,500–$7,000+.",
-      reasoning: "Largest K-pop reunion tour. Floor seats $3,000+ on secondary. Softer NA markets (El Paso, Tampa N2, Foxborough) = buy-low spots. Album drops March 20 may spike prices.",
-      action: "SECONDARY — Monitor StubHub for dips in softer NA markets. Buy before March 20 album drop.",
-      region: "NA"
-    },
-    {
-      name: "Ariana Grande", tier: "S", score: 93, category: "Hiatus Return", genre: "Pop / R&B",
-      streams: "68M+ monthly", lastTour: "2019", scarcity: "7-year gap",
-      saleStatus: "SOLD OUT — secondary only",
-      saleDetails: "31 NA shows June–Aug. Multi-night residencies: LA (4), Brooklyn (4). Resale $300–$3,500.",
-      reasoning: "First headline tour in 7 years. Sold out instantly across NA. TM capped some resale at $2,000.",
-      action: "Monitor mid-tier NA markets (Austin, Chicago). Prices may settle then spike closer to June 6.",
-      region: "NA"
-    },
-    {
-      name: "Rosalía", tier: "A", score: 85, category: "International Crossover", genre: "Latin Pop",
-      streams: "32M+ monthly", lastTour: "2022", scarcity: "3-year gap, first arena tour",
-      saleStatus: "MOSTLY SOLD OUT",
-      saleDetails: "Chicago sold out. Miami $57, Vegas $70 get-ins remain. MSG $180+.",
-      reasoning: "First all-arena headlining tour. NA dates at surprisingly low secondary prices — room for growth.",
-      action: "BUY NOW: Miami $57, Vegas $70 on resale. Prices will climb as tour approaches.",
-      region: "NA"
-    },
-    {
-      name: "FKA twigs", tier: "A", score: 82, category: "Cult Following", genre: "Art Pop / Electronic",
-      streams: "8M+ monthly", lastTour: "2019 (cancelled 2025)", scarcity: "First major arena tour",
-      saleStatus: "ON SALE — inventory available",
-      saleDetails: "Tour starts March 14. NA dates include MSG. Get-ins at $23, avg $130.",
-      reasoning: "Theaters to arenas including MSG. EUSEXUA acclaimed. Cancelled 2025 tour = pent-up demand. Massively underpriced.",
-      action: "UNDERPRICED — Scoop NA tickets at $23–$130 before March 14. MSG and Denver are prime targets.",
-      region: "NA"
-    },
-    {
-      name: "Hayley Williams", tier: "B", score: 76, category: "Never Toured", genre: "Pop / Rock",
-      streams: "12M+ monthly (solo)", lastTour: "Never (solo)", scarcity: "First-ever solo tour",
-      saleStatus: "ON SALE — select dates",
-      saleDetails: "NA tour March–June 2026 via Ticketmaster.",
-      reasoning: "First-ever solo headlining tour. Paramore fanbase (25M+ Spotify) provides crossover floor.",
-      action: "Monitor — moderate opportunity. Watch smaller NA market sell-outs.",
-      region: "NA"
-    },
-    {
-      name: "Rush (Reunion)", tier: "B", score: 74, category: "Hiatus Return", genre: "Prog Rock",
-      streams: "11M+ monthly", lastTour: "2015", scarcity: "11-year gap",
-      saleStatus: "ON SALE — high demand",
-      saleDetails: "56 dates across NA starting June 7. 'Fifty Something Tour.'",
-      reasoning: "11-year gap. First since Neil Peart's death. Loyal boomer/Gen-X fanbase. All-NA routing.",
-      action: "Target premium seats. Classic rock demos pay above market for floor/VIP.",
-      region: "NA"
-    },
-    {
-      name: "Don Toliver", tier: "B", score: 68, category: "Festival-to-Headline", genre: "Hip-Hop",
-      streams: "35M+ monthly", lastTour: "2024 (clubs)", scarcity: "First arena tour",
-      saleStatus: "ON SALE — inventory available",
-      saleDetails: "30-city NA arena tour, May–July 2026.",
-      reasoning: "OCTANE debuted #1 globally. 30-city NA arena tour — massive venue upgrade.",
-      action: "Check remaining NA inventory for underperforming markets.",
-      region: "NA"
-    }
   ],
   smallVenue: [
     {
@@ -1042,7 +943,7 @@ function OptimusDashboard() {
         {(tab==="dashboard"||tab==="nextweek"||tab==="thisweek"||tab==="onsale"||tab==="smallvenue"||tab==="sports"||tab==="comedy"||tab==="redrocks")&&(
           <div style={{animation:"slideUp 0.3s ease-out"}}>
             {(tab==="dashboard"||tab==="nextweek")&&(<>
-              <H color="#f59e0b" title="📅 NEXT WEEK — ONSALES FEB 16–22" sub="Presales + general onsales dropping next week" pulse/>
+              <H color="#f59e0b" title="📅 NEXT WEEK — ONSALES MAR 2–8" sub="Presales + general onsales dropping next week" pulse/>
               <A emoji="📅" title="Get positioned BEFORE these go live" sub="Presales start as early as Sunday Feb 16. General onsales Friday Feb 20." color="#f59e0b"/>
               <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
                 {(showDead?sortDead(SCAN_DATA.nextWeek):SCAN_DATA.nextWeek.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`nw${a.name}`} a={a} i={i} exp={e6===a.name} toggle={()=>se6(e6===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
