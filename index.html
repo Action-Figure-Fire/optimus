@@ -14,7 +14,7 @@
 const { useState } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 1, 2026 — Weekly Scan v15 · OPTIMUS INTELLIGENCE · RUSH RETURNS",
+  lastRun: "March 2, 2026 — Weekly Scan v16 · OPTIMUS INTELLIGENCE · METALLICA SPHERE WEEK",
   nextWeek: [
     {
       name: "Rush — Fifty Something Tour 2026 🔥", tier: "S+", score: 98, category: "PROG ROCK LEGENDS — 11-YEAR HIATUS ENDS", genre: "Progressive Rock",
@@ -198,6 +198,73 @@ const SCAN_DATA = {
     },
   ],
   thisWeek: [
+    {
+      name: "Metallica — Life Burns Faster at the Sphere", tier: "S", score: 96, category: "Metal Legends — Sphere Residency", genre: "Heavy Metal / Thrash",
+      streams: "28M+ monthly. One of the biggest bands in history. 125M+ albums sold worldwide.", lastTour: "2025 (M72 World Tour — stadiums)", scarcity: "EXTREME — 8 Sphere dates only (Oct 1, 3, 15, 17, 22, 24, 29, 31). 'No Repeat Weekends' = unique setlist each night. Sphere ~18K cap. Halloween show Oct 31 = crown jewel.",
+      venueSize: "Sphere Las Vegas (~18K cap)", saleStatus: "🔴 LEGACY PRESALE LIVE TODAY MAR 2 — ONSALE FRI MAR 6 10AM PT",
+      saleDetails: "Legacy Member presale LIVE Mon Mar 2 7am PT. Fifth Member fan club presale Tue Mar 3 10am PT. SiriusXM presale Thu Mar 5 10am PT. General onsale Fri Mar 6 10am PT. 2-night and single-night packages available.",
+      reasoning: "This is arguably the biggest ticket drop of the year. Metallica at the Sphere is going to be LEGENDARY — the most immersive venue on earth + the biggest metal band in history. Only 8 shows total. 'No Repeat Weekends' means each pair of shows has completely unique setlists, driving completist demand for multiple nights. The Sphere has proven with BSB (35 sold-out dates) and U2 that it commands massive secondary premiums just from the venue alone. Add Metallica and you get nuclear-level demand. The Halloween pair (Oct 29 & 31) will be the most expensive — Metallica + Halloween + Sphere is a once-in-a-lifetime combination.",
+      action: "🚨 HIGHEST PRIORITY — Legacy presale LIVE NOW. Sign up for EVERY presale. Buy 2-night packages (Thu+Sat). Halloween weekend (Oct 29+31) will command the highest premiums.",
+      targetCities: [
+        {emoji:"🎰",city:"Las Vegas, NV",venue:"Sphere (Oct 1 & 3)",date:"Oct 1 & 3",why:"First weekend. 'Discovery' pricing may be slightly lower. Buy early, sell as hype builds."},
+        {emoji:"🎰",city:"Las Vegas, NV",venue:"Sphere (Oct 29 & 31)",date:"Oct 29 & 31",why:"HALLOWEEN WEEKEND. Oct 31 Metallica at Sphere on Halloween night = single most expensive ticket of 2026."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Jason Aldean — Songs About Us Tour", tier: "A", score: 82, category: "Country Arena/Amphitheater", genre: "Country",
+      streams: "18M+ monthly. 27 #1 country singles. New album 'Songs About Us' drops Apr 24.", lastTour: "2025-26 (Full Throttle World Tour)", scarcity: "MEDIUM-HIGH — 22 NA dates, amphitheater/arena mix. Support: Chase Matthew, Mackenzie Carpenter, Dee Jay Silver.",
+      venueSize: "Amphitheater / Arena (8-20K cap)", saleStatus: "🔴 ALDEAN ARMY PRESALE TUE MAR 3 10AM — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Aldean Army fan club presale Tue Mar 3 10am local. Additional presales throughout week. General onsale Fri Mar 6 10am local via Ticketmaster/LiveNation. Tour dates: Jul 16 (Bangor ME) through Sep 26 (Gilford NH). Sanford Stadium UGA w/ Luke Bryan Apr 25.",
+      reasoning: "Aldean is a touring machine — consistent sellouts. New album dropping Apr 24 means tour demand peaks as album hype builds. Amphitheater routing constrains supply vs. his demand level. Key plays: Nampa ID, Bossier City LA, Brandon MS = zero broker competition.",
+      action: "BUY PRESALE TUE MAR 3 — Target small-market amphitheater dates. Nampa ID, Bossier City LA, Brandon MS = zero broker competition.",
+      targetCities: [
+        {emoji:"🏔️",city:"Nampa, ID",venue:"Ford Idaho Center Amphitheater",date:"Jul 31",why:"Smallest market. Idaho + eastern OR + MT funnels here. Zero brokers."},
+        {emoji:"🎺",city:"Bossier City, LA",venue:"Brookshire Grocery Arena",date:"Aug 27",why:"Only Louisiana date. Deep South country demand."},
+        {emoji:"🌿",city:"Brandon, MS",venue:"Brandon Amphitheater",date:"Aug 28",why:"Only Mississippi date. Small amphitheater = tight supply."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Joji — SOLARIS World Tour", tier: "A", score: 85, category: "Internet Icon — Arena Breakout", genre: "Indie Pop / R&B / Alternative",
+      streams: "25M+ monthly. 'Glimpse of Us' = 1.5B+ streams. Former Filthy Frank → mainstream crossover.", lastTour: "2023 (Smithereens Tour — sold out arenas)", scarcity: "HIGH — 18 NA arena dates. Arena tour after album drop = peak demand.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 CITI PRESALE TUE MAR 3 10AM — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Citi presale Tue Mar 3 10am local through Wed Mar 4 9am. Additional presales through week. General onsale Fri Mar 6 10am local via Ticketmaster. NA dates Jun 16 (Newark) through Jul 23 (Denver).",
+      reasoning: "Joji has massive DEDICATED internet fanbase PLUS mainstream pop success. Arena tour supporting new album. His demo (18-28, internet-native) buys impulsively and pays secondary premiums. SLC is smallest market with best margins.",
+      action: "HIT PRESALE TUE MAR 3 — Target SLC (smallest market), Charlotte (Southeast gap), Portland (PNW).",
+      targetCities: [
+        {emoji:"⛷️",city:"Salt Lake City, UT",venue:"Maverik Center",date:"Jul 21",why:"SMALLEST market on tour. Mountain West funnel. Zero broker competition."},
+        {emoji:"🏁",city:"Charlotte, NC",venue:"Spectrum Center",date:"Jun 29",why:"Only Southeast date besides ATL/Orlando."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Outside Lands 2026 — Lineup Reveal + Loyalty Presale", tier: "A", score: 80, category: "Major Festival", genre: "Multi-Genre Festival",
+      streams: "San Francisco's premier music festival. Golden Gate Park.", lastTour: "Annual (2025 sold out multiple days)", scarcity: "HIGH — New presale structure. Loyalty Presale sees lineup BEFORE buying.",
+      venueSize: "Festival (60-80K capacity)", saleStatus: "🔴 LINEUP REVEAL + LOYALTY PRESALE TUE MAR 3 NOON PT — GENERAL THU MAR 5 NOON PT",
+      saleDetails: "Lineup reveal Mar 3. Loyalty Presale Tue Mar 3 noon PT (past wristband holders 2021-2025). Chase presale Tue Mar 3 noon PT. Ranger presale Wed Mar 4 noon PT. General sale Thu Mar 5 noon PT. No more Eager Beaver blind presale.",
+      reasoning: "OSL eliminated Eager Beaver (blind presale) in favor of Loyalty Presale where you SEE the lineup before buying. If lineup is stacked, presale tickets at lower prices = instant arbitrage vs general sale. SF tech demo pays top dollar.",
+      action: "🚨 CHECK LINEUP AT NOON TUE MAR 3 — If headliners are elite, buy immediately at presale pricing. Flip at general sale pricing or above.",
+      region: "NA"
+    },
+    {
+      name: "Stardew Valley: Symphony of Seasons — Red Rocks 🎮", tier: "A", score: 88, category: "VIDEO GAME SYMPHONY — 10-YEAR ANNIVERSARY", genre: "Orchestral / Gaming",
+      streams: "30M+ players worldwide. Indie game cultural phenomenon.", lastTour: "Never — First symphony performance", scarcity: "EXTREME — One night only Oct 25, 2026 at Red Rocks. 9,525 cap for 30M+ global fanbase.",
+      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🔴 NEWSLETTER PRESALE TODAY MAR 2 10AM MT — GENERAL WED MAR 4 10AM MT",
+      saleDetails: "Newsletter subscriber presale Mon Mar 2 10am MT (signup by Mar 1 midnight). General onsale Wed Mar 4 10am MT via RedRocksOnline.com. One night only: October 25, 2026.",
+      reasoning: "Stardew Valley is a cultural phenomenon — 30M+ players. Gaming symphonies have proven demand: Zelda/FF concerts sell out instantly. FIRST Stardew symphony, at Red Rocks, for 10-year anniversary. Gaming demo (18-35) buys impulsively. One night only = global demand into 9,525 seats.",
+      action: "🚨 PRESALE LIVE TODAY — General onsale Wed Mar 4 10AM MT. Gaming + Red Rocks + anniversary = instant sellout.",
+      region: "NA"
+    },
+    {
+      name: "Tucker Wetmore — Red Rocks Headline Debut", tier: "A", score: 80, category: "Country Breakout — First Red Rocks", genre: "Country",
+      streams: "Rising fast. 'Wine Into Whiskey' = breakout hit.", lastTour: "2025-26 (first major headline tour)", scarcity: "EXTREME — First-EVER Red Rocks headline. 9,525 cap. One night only (Oct 27). Night before Koe Wetzel Oct 28.",
+      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🔴 CITI PRESALE TUE MAR 3 — ARTIST PRESALE WED MAR 4 — ONSALE FRI MAR 6 10AM MT",
+      saleDetails: "Citi presale Tue Mar 3 10am. Artist presale Wed Mar 4 10am. General onsale Fri Mar 6 10am MT via RedRocksOnline.com. Oct 27 — night before Koe Wetzel's Red Rocks show Oct 28.",
+      reasoning: "Tucker Wetmore's first Red Rocks headline = milestone show. First Red Rocks for breakout artists = massive FOMO. Oct 27 is night BEFORE Koe Wetzel's Red Rocks show (Oct 28), creating potential 2-night country weekend. Pipeline play: Tucker at 9,525 today = 15K amphitheaters by 2027.",
+      action: "🚨 BUY PRESALE MAR 3-4 — First Red Rocks for breakout country act = guaranteed sellout. GA and premium reserved will flip well.",
+      region: "NA"
+    },
   ],
   alreadyOnSale: [
   ],
