@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>OPTIMUS — Bloomberg Terminal Style</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#e0e0e0;font-family:'JetBrains Mono',monospace;font-size:13px;overflow-x:hidden}
+
+.ticker-bar{background:#111;border-bottom:1px solid #222;padding:8px 20px;display:flex;gap:24px;overflow-x:auto;white-space:nowrap;font-size:11px}
+.ticker-item{display:flex;gap:6px;align-items:center}
+.ticker-name{color:#ff9500;font-weight:700}
+.ticker-price{color:#e0e0e0}
+.ticker-up{color:#00ff88}
+.ticker-down{color:#ff3b30}
+
+.header{background:#0f0f0f;border-bottom:1px solid #1a1a1a;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.header h1{font-size:16px;color:#ff9500;font-weight:700;letter-spacing:2px}
+.header .time{color:#666;font-size:11px}
+
+.tabs{display:flex;gap:0;border-bottom:1px solid #222;background:#0d0d0d}
+.tab{padding:10px 20px;font-size:11px;letter-spacing:1.5px;font-weight:600;color:#555;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
+.tab:hover{color:#999}
+.tab.active{color:#ff9500;border-bottom-color:#ff9500}
+
+.container{padding:16px 20px}
+
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:8px 12px;color:#666;font-size:10px;letter-spacing:1.5px;border-bottom:1px solid #222;position:sticky;top:0;background:#0a0a0a}
+td{padding:10px 12px;border-bottom:1px solid #151515;transition:background 0.15s}
+tr:hover td{background:#111}
+tr.s-tier td{border-left:3px solid #ff3b30}
+tr.a-tier td{border-left:3px solid #ff9500}
+tr.b-tier td{border-left:3px solid #5856d6}
+
+.tier-badge{display:inline-block;width:28px;height:22px;border-radius:3px;text-align:center;line-height:22px;font-weight:700;font-size:11px}
+.tier-S{background:#ff3b30;color:#fff}
+.tier-A{background:#ff9500;color:#000}
+.tier-B{background:#5856d6;color:#fff}
+.tier-C{background:#333;color:#999}
+
+.score{font-weight:700;font-size:14px}
+.score-high{color:#00ff88}
+.score-mid{color:#ff9500}
+.score-low{color:#ff3b30}
+
+.status-live{color:#ff3b30;font-weight:700;animation:pulse 1.5s infinite}
+.status-upcoming{color:#ff9500}
+.status-tbd{color:#555}
+
+.price-col{text-align:right;font-weight:600}
+.price-na{color:#333}
+.spread{font-size:10px;color:#666;display:block}
+
+.btn-buy{background:#ff9500;color:#000;border:none;padding:4px 10px;border-radius:3px;font-size:10px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:1px}
+.btn-buy:hover{background:#ffaa33}
+
+.summary-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.summary-card{background:#111;border:1px solid #1a1a1a;border-radius:4px;padding:12px 16px}
+.summary-label{font-size:9px;color:#555;letter-spacing:1.5px;margin-bottom:4px}
+.summary-value{font-size:18px;font-weight:700;color:#ff9500}
+.summary-value.green{color:#00ff88}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+
+@media(max-width:768px){
+  .summary-bar{grid-template-columns:repeat(2,1fr)}
+  th,td{padding:6px 8px;font-size:11px}
+  .ticker-bar{font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker-bar">
+  <div class="ticker-item"><span class="ticker-name">METALLICA SPHERE</span><span class="ticker-price">$695</span><span class="ticker-up">▲ PRESALE LIVE</span></div>
+  <div class="ticker-item"><span class="ticker-name">JOJI SOLARIS</span><span class="ticker-price">$89</span><span class="ticker-up">▲ CITI PRESALE</span></div>
+  <div class="ticker-item"><span class="ticker-name">ALDEAN TOUR</span><span class="ticker-price">$65</span><span class="ticker-up">▲ FAN PRESALE</span></div>
+  <div class="ticker-item"><span class="ticker-name">CHARLEY CROCKETT</span><span class="ticker-price">$45</span><span class="ticker-up">▲ PRESALE LIVE</span></div>
+  <div class="ticker-item"><span class="ticker-name">STING 3.0</span><span class="ticker-price">$125</span><span class="ticker-up">▲ FAN CLUB</span></div>
+  <div class="ticker-item"><span class="ticker-name">MAYA HAWKE</span><span class="ticker-price">$35</span><span class="ticker-up">▲ ARTIST PRESALE</span></div>
+  <div class="ticker-item"><span class="ticker-name">OUTSIDE LANDS</span><span class="ticker-price">$445</span><span class="ticker-up">▲ LOYALTY</span></div>
+  <div class="ticker-item"><span class="ticker-name">CREED MN</span><span class="ticker-price">TBA</span><span class="ticker-down">— THU MAR 6</span></div>
+</div>
+
+<div class="header">
+  <h1>OPTIMUS TERMINAL</h1>
+  <div class="time">MAR 03 2026 · 11:32:14 ET · SCAN v14 · PRESALE TSUNAMI WEEK</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active">THIS WEEK (10)</div>
+  <div class="tab">ON SALE</div>
+  <div class="tab">SMALL VENUE</div>
+  <div class="tab">RED ROCKS</div>
+  <div class="tab">SPORTS</div>
+  <div class="tab">PIPELINE</div>
+  <div class="tab">ROUTING GAPS</div>
+</div>
+
+<div class="container">
+  <div class="summary-bar">
+    <div class="summary-card">
+      <div class="summary-label">EVENTS TRACKED</div>
+      <div class="summary-value">47</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">PRESALES TODAY</div>
+      <div class="summary-value green">7</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">S-TIER ALERTS</div>
+      <div class="summary-value" style="color:#ff3b30">3</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">AVG SCORE</div>
+      <div class="summary-value">82.4</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">ROUTING GAPS</div>
+      <div class="summary-value green">12</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>TIER</th>
+          <th>SCORE</th>
+          <th>EVENT</th>
+          <th>GENRE</th>
+          <th>VENUE CAP</th>
+          <th>STATUS</th>
+          <th>FACE</th>
+          <th>RESALE LOW</th>
+          <th>RESALE AVG</th>
+          <th>SPREAD</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="s-tier">
+          <td><span class="tier-badge tier-S">S</span></td>
+          <td><span class="score score-high">96</span></td>
+          <td>Metallica — Life Burns Faster at Sphere<br><span style="color:#555;font-size:10px">Las Vegas, NV · Oct 1-31 · 8 dates</span></td>
+          <td style="color:#888">Metal</td>
+          <td>18,000</td>
+          <td><span class="status-live">● PRESALE LIVE</span></td>
+          <td class="price-col">$695</td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">TBD</span></td>
+          <td><button class="btn-buy">BUY →</button></td>
+        </tr>
+        <tr class="a-tier">
+          <td><span class="tier-badge tier-A">A</span></td>
+          <td><span class="score score-high">85</span></td>
+          <td>Joji — SOLARIS World Tour<br><span style="color:#555;font-size:10px">18 NA arena dates · Jun-Jul</span></td>
+          <td style="color:#888">Indie/R&B</td>
+          <td>15-20K</td>
+          <td><span class="status-live">● CITI PRESALE</span></td>
+          <td class="price-col">$89</td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">TBD</span></td>
+          <td><button class="btn-buy">BUY →</button></td>
+        </tr>
+        <tr class="a-tier">
+          <td><span class="tier-badge tier-A">A</span></td>
+          <td><span class="score score-mid">84</span></td>
+          <td>Charley Crockett — Age of the Ram Tour<br><span style="color:#555;font-size:10px">Theater/Amphitheater · May-Sep · Canada cancelled</span></td>
+          <td style="color:#888">Country</td>
+          <td>1-8K</td>
+          <td><span class="status-live">● PRESALE LIVE</span></td>
+          <td class="price-col">$45</td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">TBD</span></td>
+          <td><button class="btn-buy">BUY →</button></td>
+        </tr>
+        <tr class="a-tier">
+          <td><span class="tier-badge tier-A">A</span></td>
+          <td><span class="score score-mid">83</span></td>
+          <td>Sting — 3.0 Fall Tour (NEW Dates)<br><span style="color:#555;font-size:10px">Theater · 6-night Brooklyn Paramount residency</span></td>
+          <td style="color:#888">Rock/Pop</td>
+          <td>2-5K</td>
+          <td><span class="status-live">● FAN CLUB PRESALE</span></td>
+          <td class="price-col">$125</td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">TBD</span></td>
+          <td><button class="btn-buy">BUY →</button></td>
+        </tr>
+        <tr class="a-tier">
+          <td><span class="tier-badge tier-A">A</span></td>
+          <td><span class="score score-mid">82</span></td>
+          <td>Jason Aldean — Songs About Us Tour<br><span style="color:#555;font-size:10px">22-city amphitheater · Jul-Sep</span></td>
+          <td style="color:#888">Country</td>
+          <td>8-20K</td>
+          <td><span class="status-live">● ALDEAN ARMY</span></td>
+          <td class="price-col">$65</td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">TBD</span></td>
+          <td><button class="btn-buy">BUY →</button></td>
+        </tr>
+        <tr class="a-tier">
+          <td><span class="tier-badge tier-A">A</span></td>
+          <td><span class="score score-mid">82</span></td>
+          <td>MLB All-Star Game — Philadelphia<br><span style="color:#555;font-size:10px">Citizens Bank Park · Jul 11-14 · First since 1996</span></td>
+          <td style="color:#888">Baseball</td>
+          <td>43,000</td>
+          <td><span class="status-upcoming">● STH PRESALE MAR</span></td>
+          <td class="price-col">TBA</td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">TBD</span></td>
+          <td><button class="btn-buy">BUY →</button></td>
+        </tr>
+        <tr class="a-tier">
+          <td><span class="tier-badge tier-A">A</span></td>
+          <td><span class="score score-mid">81</span></td>
+          <td>Creed w/ Bush & Tim Montana<br><span style="color:#555;font-size:10px">Mystic Lake Amphitheater · Shakopee MN · Jul 16</span></td>
+          <td style="color:#888">Rock</td>
+          <td>15,000</td>
+          <td><span class="status-upcoming">● THU MAR 6</span></td>
+          <td class="price-col">TBA</td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">TBD</span></td>
+          <td><button class="btn-buy">BUY →</button></td>
+        </tr>
+        <tr class="b-tier">
+          <td><span class="tier-badge tier-B">B+</span></td>
+          <td><span class="score score-mid">74</span></td>
+          <td>Maya Hawke — Maitreya Corso Tour<br><span style="color:#555;font-size:10px">Small clubs · 500-1500 cap · Bowery Ballroom closer</span></td>
+          <td style="color:#888">Indie</td>
+          <td>500-1.5K</td>
+          <td><span class="status-live">● ARTIST PRESALE</span></td>
+          <td class="price-col">$35</td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">—</span></td>
+          <td class="price-col"><span class="price-na">TBD</span></td>
+          <td><button class="btn-buy">BUY →</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

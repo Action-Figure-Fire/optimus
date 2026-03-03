@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>OPTIMUS — Minimal Card Grid</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#09090b;color:#fafafa;font-family:'Inter',sans-serif;font-size:14px}
+
+.nav{padding:16px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #18181b}
+.nav h1{font-size:20px;font-weight:700;letter-spacing:-0.5px}
+.nav h1 span{color:#a78bfa}
+.nav .meta{color:#52525b;font-size:12px}
+
+.filters{padding:16px 32px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid #18181b}
+.filter-btn{background:#18181b;border:1px solid #27272a;color:#a1a1aa;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s;font-family:inherit}
+.filter-btn:hover{border-color:#3f3f46;color:#e4e4e7}
+.filter-btn.active{background:#a78bfa;color:#000;border-color:#a78bfa;font-weight:600}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;padding:24px 32px}
+
+.card{background:#18181b;border:1px solid #27272a;border-radius:12px;padding:20px;transition:all 0.2s;cursor:pointer;position:relative;overflow:hidden}
+.card:hover{border-color:#3f3f46;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.card.s::before{background:linear-gradient(90deg,#ef4444,#f97316)}
+.card.a::before{background:linear-gradient(90deg,#f97316,#eab308)}
+.card.b::before{background:linear-gradient(90deg,#8b5cf6,#6366f1)}
+
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.card-title{font-size:15px;font-weight:600;line-height:1.3;flex:1;margin-right:12px}
+.card-score{display:flex;flex-direction:column;align-items:center}
+.score-num{font-size:24px;font-weight:700;line-height:1}
+.score-num.s{color:#ef4444}
+.score-num.a{color:#f97316}
+.score-num.b{color:#8b5cf6}
+.score-tier{font-size:10px;font-weight:700;letter-spacing:1.5px;margin-top:2px;color:#52525b}
+
+.card-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tag{font-size:11px;padding:4px 10px;border-radius:6px;font-weight:500}
+.tag-genre{background:#1e1b4b;color:#a78bfa;border:1px solid #312e81}
+.tag-venue{background:#162217;color:#4ade80;border:1px solid #14532d}
+.tag-status{background:#2a1215;color:#f87171;border:1px solid #7f1d1d;font-weight:700;animation:glow 2s infinite}
+
+.card-details{color:#71717a;font-size:12px;line-height:1.6;margin-bottom:14px}
+
+.card-prices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.price-box{background:#0f0f11;border-radius:8px;padding:8px 10px;text-align:center}
+.price-label{font-size:9px;color:#52525b;letter-spacing:1px;margin-bottom:2px}
+.price-value{font-size:14px;font-weight:600;color:#e4e4e7}
+.price-value.na{color:#27272a}
+
+.card-cities{font-size:11px;color:#71717a;padding-top:12px;border-top:1px solid #27272a}
+.city{display:flex;gap:6px;margin-top:6px}
+.city-name{color:#d4d4d8;font-weight:500}
+
+.card-actions{display:flex;gap:8px;margin-top:14px}
+.btn-tickets{flex:1;background:#a78bfa;color:#000;border:none;padding:10px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.btn-tickets:hover{background:#c4b5fd}
+.btn-dead{background:#27272a;color:#71717a;border:none;padding:10px;border-radius:8px;font-size:11px;cursor:pointer;font-family:inherit}
+
+@keyframes glow{0%,100%{opacity:1}50%{opacity:0.6}}
+
+@media(max-width:768px){
+  .grid{grid-template-columns:1fr;padding:16px}
+  .nav,.filters{padding:12px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <h1><span>◉</span> Optimus</h1>
+  <div class="meta">Scan v14 · March 3, 2026 · 47 events tracked</div>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active">This Week (10)</button>
+  <button class="filter-btn">On Sale</button>
+  <button class="filter-btn">Small Venue</button>
+  <button class="filter-btn">Red Rocks</button>
+  <button class="filter-btn">Sports</button>
+  <button class="filter-btn">Comedy</button>
+  <button class="filter-btn">Pipeline</button>
+</div>
+
+<div class="grid">
+
+  <div class="card s">
+    <div class="card-header">
+      <div class="card-title">Metallica — Life Burns Faster at Sphere</div>
+      <div class="card-score"><span class="score-num s">96</span><span class="score-tier">S-TIER</span></div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-genre">Heavy Metal</span>
+      <span class="tag tag-venue">Sphere · 18K cap</span>
+      <span class="tag tag-status">● PRESALE LIVE</span>
+    </div>
+    <div class="card-details">8 dates only · Oct 1-31 Las Vegas · No Repeat Weekends format · Halloween Oct 31 = crown jewel</div>
+    <div class="card-prices">
+      <div class="price-box"><div class="price-label">FACE</div><div class="price-value">$695</div></div>
+      <div class="price-box"><div class="price-label">RESALE LOW</div><div class="price-value na">—</div></div>
+      <div class="price-box"><div class="price-label">RESALE AVG</div><div class="price-value na">—</div></div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-tickets">🎟️ Get Tickets</button>
+      <button class="btn-dead">💀</button>
+    </div>
+  </div>
+
+  <div class="card a">
+    <div class="card-header">
+      <div class="card-title">Joji — SOLARIS World Tour</div>
+      <div class="card-score"><span class="score-num a">85</span><span class="score-tier">A-TIER</span></div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-genre">Indie Pop / R&B</span>
+      <span class="tag tag-venue">Arena · 15-20K cap</span>
+      <span class="tag tag-status">● CITI PRESALE</span>
+    </div>
+    <div class="card-details">18 NA arena dates · Jun-Jul · 'Glimpse of Us' 1.5B+ streams · Internet-native fanbase pays premium</div>
+    <div class="card-prices">
+      <div class="price-box"><div class="price-label">FACE</div><div class="price-value">$89</div></div>
+      <div class="price-box"><div class="price-label">RESALE LOW</div><div class="price-value na">—</div></div>
+      <div class="price-box"><div class="price-label">RESALE AVG</div><div class="price-value na">—</div></div>
+    </div>
+    <div class="card-cities">
+      🎯 Target Cities
+      <div class="city">🏔️ <span class="city-name">Salt Lake City</span> — Smallest arena market, best margins</div>
+      <div class="city">🌿 <span class="city-name">Charlotte</span> — Southeast gap, no nearby dates</div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-tickets">🎟️ Get Tickets</button>
+      <button class="btn-dead">💀</button>
+    </div>
+  </div>
+
+  <div class="card a">
+    <div class="card-header">
+      <div class="card-title">Charley Crockett — Age of the Ram Tour</div>
+      <div class="card-score"><span class="score-num a">84</span><span class="score-tier">A-TIER</span></div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-genre">Country / Roots</span>
+      <span class="tag tag-venue">Theater · 1-8K cap</span>
+      <span class="tag tag-status">● PRESALE LIVE</span>
+    </div>
+    <div class="card-details">Canada leg cancelled = US-only demand · New album Apr 3 · First-time markets: Canyon TX, Casper WY, Danville VA</div>
+    <div class="card-prices">
+      <div class="price-box"><div class="price-label">FACE</div><div class="price-value">$45</div></div>
+      <div class="price-box"><div class="price-label">RESALE LOW</div><div class="price-value na">—</div></div>
+      <div class="price-box"><div class="price-label">RESALE AVG</div><div class="price-value na">—</div></div>
+    </div>
+    <div class="card-cities">
+      🎯 Routing Gaps (NEVER played)
+      <div class="city">🤠 <span class="city-name">Canyon, TX</span> — Tiny Lumberyard venue, Texas panhandle</div>
+      <div class="city">🏔️ <span class="city-name">Casper, WY</span> — Only Wyoming date ever</div>
+      <div class="city">🎸 <span class="city-name">Nashville</span> — First arena headline (Bridgestone)</div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-tickets">🎟️ Get Tickets</button>
+      <button class="btn-dead">💀</button>
+    </div>
+  </div>
+
+  <div class="card a">
+    <div class="card-header">
+      <div class="card-title">Sting — 3.0 Fall Tour (NEW Dates)</div>
+      <div class="card-score"><span class="score-num a">83</span><span class="score-tier">A-TIER</span></div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-genre">Rock / Pop</span>
+      <span class="tag tag-venue">Theater · 2-5K cap</span>
+      <span class="tag tag-status">● FAN CLUB PRESALE</span>
+    </div>
+    <div class="card-details">Power trio format · 6-night Brooklyn Paramount residency · Montreal return to first Police concert venue</div>
+    <div class="card-prices">
+      <div class="price-box"><div class="price-label">FACE</div><div class="price-value">$125</div></div>
+      <div class="price-box"><div class="price-label">RESALE LOW</div><div class="price-value na">—</div></div>
+      <div class="price-box"><div class="price-label">RESALE AVG</div><div class="price-value na">—</div></div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-tickets">🎟️ Get Tickets</button>
+      <button class="btn-dead">💀</button>
+    </div>
+  </div>
+
+  <div class="card a">
+    <div class="card-header">
+      <div class="card-title">MLB All-Star Game — Philadelphia</div>
+      <div class="card-score"><span class="score-num a">82</span><span class="score-tier">A-TIER</span></div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-genre">Baseball</span>
+      <span class="tag tag-venue">Citizens Bank Park · 43K</span>
+      <span class="tag tag-status" style="background:#2a2215;color:#fbbf24;border-color:#78350f">● STH PRESALE MAR</span>
+    </div>
+    <div class="card-details">First Philly ASG in 30 years · HR Derby on Netflix = massive casual audience · Full week Jul 11-14</div>
+    <div class="card-prices">
+      <div class="price-box"><div class="price-label">FACE</div><div class="price-value na">TBA</div></div>
+      <div class="price-box"><div class="price-label">RESALE LOW</div><div class="price-value na">—</div></div>
+      <div class="price-box"><div class="price-label">RESALE AVG</div><div class="price-value na">—</div></div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-tickets">🎟️ Get Tickets</button>
+      <button class="btn-dead">💀</button>
+    </div>
+  </div>
+
+  <div class="card b">
+    <div class="card-header">
+      <div class="card-title">Maya Hawke — Maitreya Corso Tour</div>
+      <div class="card-score"><span class="score-num b">74</span><span class="score-tier">B+ TIER</span></div>
+    </div>
+    <div class="card-meta">
+      <span class="tag tag-genre">Indie Folk</span>
+      <span class="tag tag-venue">Club · 500-1.5K cap</span>
+      <span class="tag tag-status">● ARTIST PRESALE</span>
+    </div>
+    <div class="card-details">Stranger Things star in sub-1K rooms · Bowery Ballroom May 2 = 575 cap album release week · New album May 1</div>
+    <div class="card-prices">
+      <div class="price-box"><div class="price-label">FACE</div><div class="price-value">$35</div></div>
+      <div class="price-box"><div class="price-label">RESALE LOW</div><div class="price-value na">—</div></div>
+      <div class="price-box"><div class="price-label">RESALE AVG</div><div class="price-value na">—</div></div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-tickets">🎟️ Get Tickets</button>
+      <button class="btn-dead">💀</button>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>OPTIMUS — Sports Book Style</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0e1118;color:#c8ccd4;font-family:'Inter',sans-serif;font-size:14px}
+
+.top-bar{background:#1a1e27;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #00d084}
+.top-bar h1{font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.3px}
+.top-bar h1 span{color:#00d084}
+.top-bar .live{display:flex;align-items:center;gap:6px;font-size:12px;color:#00d084;font-weight:600}
+.top-bar .live::before{content:'';width:8px;height:8px;background:#00d084;border-radius:50%;animation:blink 1s infinite}
+
+.sport-tabs{display:flex;gap:0;background:#141820;overflow-x:auto}
+.sport-tab{padding:14px 24px;font-size:13px;font-weight:600;color:#5a6170;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all 0.2s}
+.sport-tab:hover{color:#8b919e}
+.sport-tab.active{color:#fff;border-bottom-color:#00d084;background:#1a1e27}
+.sport-tab .count{background:#2a2e37;padding:2px 7px;border-radius:10px;font-size:10px;margin-left:6px}
+.sport-tab.active .count{background:#00d084;color:#000}
+
+.board{padding:16px 24px}
+
+.section-header{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #1e222b}
+.section-title{font-size:12px;font-weight:700;letter-spacing:2px;color:#5a6170}
+.section-live{font-size:11px;color:#00d084;font-weight:600}
+
+.line{display:grid;grid-template-columns:48px 1fr 100px 100px 100px 100px 90px;align-items:center;padding:14px 0;border-bottom:1px solid #1a1e27;transition:background 0.15s}
+.line:hover{background:#141820}
+
+.line-tier{text-align:center}
+.tier{display:inline-block;width:36px;height:28px;line-height:28px;border-radius:6px;font-weight:800;font-size:13px;text-align:center}
+.tier-S{background:linear-gradient(135deg,#ff3b30,#ff6b3b);color:#fff}
+.tier-A{background:linear-gradient(135deg,#ff9500,#ffb340);color:#000}
+.tier-B{background:linear-gradient(135deg,#5856d6,#7c7aff);color:#fff}
+.tier-C{background:linear-gradient(135deg,#3a3d45,#52555e);color:#999}
+
+.line-event{padding-right:16px}
+.event-name{font-weight:600;color:#fff;font-size:14px;margin-bottom:2px}
+.event-sub{font-size:11px;color:#5a6170}
+
+.odds-box{text-align:center;padding:8px 12px;border-radius:6px;cursor:pointer;transition:all 0.15s}
+.odds-box:hover{transform:scale(1.05)}
+.odds-green{background:#0d2818;border:1px solid #00d084;color:#00d084}
+.odds-yellow{background:#2a2615;border:1px solid #fbbf24;color:#fbbf24}
+.odds-red{background:#2a1215;border:1px solid #ef4444;color:#ef4444}
+.odds-gray{background:#1a1e27;border:1px solid #2a2e37;color:#5a6170}
+.odds-label{font-size:8px;letter-spacing:1px;color:#5a6170;margin-bottom:2px}
+.odds-value{font-size:16px;font-weight:700}
+.odds-sub{font-size:9px;margin-top:1px}
+
+.line-action{text-align:center}
+.btn-go{background:#00d084;color:#000;border:none;padding:8px 16px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.5px;transition:all 0.2s}
+.btn-go:hover{background:#00e894;transform:scale(1.05)}
+
+.countdown{display:inline-flex;align-items:center;gap:4px;background:#2a1215;border:1px solid #7f1d1d;padding:4px 10px;border-radius:4px;font-size:10px;font-weight:700;color:#ef4444;margin-top:4px}
+.countdown.soon{background:#0d2818;border-color:#14532d;color:#00d084}
+
+.promo-bar{background:linear-gradient(90deg,#00d084,#00b074);padding:10px 24px;text-align:center;font-size:12px;font-weight:700;color:#000;letter-spacing:0.5px}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+@media(max-width:768px){
+  .line{grid-template-columns:36px 1fr 70px 70px 70px;font-size:12px}
+  .line .odds-box:nth-child(n+5){display:none}
+  .line-action{display:none}
+  .board{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="promo-bar">🔥 PRESALE TSUNAMI — 7 EVENTS LIVE TODAY · GENERAL ONSALE FRIDAY MAR 6</div>
+
+<div class="top-bar">
+  <h1><span>⚡</span> OPTIMUS BOOK</h1>
+  <div class="live">LIVE · 47 LINES</div>
+</div>
+
+<div class="sport-tabs">
+  <div class="sport-tab active">🎵 This Week <span class="count">10</span></div>
+  <div class="sport-tab">🎫 On Sale <span class="count">5</span></div>
+  <div class="sport-tab">🏟️ Small Venue <span class="count">8</span></div>
+  <div class="sport-tab">🏔️ Red Rocks <span class="count">6</span></div>
+  <div class="sport-tab">🏀 Sports <span class="count">4</span></div>
+  <div class="sport-tab">😂 Comedy <span class="count">3</span></div>
+  <div class="sport-tab">🔮 Pipeline <span class="count">11</span></div>
+</div>
+
+<div class="board">
+
+  <div class="section-header">
+    <div class="section-title">THIS WEEK — PRESALES & ONSALES</div>
+    <div class="section-live">● 7 PRESALES LIVE NOW</div>
+  </div>
+
+  <!-- Headers -->
+  <div class="line" style="padding:8px 0;border-bottom:1px solid #2a2e37">
+    <div class="line-tier" style="font-size:9px;color:#5a6170;letter-spacing:1px">TIER</div>
+    <div style="font-size:9px;color:#5a6170;letter-spacing:1px">EVENT</div>
+    <div style="text-align:center;font-size:9px;color:#5a6170;letter-spacing:1px">SCORE</div>
+    <div style="text-align:center;font-size:9px;color:#5a6170;letter-spacing:1px">FACE</div>
+    <div style="text-align:center;font-size:9px;color:#5a6170;letter-spacing:1px">RESALE</div>
+    <div style="text-align:center;font-size:9px;color:#5a6170;letter-spacing:1px">SPREAD</div>
+    <div></div>
+  </div>
+
+  <div class="line">
+    <div class="line-tier"><span class="tier tier-S">S</span></div>
+    <div class="line-event">
+      <div class="event-name">Metallica — Sphere Residency</div>
+      <div class="event-sub">Las Vegas · 8 dates · Oct 1-31 · 18K cap</div>
+      <div class="countdown">● PRESALE LIVE — FIFTH MEMBER 10AM PT</div>
+    </div>
+    <div class="odds-box odds-green"><div class="odds-label">SCORE</div><div class="odds-value">96</div></div>
+    <div class="odds-box odds-yellow"><div class="odds-label">FACE</div><div class="odds-value">$695</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">RESALE</div><div class="odds-value">—</div><div class="odds-sub">TBD</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">SPREAD</div><div class="odds-value">—</div></div>
+    <div class="line-action"><button class="btn-go">BUY →</button></div>
+  </div>
+
+  <div class="line">
+    <div class="line-tier"><span class="tier tier-A">A</span></div>
+    <div class="line-event">
+      <div class="event-name">Joji — SOLARIS World Tour</div>
+      <div class="event-sub">18 NA arenas · Jun-Jul · 15-20K cap</div>
+      <div class="countdown">● CITI PRESALE LIVE 10AM LOCAL</div>
+    </div>
+    <div class="odds-box odds-green"><div class="odds-label">SCORE</div><div class="odds-value">85</div></div>
+    <div class="odds-box odds-yellow"><div class="odds-label">FACE</div><div class="odds-value">$89</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">RESALE</div><div class="odds-value">—</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">SPREAD</div><div class="odds-value">—</div></div>
+    <div class="line-action"><button class="btn-go">BUY →</button></div>
+  </div>
+
+  <div class="line">
+    <div class="line-tier"><span class="tier tier-A">A</span></div>
+    <div class="line-event">
+      <div class="event-name">Charley Crockett — Age of the Ram</div>
+      <div class="event-sub">Theater/Amphitheater · May-Sep · Canada cancelled</div>
+      <div class="countdown">● PRESALE LIVE 11AM ET</div>
+    </div>
+    <div class="odds-box odds-green"><div class="odds-label">SCORE</div><div class="odds-value">84</div></div>
+    <div class="odds-box odds-yellow"><div class="odds-label">FACE</div><div class="odds-value">$45</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">RESALE</div><div class="odds-value">—</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">SPREAD</div><div class="odds-value">—</div></div>
+    <div class="line-action"><button class="btn-go">BUY →</button></div>
+  </div>
+
+  <div class="line">
+    <div class="line-tier"><span class="tier tier-A">A</span></div>
+    <div class="line-event">
+      <div class="event-name">Sting — 3.0 Fall Tour (12 New Dates)</div>
+      <div class="event-sub">Theater · 6-night Brooklyn Paramount · 2-5K cap</div>
+      <div class="countdown">● FAN CLUB PRESALE LIVE 10AM LOCAL</div>
+    </div>
+    <div class="odds-box odds-green"><div class="odds-label">SCORE</div><div class="odds-value">83</div></div>
+    <div class="odds-box odds-yellow"><div class="odds-label">FACE</div><div class="odds-value">$125</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">RESALE</div><div class="odds-value">—</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">SPREAD</div><div class="odds-value">—</div></div>
+    <div class="line-action"><button class="btn-go">BUY →</button></div>
+  </div>
+
+  <div class="line">
+    <div class="line-tier"><span class="tier tier-A">A</span></div>
+    <div class="line-event">
+      <div class="event-name">Jason Aldean — Songs About Us Tour</div>
+      <div class="event-sub">22-city amphitheater · Jul-Sep · 8-20K cap</div>
+      <div class="countdown">● ALDEAN ARMY PRESALE LIVE 10AM LOCAL</div>
+    </div>
+    <div class="odds-box odds-green"><div class="odds-label">SCORE</div><div class="odds-value">82</div></div>
+    <div class="odds-box odds-yellow"><div class="odds-label">FACE</div><div class="odds-value">$65</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">RESALE</div><div class="odds-value">—</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">SPREAD</div><div class="odds-value">—</div></div>
+    <div class="line-action"><button class="btn-go">BUY →</button></div>
+  </div>
+
+  <div class="line">
+    <div class="line-tier"><span class="tier tier-A">A</span></div>
+    <div class="line-event">
+      <div class="event-name">Creed w/ Bush & Tim Montana</div>
+      <div class="event-sub">Mystic Lake Amphitheater · Shakopee MN · Jul 16</div>
+      <div class="countdown soon">⏱ PRESALE THU MAR 6 · CODE: HIGHER</div>
+    </div>
+    <div class="odds-box odds-green"><div class="odds-label">SCORE</div><div class="odds-value">81</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">FACE</div><div class="odds-value">TBA</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">RESALE</div><div class="odds-value">—</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">SPREAD</div><div class="odds-value">—</div></div>
+    <div class="line-action"><button class="btn-go">BUY →</button></div>
+  </div>
+
+  <div class="line">
+    <div class="line-tier"><span class="tier tier-B">B+</span></div>
+    <div class="line-event">
+      <div class="event-name">Maya Hawke — Maitreya Corso Tour</div>
+      <div class="event-sub">Small clubs · 500-1.5K cap · Bowery Ballroom closer</div>
+      <div class="countdown">● ARTIST PRESALE LIVE 12PM LOCAL</div>
+    </div>
+    <div class="odds-box odds-green"><div class="odds-label">SCORE</div><div class="odds-value">74</div></div>
+    <div class="odds-box odds-yellow"><div class="odds-label">FACE</div><div class="odds-value">$35</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">RESALE</div><div class="odds-value">—</div></div>
+    <div class="odds-box odds-gray"><div class="odds-label">SPREAD</div><div class="odds-value">—</div></div>
+    <div class="line-action"><button class="btn-go">BUY →</button></div>
+  </div>
+
+</div>
+
+</body>
+</html>

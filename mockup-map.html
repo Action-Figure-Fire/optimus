@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>OPTIMUS — Dashboard + Map Hybrid</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0c0c10;color:#e4e4e7;font-family:'Inter',sans-serif;font-size:14px;height:100vh;display:flex;flex-direction:column}
+
+.top-nav{background:#111116;border-bottom:1px solid #1e1e24;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.top-nav h1{font-size:17px;font-weight:800;letter-spacing:-0.3px}
+.top-nav h1 span{background:linear-gradient(135deg,#a78bfa,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.top-nav .status{font-size:11px;color:#52525b;display:flex;gap:16px}
+.top-nav .status span{color:#a78bfa}
+
+.main{display:flex;flex:1;overflow:hidden}
+
+/* LEFT PANEL - Event List */
+.panel-left{width:380px;border-right:1px solid #1e1e24;display:flex;flex-direction:column;flex-shrink:0}
+.panel-header{padding:14px 16px;border-bottom:1px solid #1e1e24;background:#111116}
+.search-box{width:100%;background:#1a1a22;border:1px solid #27272f;border-radius:8px;padding:10px 14px;color:#e4e4e7;font-size:13px;font-family:inherit;outline:none}
+.search-box:focus{border-color:#a78bfa}
+.search-box::placeholder{color:#3f3f4a}
+
+.filter-row{display:flex;gap:6px;padding:10px 16px;overflow-x:auto;border-bottom:1px solid #1e1e24;flex-shrink:0}
+.f-btn{background:#1a1a22;border:1px solid #27272f;color:#71717a;padding:6px 12px;border-radius:6px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit}
+.f-btn.active{background:#a78bfa;color:#000;border-color:#a78bfa;font-weight:600}
+
+.event-list{flex:1;overflow-y:auto;padding:8px 0}
+.event-item{padding:12px 16px;border-bottom:1px solid #151518;cursor:pointer;transition:all 0.15s;display:flex;gap:12px;align-items:flex-start}
+.event-item:hover{background:#151518}
+.event-item.selected{background:#1a1a2e;border-left:3px solid #a78bfa}
+
+.ev-tier{width:32px;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0}
+.ev-S{background:#ef4444;color:#fff}
+.ev-A{background:#f97316;color:#000}
+.ev-B{background:#8b5cf6;color:#fff}
+
+.ev-info{flex:1;min-width:0}
+.ev-name{font-size:13px;font-weight:600;color:#fafafa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev-detail{font-size:11px;color:#52525b;margin-top:2px}
+.ev-status{font-size:10px;font-weight:700;margin-top:4px}
+.ev-status.live{color:#ef4444}
+.ev-status.upcoming{color:#f97316}
+
+.ev-score{font-size:18px;font-weight:700;flex-shrink:0}
+.ev-score.s{color:#ef4444}
+.ev-score.a{color:#f97316}
+.ev-score.b{color:#8b5cf6}
+
+/* RIGHT PANEL - Map */
+.panel-right{flex:1;display:flex;flex-direction:column;position:relative}
+
+.map-container{flex:1;position:relative;background:#0c0c10;overflow:hidden}
+
+/* SVG US Map - simplified representation */
+.map-svg{width:100%;height:100%}
+
+.map-dot{cursor:pointer;transition:all 0.2s}
+.map-dot:hover{transform:scale(1.4)}
+.dot-s{fill:#ef4444;filter:drop-shadow(0 0 8px rgba(239,68,68,0.6))}
+.dot-a{fill:#f97316;filter:drop-shadow(0 0 6px rgba(249,115,22,0.5))}
+.dot-b{fill:#8b5cf6;filter:drop-shadow(0 0 6px rgba(139,92,246,0.4))}
+.dot-gap{fill:#22c55e;filter:drop-shadow(0 0 8px rgba(34,197,94,0.6));animation:gapPulse 2s infinite}
+
+.map-tooltip{position:absolute;background:#1a1a22;border:1px solid #27272f;border-radius:8px;padding:12px 16px;pointer-events:none;z-index:10;max-width:280px;box-shadow:0 8px 32px rgba(0,0,0,0.5);display:none}
+.map-tooltip.show{display:block}
+.tt-name{font-size:13px;font-weight:700;color:#fafafa;margin-bottom:4px}
+.tt-venue{font-size:11px;color:#a1a1aa}
+.tt-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;padding:2px 8px;border-radius:3px;margin-top:6px}
+.tt-gap{background:#14532d;color:#22c55e;border:1px solid #166534}
+.tt-hot{background:#7f1d1d;color:#ef4444;border:1px solid #991b1b}
+
+/* Detail Panel (bottom of map) */
+.detail-panel{background:#111116;border-top:1px solid #1e1e24;padding:16px 20px;display:flex;gap:20px;align-items:center;flex-shrink:0}
+.detail-info{flex:1}
+.detail-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.detail-sub{font-size:12px;color:#71717a}
+.detail-prices{display:flex;gap:16px}
+.dp{text-align:center}
+.dp-label{font-size:9px;color:#52525b;letter-spacing:1px}
+.dp-value{font-size:18px;font-weight:700;color:#a78bfa}
+.dp-value.na{color:#27272f}
+.detail-btn{background:#a78bfa;color:#000;border:none;padding:10px 24px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+
+/* Legend */
+.map-legend{position:absolute;bottom:80px;right:20px;background:#111116ee;border:1px solid #1e1e24;border-radius:8px;padding:12px 16px;font-size:11px}
+.legend-item{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.legend-item:last-child{margin-bottom:0}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.legend-s{background:#ef4444}
+.legend-a{background:#f97316}
+.legend-b{background:#8b5cf6}
+.legend-gap{background:#22c55e;animation:gapPulse 2s infinite}
+
+@keyframes gapPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.3)}}
+
+@media(max-width:768px){
+  .main{flex-direction:column}
+  .panel-left{width:100%;height:50%;border-right:none;border-bottom:1px solid #1e1e24}
+  .panel-right{height:50%}
+}
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <h1><span>◉</span> Optimus Intelligence</h1>
+  <div class="status">
+    <div>Scan v14 · Mar 3 2026</div>
+    <div><span>47</span> events</div>
+    <div><span>12</span> routing gaps</div>
+    <div><span>7</span> presales live</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="panel-left">
+    <div class="panel-header">
+      <input class="search-box" placeholder="Search events, artists, cities..." />
+    </div>
+    <div class="filter-row">
+      <button class="f-btn active">All (47)</button>
+      <button class="f-btn">This Week</button>
+      <button class="f-btn">🟢 Gaps</button>
+      <button class="f-btn">S-Tier</button>
+      <button class="f-btn">Sports</button>
+      <button class="f-btn">Red Rocks</button>
+    </div>
+    <div class="event-list">
+
+      <div class="event-item selected">
+        <div class="ev-tier ev-S">S</div>
+        <div class="ev-info">
+          <div class="ev-name">Metallica — Sphere Residency</div>
+          <div class="ev-detail">Las Vegas · 8 dates · Oct 1-31</div>
+          <div class="ev-status live">● PRESALE LIVE — FIFTH MEMBER</div>
+        </div>
+        <div class="ev-score s">96</div>
+      </div>
+
+      <div class="event-item">
+        <div class="ev-tier ev-A">A</div>
+        <div class="ev-info">
+          <div class="ev-name">Joji — SOLARIS World Tour</div>
+          <div class="ev-detail">18 NA arenas · Jun-Jul</div>
+          <div class="ev-status live">● CITI PRESALE LIVE</div>
+        </div>
+        <div class="ev-score a">85</div>
+      </div>
+
+      <div class="event-item">
+        <div class="ev-tier ev-A">A</div>
+        <div class="ev-info">
+          <div class="ev-name">Charley Crockett — Age of the Ram</div>
+          <div class="ev-detail">Theater/Amph · 4 first-time cities</div>
+          <div class="ev-status live">● PRESALE LIVE</div>
+        </div>
+        <div class="ev-score a">84</div>
+      </div>
+
+      <div class="event-item">
+        <div class="ev-tier ev-A">A</div>
+        <div class="ev-info">
+          <div class="ev-name">Sting — 3.0 Fall Tour</div>
+          <div class="ev-detail">Theater · 6-night Brooklyn residency</div>
+          <div class="ev-status live">● FAN CLUB PRESALE</div>
+        </div>
+        <div class="ev-score a">83</div>
+      </div>
+
+      <div class="event-item">
+        <div class="ev-tier ev-A">A</div>
+        <div class="ev-info">
+          <div class="ev-name">Jason Aldean — Songs About Us</div>
+          <div class="ev-detail">22-city amphitheater · Jul-Sep</div>
+          <div class="ev-status live">● ALDEAN ARMY PRESALE</div>
+        </div>
+        <div class="ev-score a">82</div>
+      </div>
+
+      <div class="event-item">
+        <div class="ev-tier ev-A">A</div>
+        <div class="ev-info">
+          <div class="ev-name">MLB All-Star Game — Philly</div>
+          <div class="ev-detail">Citizens Bank Park · Jul 11-14</div>
+          <div class="ev-status upcoming">● STH PRESALE EARLY MAR</div>
+        </div>
+        <div class="ev-score a">82</div>
+      </div>
+
+      <div class="event-item">
+        <div class="ev-tier ev-A">A</div>
+        <div class="ev-info">
+          <div class="ev-name">Creed w/ Bush — Mystic Lake</div>
+          <div class="ev-detail">Shakopee MN · Jul 16 · Code: HIGHER</div>
+          <div class="ev-status upcoming">● PRESALE THU MAR 6</div>
+        </div>
+        <div class="ev-score a">81</div>
+      </div>
+
+      <div class="event-item">
+        <div class="ev-tier ev-B">B+</div>
+        <div class="ev-info">
+          <div class="ev-name">Maya Hawke — Maitreya Corso</div>
+          <div class="ev-detail">Small clubs · 500-1.5K cap</div>
+          <div class="ev-status live">● ARTIST PRESALE 12PM</div>
+        </div>
+        <div class="ev-score b">74</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel-right">
+    <div class="map-container">
+      <svg class="map-svg" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet">
+        <!-- Simplified US outline -->
+        <path d="M150,450 L200,500 L300,520 L400,510 L500,500 L600,490 L650,480 L700,450 L750,400 L780,350 L800,300 L820,250 L830,200 L820,180 L800,160 L750,140 L700,130 L650,120 L600,110 L550,105 L500,100 L450,95 L400,100 L350,110 L300,130 L250,160 L200,200 L170,250 L150,300 L140,350 L145,400 Z"
+          fill="none" stroke="#1e1e24" stroke-width="2"/>
+
+        <!-- State outlines hint -->
+        <line x1="350" y1="100" x2="350" y2="450" stroke="#151518" stroke-width="0.5"/>
+        <line x1="500" y1="95" x2="500" y2="500" stroke="#151518" stroke-width="0.5"/>
+        <line x1="650" y1="120" x2="650" y2="480" stroke="#151518" stroke-width="0.5"/>
+        <line x1="200" y1="300" x2="800" y2="300" stroke="#151518" stroke-width="0.5"/>
+
+        <!-- Event dots - approximated US city positions -->
+        <!-- Las Vegas - Metallica Sphere -->
+        <circle class="map-dot dot-s" cx="210" cy="290" r="8"/>
+        <text x="210" y="310" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="700">METALLICA</text>
+
+        <!-- Various Joji cities -->
+        <circle class="map-dot dot-a" cx="760" cy="220" r="5"/><!-- Newark -->
+        <circle class="map-dot dot-a" cx="640" cy="240" r="5"/><!-- Chicago -->
+        <circle class="map-dot dot-a" cx="720" cy="230" r="5"/><!-- Boston -->
+        <circle class="map-dot dot-a" cx="570" cy="300" r="5"/><!-- Denver -->
+
+        <!-- Charley Crockett routing gaps (GREEN!) -->
+        <circle class="map-dot dot-gap" cx="400" cy="400" r="7"/><!-- Canyon TX -->
+        <text x="400" y="420" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="700">CANYON TX ★</text>
+
+        <circle class="map-dot dot-gap" cx="370" cy="200" r="7"/><!-- Casper WY -->
+        <text x="370" y="190" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="700">CASPER WY ★</text>
+
+        <circle class="map-dot dot-gap" cx="280" cy="230" r="7"/><!-- Nampa ID -->
+        <text x="280" y="220" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="700">NAMPA ID ★</text>
+
+        <circle class="map-dot dot-gap" cx="730" cy="310" r="7"/><!-- Danville VA -->
+        <text x="730" y="330" text-anchor="middle" fill="#22c55e" font-size="8" font-weight="700">DANVILLE VA ★</text>
+
+        <!-- Nashville -->
+        <circle class="map-dot dot-a" cx="620" cy="340" r="6"/>
+        <text x="620" y="355" text-anchor="middle" fill="#f97316" font-size="8" font-weight="600">NASHVILLE</text>
+
+        <!-- Shakopee MN - Creed -->
+        <circle class="map-dot dot-a" cx="520" cy="170" r="5"/>
+        <text x="520" y="160" text-anchor="middle" fill="#f97316" font-size="8" font-weight="600">CREED MN</text>
+
+        <!-- Philadelphia - ASG -->
+        <circle class="map-dot dot-a" cx="755" cy="235" r="6"/>
+        <text x="755" y="250" text-anchor="middle" fill="#f97316" font-size="8" font-weight="600">MLB ASG PHI</text>
+
+        <!-- Brooklyn - Sting -->
+        <circle class="map-dot dot-a" cx="770" cy="215" r="5"/>
+
+        <!-- Bend OR -->
+        <circle class="map-dot dot-a" cx="195" cy="190" r="4"/>
+
+        <!-- Paso Robles -->
+        <circle class="map-dot dot-a" cx="175" cy="300" r="4"/>
+
+        <!-- Red Rocks marker -->
+        <circle cx="390" cy="270" r="10" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="390" y="260" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="700">RED ROCKS</text>
+
+        <!-- Empty regions highlighted -->
+        <rect x="440" y="350" width="120" height="80" rx="8" fill="rgba(239,68,68,0.05)" stroke="#ef4444" stroke-width="0.5" stroke-dasharray="4,4"/>
+        <text x="500" y="395" text-anchor="middle" fill="#ef444466" font-size="9" font-weight="600">UNDERSERVED</text>
+
+      </svg>
+
+      <div class="map-legend">
+        <div class="legend-item"><div class="legend-dot legend-s"></div><span style="color:#ef4444;font-weight:600">S-Tier Event</span></div>
+        <div class="legend-item"><div class="legend-dot legend-a"></div><span style="color:#f97316;font-weight:600">A-Tier Event</span></div>
+        <div class="legend-item"><div class="legend-dot legend-b"></div><span style="color:#8b5cf6;font-weight:600">B-Tier Event</span></div>
+        <div class="legend-item"><div class="legend-dot legend-gap"></div><span style="color:#22c55e;font-weight:600">Routing Gap (NEW market)</span></div>
+        <div class="legend-item"><div class="legend-dot" style="background:transparent;border:1px dashed #ef4444"></div><span style="color:#ef444488">Underserved Region</span></div>
+      </div>
+    </div>
+
+    <div class="detail-panel">
+      <div class="detail-info">
+        <div class="detail-name">Charley Crockett — Canyon, TX (The Lumberyard)</div>
+        <div class="detail-sub">🟢 ROUTING GAP — Never played here · Texas panhandle · Tiny venue · Aug 27 · Presale Mar 4</div>
+      </div>
+      <div class="detail-prices">
+        <div class="dp"><div class="dp-label">FACE</div><div class="dp-value">$45</div></div>
+        <div class="dp"><div class="dp-label">RESALE</div><div class="dp-value na">—</div></div>
+        <div class="dp"><div class="dp-label">SCORE</div><div class="dp-value">84</div></div>
+      </div>
+      <button class="detail-btn">🎟️ Get Tickets</button>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
