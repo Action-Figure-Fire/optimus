@@ -15,8 +15,22 @@
 const { useState } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 2, 2026 — Weekly Scan v16 · OPTIMUS INTELLIGENCE · METALLICA SPHERE WEEK",
+  lastRun: "March 3, 2026 — Daily Scan v17 · OPTIMUS INTELLIGENCE · PRESALE TSUNAMI WEEK",
   nextWeek: [
+    {
+      name: "Eric Clapton — Fall 2026 US Tour 🎸", tier: "S", score: 92, category: "ROCK LEGEND — LIMITED DATES", genre: "Blues Rock / Classic Rock",
+      streams: "20M+ monthly but LEGACY DEMAND = 100M+ album units. Last US tour 2024.", lastTour: "2024 (US dates)", scarcity: "EXTREME — Only 6 US dates. Arenas 15-20K cap. Clapton is 81 years old. Every show could be the last. Jimmie Vaughan as support. Detroit, Cincinnati, Chicago, Milwaukee, St. Paul/Hinckley + 1 more.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🟡 JUST ANNOUNCED MAR 2 — PRESALE/ONSALE TBA",
+      saleDetails: "Announced March 2, 2026. 6 dates: Sep 6 Detroit (Little Caesars Arena), Sep 8 Cincinnati (Heritage Bank Center), Sep 11 Chicago (United Center), Sep 13 Milwaukee (Fiserv Forum), Sep 15 Hinckley MN (Grand Casino Arena), + 1 TBA. Support: Jimmie Vaughan. Presale and onsale dates TBA — likely within next 1-2 weeks.",
+      reasoning: "Eric Clapton at 81 years old announcing ONLY 6 US dates is a scarcity nuclear event. Every show is potentially one of the last times to see arguably the greatest guitarist alive. 6 dates for the entire United States means massive demand funnels. The Midwest routing (Detroit → Cincinnati → Chicago → Milwaukee → MN) leaves the entire East Coast, West Coast, and South without a date. NYC, LA, Nashville, Atlanta, Boston, Philly fans will ALL travel to these shows. Jimmie Vaughan as support adds blues guitar completist demand. Arena pricing ($75-300 face) will flip 3-5x easily.",
+      action: "🚨 SET ALERTS FOR PRESALE/ONSALE ANNOUNCEMENT — When dates go on sale, buy EVERY show. 6 dates for entire US = nuclear scarcity. Chicago United Center and Detroit are priority.",
+      targetCities: [
+        {emoji:"🏒",city:"Detroit, MI",venue:"Little Caesars Arena",date:"Sep 6",why:"Tour opener. MI + OH + Ontario funnel. Same building as Pistons/Wings renaissance."},
+        {emoji:"🌆",city:"Chicago, IL",venue:"United Center",date:"Sep 11",why:"Midwest hub. 23K cap. Only Midwest proper date. IL/IN/WI demand + no Nashville/NYC date."},
+        {emoji:"🎰",city:"Hinckley, MN",venue:"Grand Casino Arena",date:"Sep 15",why:"TINY venue at a casino. Smallest cap on tour. MN/WI/IA/ND/SD funnel into a casino arena. This will be the hardest ticket to get."},
+      ],
+      region: "NA"
+    },
     {
       name: "Rush — Fifty Something Tour 2026 🔥", tier: "S+", score: 98, category: "PROG ROCK LEGENDS — 11-YEAR HIATUS ENDS", genre: "Progressive Rock",
       streams: "1.5M+ monthly but LEGACY DEMAND = 40M album units. Neil Peart legacy tour. Last tour 2015. GEDDY + ALEX + ANIKA NILLES.", lastTour: "2015 (R40 Live Tour — 'final tour')", scarcity: "NUCLEAR — First tour in 11 years. Only 25 dates. Arenas/amphitheaters 10-20K cap. Neil Peart legacy tribute. Anika Nilles (virtuoso drummer) joins Geddy Lee & Alex Lifeson. Every prog rock fan on earth wants tickets.",
@@ -202,8 +216,8 @@ const SCAN_DATA = {
     {
       name: "Metallica — Life Burns Faster at the Sphere", tier: "S", score: 96, category: "Metal Legends — Sphere Residency", genre: "Heavy Metal / Thrash",
       streams: "28M+ monthly. One of the biggest bands in history. 125M+ albums sold worldwide.", lastTour: "2025 (M72 World Tour — stadiums)", scarcity: "EXTREME — 8 Sphere dates only (Oct 1, 3, 15, 17, 22, 24, 29, 31). 'No Repeat Weekends' = unique setlist each night. Sphere ~18K cap. Halloween show Oct 31 = crown jewel.",
-      venueSize: "Sphere Las Vegas (~18K cap)", saleStatus: "🔴 LEGACY PRESALE LIVE TODAY MAR 2 — ONSALE FRI MAR 6 10AM PT",
-      saleDetails: "Legacy Member presale LIVE Mon Mar 2 7am PT. Fifth Member fan club presale Tue Mar 3 10am PT. SiriusXM presale Thu Mar 5 10am PT. General onsale Fri Mar 6 10am PT. 2-night and single-night packages available.",
+      venueSize: "Sphere Las Vegas (~18K cap)", saleStatus: "🔴 FIFTH MEMBER PRESALE LIVE TODAY MAR 3 10AM PT — ONSALE FRI MAR 6 10AM PT",
+      saleDetails: "Legacy Member presale was Mon Mar 2 (CHECK RESULTS). Fifth Member fan club presale TODAY Tue Mar 3 10am PT. SiriusXM presale Thu Mar 5 10am PT. General onsale Fri Mar 6 10am PT. 2-night and single-night packages available.",
       reasoning: "This is arguably the biggest ticket drop of the year. Metallica at the Sphere is going to be LEGENDARY — the most immersive venue on earth + the biggest metal band in history. Only 8 shows total. 'No Repeat Weekends' means each pair of shows has completely unique setlists, driving completist demand for multiple nights. The Sphere has proven with BSB (35 sold-out dates) and U2 that it commands massive secondary premiums just from the venue alone. Add Metallica and you get nuclear-level demand. The Halloween pair (Oct 29 & 31) will be the most expensive — Metallica + Halloween + Sphere is a once-in-a-lifetime combination.",
       action: "🚨 HIGHEST PRIORITY — Legacy presale LIVE NOW. Sign up for EVERY presale. Buy 2-night packages (Thu+Sat). Halloween weekend (Oct 29+31) will command the highest premiums.",
       targetCities: [
@@ -279,10 +293,10 @@ const SCAN_DATA = {
       region: "NA"
     },
     {
-      name: "Sting — 3.0 Fall Tour (NEW Dates)", tier: "A", score: 83, category: "Rock Legend — Theater/Amphitheater", genre: "Rock / Pop",
-      streams: "22M+ monthly. The Police + solo catalog = one of the most recognizable artists alive.", lastTour: "2025-26 (Sting 3.0 Tour — spring/summer legs)", scarcity: "HIGH — Intimate power trio format (Sting + Dominic Miller + Chris Maas). Theater/amphitheater routing = small cap. 6-night Brooklyn Paramount residency. Montreal return to venue of first Police concert.",
-      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🔴 FAN CLUB PRESALE TUE MAR 3 10AM — LIVE NATION THU MAR 5 — ONSALE FRI MAR 6 10AM LOCAL",
-      saleDetails: "Sting.com fan club presale Tue Mar 3 10am local. Live Nation presale (select dates) Thu Mar 5 10am. General onsale Fri Mar 6 10am local via Ticketmaster. Fall leg: Oct 5 (Vancouver) through Dec. Fiction Plane supporting. VIP packages via VIP Nation.",
+      name: "Sting — 3.0 Fall Tour (12 NEW Dates)", tier: "A", score: 83, category: "Rock Legend — Theater/Amphitheater", genre: "Rock / Pop",
+      streams: "22M+ monthly. The Police + solo catalog = one of the most recognizable artists alive.", lastTour: "2025-26 (Sting 3.0 Tour — spring/summer legs)", scarcity: "HIGH — 12 NEW fall dates added. Intimate power trio format. 6-night Brooklyn Paramount residency. Montreal return to first Police venue. New stops: St. Louis, Indianapolis, Akron, Cincinnati, Wallingford CT, Tampa. Nashville + Pittsburgh TBA.",
+      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🔴 FAN CLUB PRESALE LIVE TODAY MAR 3 10AM — LIVE NATION THU MAR 5 — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Fan club presale LIVE TODAY Tue Mar 3 10am local via sting.com. Live Nation presale Thu Mar 5 10am. General onsale Fri Mar 6 10am local. 12 new fall dates including St. Louis, Indianapolis, Montreal, Akron, Cincinnati, Wallingford CT, Brooklyn (6-night residency), Tampa. Nashville + Pittsburgh to be announced. Fiction Plane supporting.",
       reasoning: "Sting in small venues is always money. The 3.0 power trio format = intimate experience that fans pay premium for. 6-night Brooklyn Paramount residency will have collector demand. Montreal's Théâtre St-Denis date (return to first Police venue) = sentimental premium. Theater routing means 2-5K cap vs arena demand = guaranteed scarcity. Minneapolis, St. Louis, Tampa all strong secondary markets.",
       action: "🚨 HIT FAN CLUB PRESALE TUE MAR 3 — Brooklyn Paramount residency nights + Montreal St-Denis (historic venue) = highest flip potential.",
       targetCities: [
@@ -408,6 +422,14 @@ const SCAN_DATA = {
   ],
   redRocks: [
     {
+      name: "Widespread Panic — 3 Nights at Red Rocks 🔥", tier: "A", score: 86, category: "Jam Legend — Annual Tradition", genre: "Jam / Southern Rock",
+      showDate: "Jun 26-28, 2026", saleStatus: "🔴 ONSALE FRI MAR 6 10AM MT",
+      saleDetails: "Just announced March 2. Three nights: Fri Jun 26, Sat Jun 27, Sun Jun 28. Tickets on sale Friday March 6 at 10am MT via AXS.com. Bill Bass Concerts & KBCO present.",
+      reasoning: "Widespread Panic's annual Red Rocks run is one of the most reliable sellouts on the entire calendar. The jam community treats this like a pilgrimage — fans travel from across the country for all 3 nights. Multi-night runs drive completist demand (buy all 3 or none). Summer solstice weekend timing is perfect. WSP at Red Rocks is a 30+ year tradition. 9,525 cap × 3 nights = 28,575 total tickets for a fanbase of millions. Saturday night (Jun 27) will command highest premium.",
+      action: "🚨 BUY ALL 3 NIGHTS FRI MAR 6 10AM — Saturday is premium. 3-night package buyers drive up all individual night prices. Jam community pays 2-3x face.",
+      region: "NA"
+    },
+    {
       name: "Hilary Duff — Lucky Me Tour", tier: "A", score: 80, category: "Hiatus Return", genre: "Pop / Nostalgia",
       showDate: "Jul 20, 2026", saleStatus: "🔴 ONSALE FEB 20",
       saleDetails: "Presale Feb 17-18. General onsale Fri Feb 20 10am MT via RedRocksOnline.com / Ticketmaster.",
@@ -527,7 +549,7 @@ const SCAN_DATA = {
     },
     {
       name: "San Antonio Spurs (NBA)", tier: "A", score: 88, category: "Generational Talent",
-      genre: "NBA — Western Conference", streams: "37-16, #3 in West",
+      genre: "NBA — Western Conference", streams: "~40-16, #1 Power Rankings (Wembanyama MVP-caliber)",
       lastTour: "Last playoffs: 2023 (play-in)", scarcity: "Wembanyama effect — global draw",
       saleStatus: "ON SALE — premium demand",
       saleDetails: "Frost Bank Center. ROAD GAMES are the play — everyone wants to see Wemby.",
@@ -537,7 +559,7 @@ const SCAN_DATA = {
     },
     {
       name: "Colorado Avalanche (NHL)", tier: "S", score: 91, category: "Dominant Season",
-      genre: "NHL — Western Conference", streams: "37-9, best in NHL",
+      genre: "NHL — Western Conference", streams: "37-9-9, best in NHL (83 pts, 6 ahead of Tampa Bay)",
       lastTour: "Last Cup: 2022", scarcity: "Historic pace — best record in hockey",
       saleStatus: "ON SALE — playoff positioning",
       saleDetails: "Ball Arena, Denver. Playoff tix TBA.",
@@ -567,7 +589,7 @@ const SCAN_DATA = {
     },
     {
       name: "Arizona Wildcats (NCAAM Basketball)", tier: "S", score: 93, category: "Undefeated Season",
-      genre: "NCAA Men's Basketball — Big 12", streams: "23-0, #1 overall seed",
+      genre: "NCAA Men's Basketball — Big 12", streams: "27-0, #1 overall seed — clinched share of Big 12 title",
       lastTour: "Last Final Four: 2024", scarcity: "Undefeated = historic demand",
       saleStatus: "ON SALE — March Madness tix TBA",
       saleDetails: "McKale Center reg season. Tournament tix via NCAA. Selection Sunday March 15.",
@@ -1086,16 +1108,16 @@ function OptimusDashboard() {
         {(tab==="dashboard"||tab==="nextweek"||tab==="thisweek"||tab==="onsale"||tab==="smallvenue"||tab==="sports"||tab==="comedy"||tab==="redrocks")&&(
           <div style={{animation:"slideUp 0.3s ease-out"}}>
             {(tab==="dashboard"||tab==="nextweek")&&(<>
-              <H color="#f59e0b" title="📅 NEXT WEEK — ONSALES MAR 2–8" sub="Presales + general onsales dropping next week" pulse/>
-              <A emoji="📅" title="Get positioned BEFORE these go live" sub="Presales start as early as Sunday Feb 16. General onsales Friday Feb 20." color="#f59e0b"/>
+              <H color="#f59e0b" title="📅 NEXT WEEK — ONSALES MAR 9–15" sub="Conference tournaments + Selection Sunday + new onsales" pulse/>
+              <A emoji="📅" title="Conference Tournaments + Selection Sunday Mar 15" sub="Big East (MSG Mar 11-14), Big Ten (Indy Mar 10-15), SEC, ACC. Selection Sunday bracket reveal Mar 15. Eric Clapton onsale TBA." color="#f59e0b"/>
               <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
                 {(showDead?sortDead(SCAN_DATA.nextWeek):SCAN_DATA.nextWeek.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`nw${a.name}`} a={a} i={i} exp={e6===a.name} toggle={()=>se6(e6===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
               </div>
             </>)}
 
             {(tab==="dashboard"||tab==="thisweek")&&(<>
-              <H color="#ff2d55" title="PRESALE / ONSALE THIS WEEK" sub="Week of Feb 10–16, 2026" pulse/>
-              <A emoji="🔴" title="Presales and onsales dropping NOW — check each card for timing" sub="Multiple artists with presales live this week. Act fast on time-sensitive opportunities." color="#ff6b81"/>
+              <H color="#ff2d55" title="PRESALE / ONSALE THIS WEEK" sub="Week of Mar 3–8, 2026" pulse/>
+              <A emoji="🔴" title="PRESALE TSUNAMI — 6+ presales LIVE TODAY Mar 3" sub="Metallica Sphere, Sting 3.0, Jason Aldean, Joji, Outside Lands lineup, Maya Hawke, Tucker Wetmore all dropping today. General onsales Fri Mar 6." color="#ff6b81"/>
               <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
                 {(showDead?sortDead(SCAN_DATA.thisWeek):SCAN_DATA.thisWeek.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`tw${a.name}`} a={a} i={i} exp={e1===a.name} toggle={()=>se1(e1===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
               </div>
@@ -1119,7 +1141,7 @@ function OptimusDashboard() {
 
             {(tab==="dashboard"||tab==="sports")&&(<>
               <H color="#34d399" title="🏆 SPORTS — HOT TEAMS & NICHE PLAYS"/>
-              <A emoji="🏀" title="Detroit Pistons: worst-to-first — playoff tix dropping soon" sub="39-13, best since 2004 title. Arizona 23-0, March Madness imminent." color="#34d399"/>
+              <A emoji="🏀" title="Detroit Pistons: worst-to-first — playoff tix dropping soon" sub="39-13, best since 2004 title. Arizona 27-0, clinched Big 12 share. Conference tournaments THIS WEEK. Selection Sunday Mar 15." color="#34d399"/>
               <div style={{display:"flex",gap:8,marginBottom:16,flexWrap:"wrap"}}>
                 {[["PRO","#34d399",["NBA","NHL"]],["COLLEGE","#60a5fa",["NCAA"]],["NICHE","#f472b6",["Volleyball","Gymnastics","Lacrosse"]]].map(([l,c,k])=>(
                   <div key={l} style={{background:"#18181b",border:`1px solid ${c}33`,borderRadius:6,padding:"8px 14px",display:"flex",alignItems:"center",gap:8}}>
@@ -1141,7 +1163,7 @@ function OptimusDashboard() {
               </div>
             </>)}
             {(tab==="dashboard"||tab==="redrocks")&&(<>
-              <H color="#f97316" title="🏔️ RED ROCKS — ONSALES FEB 16-22" sub={`${SCAN_DATA.redRocks.length} shows dropping`} pulse/>
+              <H color="#f97316" title="🏔️ RED ROCKS — SPRING/SUMMER 2026" sub={`${SCAN_DATA.redRocks.length} shows tracked`} pulse/>
               <A emoji="🏔️" title="Red Rocks Amphitheatre · 9,525 cap · Morrison, CO" sub="2nd most-attended US venue (1.75M in 2025). Tight capacity = instant scarcity. Iconic venue premium on secondary market." color="#f97316"/>
               <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
                 {(showDead?sortDead(SCAN_DATA.redRocks):SCAN_DATA.redRocks.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`rr${a.name}`} a={a} i={i} exp={e7===a.name} toggle={()=>se7(e7===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
