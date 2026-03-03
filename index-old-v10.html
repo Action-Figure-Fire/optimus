@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>OPTIMUS — Ticket Intelligence</title>
+<title>OPTIMUS v10</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -12,7 +12,7 @@
 <body style="margin:0;background:#09090b">
 <div id="root"></div>
 <script type="text/babel">
-const { useState, useMemo } = React;
+const { useState } = React;
 
 const SCAN_DATA = {
   lastRun: "March 3, 2026 — Daily Scan v17 · OPTIMUS INTELLIGENCE · PRESALE TSUNAMI WEEK",
@@ -881,453 +881,482 @@ const SCAN_DATA = {
   ],
 };
 
-/* ── Design tokens ── */
-const T = {
-  S: { bg:"#ef4444", text:"#fff", border:"#7f1d1d", glow:"rgba(239,68,68,0.15)", light:"#fca5a5" },
-  A: { bg:"#f97316", text:"#000", border:"#7c2d12", glow:"rgba(249,115,22,0.12)", light:"#fdba74" },
-  "B+":{ bg:"#8b5cf6", text:"#fff", border:"#4c1d95", glow:"rgba(139,92,246,0.12)", light:"#c4b5fd" },
-  B: { bg:"#8b5cf6", text:"#fff", border:"#4c1d95", glow:"rgba(139,92,246,0.12)", light:"#c4b5fd" },
-  C: { bg:"#52525b", text:"#fff", border:"#27272a", glow:"rgba(82,82,91,0.1)", light:"#a1a1aa" },
-  "S+":{ bg:"#dc2626", text:"#fff", border:"#991b1b", glow:"rgba(220,38,38,0.2)", light:"#fca5a5" },
+const tierColors = {
+  S: { bg: "#ff2d55", text: "#fff", glow: "rgba(255,45,85,0.3)" },
+  A: { bg: "#ff9500", text: "#fff", glow: "rgba(255,149,0,0.3)" },
+  B: { bg: "#5ac8fa", text: "#0a0a0a", glow: "rgba(90,200,250,0.3)" },
+  C: { bg: "#636366", text: "#fff", glow: "rgba(99,99,102,0.2)" },
 };
-const t = (tier) => T[tier] || T.C;
 
-/* ── Expandable Card ── */
+const catIcons = {
+  "Never Toured":"🚀","Hiatus Return":"🔁","International Crossover":"🌍","Festival-to-Headline":"🎪",
+  "Viral Breakout":"📱","Cult Following":"⚡","Nostalgia Package":"📼","Viral Comedian":"🎤",
+  "Indie Breakout":"🔥","Historic Turnaround":"📈","Dynasty Building":"👑","Generational Talent":"⭐",
+  "Dominant Season":"🏆","Undefeated Season":"💯","Cinderella Story":"✨","MSG Fever":"🏟️",
+  "Niche Goldmine":"💎","Growing Market":"🌱","Nostalgia Comeback":"💿",
+  "Support → Headline":"🔗","Streaming Gap":"📊",
+};
+
+function sc(status) {
+  if (status.includes("🔴") || status.includes("HIGH DEMAND")) return "#ff2d55";
+  if (status.includes("🟡") || status.includes("TODAY") || status.includes("MARCH")) return "#ffd60a";
+  if (status.includes("SOLD OUT")) return "#ff9500";
+  if (status.includes("🟣") || status.includes("WATCHLIST")) return "#bf5af2";
+  return "#30d158";
+}
+
 function Card({ a, i, exp, toggle, sport, dead, onArchive }) {
-  const tc = t(a.tier);
-  const isLive = a.saleStatus && (a.saleStatus.includes("🔴") || a.saleStatus.includes("LIVE") || a.saleStatus.includes("TODAY"));
+  const tc = tierColors[a.tier] || tierColors.C;
+  const s = sc(a.saleStatus);
   return (
     <div onClick={toggle} style={{
-      background: dead ? "#111113" : "#18181b",
-      border: `1px solid ${exp ? tc.bg + "44" : "#27272a"}`,
-      borderRadius: 12, padding: 0, cursor: "pointer",
-      transition: "all 0.25s ease",
-      opacity: dead ? 0.4 : 1, filter: dead ? "saturate(0.2)" : "none",
-      overflow: "hidden", position: "relative",
-      transform: exp ? "translateY(-1px)" : "none",
-      boxShadow: exp ? `0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px ${tc.bg}22` : "none",
+      background:dead?"#111113":"#18181b",border:`1px solid ${exp?tc.bg+"44":"#27272a"}`,
+      borderRadius:10,padding:"16px 20px",cursor:"pointer",transition:"all 0.3s",
+      animation:`slideUp 0.3s ease-out ${i*0.04}s both`,
+      opacity:dead?0.4:1,filter:dead?"saturate(0.2)":"none",
     }}>
-      {/* Top accent line */}
-      <div style={{height:3,background:dead?"transparent":`linear-gradient(90deg,${tc.bg},${tc.light || tc.bg})`}}/>
-      
-      <div style={{padding:"16px 20px"}}>
-        {/* Header row */}
-        <div style={{display:"flex",alignItems:"flex-start",gap:14}}>
-          <div style={{display:"flex",flexDirection:"column",alignItems:"center",flexShrink:0}}>
-            <div style={{fontSize:24,fontWeight:800,color:dead?"#3f3f46":tc.bg,lineHeight:1}}>{a.score}</div>
-            <div style={{fontSize:9,fontWeight:700,letterSpacing:"1.5px",color:dead?"#27272a":tc.bg,marginTop:2,background:tc.glow,padding:"2px 6px",borderRadius:4}}>{a.tier}</div>
+      <div style={{display:"flex",alignItems:"center",gap:14}}>
+        <div style={{width:38,height:38,borderRadius:8,background:tc.bg,color:tc.text,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700,fontSize:16,fontFamily:"'Anybody',sans-serif",boxShadow:dead?"none":`0 0 16px ${tc.glow}`,flexShrink:0}}>{a.tier}</div>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+            <span style={{fontFamily:"'Anybody',sans-serif",fontSize:16,fontWeight:600,color:dead?"#52525b":"#fafafa",textDecoration:dead?"line-through":"none"}}>{a.name}</span>
+            <span style={{fontSize:14}}>{catIcons[a.category]||"🎵"}</span>
+            {dead&&<span style={{fontSize:9,color:"#ef4444",background:"rgba(239,68,68,0.15)",padding:"2px 8px",borderRadius:4,fontWeight:700,letterSpacing:"1.5px",border:"1px solid rgba(239,68,68,0.3)"}}>DEAD</span>}
+            {!dead&&a.venueSize&&<span style={{fontSize:10,color:"#a78bfa",background:"rgba(167,139,250,0.1)",padding:"2px 8px",borderRadius:4,fontWeight:600}}>{a.venueSize}</span>}
+            {sport&&!dead&&<span style={{fontSize:10,color:"#34d399",background:"rgba(52,211,153,0.1)",padding:"2px 8px",borderRadius:4,fontWeight:600}}>SPORTS</span>}
           </div>
-          <div style={{flex:1,minWidth:0}}>
-            <div style={{fontSize:15,fontWeight:600,color:dead?"#52525b":"#fafafa",lineHeight:1.3,textDecoration:dead?"line-through":"none"}}>{a.name}</div>
-            <div style={{display:"flex",gap:6,flexWrap:"wrap",marginTop:6}}>
-              {a.genre && <span style={{fontSize:10,padding:"3px 8px",borderRadius:5,background:"#1e1b4b",color:"#a78bfa",border:"1px solid #312e81",fontWeight:500}}>{a.genre}</span>}
-              {!dead && a.venueSize && <span style={{fontSize:10,padding:"3px 8px",borderRadius:5,background:"#162217",color:"#4ade80",border:"1px solid #14532d",fontWeight:500}}>{a.venueSize}</span>}
-              {sport && !dead && <span style={{fontSize:10,padding:"3px 8px",borderRadius:5,background:"#0c2a2a",color:"#2dd4bf",border:"1px solid #134e4a",fontWeight:700}}>SPORTS</span>}
-              {dead && <span style={{fontSize:9,padding:"2px 8px",borderRadius:4,background:"rgba(239,68,68,0.1)",color:"#ef4444",border:"1px solid rgba(239,68,68,0.2)",fontWeight:700,letterSpacing:"1px"}}>DEAD</span>}
-            </div>
-            {a.saleStatus && (
-              <div style={{fontSize:11,fontWeight:600,marginTop:6,color:isLive?"#ef4444":a.saleStatus.includes("🟡")?"#fbbf24":"#71717a",letterSpacing:"0.3px"}}>
-                {a.saleStatus}
+          <div style={{fontSize:11,color:dead?"#3f3f46":s,fontWeight:600,marginTop:3,letterSpacing:"0.5px"}}>{a.saleStatus}</div>
+        </div>
+        <div style={{textAlign:"right",flexShrink:0}}>
+          <div style={{fontSize:22,fontWeight:700,color:dead?"#3f3f46":tc.bg,fontFamily:"'Anybody',sans-serif"}}>{a.score}</div>
+          <div style={{fontSize:10,color:"#52525b",letterSpacing:"1px"}}>SCORE</div>
+        </div>
+      </div>
+      {exp&&(
+        <div style={{marginTop:16,paddingTop:16,borderTop:"1px solid #27272a",animation:"slideUp 0.2s ease-out"}}>
+          <div style={{padding:"10px 14px",background:"rgba(255,255,255,0.03)",border:`1px solid ${s}33`,borderRadius:6,marginBottom:14,fontSize:12,color:"#d4d4d8",lineHeight:1.5}}>
+            <span style={{color:s,fontWeight:700,fontSize:10,letterSpacing:"1.5px"}}>SALE INFO: </span>{a.saleDetails}
+          </div>
+          <div className="stat-grid" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,marginBottom:16}}>
+            {[{l:sport?"RECORD":"STREAMS",v:a.streams},{l:sport?"LAST RUN":"LAST TOUR",v:a.lastTour},{l:"SCARCITY",v:a.scarcity}].map(x=>(
+              <div key={x.l} style={{background:"#0f0f11",borderRadius:6,padding:"10px 12px"}}>
+                <div style={{fontSize:10,color:"#52525b",letterSpacing:"1.5px",marginBottom:4}}>{x.l}</div>
+                <div style={{fontSize:13,fontWeight:600,color:"#a1a1aa"}}>{x.v}</div>
               </div>
-            )}
+            ))}
           </div>
-          <div style={{flexShrink:0,fontSize:18,color:"#3f3f46",transform:exp?"rotate(180deg)":"none",transition:"transform 0.2s"}}>▾</div>
+          <div style={{fontSize:13,color:"#a1a1aa",lineHeight:1.6}}>
+            <span style={{color:"#ff2d55",fontWeight:600,fontSize:11,letterSpacing:"1px"}}>WHY: </span>{a.reasoning}
+          </div>
+          {a.targetCities&&a.targetCities.length>0&&(
+            <div style={{marginTop:12,padding:"12px 14px",background:"rgba(52,211,153,0.06)",border:"1px solid rgba(52,211,153,0.2)",borderRadius:8}}>
+              <div style={{fontSize:10,fontWeight:700,letterSpacing:"2px",color:"#34d399",marginBottom:8}}>🎯 TARGET CITIES <span style={{color:"#52525b",fontWeight:400,letterSpacing:"0.5px"}}>(excl. NYC / BOS / CHI / LA)</span></div>
+              <div style={{display:"flex",flexDirection:"column",gap:6}}>
+                {a.targetCities.map((c,ci)=>(
+                  <div key={ci} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:12,lineHeight:1.5}}>
+                    <span style={{flexShrink:0}}>{c.emoji||"📍"}</span>
+                    <div>
+                      <span style={{color:"#fafafa",fontWeight:600}}>{c.city}</span>
+                      {c.venue&&<span style={{color:"#71717a"}}> — {c.venue}</span>}
+                      {c.date&&<span style={{color:"#a78bfa",fontWeight:500}}> ({c.date})</span>}
+                      {c.why&&<div style={{color:"#a1a1aa",fontSize:11,marginTop:2}}>{c.why}</div>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {a.pipelineFrom&&(
+            <div style={{marginTop:12,padding:"12px 14px",background:"rgba(99,102,241,0.06)",border:"1px solid rgba(99,102,241,0.2)",borderRadius:8}}>
+              <div style={{fontSize:10,fontWeight:700,letterSpacing:"2px",color:"#818cf8",marginBottom:6}}>🔗 PIPELINE TRACKING</div>
+              <div className="pipeline-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+                <div style={{fontSize:11,color:"#a1a1aa"}}><span style={{color:"#818cf8",fontWeight:600}}>FROM:</span> {a.pipelineFrom}</div>
+                <div style={{fontSize:11,color:"#a1a1aa"}}><span style={{color:"#818cf8",fontWeight:600}}>WINDOW:</span> {a.pipelineWindow}</div>
+              </div>
+            </div>
+          )}
+          {a.gapRatio&&(
+            <div style={{marginTop:12,padding:"12px 14px",background:"rgba(251,146,60,0.06)",border:"1px solid rgba(251,146,60,0.2)",borderRadius:8}}>
+              <div style={{fontSize:10,fontWeight:700,letterSpacing:"2px",color:"#fb923c",marginBottom:6}}>📊 STREAMING GAP RATIO</div>
+              <div style={{fontSize:12,color:"#fbbf24",fontWeight:600}}>{a.gapRatio}</div>
+            </div>
+          )}
+          {a.action&&<div style={{marginTop:12,padding:"10px 14px",background:"rgba(255,45,85,0.08)",border:"1px solid rgba(255,45,85,0.15)",borderRadius:6,fontSize:12,color:"#ff6b81",lineHeight:1.5}}>⚡ {a.action}</div>}
+          <div style={{marginTop:14,display:"flex",justifyContent:"flex-end",gap:8}}>
+            {a.ticketLink&&<a href={a.ticketLink} target="_blank" rel="noopener noreferrer" onClick={(ev)=>ev.stopPropagation()} style={{
+              background:"rgba(99,102,241,0.15)",border:"1px solid rgba(99,102,241,0.4)",
+              borderRadius:6,padding:"6px 16px",cursor:"pointer",textDecoration:"none",
+              fontSize:11,fontWeight:700,letterSpacing:"1.5px",color:"#818cf8",transition:"all 0.2s",display:"inline-flex",alignItems:"center",gap:4,
+            }}>🎟️ GET TICKETS</a>}
+            <button onClick={(ev)=>{ev.stopPropagation();onArchive(a.name);}} style={{
+              background:dead?"rgba(52,211,153,0.1)":"rgba(239,68,68,0.1)",
+              border:`1px solid ${dead?"rgba(52,211,153,0.3)":"rgba(239,68,68,0.25)"}`,
+              borderRadius:6,padding:"6px 16px",cursor:"pointer",
+              fontSize:11,fontWeight:700,letterSpacing:"1.5px",
+              color:dead?"#34d399":"#ef4444",transition:"all 0.2s",
+            }}>{dead?"♻️ REVIVE":"💀 MARK DEAD"}</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function OptimusDashboard() {
+  const [tab,setTab]=useState("dashboard");
+  const [e1,se1]=useState(null);
+  const [e2,se2]=useState(null);
+  const [e3,se3]=useState(null);
+  const [e4,se4]=useState(null);
+  const [e5,se5]=useState(null);
+  const [e6,se6]=useState(null);
+  const [e7,se7]=useState(null);
+  const [e8,se8]=useState(null);
+  const [e9,se9]=useState(null);
+  const [archived,setArchived]=useState(new Set());
+  const [showDead,setShowDead]=useState(true);
+  const toggleArchive=(name)=>{setArchived(prev=>{const n=new Set(prev);n.has(name)?n.delete(name):n.add(name);return n;});};
+  const sortDead=(arr)=>{const live=arr.filter(a=>!archived.has(a.name));const dead=arr.filter(a=>archived.has(a.name));return [...live,...dead];};
+
+  const all=[...SCAN_DATA.nextWeek,...SCAN_DATA.thisWeek,...SCAN_DATA.alreadyOnSale,...SCAN_DATA.smallVenue,...SCAN_DATA.comedy,...SCAN_DATA.redRocks,...SCAN_DATA.sports,...SCAN_DATA.pipeline,...SCAN_DATA.streamingGap];
+  const tc={S:0,A:0,B:0,C:0};
+  all.forEach(a=>{if(tc[a.tier]!==undefined)tc[a.tier]++});
+
+  const tabs=[
+    {id:"dashboard",label:"ALL"},
+    {id:"nextweek",label:`📅 NEXT WEEK (${SCAN_DATA.nextWeek.length})`},
+    {id:"thisweek",label:`THIS WEEK (${SCAN_DATA.thisWeek.length})`},
+    {id:"onsale",label:`ON SALE (${SCAN_DATA.alreadyOnSale.length})`},
+    {id:"smallvenue",label:`EMERGING (${SCAN_DATA.smallVenue.length})`},
+    {id:"sports",label:`🏆 SPORTS (${SCAN_DATA.sports.length})`},
+    {id:"comedy",label:`🎤 COMEDY (${SCAN_DATA.comedy.length})`},
+    {id:"redrocks",label:`🏔️ RED ROCKS (${SCAN_DATA.redRocks.length})`},
+    {id:"pipeline",label:`🔗 PIPELINE (${SCAN_DATA.pipeline.length})`},
+    {id:"gap",label:`📊 GAP (${SCAN_DATA.streamingGap.length})`},
+    {id:"deadzone",label:`🗺️ DEAD ZONES (${SCAN_DATA.deadZones.length})`},
+    {id:"radio",label:`📻 RADIO (${SCAN_DATA.radioMonitor.length})`},
+    {id:"alerts",label:"🔔 ALERTS"},
+    {id:"method",label:"METHOD"},
+  ];
+
+  const H=({color,title,sub,pulse})=>(
+    <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14,paddingBottom:10,borderBottom:"1px solid #1c1c1e"}}>
+      <div style={{width:8,height:8,borderRadius:"50%",background:color,boxShadow:`0 0 8px ${color}`,...(pulse?{animation:"pulse 1.5s ease-in-out infinite"}:{})}}/>
+      <h2 style={{fontFamily:"'Anybody',sans-serif",fontSize:16,fontWeight:700,color,letterSpacing:"1px"}}>{title}</h2>
+      {sub&&<span style={{fontSize:11,color:"#52525b",marginLeft:"auto"}}>{sub}</span>}
+    </div>
+  );
+
+  const A=({emoji,title,sub,color})=>(
+    <div style={{padding:"14px 18px",background:`${color}0F`,border:`1px solid ${color}33`,borderRadius:10,marginBottom:16,display:"flex",alignItems:"center",gap:12}}>
+      <span style={{fontSize:20}}>{emoji}</span>
+      <div>
+        <div style={{fontSize:13,fontWeight:600,color,fontFamily:"'Anybody',sans-serif"}}>{title}</div>
+        <div style={{fontSize:12,color:"#71717a",marginTop:2}}>{sub}</div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{minHeight:"100vh",background:"#09090b",color:"#e4e4e7",fontFamily:"'IBM Plex Mono','SF Mono',monospace"}}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Anybody:wght@400;500;600;700;800&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0}
+        @keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
+        @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+        @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes glitch{0%,90%,100%{transform:translate(0)}92%{transform:translate(-2px,1px)}94%{transform:translate(2px,-1px)}96%{transform:translate(-1px,-2px)}98%{transform:translate(1px,2px)}}
+        .sl{position:fixed;top:0;left:0;right:0;height:2px;background:rgba(255,45,85,.15);animation:scanline 4s linear infinite;pointer-events:none;z-index:100}
+        .gb{position:fixed;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(255,45,85,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,45,85,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+        @media(max-width:768px){
+          .tier-grid{grid-template-columns:repeat(2,1fr)!important}
+          .tab-bar{flex-wrap:wrap!important}
+          .tab-bar button{padding:8px 10px!important;font-size:10px!important}
+          .stat-grid{grid-template-columns:1fr!important}
+          .main-wrap{padding:14px 10px!important}
+          .optimus-title{font-size:28px!important}
+          .pipeline-grid{grid-template-columns:1fr!important}
+        }
+      `}</style>
+      <div className="sl"/><div className="gb"/>
+      <div className="main-wrap" style={{position:"relative",zIndex:1,maxWidth:1100,margin:"0 auto",padding:"24px 20px"}}>
+
+        <div style={{marginBottom:32}}>
+          <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:8}}>
+            <div style={{width:10,height:10,borderRadius:"50%",background:"#30d158",boxShadow:"0 0 12px #30d158",animation:"pulse 2s ease-in-out infinite"}}/>
+            <h1 className="optimus-title" style={{fontFamily:"'Anybody',sans-serif",fontSize:40,fontWeight:800,letterSpacing:"-1px",background:"linear-gradient(135deg,#ff2d55,#ff6b35,#ff2d55)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",animation:"glitch 8s ease-in-out infinite"}}>OPTIMUS</h1>
+            <span style={{fontSize:11,color:"#71717a",letterSpacing:"3px",marginTop:12}}>v10 · INTEL EDITION</span>
+          </div>
+          <div style={{fontSize:12,color:"#52525b",borderLeft:"2px solid #27272a",paddingLeft:12}}>
+            Last scan: {SCAN_DATA.lastRun} · {all.length} opportunities · {tc.S} S-tier · {SCAN_DATA.pipeline.length} pipeline · {SCAN_DATA.deadZones.length} dead zones
+          </div>
+          {archived.size>0&&(
+            <button onClick={()=>setShowDead(!showDead)} style={{
+              background:showDead?"rgba(239,68,68,0.08)":"rgba(52,211,153,0.08)",
+              border:`1px solid ${showDead?"rgba(239,68,68,0.25)":"rgba(52,211,153,0.25)"}`,
+              borderRadius:8,padding:"8px 16px",cursor:"pointer",
+              display:"flex",alignItems:"center",gap:8,transition:"all 0.2s",marginTop:8,
+            }}>
+              <span style={{fontSize:14}}>{showDead?"💀":"👁️"}</span>
+              <span style={{fontSize:11,fontWeight:700,letterSpacing:"1.5px",color:showDead?"#ef4444":"#34d399"}}>
+                {showDead?`${archived.size} DEAD — CLICK TO HIDE`:`${archived.size} HIDDEN — CLICK TO SHOW`}
+              </span>
+            </button>
+          )}
         </div>
 
-        {/* Expanded content */}
-        {exp && (
-          <div style={{marginTop:16,paddingTop:16,borderTop:"1px solid #27272a"}}>
-            
-            {/* Sale Details */}
-            {a.saleDetails && (
-              <div style={{padding:"12px 14px",background:"rgba(255,255,255,0.02)",border:"1px solid #27272a",borderRadius:8,marginBottom:14,fontSize:12,color:"#d4d4d8",lineHeight:1.6}}>
-                <div style={{fontSize:9,fontWeight:700,letterSpacing:"1.5px",color:isLive?"#ef4444":"#fbbf24",marginBottom:4}}>SALE INFO</div>
-                {a.saleDetails}
-              </div>
-            )}
+        <div className="tier-grid" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:28}}>
+          {Object.entries(tierColors).map(([t,c])=>(
+            <div key={t} style={{background:"#18181b",border:"1px solid #27272a",borderRadius:8,padding:"14px 16px",textAlign:"center"}}>
+              <div style={{fontSize:26,fontWeight:700,color:c.bg,textShadow:`0 0 20px ${c.glow}`,fontFamily:"'Anybody',sans-serif"}}>{tc[t]}</div>
+              <div style={{fontSize:10,color:"#71717a",letterSpacing:"2px",marginTop:4}}>TIER {t}</div>
+            </div>
+          ))}
+        </div>
 
-            {/* Stat grid */}
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",gap:8,marginBottom:14}}>
-              {[
-                {l:sport?"RECORD":"STREAMS",v:a.streams},
-                {l:sport?"LAST RUN":"LAST TOUR",v:a.lastTour},
-                {l:"SCARCITY",v:a.scarcity}
-              ].filter(x=>x.v).map(x=>(
-                <div key={x.l} style={{background:"#0f0f11",borderRadius:8,padding:"10px 12px",border:"1px solid #1a1a1e"}}>
-                  <div style={{fontSize:9,color:"#52525b",letterSpacing:"1.5px",marginBottom:4,fontWeight:600}}>{x.l}</div>
-                  <div style={{fontSize:12,fontWeight:500,color:"#a1a1aa",lineHeight:1.5}}>{x.v}</div>
+        <div className="tab-bar" style={{display:"flex",gap:4,marginBottom:24,borderBottom:"1px solid #18181b",overflowX:"auto",WebkitOverflowScrolling:"touch",scrollbarWidth:"none"}}>
+          {tabs.map(t=>(
+            <button key={t.id} onClick={()=>setTab(t.id)} style={{
+              background:tab===t.id?"#18181b":"transparent",
+              border:"1px solid",borderColor:tab===t.id?"#27272a":"transparent",
+              borderBottom:tab===t.id?"1px solid #09090b":"1px solid transparent",
+              borderRadius:"6px 6px 0 0",padding:"10px 16px",cursor:"pointer",
+              fontSize:11,fontWeight:600,letterSpacing:"1px",color:tab===t.id?"#fafafa":"#52525b",
+              fontFamily:"'IBM Plex Mono',monospace",whiteSpace:"nowrap",transition:"all .15s",
+            }}>{t.label}</button>
+          ))}
+        </div>
+
+        {(tab==="dashboard"||tab==="nextweek"||tab==="thisweek"||tab==="onsale"||tab==="smallvenue"||tab==="sports"||tab==="comedy"||tab==="redrocks")&&(
+          <div style={{animation:"slideUp 0.3s ease-out"}}>
+            {(tab==="dashboard"||tab==="nextweek")&&(<>
+              <H color="#f59e0b" title="📅 NEXT WEEK — ONSALES MAR 9–15" sub="Conference tournaments + Selection Sunday + new onsales" pulse/>
+              <A emoji="📅" title="Conference Tournaments + Selection Sunday Mar 15" sub="Big East (MSG Mar 11-14), Big Ten (Indy Mar 10-15), SEC, ACC. Selection Sunday bracket reveal Mar 15. Eric Clapton onsale TBA." color="#f59e0b"/>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.nextWeek):SCAN_DATA.nextWeek.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`nw${a.name}`} a={a} i={i} exp={e6===a.name} toggle={()=>se6(e6===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+
+            {(tab==="dashboard"||tab==="thisweek")&&(<>
+              <H color="#ff2d55" title="PRESALE / ONSALE THIS WEEK" sub="Week of Mar 3–8, 2026" pulse/>
+              <A emoji="🔴" title="PRESALE TSUNAMI — 6+ presales LIVE TODAY Mar 3" sub="Metallica Sphere, Sting 3.0, Jason Aldean, Joji, Outside Lands lineup, Maya Hawke, Tucker Wetmore all dropping today. General onsales Fri Mar 6." color="#ff6b81"/>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.thisWeek):SCAN_DATA.thisWeek.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`tw${a.name}`} a={a} i={i} exp={e1===a.name} toggle={()=>se1(e1===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+
+            {(tab==="dashboard"||tab==="onsale")&&(<>
+              <H color="#ff9500" title="ON SALE — SECONDARY MARKET PLAYS"/>
+              <A emoji="💰" title="UNDERPRICED: FKA twigs NA tix at $23–$130" sub="First arena tour (MSG). Tour starts March 14." color="#30d158"/>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.alreadyOnSale):SCAN_DATA.alreadyOnSale.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`os${a.name}`} a={a} i={i} exp={e2===a.name} toggle={()=>se2(e2===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+
+            {(tab==="dashboard"||tab==="smallvenue")&&(<>
+              <H color="#a78bfa" title="SMALL VENUE / EMERGING — NA DATES"/>
+              <A emoji="🔥" title="Indie breakouts & viral artists at small caps" sub="Low supply venues, high demand-to-supply ratio. First movers win big." color="#a78bfa"/>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.smallVenue):SCAN_DATA.smallVenue.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`sv${a.name}`} a={a} i={i} exp={e3===a.name} toggle={()=>se3(e3===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+
+            {(tab==="dashboard"||tab==="sports")&&(<>
+              <H color="#34d399" title="🏆 SPORTS — HOT TEAMS & NICHE PLAYS"/>
+              <A emoji="🏀" title="Detroit Pistons: worst-to-first — playoff tix dropping soon" sub="39-13, best since 2004 title. Arizona 27-0, clinched Big 12 share. Conference tournaments THIS WEEK. Selection Sunday Mar 15." color="#34d399"/>
+              <div style={{display:"flex",gap:8,marginBottom:16,flexWrap:"wrap"}}>
+                {[["PRO","#34d399",["NBA","NHL"]],["COLLEGE","#60a5fa",["NCAA"]],["NICHE","#f472b6",["Volleyball","Gymnastics","Lacrosse"]]].map(([l,c,k])=>(
+                  <div key={l} style={{background:"#18181b",border:`1px solid ${c}33`,borderRadius:6,padding:"8px 14px",display:"flex",alignItems:"center",gap:8}}>
+                    <div style={{width:6,height:6,borderRadius:"50%",background:c}}/><span style={{fontSize:11,color:c,fontWeight:600,letterSpacing:"1px"}}>{l}</span>
+                    <span style={{fontSize:11,color:"#52525b"}}>({SCAN_DATA.sports.filter(s=>k.some(x=>s.genre.includes(x))).length})</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.sports):SCAN_DATA.sports.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`sp${a.name}`} a={a} i={i} sport exp={e4===a.name} toggle={()=>se4(e4===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+
+            {(tab==="dashboard"||tab==="comedy")&&(<>
+              <H color="#e879f9" title="🎤 COMEDY — VIRAL COMEDIANS" sub={`${SCAN_DATA.comedy.length} opportunities`}/>
+              <A emoji="🎤" title="Lowest broker competition in all of entertainment" sub="Tiny venue inventory, unpredictable date drops, social-media-fueled demand. Most brokers ignore comedy entirely." color="#e879f9"/>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.comedy):SCAN_DATA.comedy.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`co${a.name}`} a={a} i={i} exp={e5===a.name} toggle={()=>se5(e5===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+            {(tab==="dashboard"||tab==="redrocks")&&(<>
+              <H color="#f97316" title="🏔️ RED ROCKS — SPRING/SUMMER 2026" sub={`${SCAN_DATA.redRocks.length} shows tracked`} pulse/>
+              <A emoji="🏔️" title="Red Rocks Amphitheatre · 9,525 cap · Morrison, CO" sub="2nd most-attended US venue (1.75M in 2025). Tight capacity = instant scarcity. Iconic venue premium on secondary market." color="#f97316"/>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.redRocks):SCAN_DATA.redRocks.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`rr${a.name}`} a={a} i={i} exp={e7===a.name} toggle={()=>se7(e7===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+          </div>
+        )}
+
+        {(tab==="pipeline"||tab==="gap"||tab==="deadzone"||tab==="radio")&&(
+          <div style={{animation:"slideUp 0.3s ease-out"}}>
+
+            {tab==="pipeline"&&(<>
+              <H color="#818cf8" title="🔗 SUPPORT ACT → HEADLINE PIPELINE" sub="Artists about to explode after major tour exposure" pulse/>
+              <A emoji="🔗" title="Support acts get 10-15K new eyes per night" sub="When they announce headline dates in 1-3K rooms afterward, those rooms sell out instantly. This is the highest-edge play in the market." color="#818cf8"/>
+              <div style={{padding:"12px 16px",background:"rgba(129,140,248,0.06)",border:"1px solid rgba(129,140,248,0.15)",borderRadius:8,marginBottom:16}}>
+                <div style={{fontSize:11,color:"#818cf8",fontWeight:600,marginBottom:6}}>HOW IT WORKS:</div>
+                <div style={{fontSize:12,color:"#a1a1aa",lineHeight:1.7}}>
+                  Support act plays arenas (10-20K/night) → builds massive new audience → announces own headline tour in 1-5K cap rooms → rooms sell out before brokers notice → secondary premium 2-5x. <span style={{color:"#fbbf24",fontWeight:600}}>Average pipeline window: 3-6 months after support run ends.</span>
+                </div>
+              </div>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.pipeline):SCAN_DATA.pipeline.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`pl${a.name}`} a={a} i={i} exp={e8===a.name} toggle={()=>se8(e8===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+
+            {tab==="gap"&&(<>
+              <H color="#fb923c" title="📊 STREAMING-TO-TOURING GAP SCANNER" sub="Artists whose streaming dwarfs their venue size" pulse/>
+              <A emoji="📊" title="High listeners ÷ small venues = extreme flip potential" sub="When streaming popularity outpaces touring infrastructure, demand exceeds supply at every show. The wider the gap, the bigger the opportunity." color="#fb923c"/>
+              <div style={{padding:"12px 16px",background:"rgba(251,146,60,0.06)",border:"1px solid rgba(251,146,60,0.15)",borderRadius:8,marginBottom:16}}>
+                <div style={{fontSize:11,color:"#fb923c",fontWeight:600,marginBottom:6}}>GAP RATIO FORMULA:</div>
+                <div style={{fontSize:12,color:"#a1a1aa",lineHeight:1.7}}>
+                  Monthly Spotify listeners ÷ typical headline venue capacity = Gap Ratio. <span style={{color:"#fbbf24",fontWeight:600}}>Healthy ratio: ~1,000:1. Red flag (opportunity): 3,000:1+.</span> Chappell Roan went from 500 cap to stadiums in 12 months when her ratio hit 10,000:1.
+                </div>
+              </div>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {(showDead?sortDead(SCAN_DATA.streamingGap):SCAN_DATA.streamingGap.filter(a=>!archived.has(a.name))).map((a,i)=><Card key={`sg${a.name}`} a={a} i={i} exp={e9===a.name} toggle={()=>se9(e9===a.name?null:a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
+              </div>
+            </>)}
+
+            {tab==="deadzone"&&(<>
+              <H color="#f59e0b" title="🗺️ GEOGRAPHIC DEAD ZONES" sub="Markets where demand-to-supply ratio is extreme" pulse/>
+              <A emoji="🗺️" title="When a tracked artist hits a dead zone city, BUY IMMEDIATELY" sub="These are regions where 5+ states funnel into one venue. Supply is tiny, demand is enormous." color="#f59e0b"/>
+              <div style={{display:"flex",flexDirection:"column",gap:12,marginBottom:32}}>
+                {SCAN_DATA.deadZones.map((z,i)=>(
+                  <div key={i} style={{background:"#18181b",border:`1px solid ${z.color}33`,borderRadius:10,padding:"18px 22px",animation:`slideUp 0.3s ease-out ${i*0.06}s both`}}>
+                    <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
+                      <div style={{width:10,height:10,borderRadius:"50%",background:z.color,boxShadow:`0 0 8px ${z.color}`}}/>
+                      <span style={{fontFamily:"'Anybody',sans-serif",fontSize:15,fontWeight:700,color:z.color}}>{z.zone}</span>
+                    </div>
+                    <div style={{fontSize:12,color:"#fafafa",fontWeight:600,marginBottom:6}}>📍 {z.cities}</div>
+                    <div style={{fontSize:12,color:"#a1a1aa",lineHeight:1.6,marginBottom:10}}>{z.why}</div>
+                    <div style={{padding:"8px 12px",background:"rgba(251,191,36,0.06)",border:"1px solid rgba(251,191,36,0.15)",borderRadius:6,marginBottom:8}}>
+                      <span style={{fontSize:10,fontWeight:700,letterSpacing:"1.5px",color:"#fbbf24"}}>CURRENT EXAMPLES: </span>
+                      <span style={{fontSize:11,color:"#d4d4d8"}}>{z.examples}</span>
+                    </div>
+                    <div style={{padding:"8px 12px",background:"rgba(255,45,85,0.06)",border:"1px solid rgba(255,45,85,0.15)",borderRadius:6}}>
+                      <span style={{fontSize:10,fontWeight:700,letterSpacing:"1.5px",color:"#ff6b81"}}>⚡ PLAYBOOK: </span>
+                      <span style={{fontSize:11,color:"#d4d4d8"}}>{z.playbook}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>)}
+
+            {tab==="radio"&&(<>
+              <H color="#22d3ee" title="📻 AAA / ALT RADIO MONITOR" sub="Radio builds passive audiences that convert to ticket demand" pulse/>
+              <A emoji="📻" title="Radio adds → 6-8 week build → peak demand at tour time" sub="AAA/Alt radio is a leading indicator. When a song peaks on radio, that artist's live demand has quietly doubled. Almost no brokers track this." color="#22d3ee"/>
+              <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:32}}>
+                {SCAN_DATA.radioMonitor.map((r,i)=>(
+                  <div key={i} style={{background:"#18181b",border:"1px solid #27272a",borderRadius:10,padding:"16px 20px",animation:`slideUp 0.3s ease-out ${i*0.04}s both`}}>
+                    <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+                      <span style={{fontSize:10,fontWeight:700,padding:"3px 8px",borderRadius:4,letterSpacing:"1px",
+                        background:r.trend.includes("PEAK")?"rgba(255,45,85,0.15)":r.trend.includes("RISING")||r.trend.includes("CROSSOVER")||r.trend.includes("RESURGING")?"rgba(52,211,153,0.15)":"rgba(113,113,122,0.15)",
+                        color:r.trend.includes("PEAK")?"#ff6b81":r.trend.includes("RISING")||r.trend.includes("CROSSOVER")||r.trend.includes("RESURGING")?"#34d399":"#71717a",
+                        border:`1px solid ${r.trend.includes("PEAK")?"rgba(255,45,85,0.3)":r.trend.includes("RISING")||r.trend.includes("CROSSOVER")||r.trend.includes("RESURGING")?"rgba(52,211,153,0.3)":"rgba(113,113,122,0.3)"}`,
+                      }}>{r.trend} {r.position}</span>
+                      <span style={{fontFamily:"'Anybody',sans-serif",fontSize:14,fontWeight:600,color:"#fafafa"}}>{r.artist}</span>
+                    </div>
+                    <div style={{fontSize:13,color:"#22d3ee",fontWeight:500,marginBottom:6}}>"{r.song}" — {r.weeks}</div>
+                    <div style={{fontSize:11,color:"#71717a",marginBottom:6}}>🎟️ {r.tourStatus}</div>
+                    <div style={{fontSize:12,color:"#a1a1aa",lineHeight:1.6}}>{r.signal}</div>
+                  </div>
+                ))}
+              </div>
+            </>)}
+          </div>
+        )}
+
+        {tab==="alerts"&&(
+          <div style={{animation:"slideUp 0.3s ease-out"}}>
+            <h2 style={{fontFamily:"'Anybody',sans-serif",fontSize:20,fontWeight:700,color:"#fafafa",marginBottom:8}}>Real-Time Alert System</h2>
+            <p style={{fontSize:13,color:"#52525b",lineHeight:1.6,marginBottom:24}}>Three tiers of monitoring — Tier 3 is now BUILT and ready for deployment.</p>
+
+            <div style={{background:"#18181b",border:"1px solid #27272a",borderRadius:10,padding:"20px 24px",marginBottom:12}}>
+              <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+                <span style={{fontSize:10,fontWeight:700,color:"#30d158",background:"rgba(48,209,88,.15)",padding:"4px 10px",borderRadius:4,letterSpacing:"1.5px"}}>FREE / 10 MIN</span>
+                <span style={{fontFamily:"'Anybody',sans-serif",fontSize:15,fontWeight:600,color:"#fafafa"}}>Bandsintown + Songkick</span>
+              </div>
+              <div style={{fontSize:13,color:"#a1a1aa",lineHeight:1.7}}>Follow all watchlist artists. Enable push notifications. Detects new dates within 1–4 hours.</div>
+            </div>
+
+            <div style={{background:"#18181b",border:"1px solid rgba(255,149,0,.2)",borderRadius:10,padding:"20px 24px",marginBottom:12}}>
+              <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+                <span style={{fontSize:10,fontWeight:700,color:"#ff9500",background:"rgba(255,149,0,.15)",padding:"4px 10px",borderRadius:4,letterSpacing:"1.5px"}}>MEDIUM / 1-2 HRS</span>
+                <span style={{fontFamily:"'Anybody',sans-serif",fontSize:15,fontWeight:600,color:"#fafafa"}}>IFTTT/Zapier + Twilio</span>
+              </div>
+              <div style={{fontSize:13,color:"#a1a1aa",lineHeight:1.7}}>TM Discovery API → poll every 15 min → Twilio SMS. ~$1/mo.</div>
+            </div>
+
+            <div style={{background:"#18181b",border:"1px solid rgba(255,45,85,.3)",borderRadius:10,padding:"20px 24px",marginBottom:12}}>
+              <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+                <span style={{fontSize:10,fontWeight:700,color:"#ff2d55",background:"rgba(255,45,85,.15)",padding:"4px 10px",borderRadius:4,letterSpacing:"1.5px"}}>PRO / AUTOMATED</span>
+                <span style={{fontFamily:"'Anybody',sans-serif",fontSize:15,fontWeight:600,color:"#fafafa"}}>Custom Python Script</span>
+                <span style={{fontSize:10,fontWeight:700,color:"#30d158",background:"rgba(48,209,88,.15)",padding:"4px 10px",borderRadius:4,letterSpacing:"1.5px"}}>✅ BUILT</span>
+              </div>
+              <div style={{fontSize:13,color:"#a1a1aa",lineHeight:1.7,marginBottom:12}}>
+                Python script running every 30 min on cloud server. Scrapes Ticketmaster, SeatGeek, Bandsintown APIs. Compares against known events DB. New show → instant Twilio SMS with artist/team, venue, date, presale link.
+              </div>
+              <div style={{fontSize:12,color:"#ff6b81",lineHeight:1.6,marginBottom:12}}>
+                <strong>Includes:</strong> Watchlist management · Price monitoring · Daily 8am digest · Instant SMS · Sports team monitoring · ~$5/mo hosting + $1/mo Twilio.
+              </div>
+              <div style={{padding:"12px 16px",background:"rgba(48,209,88,.08)",border:"1px solid rgba(48,209,88,.2)",borderRadius:6,fontSize:12,color:"#34d399",lineHeight:1.5}}>
+                ✅ Download <code style={{background:"#0f0f11",padding:"2px 6px",borderRadius:3}}>optimus-alerts.py</code> and follow the setup guide in the file header.
+              </div>
+            </div>
+
+            <div style={{background:"#18181b",border:"1px solid #27272a",borderRadius:10,padding:"20px 24px",marginTop:12}}>
+              <div style={{fontSize:13,fontWeight:600,color:"#fafafa",fontFamily:"'Anybody',sans-serif",marginBottom:12}}>FULL WATCHLIST:</div>
+              <div style={{display:"flex",flexWrap:"wrap",gap:6}}>
+                {[...SCAN_DATA.nextWeek,...SCAN_DATA.smallVenue,...SCAN_DATA.comedy,...SCAN_DATA.alreadyOnSale.slice(0,4),...SCAN_DATA.sports.slice(0,6)].map((a,i)=>(
+                  <span key={i} style={{fontSize:11,color:"#a1a1aa",background:"#0f0f11",border:"1px solid #27272a",padding:"4px 10px",borderRadius:4}}>{a.name}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {tab==="method"&&(
+          <div style={{animation:"slideUp 0.3s ease-out"}}>
+            <h2 style={{fontFamily:"'Anybody',sans-serif",fontSize:18,fontWeight:600,color:"#fafafa",marginBottom:8}}>Music Opportunity Score (0–100)</h2>
+            <p style={{fontSize:13,color:"#52525b",lineHeight:1.6,marginBottom:16}}>S (85+), A (70–84), B (55–69), C (&lt;55)</p>
+            <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:24}}>
+              {[["Streaming Volume","25%","Monthly listeners vs genre peers"],["Touring Scarcity","30%","Years since last tour ÷ demand signals"],["Social Buzz","20%","Reddit/X/IG 'wish they would tour' mentions"],["Momentum","15%","Viral moments, album drops, festival slots"],["Market Gap","10%","No secondary market comps"]].map(([f,w,d],i)=>(
+                <div key={i} style={{background:"#18181b",border:"1px solid #27272a",borderRadius:8,padding:"16px 20px",display:"flex",alignItems:"center",gap:16}}>
+                  <div style={{width:48,fontFamily:"'Anybody',sans-serif",fontSize:16,fontWeight:700,color:"#ff2d55",flexShrink:0}}>{w}</div>
+                  <div><div style={{fontSize:14,fontWeight:600,color:"#e4e4e7",marginBottom:4}}>{f}</div><div style={{fontSize:12,color:"#52525b"}}>{d}</div></div>
                 </div>
               ))}
             </div>
-
-            {/* Reasoning */}
-            {a.reasoning && (
-              <div style={{fontSize:13,color:"#a1a1aa",lineHeight:1.65,marginBottom:14}}>
-                <span style={{color:tc.bg,fontWeight:600,fontSize:10,letterSpacing:"1px"}}>ANALYSIS </span>
-                {a.reasoning}
-              </div>
-            )}
-
-            {/* Target Cities */}
-            {a.targetCities && a.targetCities.length > 0 && (
-              <div style={{padding:"12px 14px",background:"rgba(52,211,153,0.04)",border:"1px solid rgba(52,211,153,0.15)",borderRadius:8,marginBottom:14}}>
-                <div style={{fontSize:9,fontWeight:700,letterSpacing:"2px",color:"#34d399",marginBottom:8}}>🎯 TARGET CITIES</div>
-                <div style={{display:"flex",flexDirection:"column",gap:6}}>
-                  {a.targetCities.map((c,ci)=>(
-                    <div key={ci} style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:12,lineHeight:1.5}}>
-                      <span style={{flexShrink:0}}>{c.emoji||"📍"}</span>
-                      <div>
-                        <span style={{color:"#fafafa",fontWeight:600}}>{c.city}</span>
-                        {c.venue && <span style={{color:"#71717a"}}> — {c.venue}</span>}
-                        {c.date && <span style={{color:"#a78bfa",fontWeight:500}}> ({c.date})</span>}
-                        {c.why && <div style={{color:"#a1a1aa",fontSize:11,marginTop:2}}>{c.why}</div>}
-                      </div>
-                    </div>
-                  ))}
+            <h2 style={{fontFamily:"'Anybody',sans-serif",fontSize:18,fontWeight:600,color:"#34d399",marginBottom:8}}>🏆 Sports Score (0–100)</h2>
+            <p style={{fontSize:13,color:"#52525b",lineHeight:1.6,marginBottom:16}}>Optimized for ticket resale arbitrage.</p>
+            <div style={{display:"flex",flexDirection:"column",gap:8,marginBottom:24}}>
+              {[["Team Momentum","30%","Win streak, record trajectory, playoff positioning"],["Historical Turnaround","25%","How much better than average — Cinderella factor"],["Ticket Market Gap","20%","Face value vs secondary pricing spread"],["Playoff/Championship","15%","Proximity to postseason, tournament implications"],["Novelty / Narrative","10%","First time in years, star player, cultural moment"]].map(([f,w,d],i)=>(
+                <div key={i} style={{background:"#18181b",border:"1px solid rgba(52,211,153,.2)",borderRadius:8,padding:"16px 20px",display:"flex",alignItems:"center",gap:16}}>
+                  <div style={{width:48,fontFamily:"'Anybody',sans-serif",fontSize:16,fontWeight:700,color:"#34d399",flexShrink:0}}>{w}</div>
+                  <div><div style={{fontSize:14,fontWeight:600,color:"#e4e4e7",marginBottom:4}}>{f}</div><div style={{fontSize:12,color:"#52525b"}}>{d}</div></div>
                 </div>
-              </div>
-            )}
-
-            {/* Pipeline tracking */}
-            {a.pipelineFrom && (
-              <div style={{padding:"12px 14px",background:"rgba(99,102,241,0.04)",border:"1px solid rgba(99,102,241,0.15)",borderRadius:8,marginBottom:14}}>
-                <div style={{fontSize:9,fontWeight:700,letterSpacing:"2px",color:"#818cf8",marginBottom:6}}>🔗 PIPELINE</div>
-                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-                  <div style={{fontSize:11,color:"#a1a1aa"}}><span style={{color:"#818cf8",fontWeight:600}}>FROM:</span> {a.pipelineFrom}</div>
-                  <div style={{fontSize:11,color:"#a1a1aa"}}><span style={{color:"#818cf8",fontWeight:600}}>WINDOW:</span> {a.pipelineWindow}</div>
-                </div>
-              </div>
-            )}
-
-            {/* Streaming gap */}
-            {a.gapRatio && (
-              <div style={{padding:"12px 14px",background:"rgba(251,146,60,0.04)",border:"1px solid rgba(251,146,60,0.15)",borderRadius:8,marginBottom:14}}>
-                <div style={{fontSize:9,fontWeight:700,letterSpacing:"2px",color:"#fb923c",marginBottom:4}}>📊 STREAMING GAP</div>
-                <div style={{fontSize:13,color:"#fbbf24",fontWeight:600}}>{a.gapRatio}</div>
-              </div>
-            )}
-
-            {/* Action */}
-            {a.action && (
-              <div style={{padding:"10px 14px",background:"rgba(167,139,250,0.06)",border:"1px solid rgba(167,139,250,0.15)",borderRadius:8,fontSize:12,color:"#c4b5fd",lineHeight:1.5,marginBottom:14}}>
-                ⚡ {a.action}
-              </div>
-            )}
-
-            {/* Buttons */}
-            <div style={{display:"flex",gap:8,justifyContent:"flex-end"}}>
-              {a.ticketLink && (
-                <a href={a.ticketLink} target="_blank" rel="noopener noreferrer" onClick={(ev)=>ev.stopPropagation()} style={{
-                  background:"#a78bfa",color:"#000",border:"none",
-                  borderRadius:8,padding:"8px 20px",cursor:"pointer",textDecoration:"none",
-                  fontSize:12,fontWeight:700,transition:"all 0.2s",display:"inline-flex",alignItems:"center",gap:6,
-                }}>🎟️ Get Tickets</a>
-              )}
-              <button onClick={(ev)=>{ev.stopPropagation();onArchive(a.name);}} style={{
-                background:dead?"rgba(52,211,153,0.08)":"rgba(239,68,68,0.06)",
-                border:`1px solid ${dead?"rgba(52,211,153,0.2)":"rgba(239,68,68,0.15)"}`,
-                borderRadius:8,padding:"8px 16px",cursor:"pointer",
-                fontSize:11,fontWeight:600,color:dead?"#34d399":"#71717a",transition:"all 0.2s",
-              }}>{dead?"♻️ Revive":"💀 Dead"}</button>
+              ))}
             </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-/* ── Section Header ── */
-function SH({title,sub,count,color="#a78bfa"}) {
-  return (
-    <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:12,paddingBottom:10,borderBottom:"1px solid #1e1e24"}}>
-      <div style={{display:"flex",alignItems:"center",gap:10}}>
-        <h2 style={{fontSize:15,fontWeight:700,color:"#fafafa",letterSpacing:"-0.3px"}}>{title}</h2>
-        {count!==undefined && <span style={{fontSize:11,background:"#27272a",color:"#a1a1aa",padding:"2px 8px",borderRadius:10,fontWeight:600}}>{count}</span>}
-      </div>
-      {sub && <span style={{fontSize:11,color:"#52525b"}}>{sub}</span>}
-    </div>
-  );
-}
-
-/* ── Alert Banner ── */
-function AB({emoji,title,sub,color="#a78bfa"}) {
-  return (
-    <div style={{padding:"12px 16px",background:`${color}08`,border:`1px solid ${color}22`,borderRadius:10,marginBottom:14,display:"flex",alignItems:"center",gap:12}}>
-      <span style={{fontSize:18}}>{emoji}</span>
-      <div>
-        <div style={{fontSize:13,fontWeight:600,color}}>{title}</div>
-        <div style={{fontSize:11,color:"#71717a",marginTop:2}}>{sub}</div>
-      </div>
-    </div>
-  );
-}
-
-/* ── Main Dashboard ── */
-function OptimusDashboard() {
-  const [tab,setTab]=useState("thisweek");
-  const [expanded,setExpanded]=useState({});
-  const [archived,setArchived]=useState(new Set());
-  const [showDead,setShowDead]=useState(true);
-  const [search,setSearch]=useState("");
-
-  const toggle=(section,name)=>setExpanded(p=>({...p,[section]:p[section]===name?null:name}));
-  const toggleArchive=(name)=>setArchived(p=>{const n=new Set(p);n.has(name)?n.delete(name):n.add(name);return n;});
-  const sortDead=(arr)=>{const live=arr.filter(a=>!archived.has(a.name));const dead=arr.filter(a=>archived.has(a.name));return [...live,...dead];};
-
-  const all=useMemo(()=>[...SCAN_DATA.nextWeek,...SCAN_DATA.thisWeek,...SCAN_DATA.alreadyOnSale,...SCAN_DATA.smallVenue,...SCAN_DATA.comedy,...SCAN_DATA.redRocks,...SCAN_DATA.sports,...SCAN_DATA.pipeline,...SCAN_DATA.streamingGap],[]);
-  const tc=useMemo(()=>{const c={S:0,A:0,B:0,C:0};all.forEach(a=>{const k=a.tier==="S+"?"S":a.tier==="B+"?"B":a.tier;if(c[k]!==undefined)c[k]++});return c;},[all]);
-
-  const filterBySearch=(arr)=>{
-    if(!search)return arr;
-    const q=search.toLowerCase();
-    return arr.filter(a=>a.name.toLowerCase().includes(q)||a.genre?.toLowerCase().includes(q)||(a.targetCities||[]).some(c=>c.city?.toLowerCase().includes(q)));
-  };
-
-  const tabs=[
-    {id:"thisweek",label:"This Week",count:SCAN_DATA.thisWeek.length},
-    {id:"nextweek",label:"Next Week",count:SCAN_DATA.nextWeek.length},
-    {id:"onsale",label:"On Sale",count:SCAN_DATA.alreadyOnSale.length},
-    {id:"smallvenue",label:"Emerging",count:SCAN_DATA.smallVenue.length},
-    {id:"sports",label:"Sports",count:SCAN_DATA.sports.length},
-    {id:"comedy",label:"Comedy",count:SCAN_DATA.comedy.length},
-    {id:"redrocks",label:"Red Rocks",count:SCAN_DATA.redRocks.length},
-    {id:"pipeline",label:"Pipeline",count:SCAN_DATA.pipeline.length},
-    {id:"gap",label:"Gap",count:SCAN_DATA.streamingGap.length},
-    {id:"deadzone",label:"Dead Zones",count:SCAN_DATA.deadZones.length},
-    {id:"radio",label:"Radio",count:SCAN_DATA.radioMonitor.length},
-    {id:"method",label:"Method"},
-  ];
-
-  const renderCards=(data,section,sport=false)=>{
-    const filtered = filterBySearch(showDead ? sortDead(data) : data.filter(a=>!archived.has(a.name)));
-    return (
-      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(360px,1fr))",gap:12,marginBottom:32}}>
-        {filtered.map((a,i)=><Card key={`${section}${a.name}`} a={a} i={i} sport={sport} exp={expanded[section]===a.name} toggle={()=>toggle(section,a.name)} dead={archived.has(a.name)} onArchive={toggleArchive}/>)}
-      </div>
-    );
-  };
-
-  return (
-    <div style={{minHeight:"100vh",background:"#09090b",color:"#e4e4e7",fontFamily:"'Inter','system-ui',sans-serif"}}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        *{box-sizing:border-box;margin:0;padding:0}
-        ::-webkit-scrollbar{height:4px;width:4px}
-        ::-webkit-scrollbar-track{background:#09090b}
-        ::-webkit-scrollbar-thumb{background:#27272a;border-radius:4px}
-        @media(max-width:768px){
-          .grid-cards{grid-template-columns:1fr!important}
-          .nav-inner{padding:12px 16px!important}
-          .main-content{padding:16px!important}
-          .filter-scroll{gap:4px!important}
-          .stat-row{grid-template-columns:repeat(2,1fr)!important}
-        }
-      `}</style>
-
-      {/* Navigation */}
-      <nav style={{borderBottom:"1px solid #18181b",background:"#09090b",position:"sticky",top:0,zIndex:50}}>
-        <div className="nav-inner" style={{maxWidth:1200,margin:"0 auto",padding:"14px 24px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-          <div style={{display:"flex",alignItems:"center",gap:10}}>
-            <h1 style={{fontSize:20,fontWeight:800,color:"#fafafa",letterSpacing:"-0.5px"}}>
-              <span style={{color:"#a78bfa"}}>◉</span> Optimus
-            </h1>
-          </div>
-          <div style={{fontSize:11,color:"#52525b",display:"flex",gap:16,alignItems:"center"}}>
-            <span>Scan v17</span>
-            <span><span style={{color:"#a78bfa",fontWeight:600}}>{all.length}</span> events</span>
-            <span><span style={{color:"#ef4444",fontWeight:600}}>{tc.S}</span> S-tier</span>
-          </div>
-        </div>
-      </nav>
-
-      <div className="main-content" style={{maxWidth:1200,margin:"0 auto",padding:"20px 24px"}}>
-
-        {/* Search */}
-        <div style={{marginBottom:16}}>
-          <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search events, artists, cities..." style={{
-            width:"100%",background:"#18181b",border:"1px solid #27272a",borderRadius:10,
-            padding:"12px 16px",color:"#e4e4e7",fontSize:14,fontFamily:"inherit",outline:"none",
-            transition:"border-color 0.2s",
-          }} onFocus={e=>e.target.style.borderColor="#a78bfa"} onBlur={e=>e.target.style.borderColor="#27272a"}/>
-        </div>
-
-        {/* Summary stats */}
-        <div className="stat-row" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:10,marginBottom:20}}>
-          {[
-            {label:"S-TIER",value:tc.S,color:"#ef4444"},
-            {label:"A-TIER",value:tc.A,color:"#f97316"},
-            {label:"B-TIER",value:tc.B,color:"#8b5cf6"},
-            {label:"PIPELINE",value:SCAN_DATA.pipeline.length,color:"#818cf8"},
-          ].map(s=>(
-            <div key={s.label} style={{background:"#18181b",border:"1px solid #27272a",borderRadius:10,padding:"14px 16px",textAlign:"center"}}>
-              <div style={{fontSize:24,fontWeight:800,color:s.color}}>{s.value}</div>
-              <div style={{fontSize:9,color:"#52525b",letterSpacing:"1.5px",marginTop:2,fontWeight:600}}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Dead toggle */}
-        {archived.size>0 && (
-          <button onClick={()=>setShowDead(!showDead)} style={{
-            background:showDead?"rgba(239,68,68,0.06)":"rgba(52,211,153,0.06)",
-            border:`1px solid ${showDead?"rgba(239,68,68,0.15)":"rgba(52,211,153,0.15)"}`,
-            borderRadius:8,padding:"8px 16px",cursor:"pointer",marginBottom:16,
-            fontSize:11,fontWeight:600,color:showDead?"#ef4444":"#34d399",
-          }}>{showDead?`💀 ${archived.size} dead — click to hide`:`👁️ ${archived.size} hidden — click to show`}</button>
-        )}
-
-        {/* Filter tabs */}
-        <div className="filter-scroll" style={{display:"flex",gap:6,marginBottom:24,overflowX:"auto",paddingBottom:4,WebkitOverflowScrolling:"touch"}}>
-          {tabs.map(tb=>(
-            <button key={tb.id} onClick={()=>setTab(tb.id)} style={{
-              background:tab===tb.id?"#a78bfa":"#18181b",
-              border:`1px solid ${tab===tb.id?"#a78bfa":"#27272a"}`,
-              color:tab===tb.id?"#000":"#71717a",
-              padding:"8px 16px",borderRadius:20,fontSize:12,fontWeight:tab===tb.id?700:500,
-              cursor:"pointer",fontFamily:"inherit",whiteSpace:"nowrap",transition:"all 0.15s",
-            }}>{tb.label}{tb.count!==undefined?` (${tb.count})`:""}</button>
-          ))}
-        </div>
-
-        {/* Tab content */}
-        {tab==="thisweek"&&(<>
-          <SH title="This Week" sub="Presales & onsales Mar 3–8" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🔴" title="Presale Tsunami — 6+ presales live today" sub="Metallica, Sting, Aldean, Joji, Outside Lands, Maya Hawke, Tucker Wetmore" color="#ef4444"/>
-          {renderCards(SCAN_DATA.thisWeek,"tw")}
-        </>)}
-
-        {tab==="nextweek"&&(<>
-          <SH title="Next Week" sub="Onsales Mar 9–15" count={SCAN_DATA.nextWeek.length}/>
-          <AB emoji="📅" title="Conference Tournaments + Selection Sunday Mar 15" sub="Big East (MSG), Big Ten (Indy), SEC, ACC. Eric Clapton onsale TBA." color="#f59e0b"/>
-          {renderCards(SCAN_DATA.nextWeek,"nw")}
-        </>)}
-
-        {tab==="onsale"&&(<>
-          <SH title="On Sale" sub="Secondary market plays" count={SCAN_DATA.alreadyOnSale.length}/>
-          {renderCards(SCAN_DATA.alreadyOnSale,"os")}
-        </>)}
-
-        {tab==="smallvenue"&&(<>
-          <SH title="Emerging Artists" sub="Small venue, high demand-to-supply" count={SCAN_DATA.smallVenue.length}/>
-          <AB emoji="🔥" title="Low supply venues, high demand" sub="First movers win big on indie breakouts and viral artists." color="#a78bfa"/>
-          {renderCards(SCAN_DATA.smallVenue,"sv")}
-        </>)}
-
-        {tab==="sports"&&(<>
-          <SH title="Sports" sub="Hot teams & niche plays" count={SCAN_DATA.sports.length}/>
-          <AB emoji="🏀" title="Pistons worst-to-first, Arizona 27-0, Conference tourneys starting" sub="Selection Sunday Mar 15. NHL/NBA playoffs April." color="#34d399"/>
-          {renderCards(SCAN_DATA.sports,"sp",true)}
-        </>)}
-
-        {tab==="comedy"&&(<>
-          <SH title="Comedy" sub="Lowest broker competition in entertainment" count={SCAN_DATA.comedy.length}/>
-          {renderCards(SCAN_DATA.comedy,"co")}
-        </>)}
-
-        {tab==="redrocks"&&(<>
-          <SH title="Red Rocks" sub="9,525 cap · Morrison, CO" count={SCAN_DATA.redRocks.length}/>
-          <AB emoji="🏔️" title="Red Rocks Amphitheatre" sub="2nd most-attended US venue. Tight capacity = instant scarcity. Iconic venue premium." color="#f97316"/>
-          {renderCards(SCAN_DATA.redRocks,"rr")}
-        </>)}
-
-        {tab==="pipeline"&&(<>
-          <SH title="Pipeline" sub="Support act → headline trajectory" count={SCAN_DATA.pipeline.length}/>
-          <AB emoji="🔗" title="Support acts get 10-15K new eyes per night" sub="When they announce headline dates in smaller rooms afterward, those rooms sell out instantly." color="#818cf8"/>
-          <div style={{padding:"12px 16px",background:"rgba(129,140,248,0.04)",border:"1px solid rgba(129,140,248,0.1)",borderRadius:8,marginBottom:16,fontSize:12,color:"#a1a1aa",lineHeight:1.7}}>
-            <strong style={{color:"#818cf8"}}>How it works:</strong> Support act plays arenas → builds audience → announces headline tour in 1-5K rooms → sells out before brokers notice → 2-5x premium. <span style={{color:"#fbbf24",fontWeight:600}}>Window: 3-6 months after support run.</span>
-          </div>
-          {renderCards(SCAN_DATA.pipeline,"pl")}
-        </>)}
-
-        {tab==="gap"&&(<>
-          <SH title="Streaming Gap" sub="Listeners ÷ venue cap = opportunity" count={SCAN_DATA.streamingGap.length}/>
-          <AB emoji="📊" title="When streaming dwarfs venue size" sub="The wider the gap ratio, the bigger the flip potential." color="#fb923c"/>
-          <div style={{padding:"12px 16px",background:"rgba(251,146,60,0.04)",border:"1px solid rgba(251,146,60,0.1)",borderRadius:8,marginBottom:16,fontSize:12,color:"#a1a1aa",lineHeight:1.7}}>
-            <strong style={{color:"#fb923c"}}>Gap Ratio:</strong> Monthly listeners ÷ venue cap. <span style={{color:"#fbbf24",fontWeight:600}}>Healthy: ~1,000:1. Opportunity: 3,000:1+.</span> Chappell Roan went 500 cap → stadiums at 10,000:1.
-          </div>
-          {renderCards(SCAN_DATA.streamingGap,"sg")}
-        </>)}
-
-        {tab==="deadzone"&&(<>
-          <SH title="Dead Zones" sub="Geographic demand funnels" count={SCAN_DATA.deadZones.length}/>
-          <AB emoji="🗺️" title="When a tracked artist hits a dead zone, buy immediately" sub="Regions where 5+ states funnel into one venue." color="#f59e0b"/>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(360px,1fr))",gap:12,marginBottom:32}}>
-            {SCAN_DATA.deadZones.map((z,i)=>(
-              <div key={i} style={{background:"#18181b",border:`1px solid ${z.color}22`,borderRadius:12,padding:"18px 20px",overflow:"hidden",position:"relative"}}>
-                <div style={{height:3,background:z.color,position:"absolute",top:0,left:0,right:0}}/>
-                <div style={{fontSize:14,fontWeight:700,color:z.color,marginBottom:8}}>{z.zone}</div>
-                <div style={{fontSize:12,color:"#fafafa",fontWeight:600,marginBottom:6}}>📍 {z.cities}</div>
-                <div style={{fontSize:12,color:"#a1a1aa",lineHeight:1.6,marginBottom:10}}>{z.why}</div>
-                <div style={{padding:"8px 12px",background:"rgba(251,191,36,0.04)",border:"1px solid rgba(251,191,36,0.1)",borderRadius:6,marginBottom:8}}>
-                  <span style={{fontSize:9,fontWeight:700,letterSpacing:"1px",color:"#fbbf24"}}>EXAMPLES: </span>
-                  <span style={{fontSize:11,color:"#d4d4d8"}}>{z.examples}</span>
-                </div>
-                <div style={{padding:"8px 12px",background:"rgba(167,139,250,0.04)",border:"1px solid rgba(167,139,250,0.1)",borderRadius:6}}>
-                  <span style={{fontSize:9,fontWeight:700,letterSpacing:"1px",color:"#c4b5fd"}}>PLAYBOOK: </span>
-                  <span style={{fontSize:11,color:"#d4d4d8"}}>{z.playbook}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </>)}
-
-        {tab==="radio"&&(<>
-          <SH title="Radio Monitor" sub="AAA / Alt radio leading indicators" count={SCAN_DATA.radioMonitor.length}/>
-          <AB emoji="📻" title="Radio adds → 6-8 week build → peak demand at tour" sub="When a song peaks on radio, live demand has quietly doubled." color="#22d3ee"/>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(360px,1fr))",gap:12,marginBottom:32}}>
-            {SCAN_DATA.radioMonitor.map((r,i)=>(
-              <div key={i} style={{background:"#18181b",border:"1px solid #27272a",borderRadius:12,padding:"16px 20px",overflow:"hidden",position:"relative"}}>
-                <div style={{height:3,background:r.trend.includes("PEAK")?"#ef4444":r.trend.includes("RISING")||r.trend.includes("CROSSOVER")||r.trend.includes("RESURGING")?"#34d399":"#52525b",position:"absolute",top:0,left:0,right:0}}/>
-                <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8}}>
-                  <span style={{fontSize:10,fontWeight:700,padding:"3px 8px",borderRadius:5,letterSpacing:"0.5px",
-                    background:r.trend.includes("PEAK")?"rgba(239,68,68,0.1)":r.trend.includes("RISING")||r.trend.includes("CROSSOVER")||r.trend.includes("RESURGING")?"rgba(52,211,153,0.1)":"rgba(113,113,122,0.1)",
-                    color:r.trend.includes("PEAK")?"#ef4444":r.trend.includes("RISING")||r.trend.includes("CROSSOVER")||r.trend.includes("RESURGING")?"#34d399":"#71717a",
-                    border:`1px solid ${r.trend.includes("PEAK")?"rgba(239,68,68,0.2)":r.trend.includes("RISING")||r.trend.includes("CROSSOVER")||r.trend.includes("RESURGING")?"rgba(52,211,153,0.2)":"rgba(113,113,122,0.2)"}`,
-                  }}>{r.trend} {r.position}</span>
-                  <span style={{fontSize:14,fontWeight:600,color:"#fafafa"}}>{r.artist}</span>
-                </div>
-                <div style={{fontSize:13,color:"#22d3ee",fontWeight:500,marginBottom:6}}>"{r.song}" — {r.weeks}</div>
-                <div style={{fontSize:11,color:"#71717a",marginBottom:6}}>🎟️ {r.tourStatus}</div>
-                <div style={{fontSize:12,color:"#a1a1aa",lineHeight:1.6}}>{r.signal}</div>
-              </div>
-            ))}
-          </div>
-        </>)}
-
-        {tab==="method"&&(
-          <div>
-            <SH title="Scoring Methodology"/>
-            <div style={{marginBottom:24}}>
-              <h3 style={{fontSize:14,fontWeight:700,color:"#fafafa",marginBottom:12}}>Music Score (0-100)</h3>
-              <p style={{fontSize:12,color:"#52525b",marginBottom:12}}>S (85+) · A (70-84) · B (55-69) · C (&lt;55)</p>
-              <div style={{display:"flex",flexDirection:"column",gap:8}}>
-                {[["Touring Scarcity","30%","Years since last tour ÷ demand"],["Streaming Volume","25%","Monthly listeners vs genre peers"],["Social Buzz","20%","Reddit/X/IG mentions"],["Momentum","15%","Viral moments, album drops"],["Market Gap","10%","No secondary comps"]].map(([f,w,d])=>(
-                  <div key={f} style={{background:"#18181b",border:"1px solid #27272a",borderRadius:10,padding:"14px 18px",display:"flex",alignItems:"center",gap:16}}>
-                    <div style={{fontSize:16,fontWeight:800,color:"#a78bfa",width:44,flexShrink:0}}>{w}</div>
-                    <div><div style={{fontSize:13,fontWeight:600,color:"#e4e4e7"}}>{f}</div><div style={{fontSize:11,color:"#52525b"}}>{d}</div></div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 style={{fontSize:14,fontWeight:700,color:"#34d399",marginBottom:12}}>Sports Score (0-100)</h3>
-              <div style={{display:"flex",flexDirection:"column",gap:8}}>
-                {[["Team Momentum","30%","Win streak, playoff positioning"],["Historical Turnaround","25%","Cinderella factor"],["Market Gap","20%","Face vs secondary spread"],["Playoff Proximity","15%","Tournament implications"],["Narrative","10%","Cultural moment"]].map(([f,w,d])=>(
-                  <div key={f} style={{background:"#18181b",border:"1px solid rgba(52,211,153,0.15)",borderRadius:10,padding:"14px 18px",display:"flex",alignItems:"center",gap:16}}>
-                    <div style={{fontSize:16,fontWeight:800,color:"#34d399",width:44,flexShrink:0}}>{w}</div>
-                    <div><div style={{fontSize:13,fontWeight:600,color:"#e4e4e7"}}>{f}</div><div style={{fontSize:11,color:"#52525b"}}>{d}</div></div>
-                  </div>
-                ))}
+            <div style={{padding:"16px 20px",background:"#18181b",border:"1px solid rgba(244,114,182,.2)",borderRadius:8}}>
+              <h3 style={{fontFamily:"'Anybody',sans-serif",fontSize:14,fontWeight:600,color:"#f472b6",marginBottom:8}}>💎 Niche Sports Adjustments</h3>
+              <div style={{fontSize:12,color:"#71717a",lineHeight:1.6}}>
+                For niche sports (volleyball, gymnastics, lacrosse, MLV): Supply Constraint is dominant — limited capacity + limited events/season. Growth Trajectory matters more than current pricing (volleyball viewership +36% YoY). Affluence of Fanbase affects willingness to pay. Low broker competition = more arbitrage.
               </div>
             </div>
           </div>
         )}
 
-        {/* Footer */}
         <div style={{marginTop:40,paddingTop:16,borderTop:"1px solid #18181b",display:"flex",justifyContent:"space-between",fontSize:11,color:"#27272a"}}>
-          <span>OPTIMUS — Ticket Intelligence</span>
-          <span>{SCAN_DATA.lastRun}</span>
+          <span>OPTIMUS v10.0 — INTELLIGENCE EDITION</span>
+          <span>BUILT FOR ZAC · NA ONLY · PIPELINE + GAP SCANNER + DEAD ZONES + RADIO + ALL MODULES</span>
         </div>
       </div>
     </div>
