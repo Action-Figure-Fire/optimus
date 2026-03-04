@@ -15,8 +15,44 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 3, 2026 — Daily Scan v17 · OPTIMUS INTELLIGENCE · PRESALE TSUNAMI WEEK",
+  lastRun: "March 4, 2026 — Daily Scan v18 · OPTIMUS INTELLIGENCE · PRESALE TSUNAMI WEEK",
   nextWeek: [
+    {
+      name: "Gorillaz — The Mountain NA Tour (GENERAL ONSALE)", tier: "S", score: 92, category: "Alt-Rock Icons — Arena Tour", genre: "Alt-Rock / Electronic / Hip-Hop", ticketLink: "https://www.ticketmaster.com/gorillaz-tickets/artist/806811",
+      streams: "25M+ monthly. 'The Mountain' (Feb 27). First extensive NA run since 2022.", lastTour: "2022 (last NA arena tour)", scarcity: "EXTREME — 22 arena dates Sep-Oct. MSG, United Center, Kia Forum, Climate Pledge. Little Simz + Deltron 3030.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 GENERAL ONSALE MON MAR 9 10AM LOCAL",
+      saleDetails: "KONG presale Wed Mar 4 ✅. Citi presale Wed Mar 4 ✅. Artist presale Fri Mar 6. General onsale Mon Mar 9 10am local via Ticketmaster. 22 dates: Sep 17 Orlando → Oct 31 Seattle (Halloween closer). SNL debut this Saturday boosts demand.",
+      reasoning: "General onsale Mon Mar 9 for a 22-date arena tour that has been building hype all week via presales + SNL debut Saturday. By Monday, demand will be at peak. Target the gap cities and smaller markets.",
+      action: "🚨 BUY GENERAL ONSALE MON MAR 9 — Charlotte, Oakland, SLC, Denver. Halloween Seattle if still available.",
+      targetCities: [
+        {emoji:"🎃",city:"Seattle, WA",venue:"Climate Pledge Arena (Oct 31)",date:"Oct 31",why:"HALLOWEEN CLOSER. Tour finale premium + cosplay energy."},
+        {emoji:"🏔️",city:"Denver, CO",venue:"Ball Arena (Oct 18)",date:"Oct 18",why:"Mountain West funnel. Only CO date."},
+        {emoji:"⛷️",city:"Salt Lake City, UT",venue:"Delta Center (Oct 20)",date:"Oct 20",why:"Small market. Zero broker competition."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "BTS — ARIRANG World Tour (80+ Stadium Shows)", tier: "S", score: 95, category: "K-Pop Global Phenomenon — Stadium Tour", genre: "K-Pop / Pop", ticketLink: "https://www.ticketmaster.com/bts-tickets/artist/2110227",
+      streams: "55M+ monthly. Post-military reunion. 80+ stadium dates worldwide.", lastTour: "2022 (Permission to Dance — before military service)", scarcity: "EXTREME — First full-group tour in 4 YEARS since military service. SOLD OUT in most markets. Secondary prices 3-5x face. Theater live-viewing screenings added for overflow demand.",
+      venueSize: "Stadium (40-60K cap)", saleStatus: "🔴 MOSTLY SOLD OUT — SECONDARY MARKET PLAY",
+      saleDetails: "Tour launches Apr 9 Goyang, South Korea. 80+ stadium shows worldwide. NA dates include Tampa (Apr 25-28), El Paso (May 2-3), Las Vegas (May 23-28), more TBA. Most dates SOLD OUT on primary. Theater live-viewing screenings via Fandango (Apr 11 Goyang, Apr 18 Tokyo). Secondary market active on StubHub, SeatGeek.",
+      reasoning: "BTS returning after 4 years of military service is the biggest reunion in music history. ARMY (their fanbase) is the most organized and passionate fanbase in the world. 80+ stadium shows and STILL sold out. The secondary market premiums are 3-5x face. Theater live-viewings being added proves overflow demand. NA dates (Tampa, El Paso, Las Vegas) are the resale opportunities — especially El Paso (smaller market, border city) and multi-night Vegas (completist demand for all nights).",
+      action: "SECONDARY MARKET — Buy secondary tickets for El Paso (smallest NA market = highest demand-to-supply), early Vegas nights (completists buy all 6 nights). Theater screening tix are low-risk flip.",
+      targetCities: [
+        {emoji:"🌵",city:"El Paso, TX",venue:"TBA Stadium",date:"May 2-3",why:"SMALLEST NA market. Border city = Mexico demand floods in. BTS in El Paso = extreme scarcity."},
+        {emoji:"🎰",city:"Las Vegas, NV",venue:"TBA Stadium (6 nights)",date:"May 23-28",why:"6-night Vegas residency. Completists buy all nights. Later nights typically more expensive."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Shakey Graves — 2026 Tour", tier: "B+", score: 74, category: "Indie/Americana — Theater Tour", genre: "Indie Folk / Americana",
+      streams: "5M+ monthly. Austin-based singer-songwriter with rabid live following.", lastTour: "2025 (headline theater circuit)", scarcity: "MODERATE-HIGH — Theater routing (1.5-3K cap). Loyal fanbase that sells out every room.",
+      venueSize: "Theater (1.5-3K cap)", saleStatus: "🔴 VENUE PRESALE TODAY MAR 4 10AM — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Artist presale Tue Mar 3 ✅. Venue presale TODAY Wed Mar 4 10am local. General onsale Fri Mar 6 10am local via Ticketmaster.",
+      reasoning: "Shakey Graves has one of the most devoted fanbases in Americana — his shows sell out and his fans travel. Theater routing (1.5-3K cap) constrains supply against a fanbase that could fill amphitheaters. Any smaller market dates will sell out quickly.",
+      action: "BUY VENUE PRESALE TODAY — Target smaller market theater dates where broker competition is zero.",
+      region: "NA"
+    },
     {
       name: "Eric Clapton — Fall 2026 US Tour 🎸", tier: "S", score: 92, category: "ROCK LEGEND — LIMITED DATES", genre: "Blues Rock / Classic Rock",
       streams: "20M+ monthly but LEGACY DEMAND = 100M+ album units. Last US tour 2024.", lastTour: "2024 (US dates)", scarcity: "EXTREME — Only 6 US dates. Arenas 15-20K cap. Clapton is 81 years old. Every show could be the last. Jimmie Vaughan as support. Detroit, Cincinnati, Chicago, Milwaukee, St. Paul/Hinckley + 1 more.",
@@ -99,10 +135,10 @@ const SCAN_DATA = {
     {
       name: "Outside Lands 2026 — Loyalty Presale", tier: "A", score: 80, category: "Major Festival", genre: "Multi-Genre Festival", ticketLink: "https://www.sfoutsidelands.com/",
       streams: "San Francisco's premier music festival. Golden Gate Park. Historically features headliners like Radiohead, Kendrick, Tyler, Gorillaz.", lastTour: "Annual (2025 sold out multiple days)", scarcity: "HIGH — New presale structure eliminates Eager Beaver blind-buy. Loyalty Presale (past attendees) Tue Mar 3 noon PT gets to SEE LINEUP before buying. General sale Thu Mar 5 noon PT at higher prices.",
-      venueSize: "Festival (60-80K capacity)", saleStatus: "🔴 LOYALTY PRESALE TUE MAR 3 NOON PT — GENERAL SALE THU MAR 5 NOON PT",
-      saleDetails: "Lineup reveal Mar 3. Loyalty Presale Tue Mar 3 noon PT (past wristband holders). Ranger Dave Presale also Mar 3. Chase presale Tue Mar 3 noon. General sale Thu Mar 5 noon PT. New pricing structure — presale tickets cheaper than general.",
-      reasoning: "Outside Lands changed their entire ticketing structure for 2026 — eliminated Eager Beaver (blind presale) in favor of Loyalty Presale where you SEE the lineup before buying. This is huge for resale because: (1) If the lineup is stacked, presale tickets bought at lower prices instantly have secondary value. (2) Past attendees get first access at lowest prices. (3) General sale prices are higher, creating immediate arbitrage between presale and general pricing tiers. SF festival market is premium — affluent tech demo pays top dollar.",
-      action: "BUY LOYALTY PRESALE IF LINEUP IS STRONG — Check lineup at noon Tue Mar 3. If headliners are elite, buy immediately at presale pricing. Flip at general sale pricing or above.",
+      venueSize: "Festival (60-80K capacity)", saleStatus: "🔴 LINEUP REVEALED — GENERAL SALE THU MAR 5 NOON PT",
+      saleDetails: "LINEUP REVEALED: Charli XCX, Rufus Du Sol, The Strokes, The xx, Baby Keem, Turnstile, Djo, Empire of the Sun, Dijon. Loyalty + Chase presales ✅. Ranger presale Wed Mar 4 noon PT. General sale Thu Mar 5 noon PT. Presale tickets cheaper than general.",
+      reasoning: "LINEUP IS ELITE. Charli XCX (brat era, 50M+ monthly), The Strokes (indie legends), Rufus Du Sol (festival circuit kings). Deep undercard: The xx (comeback!), Baby Keem (Kendrick protégé), Turnstile (hardcore crossover), Djo (streaming gap king). This is the strongest OSL lineup in years. Presale pricing is BELOW general sale, creating instant arbitrage. SF tech demo pays premium.",
+      action: "🚨 BUY RANGER PRESALE TODAY NOON PT — Lineup is stacked. Presale < general sale pricing = guaranteed flip.",
       region: "NA"
     },
     {
@@ -214,10 +250,26 @@ const SCAN_DATA = {
   ],
   thisWeek: [
     {
+      name: "Gorillaz — The Mountain NA Tour (22 Arena Dates)", tier: "S", score: 92, category: "Alt-Rock Icons — Arena Tour", genre: "Alt-Rock / Electronic / Hip-Hop", ticketLink: "https://www.ticketmaster.com/gorillaz-tickets/artist/806811",
+      streams: "25M+ monthly. New album 'The Mountain' (Feb 27). Animated icons — 2D, Murdoc, Noodle, Russel.", lastTour: "2022 (last extensive NA run)", scarcity: "EXTREME — 22 arena dates Sep 17 – Oct 31. First extensive NA run since 2022. MSG, United Center, Kia Forum, Climate Pledge. Little Simz + Deltron 3030 support. SNL debut this weekend.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 KONG CARD PRESALE LIVE TODAY MAR 4 10AM — CITI PRESALE TODAY NOON — GENERAL MAR 9 10AM LOCAL",
+      saleDetails: "KONG Card presale TODAY Wed Mar 4 10am local. Citi presale TODAY Wed Mar 4 noon local (citientertainment.com). Artist presale Fri Mar 6 10am local (signup.ticketmaster.com/gorillaz). General onsale Mon Mar 9 10am local via Ticketmaster. Little Simz on select dates, Deltron 3030 on ALL dates. VIP packages via VIP Nation. SNL debut this Saturday (Ryan Gosling hosting).",
+      reasoning: "Gorillaz haven't done an extensive NA run since 2022 — 4-year gap. 'The Mountain' just dropped Feb 27 to strong reviews. 22-date arena tour with Little Simz AND Deltron 3030 (Del the Funky Homosapien = original Gorillaz collaborator!) is a dream lineup. MSG, United Center, Kia Forum, Climate Pledge — all premier rooms. Halloween closer in Seattle (Oct 31) = premium. SNL debut THIS WEEKEND will spike demand. ROUTING GAPS: No Houston, no Nashville, no Minneapolis, no Indianapolis, no Pittsburgh. Denver (Ball Arena Oct 18) absorbs entire Mountain West. Charlotte is the only Southeast date besides Miami/Orlando/Atlanta/DC. Oakland (not SF proper) is interesting — smaller market arena. Portland is only PNW option besides Seattle.",
+      action: "🚨 KONG PRESALE LIVE TODAY 10AM — Target: Charlotte (only mid-Atlantic/Southeast gap fill), Oakland (smaller market), Denver (Mountain West funnel). Halloween Seattle Oct 31 = highest premium. Skip NYC/LA where every broker competes.",
+      targetCities: [
+        {emoji:"🎃",city:"Seattle, WA",venue:"Climate Pledge Arena (Oct 31)",date:"Oct 31",why:"HALLOWEEN CLOSER. Gorillaz on Halloween = cosplay event energy. Tour finale premium."},
+        {emoji:"🏁",city:"Charlotte, NC",venue:"Spectrum Center (Sep 23)",date:"Sep 23",why:"Only Southeast date between DC and Atlanta. Entire NC/SC/VA corridor funnels here."},
+        {emoji:"🌲",city:"Oakland, CA",venue:"Oakland Arena (Oct 28)",date:"Oct 28",why:"Not SF proper — Oakland Arena is smaller/less broker attention than Chase Center. Bay Area demand compressed."},
+        {emoji:"🏔️",city:"Denver, CO",venue:"Ball Arena (Oct 18)",date:"Oct 18",why:"Only Mountain West date. CO/UT/NM/WY all funnel here. Gorillaz + Denver = perfect vibe match."},
+        {emoji:"⛷️",city:"Salt Lake City, UT",venue:"Delta Center (Oct 20)",date:"Oct 20",why:"Small market between Denver and Phoenix. Mormon millennial demo + college crowd. Zero broker competition."},
+      ],
+      region: "NA"
+    },
+    {
       name: "Metallica — Life Burns Faster at the Sphere", tier: "S", score: 96, category: "Metal Legends — Sphere Residency", genre: "Heavy Metal / Thrash", ticketLink: "https://seatgeek.com/metallica-tickets",
       streams: "28M+ monthly. One of the biggest bands in history. 125M+ albums sold worldwide.", lastTour: "2025 (M72 World Tour — stadiums)", scarcity: "EXTREME — 8 Sphere dates only (Oct 1, 3, 15, 17, 22, 24, 29, 31). 'No Repeat Weekends' = unique setlist each night. Sphere ~18K cap. Halloween show Oct 31 = crown jewel.",
-      venueSize: "Sphere Las Vegas (~18K cap)", saleStatus: "🔴 FIFTH MEMBER PRESALE LIVE TODAY MAR 3 10AM PT — ONSALE FRI MAR 6 10AM PT",
-      saleDetails: "Legacy Member presale was Mon Mar 2 (CHECK RESULTS). Fifth Member fan club presale TODAY Tue Mar 3 10am PT. SiriusXM presale Thu Mar 5 10am PT. General onsale Fri Mar 6 10am PT. 2-night and single-night packages available.",
+      venueSize: "Sphere Las Vegas (~18K cap)", saleStatus: "🔴 SIRIUSXM PRESALE THU MAR 5 10AM PT — GENERAL ONSALE FRI MAR 6 10AM PT",
+      saleDetails: "Legacy Member presale Mon Mar 2 ✅. Fifth Member presale Tue Mar 3 ✅. SiriusXM presale Thu Mar 5 10am PT. General onsale Fri Mar 6 10am PT. 2-night and single-night packages available.",
       reasoning: "This is arguably the biggest ticket drop of the year. Metallica at the Sphere is going to be LEGENDARY — the most immersive venue on earth + the biggest metal band in history. Only 8 shows total. 'No Repeat Weekends' means each pair of shows has completely unique setlists, driving completist demand for multiple nights. The Sphere has proven with BSB (35 sold-out dates) and U2 that it commands massive secondary premiums just from the venue alone. Add Metallica and you get nuclear-level demand. The Halloween pair (Oct 29 & 31) will be the most expensive — Metallica + Halloween + Sphere is a once-in-a-lifetime combination.",
       action: "🚨 HIGHEST PRIORITY — Legacy presale LIVE NOW. Sign up for EVERY presale. Buy 2-night packages (Thu+Sat). Halloween weekend (Oct 29+31) will command the highest premiums.",
       targetCities: [
@@ -229,8 +281,8 @@ const SCAN_DATA = {
     {
       name: "Jason Aldean — Songs About Us Tour", tier: "A", score: 82, category: "Country Arena/Amphitheater", genre: "Country", ticketLink: "https://seatgeek.com/jason-aldean-tickets",
       streams: "18M+ monthly. 27 #1 country singles. New album 'Songs About Us' drops Apr 24.", lastTour: "2025-26 (Full Throttle World Tour)", scarcity: "MEDIUM-HIGH — 22 NA dates, amphitheater/arena mix. Support: Chase Matthew, Mackenzie Carpenter, Dee Jay Silver.",
-      venueSize: "Amphitheater / Arena (8-20K cap)", saleStatus: "🔴 ALDEAN ARMY PRESALE TUE MAR 3 10AM — ONSALE FRI MAR 6 10AM LOCAL",
-      saleDetails: "Aldean Army fan club presale Tue Mar 3 10am local. Additional presales throughout week. General onsale Fri Mar 6 10am local via Ticketmaster/LiveNation. Tour dates: Jul 16 (Bangor ME) through Sep 26 (Gilford NH). Sanford Stadium UGA w/ Luke Bryan Apr 25.",
+      venueSize: "Amphitheater / Arena (8-20K cap)", saleStatus: "🔴 PRESALES ACTIVE — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Aldean Army fan club presale Tue Mar 3 ✅. Additional presales throughout week. General onsale Fri Mar 6 10am local via Ticketmaster/LiveNation. Tour dates: Jul 16 (Bangor ME) through Sep 26 (Gilford NH). Sanford Stadium UGA w/ Luke Bryan Apr 25.",
       reasoning: "Aldean is a touring machine — consistent sellouts. New album dropping Apr 24 means tour demand peaks as album hype builds. Amphitheater routing constrains supply vs. his demand level. Key plays: Nampa ID, Bossier City LA, Brandon MS = zero broker competition.",
       action: "BUY PRESALE TUE MAR 3 — Target small-market amphitheater dates. Nampa ID, Bossier City LA, Brandon MS = zero broker competition.",
       targetCities: [
@@ -243,10 +295,10 @@ const SCAN_DATA = {
     {
       name: "Joji — SOLARIS World Tour", tier: "A", score: 85, category: "Internet Icon — Arena Breakout", genre: "Indie Pop / R&B / Alternative", ticketLink: "https://seatgeek.com/joji-tickets",
       streams: "25M+ monthly. 'Glimpse of Us' = 1.5B+ streams. Former Filthy Frank → mainstream crossover.", lastTour: "2023 (Smithereens Tour — sold out arenas)", scarcity: "HIGH — 18 NA arena dates. Arena tour after album drop = peak demand.",
-      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 CITI PRESALE TUE MAR 3 10AM — ONSALE FRI MAR 6 10AM LOCAL",
-      saleDetails: "Citi presale Tue Mar 3 10am local through Wed Mar 4 9am. Additional presales through week. General onsale Fri Mar 6 10am local via Ticketmaster. NA dates Jun 16 (Newark) through Jul 23 (Denver).",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🟡 CITI PRESALE ENDED — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Citi presale Tue Mar 3 ✅ (ended). Additional presales through week. General onsale Fri Mar 6 10am local via Ticketmaster. NA dates Jun 16 (Newark) through Jul 23 (Denver).",
       reasoning: "Joji has massive DEDICATED internet fanbase PLUS mainstream pop success. Arena tour supporting new album. His demo (18-28, internet-native) buys impulsively and pays secondary premiums. SLC is smallest market with best margins.",
-      action: "HIT PRESALE TUE MAR 3 — Target SLC (smallest market), Charlotte (Southeast gap), Portland (PNW).",
+      action: "ONSALE FRI MAR 6 — Target SLC (smallest market), Charlotte (Southeast gap), Portland (PNW).",
       targetCities: [
         {emoji:"⛷️",city:"Salt Lake City, UT",venue:"Maverik Center",date:"Jul 21",why:"SMALLEST market on tour. Mountain West funnel. Zero broker competition."},
         {emoji:"🏁",city:"Charlotte, NC",venue:"Spectrum Center",date:"Jun 29",why:"Only Southeast date besides ATL/Orlando."},
@@ -256,27 +308,27 @@ const SCAN_DATA = {
     {
       name: "Outside Lands 2026 — Lineup Reveal + Loyalty Presale", tier: "A", score: 80, category: "Major Festival", genre: "Multi-Genre Festival", ticketLink: "https://www.sfoutsidelands.com/",
       streams: "San Francisco's premier music festival. Golden Gate Park.", lastTour: "Annual (2025 sold out multiple days)", scarcity: "HIGH — New presale structure. Loyalty Presale sees lineup BEFORE buying.",
-      venueSize: "Festival (60-80K capacity)", saleStatus: "🔴 LINEUP REVEAL + LOYALTY PRESALE TUE MAR 3 NOON PT — GENERAL THU MAR 5 NOON PT",
-      saleDetails: "Lineup reveal Mar 3. Loyalty Presale Tue Mar 3 noon PT (past wristband holders 2021-2025). Chase presale Tue Mar 3 noon PT. Ranger presale Wed Mar 4 noon PT. General sale Thu Mar 5 noon PT. No more Eager Beaver blind presale.",
-      reasoning: "OSL eliminated Eager Beaver (blind presale) in favor of Loyalty Presale where you SEE the lineup before buying. If lineup is stacked, presale tickets at lower prices = instant arbitrage vs general sale. SF tech demo pays top dollar.",
-      action: "🚨 CHECK LINEUP AT NOON TUE MAR 3 — If headliners are elite, buy immediately at presale pricing. Flip at general sale pricing or above.",
+      venueSize: "Festival (60-80K capacity)", saleStatus: "🔴 LINEUP REVEALED — RANGER PRESALE TODAY MAR 4 NOON PT — GENERAL THU MAR 5 NOON PT",
+      saleDetails: "LINEUP REVEALED: Charli XCX, Rufus Du Sol, The Strokes headlining. Also: The xx, Baby Keem, Turnstile, Djo, Empire of the Sun, Dijon. Loyalty presale Tue Mar 3 ✅. Ranger Dave presale TODAY Wed Mar 4 noon PT. Chase presale ✅. General sale Thu Mar 5 noon PT.",
+      reasoning: "LINEUP IS STACKED. Charli XCX (brat summer era, 50M+ monthly), The Strokes (nostalgia premium), Rufus Du Sol (festival circuit dominance). Plus The xx (comeback!), Baby Keem, Turnstile, Djo — deep undercard. This is a buy at presale pricing. SF tech demo will pay top dollar. Charli XCX alone could headline a stadium — she's playing a festival slot = massive value. Ranger presale TODAY is the window.",
+      action: "🚨 BUY RANGER PRESALE TODAY NOON PT — Lineup is elite (Charli XCX + Strokes + Rufus Du Sol). Presale pricing will be below general sale. Flip at general sale pricing or above. General sale Thu Mar 5.",
       region: "NA"
     },
     {
       name: "Stardew Valley: Symphony of Seasons — Red Rocks 🎮", tier: "A", score: 88, category: "VIDEO GAME SYMPHONY — 10-YEAR ANNIVERSARY", genre: "Orchestral / Gaming",
       streams: "30M+ players worldwide. Indie game cultural phenomenon.", lastTour: "Never — First symphony performance", scarcity: "EXTREME — One night only Oct 25, 2026 at Red Rocks. 9,525 cap for 30M+ global fanbase.",
-      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🔴 NEWSLETTER PRESALE TODAY MAR 2 10AM MT — GENERAL WED MAR 4 10AM MT",
-      saleDetails: "Newsletter subscriber presale Mon Mar 2 10am MT (signup by Mar 1 midnight). General onsale Wed Mar 4 10am MT via RedRocksOnline.com. One night only: October 25, 2026.",
+      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🔴 GENERAL ONSALE TODAY MAR 4 10AM MT",
+      saleDetails: "Newsletter presale Mon Mar 2 ✅. GENERAL ONSALE TODAY Wed Mar 4 10am MT via RedRocksOnline.com. One night only: October 25, 2026. BUY NOW.",
       reasoning: "Stardew Valley is a cultural phenomenon — 30M+ players. Gaming symphonies have proven demand: Zelda/FF concerts sell out instantly. FIRST Stardew symphony, at Red Rocks, for 10-year anniversary. Gaming demo (18-35) buys impulsively. One night only = global demand into 9,525 seats.",
-      action: "🚨 PRESALE LIVE TODAY — General onsale Wed Mar 4 10AM MT. Gaming + Red Rocks + anniversary = instant sellout.",
+      action: "🚨 GENERAL ONSALE TODAY 10AM MT — Gaming + Red Rocks + 10-year anniversary = instant sellout. BUY IMMEDIATELY.",
       region: "NA"
     },
     {
       name: "Tucker Wetmore — Red Rocks Headline Debut", tier: "A", score: 80, category: "Country Breakout — First Red Rocks", genre: "Country", ticketLink: "https://www.axs.com/events/1331803/tucker-wetmore-tickets?skin=redrocks",
       streams: "Rising fast. 'Wine Into Whiskey' = breakout hit.", lastTour: "2025-26 (first major headline tour)", scarcity: "EXTREME — First-EVER Red Rocks headline. 9,525 cap. One night only (Oct 27). Night before Koe Wetzel Oct 28.",
-      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🔴 CITI PRESALE TUE MAR 3 — ARTIST PRESALE WED MAR 4 — ONSALE FRI MAR 6 10AM MT",
-      saleDetails: "Citi presale Tue Mar 3 10am. Artist presale Wed Mar 4 10am. General onsale Fri Mar 6 10am MT via RedRocksOnline.com. Oct 27 — night before Koe Wetzel's Red Rocks show Oct 28.",
-      reasoning: "Tucker Wetmore's first Red Rocks headline = milestone show. First Red Rocks for breakout artists = massive FOMO. Oct 27 is night BEFORE Koe Wetzel's Red Rocks show (Oct 28), creating potential 2-night country weekend. Pipeline play: Tucker at 9,525 today = 15K amphitheaters by 2027.",
+      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🔴 ARTIST PRESALE LIVE TODAY MAR 4 10AM — ONSALE FRI MAR 6 10AM MT",
+      saleDetails: "Citi presale Tue Mar 3 ✅. ARTIST PRESALE TODAY Wed Mar 4 10am local. General onsale Fri Mar 6 10am MT via RedRocksOnline.com. Oct 27 — night before Koe Wetzel's Red Rocks show Oct 28. Tucker just added 17 NEW Brunette World Tour dates including Red Rocks debut. New single 'Sunburn' drops Mar 13.",
+      reasoning: "Tucker Wetmore's first Red Rocks headline = milestone show. Just added 17 NEW dates to Brunette World Tour — momentum is massive. First Red Rocks for breakout artists = massive FOMO. Oct 27 is night BEFORE Koe Wetzel's Red Rocks show (Oct 28), creating potential 2-night country weekend at Red Rocks. Pipeline play: Tucker at 9,525 today = 15K amphitheaters by 2027. New single 'Sunburn' (Mar 13) will keep hype building.",
       action: "🚨 BUY PRESALE MAR 3-4 — First Red Rocks for breakout country act = guaranteed sellout. GA and premium reserved will flip well.",
       region: "NA"
     },
@@ -295,8 +347,8 @@ const SCAN_DATA = {
     {
       name: "Sting — 3.0 Fall Tour (12 NEW Dates)", tier: "A", score: 83, category: "Rock Legend — Theater/Amphitheater", genre: "Rock / Pop", ticketLink: "https://www.ticketmaster.com/sting-tickets/artist/723578",
       streams: "22M+ monthly. The Police + solo catalog = one of the most recognizable artists alive.", lastTour: "2025-26 (Sting 3.0 Tour — spring/summer legs)", scarcity: "HIGH — 12 NEW fall dates added. Intimate power trio format. 6-night Brooklyn Paramount residency. Montreal return to first Police venue. New stops: St. Louis, Indianapolis, Akron, Cincinnati, Wallingford CT, Tampa. Nashville + Pittsburgh TBA.",
-      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🔴 FAN CLUB PRESALE LIVE TODAY MAR 3 10AM — LIVE NATION THU MAR 5 — ONSALE FRI MAR 6 10AM LOCAL",
-      saleDetails: "Fan club presale LIVE TODAY Tue Mar 3 10am local via sting.com. Live Nation presale Thu Mar 5 10am. General onsale Fri Mar 6 10am local. 12 new fall dates including St. Louis, Indianapolis, Montreal, Akron, Cincinnati, Wallingford CT, Brooklyn (6-night residency), Tampa. Nashville + Pittsburgh to be announced. Fiction Plane supporting.",
+      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🔴 LIVE NATION PRESALE THU MAR 5 10AM — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Fan club presale Tue Mar 3 ✅. Live Nation presale Thu Mar 5 10am. General onsale Fri Mar 6 10am local. 12 new fall dates including St. Louis, Indianapolis, Montreal, Akron, Cincinnati, Wallingford CT, Brooklyn (6-night residency), Tampa. Nashville + Pittsburgh to be announced. Fiction Plane supporting.",
       reasoning: "Sting in small venues is always money. The 3.0 power trio format = intimate experience that fans pay premium for. 6-night Brooklyn Paramount residency will have collector demand. Montreal's Théâtre St-Denis date (return to first Police venue) = sentimental premium. Theater routing means 2-5K cap vs arena demand = guaranteed scarcity. Minneapolis, St. Louis, Tampa all strong secondary markets.",
       action: "🚨 HIT FAN CLUB PRESALE TUE MAR 3 — Brooklyn Paramount residency nights + Montreal St-Denis (historic venue) = highest flip potential.",
       targetCities: [
@@ -309,8 +361,8 @@ const SCAN_DATA = {
     {
       name: "Maya Hawke — Maitreya Corso Tour", tier: "B+", score: 74, category: "Indie / Celebrity Crossover — Small Venue", genre: "Indie Folk / Singer-Songwriter", ticketLink: "https://seatgeek.com/maya-hawke-tickets",
       streams: "3M+ monthly. Stranger Things star turned legit musician. New album 'Maitreya Corso' out May 1 via Mom + Pop.", lastTour: "2024-25 (Chaos Angel / Clipped Wings tour)", scarcity: "EXTREME — Tiny venue routing: Woodstock, Bowery Ballroom, Thalia Hall. Sub-1K cap rooms for a Stranger Things star = nuclear undersupply.",
-      venueSize: "Small Club (500-1500 cap)", saleStatus: "🔴 ARTIST PRESALE TUE MAR 3 12PM — CITI PRESALE TUE MAR 3 — ONSALE WED MAR 4 10AM LOCAL",
-      saleDetails: "Artist presale Tue Mar 3 12pm local (RSVP via Laylo on mayahawkemusic.com). Citi presale also Tue Mar 3. General onsale Wed Mar 4 10am local via Ticketmaster. Tour: Apr 10 (Woodstock) through May 2 (Bowery Ballroom NYC). Stops: Brooklyn, Portland OR, Seattle, SF, LA, Denver, Chicago, DC, Boston.",
+      venueSize: "Small Club (500-1500 cap)", saleStatus: "🔴 GENERAL ONSALE TODAY MAR 4 10AM LOCAL",
+      saleDetails: "Artist presale Tue Mar 3 ✅. Citi presale Tue Mar 3 ✅. GENERAL ONSALE TODAY Wed Mar 4 10am local via Ticketmaster. Tour: Apr 10 (Woodstock) through May 2 (Bowery Ballroom NYC). Stops: Brooklyn, Portland OR, Seattle, SF, LA, Denver, Chicago, DC, Boston. New album 'Maitreya Corso' out May 1 via Mom + Pop.",
       reasoning: "Maya Hawke is a genuine talent AND has the Stranger Things celebrity multiplier. Playing sub-1K rooms (Bowery Ballroom = 575 cap, Thalia Hall = 800 cap) with a brand new album dropping = instant sellouts. Her fanbase skews young (18-30), impulsive buyers who'll pay secondary. The Bowery Ballroom closer (May 2, NYC) will be the hottest ticket — album release week show in her home city at 575 cap.",
       action: "🚨 HIT PRESALE TUE MAR 3 — Bowery Ballroom NYC (May 2) = 575 cap album release week show. Also target Thalia Hall Chicago, smaller West Coast dates.",
       targetCities: [
@@ -335,8 +387,8 @@ const SCAN_DATA = {
     {
       name: "Charley Crockett — Age of the Ram Tour", tier: "A", score: 84, category: "Country / Americana — Theater & Amphitheater", genre: "Gulf & Western / Country / Roots", ticketLink: "https://seatgeek.com/charley-crockett-tickets",
       streams: "8M+ monthly. Rolling Stone 'must-see live performer.' 'Age of the Ram' (Apr 3) = final chapter of Sagebrush Trilogy. Cancelled entire Canada leg after being denied border entry = US-only demand spike.", lastTour: "2025-26 (Dollar a Day Tour — selling out theaters/amphitheaters)", scarcity: "HIGH — Mix of theaters (1-3K), amphitheaters (5-8K), and one arena (Bridgestone Nashville). New album cycle + Canada cancellation = all demand funneled into US dates. Small/mid-cap venues across underserved markets.",
-      venueSize: "Theater / Amphitheater (1-8K cap)", saleStatus: "🔴 PRESALES LIVE TODAY MAR 3 — ADDITIONAL PRESALES MAR 4-5 — ONSALE FRI MAR 7 10AM LOCAL",
-      saleDetails: "Multiple presales live TODAY Mar 3 (11am ET / 10am CT / 8am PT depending on venue). Additional presales Mar 4-5. General onsale Fri Mar 7 10am local via Ticketmaster. 'Age of the Ram' tour dates: May 30 Danville VA → Sep 1 Mobile AL. New album drops Apr 3. Lee Fields supporting select dates (New Orleans Apr 24). Nashville Bridgestone Arena May 29 (Music City Rodeo + Crockett).",
+      venueSize: "Theater / Amphitheater (1-8K cap)", saleStatus: "🔴 PRESALES ACTIVE — ADDITIONAL PRESALES TODAY MAR 4-5 — ONSALE FRI MAR 7 10AM LOCAL",
+      saleDetails: "Initial presales live since Mar 3 ✅. Additional presales Mar 4-5 (Canyon TX, Paso Robles today). General onsale Fri Mar 7 10am local via Ticketmaster. 'Age of the Ram' tour dates: May 30 Danville VA → Sep 1 Mobile AL. New album drops Apr 3. Lee Fields supporting select dates (New Orleans Apr 24). Nashville Bridgestone Arena May 29 (Music City Rodeo + Crockett).",
       reasoning: "Charley Crockett is the real deal — one of the hottest acts in Americana/country with a massive cult following that buys tickets religiously. The Canada border denial just eliminated 9 dates, concentrating ALL his North American demand into US shows only. New album 'Age of the Ram' drops Apr 3, perfectly timed to fuel tour demand. His routing hits some incredible small markets: Canyon TX (Lumberyard = tiny), Casper WY (Ford Wyoming Center), Bend OR, Paso Robles CA (wine country). These are NOT markets that big brokers target. Nashville Bridgestone Arena show is a statement — first arena headline in his hometown market. The Fillmore Detroit (2,900 cap) and Philly Met (3,500 cap) will be tight.",
       action: "🚨 PRESALES LIVE NOW — Target small market dates: Canyon TX, Casper WY, Bend OR, Paso Robles CA. Also Nampa ID (Jul 12 presale Mar 5). Nashville Bridgestone = arena flip potential.",
       targetCities: [
@@ -352,8 +404,8 @@ const SCAN_DATA = {
     {
       name: "Killswitch Engage w/ Machine Head, Iron Reagan, Havok", tier: "A", score: 78, category: "Metalcore / Thrash — Theater", genre: "Metalcore / Metal", ticketLink: "https://seatgeek.com/killswitch-engage-tickets",
       streams: "5M+ monthly. Metalcore legends — 'My Last Serenade', 'The End of Heartache' are genre-defining. New album 'This Consequence' supporting.", lastTour: "2024-25 (headline + festival circuit)", scarcity: "MODERATE-HIGH — 16 dates only. Theater/ballroom routing (2-4K cap): Fillmore Detroit, Brooklyn Paramount, Hollywood Palladium, Warfield SF. Machine Head co-headline quality support stacks value. Metal fans buy early.",
-      venueSize: "Theater / Ballroom (2-4K cap)", saleStatus: "🔴 PRESALE LIVE TODAY MAR 3 2PM ET — CODE: KSETHISCON2026 — ONSALE FRI MAR 6 10AM LOCAL",
-      saleDetails: "Presales live today Mar 3 at 2pm ET through Thu Mar 5 10pm local. Code: KSETHISCON2026 (also BBMKSETHISCON2026 on Blabbermouth). General onsale Fri Mar 6 10am local. 16 dates Jun 3-27: Detroit (Fillmore), Minneapolis (Fillmore), South Bend, Raleigh, Brooklyn (Paramount), Boston (Roadrunner), Bethlehem PA, Orlando, Atlanta (Tabernacle), Dallas, Houston, San Antonio, Albuquerque, Tempe, LA (Palladium), SF (Warfield).",
+      venueSize: "Theater / Ballroom (2-4K cap)", saleStatus: "🔴 PRESALE ACTIVE — CODE: KSETHISCON2026 — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Presale live since Mar 3 through Thu Mar 5 10pm local. Code: KSETHISCON2026 (also BBMKSETHISCON2026 on Blabbermouth). General onsale Fri Mar 6 10am local. 16 dates Jun 3-27: Detroit (Fillmore), Minneapolis (Fillmore), South Bend, Raleigh, Brooklyn (Paramount), Boston (Roadrunner), Bethlehem PA, Orlando, Atlanta (Tabernacle), Dallas, Houston, San Antonio, Albuquerque, Tempe, LA (Palladium), SF (Warfield).",
       reasoning: "KSE + Machine Head is a dream bill for metalcore/metal fans — two legacy headliners on the same ticket at theater-level venues (2-4K cap). This is priced like a single headliner but delivers double. The support (Iron Reagan + Havok) adds thrash crossover demand. Theater routing means tight supply. Brooklyn Paramount, Hollywood Palladium, and Warfield are all iconic rooms that command premiums. Metal fans are loyal presale buyers — these will move fast. June dates mean no festival competition that week.",
       action: "🔴 PRESALE LIVE NOW — Code: KSETHISCON2026. Target: Brooklyn Paramount (Jun 11), Hollywood Palladium (Jun 25), Warfield SF (Jun 27) = iconic venues with tightest capacity.",
       targetCities: [
@@ -456,7 +508,7 @@ const SCAN_DATA = {
     {
       name: "Widespread Panic — 3 Nights at Red Rocks 🔥", tier: "A", score: 86, category: "Jam Legend — Annual Tradition", genre: "Jam / Southern Rock",
       showDate: "Jun 26-28, 2026", saleStatus: "🔴 ONSALE FRI MAR 6 10AM MT",
-      saleDetails: "Just announced March 2. Three nights: Fri Jun 26, Sat Jun 27, Sun Jun 28. Tickets on sale Friday March 6 at 10am MT via AXS.com. Bill Bass Concerts & KBCO present.",
+      saleDetails: "Announced March 2. Three nights: Fri Jun 26, Sat Jun 27, Sun Jun 28. Tickets on sale Friday March 6 at 10am MT via AXS.com. Bill Bass Concerts & KBCO present.",
       reasoning: "Widespread Panic's annual Red Rocks run is one of the most reliable sellouts on the entire calendar. The jam community treats this like a pilgrimage — fans travel from across the country for all 3 nights. Multi-night runs drive completist demand (buy all 3 or none). Summer solstice weekend timing is perfect. WSP at Red Rocks is a 30+ year tradition. 9,525 cap × 3 nights = 28,575 total tickets for a fanbase of millions. Saturday night (Jun 27) will command highest premium.",
       action: "🚨 BUY ALL 3 NIGHTS FRI MAR 6 10AM — Saturday is premium. 3-night package buyers drive up all individual night prices. Jam community pays 2-3x face.",
       region: "NA"
@@ -591,11 +643,11 @@ const SCAN_DATA = {
     },
     {
       name: "Colorado Avalanche (NHL)", tier: "S", score: 91, category: "Dominant Season",
-      genre: "NHL — Western Conference", streams: "37-9-9, best in NHL (83 pts, 6 ahead of Tampa Bay)",
+      genre: "NHL — Western Conference", streams: "Best in NHL (~87 pts, pacing for 124). MacKinnon MVP-caliber.",
       lastTour: "Last Cup: 2022", scarcity: "Historic pace — best record in hockey",
       saleStatus: "ON SALE — playoff positioning",
       saleDetails: "Ball Arena, Denver. Playoff tix TBA.",
-      reasoning: "Best NHL record at 37-9. Historic pace. MacKinnon/Makar/Rantanen elite. Denver booming market. NHL playoff tix historically underpriced vs NBA — bigger arbitrage opportunity.",
+      reasoning: "Best NHL record at ~87 pts, pacing for 124. Historic pace. MacKinnon/Makar/Rantanen elite. Denver booming market. NHL playoff tix historically underpriced vs NBA — bigger arbitrage opportunity.",
       action: "BUY regular season + be first on playoff tix. Target Avs vs. Stars/Wild rivalry games.",
       region: "NA"
     },
@@ -621,11 +673,11 @@ const SCAN_DATA = {
     },
     {
       name: "Arizona Wildcats (NCAAM Basketball)", tier: "S", score: 93, category: "Undefeated Season",
-      genre: "NCAA Men's Basketball — Big 12", streams: "27-0, #1 overall seed — clinched share of Big 12 title",
+      genre: "NCAA Men's Basketball — Big 12", streams: "27-0, #1 overall seed — clinched Big 12 regular season title",
       lastTour: "Last Final Four: 2024", scarcity: "Undefeated = historic demand",
       saleStatus: "ON SALE — March Madness tix TBA",
       saleDetails: "McKale Center reg season. Tournament tix via NCAA. Selection Sunday March 15.",
-      reasoning: "23-0 and clear #1 seed. Undefeated team in March Madness = INSANE ticket demand at every round. Each win makes next round exponentially more valuable. Last undefeated champ was Indiana 2025 — tix were astronomical.",
+      reasoning: "27-0 and clear #1 seed. Undefeated team in March Madness = INSANE ticket demand at every round. Each win makes next round exponentially more valuable. Last undefeated champ was Indiana 2025 — tix were astronomical.",
       action: "🚨 MARCH MADNESS — Buy first/second round tix in Arizona's bracket region. Final Four in Indianapolis (Apr 4 & 6) already $500+ get-ins.",
       region: "NA"
     },
@@ -647,6 +699,16 @@ const SCAN_DATA = {
       saleDetails: "Home games at Madison Square Garden. Big East Tournament ALSO at MSG (March 11-14).",
       reasoning: "9 straight wins including beating #3 UConn at MSG. Play at MSG — most iconic basketball venue. Big East Tournament is ALSO at MSG. If St. John's rolling into Big East Tourney as top seed at MSG, those tix are the hottest basketball ticket in NYC.",
       action: "BUY Big East Tournament tix at MSG (March 11-14) NOW. Deep run at home building = 5-10x resale. Also target remaining regular season home games.",
+      region: "NA"
+    },
+    {
+      name: "MLB Opening Day 2026 (Mar 25-26)", tier: "A", score: 82, category: "Baseball — Season Opener",
+      genre: "MLB", streams: "Giants vs Yankees (Opening Night Mar 25, Oracle Park). 14-game Opening Day slate Mar 26.",
+      lastTour: "Annual", scarcity: "HIGH — Opening Night SF vs NYY is marquee. Earliest Opening Day in MLB history (Mar 26). HR Derby on Netflix this year = massive new casual audience building.",
+      saleStatus: "🟢 ON SALE — Opening Day tix available",
+      saleDetails: "Opening Night: Wed Mar 25 Giants vs Yankees at Oracle Park, San Francisco. Opening Day: Thu Mar 26 14-game slate across MLB. Spring training ongoing. All-Star Game in Philadelphia Jul 11-14. HR Derby on Netflix Jul 13.",
+      reasoning: "Giants vs Yankees on Opening Night at Oracle Park is a premium ticket — two iconic franchises, historic rivalry feel, SF venue premium. Earliest Opening Day ever (Mar 26) means less time for fans to plan = tighter supply. This is also the run-up to the Philadelphia All-Star Game (Jul 11-14), which will be the biggest ASG ticket in 30 years (first Philly ASG since 1996).",
+      action: "BUY Opening Night Giants vs Yankees at Oracle Park — marquee matchup + SF venue premium. Monitor ASG Philly tix when STH packages drop.",
       region: "NA"
     },
     {
@@ -818,7 +880,7 @@ const SCAN_DATA = {
       cities: "Boise, Salt Lake City, Bozeman, Missoula, Spokane",
       color: "#f59e0b",
       why: "5+ state radius with minimal venue infrastructure. When ANY popular act comes through, demand funnels from Idaho, Montana, Wyoming, Utah, eastern Oregon/Washington. SLC has a massive young (Mormon millennial) demo that is severely underserved by pop/indie tours. Boise barely has any venues above 1.5K cap. Bozeman/Missoula are college towns with rabid music demand and zero supply.",
-      examples: "Hilary Duff SLC (Jul 17) — only Intermountain date. Caamp Edmonton/Calgary — only Canadian prairie dates. Any Red Rocks show pulls from entire Mountain West.",
+      examples: "Gorillaz SLC Delta Center (Oct 20) — only Intermountain date between Denver and Phoenix. Hilary Duff SLC (Jul 17). Joji SLC Maverik Center (Jul 21). Any Red Rocks show pulls from entire Mountain West.",
       playbook: "When ANY tracked artist announces Boise, SLC, or Missoula dates, buy immediately. These cities have the highest demand-to-supply ratio in North America.",
     },
     {
@@ -834,7 +896,7 @@ const SCAN_DATA = {
       cities: "Minneapolis (5-state pull), Milwaukee, Madison, Des Moines, Omaha",
       color: "#8b5cf6",
       why: "Minneapolis pulls from Minnesota, Wisconsin, Iowa, the Dakotas, and western Michigan — a 5-state radius. But most tours only give Minneapolis ONE date. Milwaukee and Madison get skipped entirely for Chicago. When acts DO play Milwaukee or Madison, fans from across the upper Midwest pour in. Des Moines and Omaha are severely overlooked — both have modern venues (Wells Fargo Arena, CHI Health Center) and passionate fanbases.",
-      examples: "Tame Impala has NO Minneapolis, Milwaukee, or Madison date on their entire 2026 tour. hemlocke springs Minneapolis (May 29) at tiny Varsity Theater = instant sellout.",
+      examples: "Gorillaz have NO Minneapolis, Milwaukee, or Madison date. Tame Impala has NO Minneapolis date either. hemlocke springs Minneapolis (May 29) at tiny Varsity Theater = instant sellout.",
       playbook: "Flag any Minneapolis-only dates from arena acts (fans from 5 states funnel there). Buy Milwaukee/Madison dates immediately when they appear — criminally underpriced.",
     },
     {
@@ -1149,7 +1211,7 @@ function OptimusDashboard() {
             </h1>
           </div>
           <div style={{fontSize:11,color:"#52525b",display:"flex",gap:16,alignItems:"center"}}>
-            <span>Scan v17</span>
+            <span>Scan v18</span>
             <span><span style={{color:"#a78bfa",fontWeight:600}}>{all.length}</span> events</span>
             <span><span style={{color:"#ef4444",fontWeight:600}}>{tc.S}</span> S-tier</span>
           </div>
@@ -1208,7 +1270,7 @@ function OptimusDashboard() {
         {/* Tab content */}
         {tab==="thisweek"&&(<>
           <SH title="This Week" sub="Presales & onsales Mar 3–8" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🔴" title="Presale Tsunami — 6+ presales live today" sub="Metallica, Sting, Aldean, Joji, Outside Lands, Maya Hawke, Tucker Wetmore" color="#ef4444"/>
+          <AB emoji="🔴" title="Presale Tsunami Continues — Gorillaz, Stardew, Maya Hawke, Tucker Wetmore TODAY" sub="KONG presale 10am, OSL Ranger presale noon, Stardew general 10am MT, Maya Hawke general 10am, Tucker artist presale 10am. Metallica/Sting/Aldean general Fri." color="#ef4444"/>
           {renderCards(SCAN_DATA.thisWeek,"tw")}
         </>)}
 
