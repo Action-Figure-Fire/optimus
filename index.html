@@ -15,7 +15,7 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 4, 2026 — Daily Scan v18 · OPTIMUS INTELLIGENCE · PRESALE TSUNAMI WEEK",
+  lastRun: "March 5, 2026 — Daily Scan v19 · OPTIMUS INTELLIGENCE · ONSALE FRIDAY BLITZ",
   nextWeek: [
     {
       name: "Gorillaz — The Mountain NA Tour (GENERAL ONSALE)", tier: "S", score: 92, category: "Alt-Rock Icons — Arena Tour", genre: "Alt-Rock / Electronic / Hip-Hop", ticketLink: "https://www.ticketmaster.com/gorillaz-tickets/artist/806811",
@@ -330,6 +330,18 @@ const SCAN_DATA = {
       saleDetails: "Citi presale Tue Mar 3 ✅. ARTIST PRESALE TODAY Wed Mar 4 10am local. General onsale Fri Mar 6 10am MT via RedRocksOnline.com. Oct 27 — night before Koe Wetzel's Red Rocks show Oct 28. Tucker just added 17 NEW Brunette World Tour dates including Red Rocks debut. New single 'Sunburn' drops Mar 13.",
       reasoning: "Tucker Wetmore's first Red Rocks headline = milestone show. Just added 17 NEW dates to Brunette World Tour — momentum is massive. First Red Rocks for breakout artists = massive FOMO. Oct 27 is night BEFORE Koe Wetzel's Red Rocks show (Oct 28), creating potential 2-night country weekend at Red Rocks. Pipeline play: Tucker at 9,525 today = 15K amphitheaters by 2027. New single 'Sunburn' (Mar 13) will keep hype building.",
       action: "🚨 BUY PRESALE MAR 3-4 — First Red Rocks for breakout country act = guaranteed sellout. GA and premium reserved will flip well.",
+      region: "NA"
+    },
+    {
+      name: "The Guess Who — Takin' It Back Reunion Tour (US Dates)", tier: "B+", score: 74, category: "Classic Rock Reunion — Amphitheater", genre: "Classic Rock", ticketLink: "https://www.ticketmaster.com/the-guess-who-tickets/artist/734847",
+      streams: "5M+ monthly. 'American Woman,' 'These Eyes,' 'No Time' = iconic catalog. Canadian Rock Hall of Fame.", lastTour: "2024-25 (Canadian dates)", scarcity: "MODERATE-HIGH — First US dates added to reunion tour. 12 Canadian shows already announced. Don Felder (ex-Eagles) as support = stacked bill. Summer amphitheater routing Jun 25–Aug 22.",
+      venueSize: "Amphitheater / Casino (5-15K cap)", saleStatus: "🔴 PRESALE WED MAR 4 — ONSALE FRI MAR 6 10AM LOCAL",
+      saleDetails: "Presale started Wed Mar 4. General onsale Fri Mar 6 10am local. US dates: Jun 25 Shakopee MN → Aug 22 Seattle WA. Don Felder (ex-Eagles) supporting. 12 Canadian dates previously announced.",
+      reasoning: "The Guess Who reuniting with US dates is a solid nostalgia play. 'American Woman' is one of the most recognizable rock songs ever. Don Felder as support adds Eagles nostalgia demand — effectively a double-header for classic rock fans. Summer amphitheater routing targets the 50-70 demo with peak disposable income. The Canadian dates were already strong sellers. US expansion suggests demand exceeded expectations.",
+      action: "BUY ONSALE FRI MAR 6 — Target smaller market amphitheater dates. Don Felder adds enormous value to the bill.",
+      targetCities: [
+        {emoji:"🏒",city:"Shakopee, MN",venue:"Mystic Lake (Jun 25)",date:"Jun 25",why:"Tour opener. Twin Cities classic rock demand. Same venue as Creed — proven scarcity."},
+      ],
       region: "NA"
     },
     {
@@ -699,6 +711,20 @@ const SCAN_DATA = {
       saleDetails: "Home games at Madison Square Garden. Big East Tournament ALSO at MSG (March 11-14).",
       reasoning: "9 straight wins including beating #3 UConn at MSG. Play at MSG — most iconic basketball venue. Big East Tournament is ALSO at MSG. If St. John's rolling into Big East Tourney as top seed at MSG, those tix are the hottest basketball ticket in NYC.",
       action: "BUY Big East Tournament tix at MSG (March 11-14) NOW. Deep run at home building = 5-10x resale. Also target remaining regular season home games.",
+      region: "NA"
+    },
+    {
+      name: "World Baseball Classic 2026 (Mar 5-17)", tier: "A", score: 84, category: "International Tournament — Multi-City",
+      genre: "Baseball — International", streams: "47 games across 5 countries. USA, Japan, Dominican Republic headliners. FOX/FS1/Tubi broadcast.",
+      lastTour: "2023 WBC (Shohei Ohtani iconic final)", scarcity: "HIGH — Pool play Mar 5-11 across Tokyo, San Juan, Arlington TX, and more. Knockout stage Mar 13-17 at loanDepot park Miami. Championship game Mar 17 in Miami.",
+      saleStatus: "🟢 ON SALE NOW — Pool play starts TODAY",
+      saleDetails: "Single game tickets available for all pools. Pool B at Arlington TX (Globe Life Field): USA games Mar 5, 7, 9, 11. Knockout rounds Mar 13-14 at loanDepot park Miami. Semifinals Mar 15-16 Miami. Final Mar 17 Miami. FOX/FS1/Tubi broadcast all 47 games.",
+      reasoning: "WBC 2023 was a cultural moment — Ohtani vs. Trout in the final was iconic. The 2026 edition starts TODAY with even more hype. USA pool games in Arlington TX are the primary market play. The real money is in the knockout/semifinal/final games in Miami — if USA advances, Miami ticket prices will explode. Championship game tix are the biggest baseball ticket between now and the World Series. International baseball fans (Japan, Dominican Republic, Venezuela) travel for this event. Miami hotel demand alone signals the intensity.",
+      action: "🚨 BUY MIAMI SEMIFINAL + FINAL TICKETS NOW — If USA advances past pool stage (Mar 13), prices spike. Championship game (Mar 17) = biggest baseball ticket of spring.",
+      targetCities: [
+        {emoji:"🏟️",city:"Arlington, TX",venue:"Globe Life Field (Pool B)",date:"Mar 5-11",why:"USA pool games. 40K cap but international demand from Japan/Cuba/Canada pools too."},
+        {emoji:"🌴",city:"Miami, FL",venue:"loanDepot park (Knockouts+Final)",date:"Mar 13-17",why:"Championship rounds. If USA or Japan advance, prices go nuclear. Final Mar 17 = spring's biggest baseball ticket."},
+      ],
       region: "NA"
     },
     {
@@ -1270,7 +1296,7 @@ function OptimusDashboard() {
         {/* Tab content */}
         {tab==="thisweek"&&(<>
           <SH title="This Week" sub="Presales & onsales Mar 3–8" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🔴" title="Presale Tsunami Continues — Gorillaz, Stardew, Maya Hawke, Tucker Wetmore TODAY" sub="KONG presale 10am, OSL Ranger presale noon, Stardew general 10am MT, Maya Hawke general 10am, Tucker artist presale 10am. Metallica/Sting/Aldean general Fri." color="#ef4444"/>
+          <AB emoji="🔴" title="ONSALE FRIDAY BLITZ — Metallica Sphere, Sting 3.0, Aldean, Joji, Tucker Wetmore, Widespread Panic, Guess Who ALL go general onsale Fri Mar 6" sub="Metallica Sphere onsale 10am PT. Sting new dates 10am local. Jason Aldean 10am local. Joji 10am local. Tucker Wetmore Red Rocks 10am MT. Widespread Panic Red Rocks 10am MT. Gorillaz general Mon Mar 9." color="#ef4444"/>
           {renderCards(SCAN_DATA.thisWeek,"tw")}
         </>)}
 
