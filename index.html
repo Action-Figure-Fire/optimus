@@ -15,8 +15,50 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 6, 2026 — Daily Scan v20 · OPTIMUS INTELLIGENCE · PRESALE LIVE BLITZ",
+  lastRun: "March 7, 2026 — Daily Scan v21 · OPTIMUS INTELLIGENCE · BRUNO MARS EXPANSION + RED ROCKS BLITZ",
   nextWeek: [
+    {
+      name: "Bruno Mars — The Romantic Tour (6 NEW DATES ADDED)", tier: "S", score: 94, category: "Global Superstar — Arena Expansion", genre: "Pop / R&B / Funk", ticketLink: "https://www.ticketmaster.com/bruno-mars-tickets/artist/1306934",
+      streams: "80M+ monthly. Global superstar. Just added 6 new dates to existing tour.", lastTour: "2024 (Las Vegas residency + select dates)", scarcity: "EXTREME — Only 6 new arena dates added to satisfy overwhelming demand. Original tour SOLD OUT.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 ARTIST PRESALE WED MAR 11 NOON LOCAL — GENERAL ONSALE THU MAR 12 NOON",
+      saleDetails: "Artist presale Wed Mar 11 at noon local time (signup required). General onsale Thu Mar 12 at noon local time. Added dates after original tour sold out instantly. New cities: TBA (6 markets announced).",
+      reasoning: "Bruno Mars adding dates mid-tour cycle is MASSIVE signal — original dates sold out so fast they had to expand. His last major tour was years ago, pent-up demand is enormous. Bruno delivers the best live show in pop music. New dates will be in major markets that missed original routing. Artist presale Wednesday is the only realistic shot at face value.",
+      action: "🚨 SIGN UP FOR ARTIST PRESALE NOW — When Bruno adds dates, it's because demand is nuclear. These 6 new shows will sell out in presale.",
+      targetCities: [
+        {emoji:"⭐",city:"TBA Major Markets",venue:"Arena venues (15-20K)",date:"Tour expansion",why:"Added due to overwhelming demand. Any new market will have years of pent-up demand."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Widespread Panic — Red Rocks 3-Night Run", tier: "A+", score: 89, category: "Jam Band Legends — Red Rocks Takeover", genre: "Jam Rock / Southern Rock", ticketLink: "https://www.redrocksonline.com/",
+      streams: "2M+ monthly but LEGACY DEMAND. 30+ year Red Rocks history. Record-breaking venue relationship.", lastTour: "Continuous touring (jam band circuit)", scarcity: "HIGH — 3 consecutive nights June 26-28. Red Rocks holds 9,525. Panic has generational fanbase that follows for every show.",
+      venueSize: "Red Rocks Amphitheatre (9,525 cap)", saleStatus: "🔴 ONSALE FRI MAR 6 10AM MT (TODAY!)",
+      saleDetails: "Tickets on sale Friday March 6 at 10am MT through RedRocksOnline.com. Three nights: June 26, 27 & 28, 2026. Continuing their record-breaking Red Rocks relationship.",
+      reasoning: "Widespread Panic at Red Rocks is LEGENDARY. They hold the record for most shows at the venue (60+ shows since 1993). Their fanbase travels nationally for Red Rocks runs. 3 consecutive nights means completist demand — Panic fans buy all three to catch unique jams and setlists. June dates are prime Colorado weather. This is a cultural event, not just concerts.",
+      action: "🚨 BUY ALL 3 NIGHTS MAR 6 10AM — Panic + Red Rocks = institution. Their fans will pay premium secondary prices for any missed nights.",
+      targetCities: [
+        {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks Amphitheatre",date:"Jun 26-28 (3 nights)",why:"VENUE RECORD HOLDERS. 60+ shows since 1993. This is a cultural pilgrimage for jam fans."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Rod Stewart — One Last Time Tour 2026 (FAREWELL)", tier: "S", score: 91, category: "Rock Legend Farewell — Final Tour", genre: "Classic Rock / Pop Rock", ticketLink: "https://www.ticketmaster.com/rod-stewart-tickets/artist/735877",
+      streams: "15M+ monthly but LEGACY DEMAND = 250M+ album sales worldwide. Farewell tour at age 81.", lastTour: "2025 (regular touring)", scarcity: "EXTREME — Advertised as FINAL TOUR. Rod Stewart at 81 years old. Limited dates. Multigenerational fanbase from 1970s hits to modern covers.",
+      venueSize: "Arena/Amphitheater (10-20K cap)", saleStatus: "🟡 DATES TBA — ANNOUNCEMENT RECENT",
+      saleDetails: "Farewell tour announced recently. Cities and dates TBA. Expected spring 2026 routing. Presale and onsale dates to be announced.",
+      reasoning: "'One Last Time' = farewell tour marketing creates FOMO urgency. Rod Stewart has 50+ years of hits spanning multiple generations — boomers who know 'Maggie May' + Gen X who grew up with his covers + millennials who discovered him via streaming. At 81, this credibly IS the final tour. Farewell tours generate 2-3x normal demand as fans who 'always meant to see him' finally buy tickets.",
+      action: "🚨 SET ALERTS FOR DATES ANNOUNCEMENT — Farewell tours at this level sell out immediately. Every market will have decades of pent-up demand.",
+      region: "NA"
+    },
+    {
+      name: "Wilco — An Evening with Wilco Summer 2026", tier: "B+", score: 76, category: "Alt-Rock Veterans — Theater Circuit", genre: "Alternative Rock / Indie Rock", ticketLink: "https://www.ticketmaster.com/wilco-tickets/artist/806834",
+      streams: "4M+ monthly. 25+ year career. Loyal fanbase that travels for shows.", lastTour: "2025 (regular touring cycle)", scarcity: "MODERATE — Theater routing (2-5K cap) vs demand that could fill amphitheaters. 'An Evening with' = extended setlists.",
+      venueSize: "Theater (2-5K cap)", saleStatus: "🔴 GENERAL ONSALE TODAY FRI MAR 6 10AM LOCAL",
+      saleDetails: "General on-sale Friday March 6, 2026 at 10:00 AM local time. Summer 2026 tour dates. 'An Evening with Wilco' format suggests extended shows without opening acts.",
+      reasoning: "Wilco is the rare band that has gotten MORE popular over time. Their fanbase is incredibly loyal and will travel for shows. 'An Evening with' format means 2.5-3 hour shows with deep cuts and rarities. Theater venues create intimate atmosphere that Wilco fans prefer over amphitheaters. Summer timing is optimal for their demographic (35-55, has disposable income for travel).",
+      action: "TARGET SMALLER MARKETS — Wilco fans are completists. Buy theaters in college towns and secondary markets where broker competition is minimal.",
+      region: "NA"
+    },
     {
       name: "Gorillaz — The Mountain NA Tour (GENERAL ONSALE)", tier: "S", score: 92, category: "Alt-Rock Icons — Arena Tour", genre: "Alt-Rock / Electronic / Hip-Hop", ticketLink: "https://www.ticketmaster.com/gorillaz-tickets/artist/806811",
       streams: "25M+ monthly. 'The Mountain' (Feb 27). First extensive NA run since 2022.", lastTour: "2022 (last NA arena tour)", scarcity: "EXTREME — 22 arena dates Sep-Oct. MSG, United Center, Kia Forum, Climate Pledge. Little Simz + Deltron 3030.",
@@ -88,6 +130,24 @@ const SCAN_DATA = {
       saleDetails: "Tickets on sale Wednesday March 4 at 10am MT through RedRocksOnline.com. One night only: October 25, 2026. Celebrating 10 years of Stardew Valley.",
       reasoning: "Stardew Valley is a cultural phenomenon — 30M+ players, beloved indie farming sim that transcends gaming. Gaming symphonies have proven demand: Zelda/Final Fantasy concerts sell out instantly. This is the FIRST Stardew symphony, at Red Rocks (most iconic venue), for the 10-year anniversary. Gaming demo (18-35) is tech-savvy, has disposable income, buys impulsively. One night only means global demand funneling into 9,525 seats. Gaming symphonies create FOMO because they're rare cultural events.",
       action: "🚨 BUY IMMEDIATELY MAR 4 10AM — Gaming + Red Rocks + anniversary = instant sellout. This is cultural event, not just concert.",
+      region: "NA"
+    },
+    {
+      name: "Red Rocks 2026 — Spring Wave (Yungblud, Louis Tomlinson, Ethel Cain)", tier: "A", score: 82, category: "Red Rocks Spring Expansion", genre: "Multi-Genre Spring Shows", ticketLink: "https://www.redrocksonline.com/",
+      streams: "Combined: Yungblud (8M+), Louis Tomlinson (12M+), Ethel Cain (3M+ but cult following)", lastTour: "Various - different tour cycles", scarcity: "MODERATE-HIGH — Red Rocks venue premium. 132 total shows announced for 2026. Spring dates in iconic venue.",
+      venueSize: "Red Rocks Amphitheatre (9,525 cap)", saleStatus: "🟡 MULTIPLE ONSALES UPCOMING — VARIOUS DATES",
+      saleDetails: "Multiple artists announced for Red Rocks 2026. Total of 132 concerts and comedy shows announced. Spring wave includes major names like Yungblud, Louis Tomlinson, Ethel Cain among others. Individual onsale dates TBA.",
+      reasoning: "Red Rocks 2026 is shaping up to be massive — 132 shows announced so far. The spring wave includes strong acts: Yungblud (gen z rock star), Louis Tomlinson (One Direction solo career), Ethel Cain (underground cult hero with devoted fanbase). Red Rocks venue premium means even B+ artists command A-level pricing. The venue is cultural destination that draws fans beyond just the artist. Spring Colorado weather is optimal.",
+      action: "MONITOR INDIVIDUAL ONSALES — Red Rocks venue premium creates automatic demand. Target Ethel Cain (smallest but most devoted fanbase) and Louis Tomlinson (1D nostalgia).",
+      region: "NA"
+    },
+    {
+      name: "Juanes — World Tour 2026", tier: "A-", score: 78, category: "Latin Rock Global Icon", genre: "Latin Rock / Pop", ticketLink: "https://www.ticketmaster.com/juanes-tickets/artist/806396",
+      streams: "15M+ monthly. 29-time Grammy/Latin Grammy winner. Global superstar in Latin music.", lastTour: "2023-24 (touring cycle)", scarcity: "MODERATE — Major artist but established touring presence. World tour suggests expanded routing.",
+      venueSize: "Arena/Amphitheater (8-20K cap)", saleStatus: "🟡 ANNOUNCED — DATES AND ONSALE TBA",
+      saleDetails: "Juanes World Tour 2026 announced supporting upcoming album 'JuanesTeban'. Tour dates and onsale information TBA. Expected to include major US markets with significant Latin populations.",
+      reasoning: "Juanes is a guaranteed seller in markets with Latin populations — Miami, LA, Chicago, NY, Houston, Phoenix, Vegas. 29 Grammy wins = credibility across demographics. 'World Tour' suggests expanded routing beyond usual Latin circuit. Album support means fresh material + career retrospective. US dates will target major metros with Latino populations where he can fill arenas.",
+      action: "TARGET MAJOR LATINO MARKETS — When dates are announced, focus on Miami, LA, Chicago, Houston where demand is concentrated and predictable.",
       region: "NA"
     },
     {
