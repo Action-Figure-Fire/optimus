@@ -15,8 +15,60 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 8, 2026 — Daily Scan v22 · OPTIMUS INTELLIGENCE · ALABAMA SHAKES EXPANSION + GORILLAZ ONSALE EVE + MARCH MADNESS",
+  lastRun: "March 9, 2026 — Daily Scan v23 · OPTIMUS INTELLIGENCE · RUSH REUNION BONANZA + RED ROCKS ONSALE BLITZ + MARCH MADNESS WEEK",
   nextWeek: [
+    {
+      name: "Rush — Fifty Something Reunion Tour (GEDDY + ALEX RETURN)", tier: "S+", score: 98, category: "Rock Legend Reunion — 11 Years Silent", genre: "Progressive Rock / Classic Rock", ticketLink: "https://www.ticketmaster.com/rush-tickets/artist/807344",
+      streams: "25M+ monthly but LEGACY DEMAND = 40+ million albums sold. First tour in 11 years since Neil Peart's death.", lastTour: "2015 (R40 Live Tour)", scarcity: "NUCLEAR — Geddy Lee + Alex Lifeson reunion after declaring Rush 'finished.' New drummer Anika Nilles. Limited summer 2026 dates only.",
+      venueSize: "Arena/Amphitheater (10-25K cap)", saleStatus: "✅ ON SALE NOW (went on sale Oct 2025)",
+      saleDetails: "Tickets on sale since October 2025 via Ticketmaster. Artist presale ended Oct 2025. Summer 2026 tour June-August. Additional dates added in October 2025.",
+      reasoning: "This is THE reunion of 2026. Rush declared they were done after Neil Peart's death, making this comeback completely unexpected. Geddy and Alex are 73+ years old — this is credibly their last chance to tour. 11 years of pent-up demand from one of prog rock's most devoted fanbases. Rush fans are obsessive completists who will travel internationally. Summer amphitheater dates create perfect nostalgia atmosphere. Resale will be astronomical for any remaining inventory.",
+      action: "🚨 BUY ANY AVAILABLE RUSH SEATS NOW — This reunion broke the internet. Every show will be an emotional pilgrimage.",
+      targetCities: [
+        {emoji:"🇨🇦",city:"Toronto, ON",venue:"Budweiser Stage",date:"Jun 29 (Hometown Show)",why:"Hometown heroes. Toronto will be nuclear demand."},
+        {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks Amphitheatre",date:"Jul 12",why:"Rush + Red Rocks = legendary combination. Colorado Rush fans are hardcore."},
+        {emoji:"🎸",city:"Los Angeles, CA",venue:"Kia Forum",date:"Jun 7 (SOLD OUT)",why:"Already sold out. Secondary market gold."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "March Madness 2026 — NCAA Tournament (SELECTION SUNDAY MAR 15)", tier: "S", score: 95, category: "Sports Event — National Championship", genre: "College Basketball", ticketLink: "https://onlocationexp.com/ncaa/ncaa-tournament-tickets",
+      streams: "N/A — Sports event with 60+ million bracket participants annually", lastTour: "Annual event", scarcity: "EXTREME — Single-elimination tournament. Each game is literally once-in-a-lifetime for these players.",
+      venueSize: "Various Arenas (10-20K cap per site)", saleStatus: "🔴 SELECTION SUNDAY MAR 15 — BRACKET ANNOUNCEMENT",
+      saleDetails: "Selection Sunday March 15 at 6pm ET on CBS. First Four games March 17-18. Round of 64 starts March 19. Final Four April 5, Championship April 7.",
+      reasoning: "March Madness is THE American sports betting/resale event of the year. Selection Sunday creates instant scarcity — teams/cities learn if they're hosting 48 hours before games start. Cinderella runs create explosive demand (see Saint Peter's 2022). Corporate hospitality buyers pay ANY price for Final Four. Regional brackets mean some cities get 4-6 games while others get zero. First/second round venues sell out in minutes.",
+      action: "🚨 PREP FOR SELECTION SUNDAY — Know which arenas are hosting. Buy tickets to ANY games in major markets immediately after bracket release.",
+      targetCities: [
+        {emoji:"🏀",city:"TBA Regional Sites",venue:"Major Arenas",date:"Mar 19-30 (Regionals)",why:"Selection Sunday determines host cities. Buy immediately after bracket release."},
+        {emoji:"🏆",city:"Glendale, AZ",venue:"State Farm Stadium",date:"Apr 5-7 (Final Four)",why:"Fixed Final Four location. Corporate demand will be insane."},
+      ],
+      region: "USA"
+    },
+    {
+      name: "Red Rocks Spring Onsale Blitz — Multiple Shows Going Live", tier: "A+", score: 88, category: "Venue Event — Colorado Institution", genre: "Various", ticketLink: "https://www.redrocksonline.com/",
+      streams: "Various artists — Venue-driven demand", lastTour: "Continuous booking", scarcity: "HIGH — Most iconic outdoor venue in America. Limited capacity 9,525. Colorado destination tourism.",
+      venueSize: "Red Rocks Amphitheatre (9,525 cap)", saleStatus: "🔴 MULTIPLE ONSALES THIS WEEK — FRI MAR 6 & TUE MAR 10",
+      saleDetails: "Widespread Panic 3-night run (Jun 26-28) on sale Fri Mar 6 10am MT. Tucker Wetmore (Oct 27) on sale Fri Mar 6 10am MT. Darius Rucker & Cole Swindell presale Tue Mar 10 10am MT, general Fri Mar 13 10am MT.",
+      reasoning: "Red Rocks is bucket-list venue for every music fan. Colorado locals + national tourism create consistent sellouts. Spring onsales are crucial because summer shows sell fastest. Widespread Panic has 60+ show history at venue — their fans are obsessive completists. Country shows (Rucker/Swindell) draw massive regional demand from Denver/Colorado Springs metro. Any Red Rocks show has resale value just from venue prestige.",
+      action: "🚨 SET ALARMS FOR FRI MAR 6 10AM MT — Red Rocks shows sell out in minutes. Have multiple browsers ready.",
+      targetCities: [
+        {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks Amphitheatre",date:"Multiple shows this week",why:"Most iconic venue in America. Every show has instant resale value."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Nine Inch Nails — Peel It Back Extension (20+ NEW SHOWS)", tier: "A", score: 84, category: "Industrial Rock Icons — Tour Extension", genre: "Industrial Rock / Alternative", ticketLink: "https://www.ticketmaster.com/nine-inch-nails-tickets/artist/735762",
+      streams: "15M+ monthly but LEGACY DEMAND from 35+ year career", lastTour: "Ongoing 2025-2026 extension", scarcity: "MEDIUM-HIGH — Tour extension shows often have better availability than original dates but still sell well.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "✅ ON SALE NOW — Extension dates through March 2026",
+      saleDetails: "Extension tour currently running February-March 2026. This week's shows: Mar 9 San Diego, Mar 10 Anaheim, Mar 13 Salt Lake City. Tickets available now via Ticketmaster.",
+      reasoning: "NIN extensions often outperform original tours because they hit markets that missed the first leg. Trent Reznor's perfectionist reputation means every show is a production spectacle. Industrial/alternative fans are obsessive about setlist variations. March 2026 shows are hitting major West Coast markets with strong NIN fanbases. These could be final US dates for this tour cycle.",
+      action: "🚨 BUY EXTENSION DATES NOW — NIN fans travel for setlist variations. West Coast shows will be special.",
+      targetCities: [
+        {emoji:"🌴",city:"San Diego, CA",venue:"Pechanga Arena",date:"Mar 9 (THIS WEEK)",why:"Major market that often gets skipped on first legs. Strong NIN fanbase."},
+        {emoji:"🎭",city:"Anaheim, CA",venue:"Honda Center",date:"Mar 10",why:"Orange County location draws LA metro + local demand."},
+      ],
+      region: "NA"
+    },
     {
       name: "Bruno Mars — The Romantic Tour (6 NEW DATES ADDED)", tier: "S", score: 94, category: "Global Superstar — Arena Expansion", genre: "Pop / R&B / Funk", ticketLink: "https://www.ticketmaster.com/bruno-mars-tickets/artist/1306934",
       streams: "80M+ monthly. Global superstar. Just added 6 new dates to existing tour.", lastTour: "2024 (Las Vegas residency + select dates)", scarcity: "EXTREME — Only 6 new arena dates added to satisfy overwhelming demand. Original tour SOLD OUT.",
