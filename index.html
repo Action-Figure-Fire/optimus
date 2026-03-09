@@ -15,7 +15,7 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 9, 2026 — Daily Scan v23 · OPTIMUS INTELLIGENCE · RUSH REUNION BONANZA + RED ROCKS ONSALE BLITZ + MARCH MADNESS WEEK",
+  lastRun: "March 9, 2026 — Weekly Reset · THIS WEEK: Mar 9-14 Presales/Onsales",
   nextWeek: [
     {
       name: "Rush — Fifty Something Reunion Tour (GEDDY + ALEX RETURN)", tier: "S+", score: 98, category: "Rock Legend Reunion — 11 Years Silent", genre: "Progressive Rock / Classic Rock", ticketLink: "https://www.ticketmaster.com/rush-tickets/artist/807344",
@@ -393,6 +393,81 @@ const SCAN_DATA = {
   ],
   thisWeek: [
     {
+      name: "Gorillaz — The Mountain Tour (GENERAL ONSALE TODAY)", tier: "S", score: 92, category: "Alt-Rock Icons — Arena Tour", genre: "Alt-Rock / Electronic / Hip-Hop", ticketLink: "https://www.ticketmaster.com/gorillaz-tickets/artist/806811",
+      streams: "22M+ monthly. Damon Albarn + Jamie Hewlett virtual band. 'Song Machine' era brought them back to arena level.", lastTour: "2023 (Cracker Island World Tour)", scarcity: "HIGH — 22 NA arena dates. Little Simz + Deltron 3030 support. SNL performance boosted demand. Charlotte, Oakland, SLC, Denver = routing gaps.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 GENERAL ONSALE TODAY MON MAR 9 10AM LOCAL",
+      saleDetails: "General onsale Monday March 9 at 10am local via Ticketmaster. 22 dates Sep-Oct 2026. KONG presale and Citi presale already sold through most premium inventory.",
+      reasoning: "Gorillaz at arena level with Little Simz is a killer bill. The KONG/Citi presales already moved a lot of premium — general onsale today will be the last crack at face value. Charlotte, Oakland, SLC, and Denver are underserved markets where demand will outstrip supply.",
+      action: "🔴 GENERAL ONSALE TODAY 10AM — Grab Charlotte, Oakland, SLC, Denver before they're gone.",
+      targetCities: [
+        {emoji:"🌲",city:"Charlotte, NC",venue:"Spectrum Center",date:"Sep TBA",why:"Southeast gap. No nearby alternative dates."},
+        {emoji:"🌉",city:"Oakland, CA",venue:"Oakland Arena",date:"Oct TBA",why:"Bay Area demand, smaller than Chase Center."},
+        {emoji:"🏔️",city:"Salt Lake City, UT",venue:"Delta Center",date:"Oct TBA",why:"Mountain West funnel. UT/ID/WY/MT demand."},
+        {emoji:"🏔️",city:"Denver, CO",venue:"Ball Arena",date:"Oct TBA",why:"Colorado hub. Strong alt-rock market."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Alabama Shakes — 2026 Reunion Tour (PRESALE TODAY)", tier: "A+", score: 87, category: "Indie Rock Reunion — Amphitheater", genre: "Blues Rock / Indie Rock / Southern Soul", ticketLink: "https://www.ticketmaster.com/alabama-shakes-tickets/artist/1623972",
+      streams: "8M+ monthly. Brittany Howard-led. 'Sound & Color' Grammy winners. 8-year touring gap.", lastTour: "2018 (last full tour)", scarcity: "HIGH — Amphitheater routing (5-15K cap). 8-year gap means every city is underserved. Brittany Howard's solo success drives crossover demand.",
+      venueSize: "Amphitheater (5-15K cap)", saleStatus: "🔴 PRESALE TODAY MON MAR 9 — GENERAL ONSALE FRI MAR 13 10AM LOCAL",
+      saleDetails: "Artist presale Monday Mar 9 10am local. Additional presales through week. General onsale Friday March 13 at 10am local via Ticketmaster. Summer dates Jul 24 – Sep 25.",
+      reasoning: "Alabama Shakes haven't toured in 8 years. Brittany Howard became a solo star in that time, expanding the fanbase beyond the original indie-rock audience. Every city on this tour is essentially a routing gap — 8 years is an eternity. Amphitheater sizing (5-15K) means tight supply vs. arena-level demand.",
+      action: "🔴 HIT PRESALE TODAY — Any amphitheater date in a strong market will flip. 8-year gap = pent-up demand everywhere.",
+      region: "NA"
+    },
+    {
+      name: "Koe Wetzel — Night Champion World Tour (PRESALE TODAY)", tier: "A", score: 83, category: "Country-Rock — Arena/Amphitheater", genre: "Country-Rock / Texas Country", ticketLink: "https://www.ticketmaster.com/koe-wetzel-tickets/artist/2655498",
+      streams: "12M+ monthly. 'High Road' crossover. Texas country meets rock energy.", lastTour: "2025 (Hell Paso Tour)", scarcity: "MODERATE — 45 dates is a lot, but Koe's fanbase is rabid. Arena/amphitheater routing. Red Rocks Oct 28 = crown jewel.",
+      venueSize: "Arena / Amphitheater (8-20K cap)", saleStatus: "🔴 REGISTERED PRESALE TODAY TUE MAR 10 — GENERAL ONSALE FRI MAR 13",
+      saleDetails: "Registered fan presale Tuesday Mar 10 (sign up on koewetzelmusic.com). General onsale Friday Mar 13 10am local. 45 dates May 3 – Nov 2026. Starts Norco CA.",
+      reasoning: "Koe Wetzel is the real deal in the country-rock crossover space. 45 dates across the US means wide coverage, but his Texas/Southern dates will be the tightest. Red Rocks Oct 28 (night before Tucker Wetmore Oct 27 — back to back country) will command a premium.",
+      action: "🔴 REGISTER NOW for presale Mar 10 at koewetzelmusic.com. Target Red Rocks + Texas amphitheater dates.",
+      targetCities: [
+        {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks (Oct 28)",date:"Oct 28",why:"Red Rocks premium + back-to-back with Tucker Wetmore Oct 27."},
+        {emoji:"🤠",city:"Texas dates",venue:"Multiple",date:"Sep",why:"Home state demand. Every Texas show sells strong."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Bruno Mars — The Romantic Tour (6 ADDED DATES)", tier: "S", score: 94, category: "Global Superstar — Stadium Expansion", genre: "Pop / R&B / Funk", ticketLink: "https://www.ticketmaster.com/bruno-mars-tickets/artist/1466801",
+      streams: "55M+ monthly. First headlining world tour in a decade. Demand so high they added 6 dates.", lastTour: "2018 (24K Magic World Tour)", scarcity: "EXTREME — 5th SoFi show, 5th Vancouver, 4-night Mexico City. Added dates = original run nearly sold out. Stadium demand at peak.",
+      venueSize: "Stadium (60-80K cap)", saleStatus: "🔴 ARTIST PRESALE WED MAR 11 NOON LOCAL — GENERAL ONSALE THU MAR 12 NOON LOCAL",
+      saleDetails: "Sign up for artist presale by Mar 9 6pm ET at ticketmaster.com/bruno-mars. Artist presale Wed Mar 11 noon local. General onsale Thu Mar 12 noon local. New dates: SoFi Stadium Sep 30, BC Place Oct 21, Mexico City Dec 3-4 + Dec 7-8.",
+      reasoning: "Bruno Mars adding 6 stadium dates mid-tour confirms nuclear demand. The original run is essentially sold out. 5th SoFi show means LA demand ate through 4 nights at 70K cap each. These added dates will sell at a slight discount to the original shows initially, then climb as the tour approaches. Mexico City 4-night run is interesting for cross-border travel packages.",
+      action: "🚨 SIGN UP BY TONIGHT (Mar 9 6pm ET) for artist presale. SoFi Sep 30 = best US play. Buy at face, hold for escalation.",
+      targetCities: [
+        {emoji:"🎬",city:"Los Angeles, CA",venue:"SoFi Stadium (Sep 30)",date:"Sep 30",why:"5th show. LA ate 4 nights at 70K cap. Demand is insatiable."},
+        {emoji:"🇨🇦",city:"Vancouver, BC",venue:"BC Place (Oct 21)",date:"Oct 21",why:"5th Vancouver show. Canadian dollar discount = value play."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Eric Clapton — Fall 2026 US Tour (ONSALE TBA THIS WEEK)", tier: "S", score: 92, category: "Rock Legend — Limited Dates", genre: "Blues Rock / Classic Rock", ticketLink: "https://www.ticketmaster.com/eric-clapton-tickets/artist/734622",
+      streams: "20M+ monthly. 81 years old. ONLY 6 US dates.", lastTour: "2024", scarcity: "NUCLEAR — 6 dates for the entire US. Detroit, Cincinnati, Chicago, Milwaukee, Hinckley MN + 1 TBA. Entire East/West Coast shut out.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🟡 ONSALE EXPECTED THIS WEEK — WATCH FOR ANNOUNCEMENT",
+      saleDetails: "Announced Feb 28. 6 dates: Sep 6 Detroit, Sep 8 Cincinnati, Sep 11 Chicago, Sep 13 Milwaukee, Sep 15 Hinckley MN + 1 TBA. Presale/onsale dates expected mid-March. Support: Jimmie Vaughan.",
+      reasoning: "6 dates for the entire US at age 81. Every show could be the last. No coastal cities = entire East/West Coast demand funnels into Midwest arenas. Hinckley MN at a casino arena will be the hardest ticket — smallest cap on tour.",
+      action: "🟡 SET ALERTS — Onsale announcement expected any day. When it drops, buy EVERY show. Hinckley MN = nuclear scarcity.",
+      targetCities: [
+        {emoji:"🎰",city:"Hinckley, MN",venue:"Grand Casino Arena",date:"Sep 15",why:"Smallest venue on tour. Casino arena. Hardest ticket to get."},
+        {emoji:"🌆",city:"Chicago, IL",venue:"United Center",date:"Sep 11",why:"Only proper Midwest arena date. 23K cap."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "March Madness — Selection Sunday (Mar 15)", tier: "S", score: 95, category: "NCAA Tournament — Bracket Release", genre: "College Basketball", ticketLink: "https://www.ncaa.com/march-madness",
+      streams: "N/A", lastTour: "N/A — Annual", scarcity: "EXTREME — Single-elimination tournament. 60M+ bracket participants. Arizona 27-0, Nebraska historic season.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 SELECTION SUNDAY MAR 15 6PM ET — TICKET RELEASE IMMEDIATELY AFTER",
+      saleDetails: "Selection Sunday March 15 at 6pm ET on CBS. 68-team bracket revealed. First Four in Dayton Mar 17-18. First/Second rounds Mar 19-22. Regional sites and Sweet 16 follow. Tickets release on NCAA.com and Ticketmaster immediately after bracket announcement.",
+      reasoning: "March Madness creates instant geography-based scarcity. Once the bracket drops, fans know exactly which venue their team plays at. Cinderella teams (Nebraska first-ever win?) drive insane demand. Arizona 27-0 as #1 seed means their regional will be the hottest ticket. Buy regional tickets in the first 30 minutes after bracket reveal — prices surge within hours.",
+      action: "🚨 SUN MAR 15 6PM ET — Be ready to buy immediately after bracket reveal. Target #1 seed regionals + Cinderella cities.",
+      region: "NA"
+    },
+
+  ],
+  alreadyOnSale: [
+{
       name: "Gorillaz — The Mountain NA Tour (22 Arena Dates)", tier: "S", score: 92, category: "Alt-Rock Icons — Arena Tour", genre: "Alt-Rock / Electronic / Hip-Hop", ticketLink: "https://www.ticketmaster.com/gorillaz-tickets/artist/806811",
       streams: "25M+ monthly. New album 'The Mountain' (Feb 27). Animated icons — 2D, Murdoc, Noodle, Russel.", lastTour: "2022 (last extensive NA run)", scarcity: "EXTREME — 22 arena dates Sep 17 – Oct 31. First extensive NA run since 2022. MSG, United Center, Kia Forum, Climate Pledge. Little Simz + Deltron 3030 support. SNL debut this weekend.",
       venueSize: "Arena (15-20K cap)", saleStatus: "🔴 ARTIST PRESALE TODAY MAR 6 10AM — GENERAL ONSALE MON MAR 9 10AM LOCAL",
@@ -583,8 +658,6 @@ const SCAN_DATA = {
       ],
       region: "NA"
     },
-  ],
-  alreadyOnSale: [
   ],
   smallVenue: [
     {
