@@ -15,8 +15,46 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 9, 2026 — Weekly Reset · THIS WEEK: Mar 9-14 Presales/Onsales",
+  lastRun: "March 10, 2026 — Daily Optimus Scan · THIS WEEK: Mar 10-16 Presales/Onsales",
   nextWeek: [
+    {
+      name: "Bruno Mars — The Romantic Tour (6 NEW DATES ADDED)", tier: "S", score: 94, category: "Global Superstar — Arena Expansion", genre: "Pop / R&B / Funk", ticketLink: "https://www.ticketmaster.com/bruno-mars-tickets/artist/1466801",
+      streams: "80M+ monthly. Global superstar. Just added 6 new dates to existing tour.", lastTour: "2024 (Las Vegas residency + select dates)", scarcity: "EXTREME — Only 6 new arena dates added to satisfy overwhelming demand. Original tour SOLD OUT.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 ARTIST PRESALE WED MAR 11 NOON LOCAL — GENERAL ONSALE THU MAR 12",
+      saleDetails: "🚨 ALERT: Artist presale TOMORROW Wed Mar 11 at noon local time (signup required). General onsale Thu Mar 12 at noon local time. Added dates after original tour sold out instantly. New cities: TBA (6 markets announced).",
+      reasoning: "Bruno Mars adding dates mid-tour cycle is MASSIVE signal — original dates sold out so fast they had to expand. His last major tour was years ago, pent-up demand is enormous. Bruno delivers the best live show in pop music. New dates will be in major markets that missed original routing. Artist presale Wednesday is the only realistic shot at face value.",
+      action: "🚨 SIGN UP FOR ARTIST PRESALE NOW — When Bruno adds dates, it's because demand is nuclear. These 6 new shows will sell out in presale.",
+      targetCities: [
+        {emoji:"⭐",city:"TBA Major Markets",venue:"Arena venues (15-20K)",date:"Added due to demand",why:"Added due to overwhelming demand. Any new market will have years of pent-up demand."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "March Madness 2026 — NCAA Tournament (SELECTION SUNDAY MAR 15)", tier: "S", score: 95, category: "Sports Event — National Championship", genre: "College Basketball", ticketLink: "https://www.ncaa.com/march-madness",
+      streams: "N/A — Sports event with 60+ million bracket participants annually", lastTour: "Annual event", scarcity: "EXTREME — Single-elimination tournament. Each game is literally once-in-a-lifetime for these players.",
+      venueSize: "Various Arenas (10-20K cap per site)", saleStatus: "🔴 SELECTION SUNDAY MAR 15 — BRACKET ANNOUNCEMENT",
+      saleDetails: "🚨 ALERT: Selection Sunday THIS SUNDAY March 15 at 6pm ET on CBS. First Four games March 17-18. Round of 64 starts March 19. Final Four April 5, Championship April 7. Host sites TBA Sunday.",
+      reasoning: "March Madness is THE American sports betting/resale event of the year. Selection Sunday creates instant scarcity — teams/cities learn if they're hosting 48 hours before games start. Cinderella runs create explosive demand (see Saint Peter's 2022). Corporate hospitality buyers pay ANY price for Final Four. Regional brackets mean some cities get 4-6 games while others get zero. First/second round venues sell out in minutes.",
+      action: "🚨 PREP FOR SELECTION SUNDAY — Know which arenas are hosting. Buy tickets to ANY games in major markets immediately after bracket release.",
+      targetCities: [
+        {emoji:"🏀",city:"TBA Regional Sites",venue:"Major Arenas",date:"Mar 19-30 (Regionals)",why:"Selection Sunday determines host cities. Buy immediately after bracket release."},
+        {emoji:"🏆",city:"Glendale, AZ",venue:"State Farm Stadium",date:"Apr 5-7 (Final Four)",why:"Fixed Final Four location. Corporate demand will be insane."},
+      ],
+      region: "USA"
+    },
+    {
+      name: "Nine Inch Nails — Peel It Back Extension (HAPPENING NOW)", tier: "A", score: 84, category: "Industrial Rock Icons — Tour Extension", genre: "Industrial Rock / Alternative", ticketLink: "https://www.ticketmaster.com/nine-inch-nails-tickets/artist/735762",
+      streams: "15M+ monthly but LEGACY DEMAND from 35+ year career", lastTour: "Ongoing 2025-2026 extension", scarcity: "MEDIUM-HIGH — Tour extension shows often have better availability but still sell well in major markets.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "✅ ON SALE NOW — Extension dates through March 2026",
+      saleDetails: "Extension tour currently running February-March 2026. THIS WEEK'S SHOWS: ✅ Mar 9 San Diego (HAPPENED), 🔴 Mar 10 Anaheim (TONIGHT), 🔴 Mar 13 Salt Lake City (FRIDAY). Tickets available via Ticketmaster.",
+      reasoning: "NIN extensions often outperform original tours because they hit markets that missed the first leg. Trent Reznor's perfectionist reputation means every show is a production spectacle. Industrial/alternative fans are obsessive about setlist variations. These March 2026 shows are hitting major West Coast markets with strong NIN fanbases. Could be final US dates for this tour cycle.",
+      action: "🚨 BUY EXTENSION DATES NOW — NIN fans travel for setlist variations. Anaheim tonight + Salt Lake Friday are still available.",
+      targetCities: [
+        {emoji:"🎭",city:"Anaheim, CA",venue:"Honda Center",date:"Mar 10 (TONIGHT)",why:"Orange County location draws LA metro + local demand. Still tickets available."},
+        {emoji:"⛷️",city:"Salt Lake City, UT",venue:"Delta Center",date:"Mar 13 (FRIDAY)",why:"Small market often skipped. Strong NIN fanbase. Low broker competition."},
+      ],
+      region: "NA"
+    },
     {
       name: "Rush — Fifty Something Reunion Tour (GEDDY + ALEX RETURN)", tier: "S+", score: 98, category: "Rock Legend Reunion — 11 Years Silent", genre: "Progressive Rock / Classic Rock", ticketLink: "https://www.ticketmaster.com/rush-tickets/artist/807344",
       streams: "25M+ monthly but LEGACY DEMAND = 40+ million albums sold. First tour in 11 years since Neil Peart's death.", lastTour: "2015 (R40 Live Tour)", scarcity: "NUCLEAR — Geddy Lee + Alex Lifeson reunion after declaring Rush 'finished.' New drummer Anika Nilles. Limited summer 2026 dates only.",
@@ -45,14 +83,14 @@ const SCAN_DATA = {
       region: "USA"
     },
     {
-      name: "Red Rocks Spring Onsale Blitz — Multiple Shows Going Live", tier: "A+", score: 88, category: "Venue Event — Colorado Institution", genre: "Various", ticketLink: "https://www.redrocksonline.com/",
+      name: "Red Rocks Spring Onsale Results — Widespread Panic SOLD OUT", tier: "A+", score: 88, category: "Venue Event — Colorado Institution", genre: "Various", ticketLink: "https://www.redrocksonline.com/",
       streams: "Various artists — Venue-driven demand", lastTour: "Continuous booking", scarcity: "HIGH — Most iconic outdoor venue in America. Limited capacity 9,525. Colorado destination tourism.",
-      venueSize: "Red Rocks Amphitheatre (9,525 cap)", saleStatus: "🔴 MULTIPLE ONSALES THIS WEEK — FRI MAR 6 & TUE MAR 10",
-      saleDetails: "Widespread Panic 3-night run (Jun 26-28) on sale Fri Mar 6 10am MT. Tucker Wetmore (Oct 27) on sale Fri Mar 6 10am MT. Darius Rucker & Cole Swindell presale Tue Mar 10 10am MT, general Fri Mar 13 10am MT.",
-      reasoning: "Red Rocks is bucket-list venue for every music fan. Colorado locals + national tourism create consistent sellouts. Spring onsales are crucial because summer shows sell fastest. Widespread Panic has 60+ show history at venue — their fans are obsessive completists. Country shows (Rucker/Swindell) draw massive regional demand from Denver/Colorado Springs metro. Any Red Rocks show has resale value just from venue prestige.",
-      action: "🚨 SET ALARMS FOR FRI MAR 6 10AM MT — Red Rocks shows sell out in minutes. Have multiple browsers ready.",
+      venueSize: "Red Rocks Amphitheatre (9,525 cap)", saleStatus: "✅ WIDESPREAD PANIC SOLD OUT (went on sale Mar 6) — DARIUS RUCKER PRESALE TODAY",
+      saleDetails: "✅ COMPLETED: Widespread Panic 3-night run (Jun 26-28) SOLD OUT Mar 6 at 10:01am MT. Tucker Wetmore (Oct 27) SOLD OUT Mar 6. 🔴 TODAY: Darius Rucker & Cole Swindell presale Tue Mar 10 10am MT (TODAY), general onsale Fri Mar 13 10am MT.",
+      reasoning: "Red Rocks continues to prove its secondary market strength. Widespread Panic 3-nights SOLD OUT in under 2 minutes — proving the 60+ show history creates completist demand. Country shows (Rucker/Swindell) draw massive regional demand. Presale today is final chance at face value. Secondary market already active for sold-out shows.",
+      action: "🚨 DARIUS RUCKER PRESALE TODAY 10AM MT — Last chance at face value. Secondary market active for sold-out Widespread Panic shows.",
       targetCities: [
-        {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks Amphitheatre",date:"Multiple shows this week",why:"Most iconic venue in America. Every show has instant resale value."},
+        {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks Amphitheatre",date:"Multiple shows",why:"Panic SOLD OUT proves venue power. Rucker presale today = opportunity."},
       ],
       region: "NA"
     },
