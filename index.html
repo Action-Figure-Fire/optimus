@@ -15,16 +15,29 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 16, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 16-22 Presales/Onsales",
+  lastRun: "March 17, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 17-22 Presales/Onsales",
   nextWeek: [
     {
-      name: "TBA — Scanning for Mar 23-29 announcements", tier: "B", score: 60, category: "Coming Soon", genre: "Various",
-      ticketLink: "#",
-      streams: "Check back mid-week for next week's presale intel.", lastTour: "", scarcity: "Scanning...",
-      venueSize: "TBA", saleStatus: "🔍 SCANNING",
-      saleDetails: "Next week's presales typically get announced Tue-Wed. Check back for updates.",
-      reasoning: "We scan daily for new announcements. Next week's presale calendar will populate as tours are announced this week.",
-      action: "Check back Wednesday for updated next-week presale intel.",
+      name: "🏀 March Madness — Sweet 16 & Elite Eight (Mar 26-29)", tier: "S", score: 95, category: "College Basketball — Deep Tournament Rounds", genre: "Sports",
+      ticketLink: "https://www.ncaa.com/march-madness",
+      streams: "#1 seeds: Duke, Arizona, Michigan, Florida. Sweet 16 Thu-Fri Mar 26-27. Elite Eight Sat-Sun Mar 28-29.", lastTour: "Annual", scarcity: "EXTREME — By Sweet 16, Cinderella stories are established. Demand spikes exponentially each round. Arizona undefeated narrative = nuclear demand in their region.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 SWEET 16 MAR 26-27 — ELITE EIGHT MAR 28-29",
+      saleDetails: "Sweet 16: Thu Mar 26 & Fri Mar 27 at regional sites. Elite Eight: Sat Mar 28 & Sun Mar 29. Final Four: Apr 4 in Indianapolis. Monitor first/second round results THIS WEEK (Mar 17-22) — upsets create demand spikes for Sweet 16 venues. If Arizona stays undefeated, their regional site = most expensive ticket in the tournament.",
+      reasoning: "Sweet 16 and Elite Eight are where March Madness secondary market PEAKS for per-game value. The bracket will be half-resolved — Cinderella stories established, blue-blood matchups confirmed. Arizona's undefeated run (if it continues through first/second rounds) will make their regional site the hottest ticket. Duke as #1 seed in their region draws massive alumni travel demand. BUY Sweet 16 tickets IMMEDIATELY after first-round upsets when prices haven't adjusted yet.",
+      action: "🚨 WATCH FIRST ROUND RESULTS THU-FRI — Buy Sweet 16 tickets at sites where upsets create Cinderella narratives. Arizona's region = highest premium if they advance. Final Four Indianapolis tickets rising daily.",
+      targetCities: [
+        {emoji:"🏀",city:"Indianapolis, IN",venue:"Lucas Oil Stadium",date:"Apr 4 & 6",why:"Final Four + Championship. Buy NOW — prices only go up from here."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "MLB Opening Day Week (Mar 25-26)", tier: "A", score: 82, category: "Baseball — Season Openers", genre: "Sports",
+      ticketLink: "https://www.mlb.com",
+      streams: "Giants vs Yankees Opening Night Mar 25 at Oracle Park. 14-game Opening Day slate Mar 26.", lastTour: "Annual", scarcity: "HIGH — Opening Night SF vs NYY is marquee matchup. Earliest Opening Day in MLB history.",
+      venueSize: "Stadium (35-50K cap)", saleStatus: "🟢 ON SALE — Opening Day tix available",
+      saleDetails: "Opening Night: Wed Mar 25 Giants vs Yankees at Oracle Park, San Francisco. Opening Day: Thu Mar 26 14-game slate across MLB. Monitor secondary market as day approaches — casual fans buy late.",
+      reasoning: "Giants vs Yankees on Opening Night is a premium ticket — iconic franchises, Oracle Park venue premium. Earliest Opening Day ever means compressed buying window. Strong secondary market for premium seats as casual fans scramble last-minute.",
+      action: "🟡 BUY premium seats for Giants vs Yankees Opening Night if available below market. Prices spike final 48 hours before game.",
       region: "NA"
     },
   ],
@@ -95,6 +108,42 @@ const SCAN_DATA = {
       saleDetails: "Tour kicked off Mar 15 in San Francisco (Chase Center). Tickets on sale via Ticketmaster. Multiple dates through 2026. Trent Reznor hinted NIN may stop touring after this run.",
       reasoning: "Trent Reznor publicly hinted that NIN may end touring after this run. That's the magic word for secondary market — 'farewell' energy makes every show feel like the last chance. NIN's fanbase is adult (35-55), high-income, willing to pay premium. The 63-date tour is extensive but the farewell narrative will keep demand elevated throughout. Early tour dates get reviews that spike demand for later dates.",
       action: "✅ BUY NOW — Farewell narrative = sustained premium. Target later-tour dates where early reviews build demand. Watch for 'best setlist ever' posts to identify must-see shows.",
+      region: "NA"
+    },
+    {
+      name: "Backstreet Boys — Final Sphere Dates (PRESALE TODAY)", tier: "S", score: 91, category: "Pop Icons — Sphere Residency Final Run", genre: "Pop", ticketLink: "https://www.ticketmaster.com/backstreet-boys-tickets/artist/848830",
+      streams: "575K+ fans across 35 sold-out Sphere shows. First act to sell out the Sphere.", lastTour: "2025-26 (Into the Millennium — Sphere)", scarcity: "EXTREME — Final summer 2026 dates at Sphere. 35 shows already sold out. Jul-Aug dates including Jul 11, 12, 18, 19 and Aug 15, 16, 21, 22.",
+      venueSize: "Sphere Las Vegas (~18K cap)", saleStatus: "🔴 FAN CLUB PRESALE TODAY TUE MAR 17 10AM — ONSALE FRI MAR 20",
+      saleDetails: "BSB Fan Club presale TODAY Tue Mar 17 10am. Additional presales through week. General onsale Fri Mar 20 10am local. FINAL summer dates: Jul 11, 12, 18, 19, Aug 15, 16, 21, 22. Single-night and 2-night packages available.",
+      reasoning: "BSB became the FIRST act to sell out the Sphere — 35 shows, 575K+ fans. These are the FINAL summer dates, which means 'last chance' energy drives premium. The Sphere venue premium alone is massive (proven by U2, Metallica announcements). BSB's millennial fanbase (30-45) has peak disposable income. Jul/Aug dates = Vegas summer tourism overlap. Every previous BSB Sphere show sold out.",
+      action: "🚨 FAN CLUB PRESALE TODAY 10AM — Final Sphere dates = last chance premium. Every previous show sold out. Buy 2-night packages for maximum flip.",
+      targetCities: [
+        {emoji:"🎰",city:"Las Vegas, NV",venue:"Sphere (Jul 11-12)",date:"Jul 11-12",why:"First weekend of final run. Opening pair will have announcement buzz premium."},
+        {emoji:"🎰",city:"Las Vegas, NV",venue:"Sphere (Aug 21-22)",date:"Aug 21-22",why:"FINAL WEEKEND. Last-ever BSB Sphere shows = highest premium of the run."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Brandi Carlile — The Human Tour (Fall Extension)", tier: "A", score: 83, category: "Americana/Rock — Amphitheater", genre: "Americana / Rock / Folk", ticketLink: "https://www.ticketmaster.com/brandi-carlile-tickets/artist/1076383",
+      streams: "8M+ monthly. Grammy powerhouse (8 wins). 'The Story' is a generational anthem.", lastTour: "2025-26 (The Human Tour — spring/summer)", scarcity: "HIGH — Fall NA extension with amphitheater/arena routing. Red Rocks travel packages available. The Head and The Heart + I'm With Her on select dates.",
+      venueSize: "Amphitheater / Arena (5-15K cap)", saleStatus: "🔴 BRAMILY PRESALE TODAY TUE MAR 17 — ONSALE FRI MAR 20",
+      saleDetails: "Bramily fan club presale TODAY Tue Mar 17 10am local. Artist presale Wed Mar 18 10am. Amex presale Wed Mar 18 10am. General onsale Fri Mar 20 10am local. Fall 2026 NA dates added. Red Rocks weekend with travel packages. The Head and The Heart + I'm With Her supporting select dates.",
+      reasoning: "Brandi Carlile is a touring machine — 8 Grammys, sells out amphitheaters consistently. The Head and The Heart as support is a STACKED bill for the Americana/folk demo. Red Rocks shows will command highest premium. Fall extension means she'll have been touring all year building demand. Her demo (30-55 women, high income) buys premium seats and full-price secondary.",
+      action: "🔴 BRAMILY PRESALE TODAY — Target Red Rocks dates (travel packages = premium). Amphitheater routing with THATH support = double-headliner value.",
+      region: "NA"
+    },
+    {
+      name: "The Pretty Reckless — Dear God Tour + AC/DC Support", tier: "A", score: 80, category: "Hard Rock — Theater/Stadium", genre: "Hard Rock / Alternative", ticketLink: "https://www.ticketmaster.com/the-pretty-reckless-tickets/artist/1364857",
+      streams: "5M+ monthly. Taylor Momsen-led. 4 #1 Mainstream Rock singles. New album 'Dear God' incoming.", lastTour: "2024-25", scarcity: "HIGH — Mix of headline theater dates (1-3K cap) AND opening for AC/DC at stadiums. Theater dates = tight supply. AC/DC support dates = massive exposure.",
+      venueSize: "Theater (1-3K cap) + Stadium (AC/DC dates)", saleStatus: "🔴 ARTIST PRESALE TODAY TUE MAR 17 10AM — ONSALE FRI MAR 20",
+      saleDetails: "Artist presale TODAY Tue Mar 17 10am. VIP packages via Sound Rink starting Mar 17. General onsale Fri Mar 20 10am local. Headline dates: Aug-Sep across NA (Egyptian Room Indianapolis, House of Blues Cleveland, Hampton Beach Casino, Citizens House of Blues Boston, Fillmore Silver Spring). Also opening for AC/DC at stadiums (MetLife, Lincoln Financial Field, The Dome STL, Rogers Stadium Toronto).",
+      reasoning: "Pretty Reckless headlining theaters (1-3K cap) while ALSO opening for AC/DC at stadiums is the PERFECT pipeline setup. Every night they play to 50K+ AC/DC fans, then those fans want to see them headline in a 2K room. Theater dates will sell out on the AC/DC exposure wave. Egyptian Room (500 cap), Hampton Beach Casino (~800 cap) = extremely tight supply. New album 'Dear God' cycle adds momentum.",
+      action: "🔴 PRESALE TODAY 10AM — Target smallest headline venues: Egyptian Room Indianapolis, Hampton Beach Casino NH. AC/DC support exposure will spike demand for these intimate dates.",
+      targetCities: [
+        {emoji:"🎸",city:"Indianapolis, IN",venue:"Egyptian Room (~500 cap)",date:"Sep 9",why:"500 cap room for a band opening AC/DC stadiums. This will sell out instantly."},
+        {emoji:"🏖️",city:"Hampton, NH",venue:"Hampton Beach Casino (~800 cap)",date:"Sep 22",why:"Tiny beach venue. New England rock demand compressed."},
+        {emoji:"🗽",city:"Silver Spring, MD",venue:"The Fillmore (~2K cap)",date:"Sep 26",why:"DC-area after MetLife and Philly stadium dates = local fans want headline experience."},
+      ],
       region: "NA"
     },
   ],
@@ -1170,13 +1219,13 @@ function OptimusDashboard() {
         {/* Tab content */}
         {tab==="thisweek"&&(<>
           <SH title="This Week" sub="Presales & onsales Mar 16–22" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🔴" title="THIS WEEK: NEEDTOBREATHE, Empire of the Sun, Sebastian Maniscalco, The Pogues + March Madness tips off!" sub="NEEDTOBREATHE artist presale Tue 10am. Empire of the Sun Tue 10am (no code needed). Sebastian Maniscalco LIVE — code SEBASTIAN. Pogues Wed 10am. Wilco onsale Fri. NCAA First Four Tue-Wed, First Round Thu-Fri." color="#ef4444"/>
+          <AB emoji="🔴" title="THIS WEEK: BSB Final Sphere, Brandi Carlile, Pretty Reckless, NEEDTOBREATHE, Empire of the Sun + March Madness!" sub="BSB Sphere final dates presale TODAY 10am. Brandi Carlile Bramily presale TODAY. Pretty Reckless presale TODAY. NEEDTOBREATHE Tue 10am. Empire of the Sun Tue 10am. Sebastian Maniscalco LIVE — code SEBASTIAN. Pogues Wed 10am. NCAA First Four TODAY, First Round Thu-Fri." color="#ef4444"/>
           {renderCards(SCAN_DATA.thisWeek,"tw")}
         </>)}
 
         {tab==="nextweek"&&(<>
           <SH title="Next Week" sub="Onsales Mar 23–29" count={SCAN_DATA.nextWeek.length}/>
-          <AB emoji="🏀" title="MARCH MADNESS BRACKET SET — #1 Seeds: Duke, Arizona, Michigan, Florida" sub="First Four Tue-Wed in Dayton. First Round Thu-Fri at 8 sites. Monitor upsets — Cinderella stories spike next-round ticket prices within HOURS." color="#f59e0b"/>
+          <AB emoji="🏀" title="NEXT WEEK: Sweet 16 (Mar 26-27) & Elite Eight (Mar 28-29) + MLB Opening Day (Mar 25-26)" sub="March Madness deep rounds — watch THIS WEEK's results to position for Sweet 16. Arizona undefeated chase = nuclear demand. MLB Opening Night: Giants vs Yankees at Oracle Park Mar 25." color="#f59e0b"/>
           {renderCards(SCAN_DATA.nextWeek,"nw")}
         </>)}
 
