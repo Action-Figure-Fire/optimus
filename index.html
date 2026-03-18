@@ -15,18 +15,18 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 17, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 17-22 Presales/Onsales",
+  lastRun: "March 18, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 18-22 Presales/Onsales",
   nextWeek: [
     {
       name: "🏀 March Madness — Sweet 16 & Elite Eight (Mar 26-29)", tier: "S", score: 95, category: "College Basketball — Deep Tournament Rounds", genre: "Sports",
       ticketLink: "https://www.ncaa.com/march-madness",
       streams: "#1 seeds: Duke, Arizona, Michigan, Florida. Sweet 16 Thu-Fri Mar 26-27. Elite Eight Sat-Sun Mar 28-29.", lastTour: "Annual", scarcity: "EXTREME — By Sweet 16, Cinderella stories are established. Demand spikes exponentially each round. Arizona undefeated narrative = nuclear demand in their region.",
       venueSize: "Arena (15-20K cap)", saleStatus: "🔴 SWEET 16 MAR 26-27 — ELITE EIGHT MAR 28-29",
-      saleDetails: "Sweet 16: Thu Mar 26 & Fri Mar 27 at regional sites. Elite Eight: Sat Mar 28 & Sun Mar 29. Final Four: Apr 4 in Indianapolis. Monitor first/second round results THIS WEEK (Mar 17-22) — upsets create demand spikes for Sweet 16 venues. If Arizona stays undefeated, their regional site = most expensive ticket in the tournament.",
+      saleDetails: "Sweet 16: Thu Mar 26 & Fri Mar 27 at regional sites. Elite Eight: Sat Mar 28 & Sun Mar 29. Final Four: Apr 4 in San Antonio. Monitor first/second round results THIS WEEK (Mar 17-22) — upsets create demand spikes for Sweet 16 venues. If Arizona stays undefeated, their regional site = most expensive ticket in the tournament.",
       reasoning: "Sweet 16 and Elite Eight are where March Madness secondary market PEAKS for per-game value. The bracket will be half-resolved — Cinderella stories established, blue-blood matchups confirmed. Arizona's undefeated run (if it continues through first/second rounds) will make their regional site the hottest ticket. Duke as #1 seed in their region draws massive alumni travel demand. BUY Sweet 16 tickets IMMEDIATELY after first-round upsets when prices haven't adjusted yet.",
-      action: "🚨 WATCH FIRST ROUND RESULTS THU-FRI — Buy Sweet 16 tickets at sites where upsets create Cinderella narratives. Arizona's region = highest premium if they advance. Final Four Indianapolis tickets rising daily.",
+      action: "🚨 WATCH FIRST ROUND RESULTS THU-FRI — Buy Sweet 16 tickets at sites where upsets create Cinderella narratives. Arizona's region = highest premium if they advance. Final Four San Antonio tickets rising daily.",
       targetCities: [
-        {emoji:"🏀",city:"Indianapolis, IN",venue:"Lucas Oil Stadium",date:"Apr 4 & 6",why:"Final Four + Championship. Buy NOW — prices only go up from here."},
+        {emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 4 & 6",why:"Final Four + Championship. Buy NOW — prices only go up from here."},
       ],
       region: "NA"
     },
@@ -91,8 +91,8 @@ const SCAN_DATA = {
     {
       name: "🏀 March Madness — NCAA Tournament (FIRST FOUR + FIRST ROUND THIS WEEK)", tier: "S", score: 95, category: "College Basketball — National Tournament", genre: "Sports", ticketLink: "https://www.ncaa.com/march-madness",
       streams: "68-team bracket. #1 seeds: Duke, Arizona, Michigan, Florida. First Four Tue-Wed, First Round Thu-Fri, Second Round Sat-Sun.", lastTour: "Annual", scarcity: "EXTREME — Selection Sunday was yesterday (Mar 15). Bracket is SET. First Four in Dayton Tue-Wed. First Round at 8 sites Thu-Fri. Demand spikes for Cinderella stories.",
-      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 GAMES START TUESDAY — SECONDARY MARKET ACTIVE",
-      saleDetails: "First Four: Tue Mar 17 & Wed Mar 18 at UD Arena, Dayton OH. First Round: Thu Mar 19 & Fri Mar 20 at 8 sites nationwide. Second Round: Sat Mar 21 & Sun Mar 22. Sweet 16: Mar 26-27. Elite 8: Mar 28-29. Final Four: Apr 4 in San Antonio.",
+      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 FIRST FOUR TODAY WED — FIRST ROUND THU-FRI — SECONDARY ACTIVE",
+      saleDetails: "First Four: Tue Mar 17 & Wed Mar 18 (TODAY) at UD Arena, Dayton OH. First Round: Thu Mar 19 & Fri Mar 20 at 8 sites nationwide. Second Round: Sat Mar 21 & Sun Mar 22. Sweet 16: Mar 26-27. Elite 8: Mar 28-29. Final Four: Apr 4 in San Antonio.",
       reasoning: "March Madness is the biggest single-event ticket opportunity of the year. The bracket just dropped — Cinderella stories will emerge by Thursday that spike demand for specific sites. First round sites rotate annually so each host city has pent-up demand. The secondary market moves FAST once upsets happen — prices for next-round games spike within hours of a buzzer-beater. Duke/Arizona/Michigan/Florida as #1 seeds means those fan bases are buying everything.",
       action: "🚨 MONITOR FIRST FOUR RESULTS TUE-WED. Buy second-round tickets at sites where Cinderellas land. Prices spike 2-5x after upsets. San Antonio Final Four tickets are already premium.",
       targetCities: [
@@ -144,6 +144,52 @@ const SCAN_DATA = {
         {emoji:"🏖️",city:"Hampton, NH",venue:"Hampton Beach Casino (~800 cap)",date:"Sep 22",why:"Tiny beach venue. New England rock demand compressed."},
         {emoji:"🗽",city:"Silver Spring, MD",venue:"The Fillmore (~2K cap)",date:"Sep 26",why:"DC-area after MetLife and Philly stadium dates = local fans want headline experience."},
       ],
+      region: "NA"
+    },
+    {
+      name: "Djo (Joe Keery) — Summer 2026 Headline Tour w/ Pond", tier: "S", score: 89, category: "Indie Pop / Synth-Rock — Arena Headline", genre: "Indie Pop / Synth-Rock", ticketLink: "https://www.ticketmaster.com/djo-tickets/artist/2681498",
+      streams: "28M+ monthly. 'End of Beginning' 1.5B+ streams. Stranger Things star → legit music headliner.", lastTour: "2025 (Back On You Tour — sold out, venue upgrades)", scarcity: "EXTREME — Arena routing (Kaseya Center, State Farm Arena, Xfinity Mobile Arena). 28M listeners finally getting arena-sized venues. Pond supporting.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 AMEX PRESALE WED MAR 18 8AM — GENERAL ONSALE FRI MAR 20 10AM",
+      saleDetails: "American Express presale Wed Mar 18 8am ET (Forest Hills Stadium). Artist presale active through week. General onsale Fri Mar 20 10am local. Summer 2026: Jul 6-7 Miami (Kaseya Center), Jul 9 Tampa, Jul 11-12 Atlanta (State Farm Arena), Jul 14 Pittsburgh (Stage AE Outdoor), Jul 15 Philly, Jul 17 Forest Hills NY, Jul 19-20 Toronto, Jul 22 Detroit, Jul 24 Chicago, Jul 26 Denver, Jul 28 Salt Lake City, Jul 29 Portland, Jul 31 Richmond VA. Pond supporting on all dates.",
+      reasoning: "This is the BIGGEST streaming gap closure of 2026. Djo went from 3-5K cap headline rooms in 2025 to ARENAS. 28M monthly listeners finally getting arena-sized venues. 'End of Beginning' resurged to Global Top 10 after Stranger Things finale. Two-night stands in Miami and Atlanta signal massive confidence. Forest Hills Stadium NYC is a premium outdoor venue. SLC, Portland, Richmond are smaller markets where arena demand will be extreme. Pond as support adds credibility with psych-rock fans. This was our #1 streaming gap pick — NOW IT'S HAPPENING.",
+      action: "🚨 AMEX PRESALE WED 8AM — BUY EVERYTHING. This is the streaming gap play we've been waiting for. Target: SLC (dead zone), Richmond (small market arena), Pittsburgh (Stage AE outdoor = tight cap).",
+      targetCities: [
+        {emoji:"⛷️",city:"Salt Lake City, UT",venue:"TBA (Jul 28)",date:"Jul 28",why:"Mountain West dead zone. Only Intermountain date. 5-state funnel."},
+        {emoji:"🎸",city:"Richmond, VA",venue:"Allianz Amphitheater (Jul 31)",date:"Jul 31",why:"Small market. Southeast corridor gap. Tour closer energy."},
+        {emoji:"🏒",city:"Pittsburgh, PA",venue:"Stage AE Outdoor (Jul 14)",date:"Jul 14",why:"Outdoor venue = tighter cap than arena. Only western PA date."},
+        {emoji:"🗽",city:"Forest Hills, NY",venue:"Forest Hills Stadium (Jul 17)",date:"Jul 17",why:"Premium outdoor venue. NYC demand. Amex presale Wed 8am."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Lil Wayne — Tha Carter Celebration Tour (NEW DATES)", tier: "A", score: 83, category: "Hip-Hop Legend — Arena Tour", genre: "Hip-Hop / Rap", ticketLink: "https://www.ticketmaster.com/lil-wayne-tickets/artist/1075498",
+      streams: "30M+ monthly. 'A Milli,' 'Lollipop,' Carter III-V catalog = legendary.", lastTour: "2025 (Welcome to Tha Carter Tour)", scarcity: "HIGH — Arena routing with 2 Chainz supporting. Nashville, San Antonio, Detroit (2 MI dates) newly added.",
+      venueSize: "Arena (12-20K cap)", saleStatus: "🔴 CITI PRESALE WED MAR 18 10AM — ARTIST PRESALE NOON — ONSALE FRI MAR 20",
+      saleDetails: "Citi presale Wed Mar 18 10am local. Artist presale Wed Mar 18 noon local. General onsale Fri Mar 20 10am local. NEW dates added: Nashville (Bridgestone Arena), San Antonio (Frost Bank Center Oct), Detroit area (2 Michigan dates). 2 Chainz supporting. Sign up for Frost Bank Center newsletter for presale access.",
+      reasoning: "Lil Wayne adding dates mid-tour signals strong demand. Nashville Bridgestone and San Antonio Frost Bank Center are both premium venues. Two Michigan dates show Detroit-area demand is high enough to justify doubling up. 2 Chainz as support stacks the bill. Wayne's catalog spans generations — Carter III through Carter V gives him a 15-year fan age range (25-45). Presale structure is straightforward: Citi at 10am, artist at noon, general Friday.",
+      action: "🔴 CITI PRESALE WED 10AM — Target Nashville (country town loves hip-hop events = scarcity), San Antonio (underserved hip-hop market).",
+      targetCities: [
+        {emoji:"🎸",city:"Nashville, TN",venue:"Bridgestone Arena",date:"TBA",why:"Hip-hop arena shows in Nashville are scarce. Country town demand for rap = premium."},
+        {emoji:"🤠",city:"San Antonio, TX",venue:"Frost Bank Center (Oct)",date:"Oct TBA",why:"Underserved Texas hip-hop market between Austin and the border."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Gavin Adcock — The Day I Hang It Up Tour", tier: "B+", score: 75, category: "Country Breakout — Theater/Amphitheater", genre: "Country", ticketLink: "https://www.ticketmaster.com/gavin-adcock-tickets/artist/2989291",
+      streams: "Rising fast. Country breakout with strong TikTok presence.", lastTour: "2025 (club dates)", scarcity: "MODERATE-HIGH — First major headline tour. Theater/amphitheater routing.",
+      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🔴 FAN CLUB PRESALE WED MAR 18 10AM — ONSALE FRI MAR 20",
+      saleDetails: "Gavin Adcock fan club presale Wed Mar 18 10am local. Additional presales through week. General onsale Fri Mar 20 10am local. The Day I Hang It Up Tour — dates TBA.",
+      reasoning: "Country breakout announcing first major headline tour. Fan club presale structure suggests strong base. Theater/amphitheater routing for a rising country act = potential for tight supply as his audience grows between announcement and show dates. Country breakouts (see: Tucker Wetmore, Morgan Wallen trajectory) have the fastest venue-scaling in music.",
+      action: "🔴 FAN CLUB PRESALE WED 10AM — Buy small-market dates. Country breakouts scale fast — today's theaters are tomorrow's amphitheaters.",
+      region: "NA"
+    },
+    {
+      name: "Metric — 2026 Tour", tier: "B+", score: 73, category: "Indie Rock — Theater/Arena", genre: "Indie Rock / Synth-Rock", ticketLink: "https://www.ticketmaster.com/metric-tickets/artist/862513",
+      streams: "5M+ monthly. 'Gold Guns Girls,' 'Help I'm Alive' = indie rock anthems. Emily Haines-led.", lastTour: "2024-25", scarcity: "MODERATE — Theater/arena routing. Loyal indie rock fanbase.",
+      venueSize: "Theater / Arena (2-10K cap)", saleStatus: "🔴 PRESALE STARTED TUE MAR 17 10AM — ONSALE FRI MAR 20",
+      saleDetails: "Presale started Tue Mar 17 10am local. General onsale Fri Mar 20 10am local. 2026 tour dates across NA.",
+      reasoning: "Metric has a dedicated indie rock fanbase built over 20+ years. Emily Haines is an icon in the indie world. Their catalog ('Gold Guns Girls,' 'Help I'm Alive,' 'Breathing Underwater') holds up. Theater routing means tight supply for a band with arena-level name recognition in certain markets (Toronto, NYC, LA). Canadian dates will be strongest — Metric is Canadian royalty.",
+      action: "🟡 BUY Toronto and Montreal dates — Metric is Canadian royalty. NYC/LA theater dates will also be tight.",
       region: "NA"
     },
   ],
@@ -715,12 +761,12 @@ const SCAN_DATA = {
   // ─── MODULE 1: SUPPORT ACT → HEADLINE PIPELINE ───
   pipeline: [
     {
-      name: "Djo (Joe Keery)", tier: "A", score: 82, category: "Support → Headline", genre: "Indie Pop / Synth-Rock",
+      name: "Djo (Joe Keery)", tier: "S", score: 92, category: "Support → Headline → ARENA", genre: "Indie Pop / Synth-Rock",
       streams: "28M+ monthly (Stranger Things finale surge)", parentTour: "Tame Impala — Deadbeat Tour (Jul 7 – Aug 19)",
-      venueSize: "Currently arenas (15-20K) → predict 3-5K headline", saleStatus: "🟣 WATCHLIST — headline dates TBA",
-      saleDetails: "Opening for Tame Impala Jul 7 (Miami) through Aug 19 (Columbus). Solo headline tour expected fall 2026.",
-      reasoning: "Djo's 2025 'Back On You' world tour: 70 shows, added extra dates in Portland, Brooklyn, London, Amsterdam due to demand. Venue upgrades in Detroit due to demand. 'End of Beginning' resurged to Spotify Global Top 10 after Stranger Things finale (Dec 2025). 1.5B+ streams on that single alone. UK tour: SOLD OUT including added dates. South American leg selling strong. Now opening for Tame Impala in 15-20K arenas — exposing him to massive new audience nightly. Post-headline tour expected fall 2026 in 3-5K theaters. Those WILL sell out instantly.",
-      action: "SET ALERTS — When Djo announces fall 2026 headline dates, BUY IMMEDIATELY. 3-5K cap theaters will sell out same day. Target: 9:30 Club DC, The Fillmore SF, Brooklyn Steel.",
+      venueSize: "ARENA HEADLINE ANNOUNCED — Kaseya Center, State Farm Arena, Forest Hills", saleStatus: "🔴 AMEX PRESALE WED MAR 18 — ONSALE FRI MAR 20",
+      saleDetails: "🚨 PIPELINE CONFIRMED — Djo skipped theaters entirely, went straight to ARENAS. Summer 2026 headline w/ Pond: Jul 6-7 Miami (Kaseya Center), Jul 11-12 Atlanta (State Farm Arena), Jul 17 Forest Hills NY, Jul 22 Detroit, Jul 24 Chicago, Jul 28 SLC, Jul 29 Portland. Amex presale Wed Mar 18 8am. General onsale Fri Mar 20.",
+      reasoning: "🏆 PIPELINE WIN — Our #1 pipeline pick DELIVERED. We predicted 3-5K theaters but Djo went straight to ARENAS (15-20K cap). The streaming gap was so extreme (28M listeners ÷ 3-5K cap = 5,600:1 ratio) that he skipped the theater step entirely. This validates the entire pipeline + streaming gap model. Every previous signal was correct: Stranger Things finale surge, UK sellouts, venue upgrades, Tame Impala exposure. The arena announcement is the payoff.",
+      action: "🚨 THIS IS THE PLAY — Amex presale WED MAR 18 8am. Buy SLC (dead zone), Richmond (small market), Pittsburgh (outdoor = tight cap). Pipeline + streaming gap + radio = TRIPLE SIGNAL CONFIRMED.",
       pipelineFrom: "Tame Impala (arenas, 15-20K/night)",
       pipelineWindow: "Fall 2026",
       region: "NA"
@@ -785,12 +831,12 @@ const SCAN_DATA = {
   // ─── MODULE 2: STREAMING-TO-TOURING GAP ───
   streamingGap: [
     {
-      name: "Djo (Joe Keery)", tier: "S", score: 88, category: "Streaming Gap", genre: "Indie Pop / Synth-Rock",
+      name: "Djo (Joe Keery)", tier: "S", score: 95, category: "Streaming Gap — CONFIRMED", genre: "Indie Pop / Synth-Rock",
       streams: "28M+ monthly listeners", lastTour: "2025 (Back On You Tour — sold out, venue upgrades)",
-      gapRatio: "28M listeners ÷ 3-5K cap venues = EXTREME gap",
-      saleStatus: "🟣 WATCHLIST — next NA headline TBA",
-      reasoning: "'End of Beginning' has 1.5B+ streams. Stranger Things finale pushed him to Global Top 10. 28M monthly listeners but his 2025 headline tour was 2-5K cap rooms (with upgrades due to demand). That's a 5,600:1 listener-to-seat ratio. For comparison, most artists touring at this listener level play 10-15K cap venues. His next headline tour WILL be in larger venues (5-10K) and WILL sell out. The gap between streaming popularity and live venue size is the biggest in the market right now.",
-      action: "HIGHEST PRIORITY GAP — When Djo announces 5-10K cap headline dates, buy everything.",
+      gapRatio: "🏆 GAP CLOSED — 28M listeners → ARENA HEADLINE ANNOUNCED",
+      saleStatus: "🔴 AMEX PRESALE WED MAR 18 — ONSALE FRI MAR 20",
+      reasoning: "🏆 MODEL VALIDATED. We identified the 5,600:1 gap ratio and predicted 5-10K cap venues. Djo went BIGGER — straight to arenas (15-20K). Kaseya Center Miami, State Farm Arena Atlanta, Forest Hills Stadium NYC. The gap was so extreme it skipped an entire venue tier. This is the case study that proves the streaming gap methodology works. Buy NOW.",
+      action: "🚨 GAP PLAY CONFIRMED — Amex presale WED MAR 18 8am. Arena dates with Pond. Buy everything. See thisWeek tab for full details.",
       region: "NA"
     },
     {
@@ -901,8 +947,8 @@ const SCAN_DATA = {
     {
       song: "End of Beginning (resurgence)", artist: "Djo", position: "Global Top 10 Spotify, cross-format",
       weeks: "Resurged Dec 2025 (Stranger Things finale)", trend: "🔺 RESURGING",
-      tourStatus: "Opening for Tame Impala Jul-Aug. Solo headline expected fall 2026.",
-      signal: "This is the ultimate radio/streaming → touring signal. A 2022 song resurged to Global Top 10 in late 2025. It's being played on AAA, Alt, and Pop radio simultaneously. Djo's next headline tour will have demand FAR exceeding any venue he books. Pipeline + streaming gap + radio = triple signal.",
+      tourStatus: "🏆 ARENA HEADLINE ANNOUNCED — Summer 2026 w/ Pond. Amex presale Wed Mar 18. Onsale Fri Mar 20.",
+      signal: "🏆 TRIPLE SIGNAL CONFIRMED. Pipeline (Tame Impala support) + streaming gap (28M ÷ 3-5K = 5,600:1) + radio (AAA/Alt/Pop crossover) all predicted this. Djo skipped theaters entirely → arenas. BUY NOW.",
     },
   ],
 };
@@ -1218,8 +1264,8 @@ function OptimusDashboard() {
 
         {/* Tab content */}
         {tab==="thisweek"&&(<>
-          <SH title="This Week" sub="Presales & onsales Mar 16–22" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🔴" title="THIS WEEK: BSB Final Sphere, Brandi Carlile, Pretty Reckless, NEEDTOBREATHE, Empire of the Sun + March Madness!" sub="BSB Sphere final dates presale TODAY 10am. Brandi Carlile Bramily presale TODAY. Pretty Reckless presale TODAY. NEEDTOBREATHE Tue 10am. Empire of the Sun Tue 10am. Sebastian Maniscalco LIVE — code SEBASTIAN. Pogues Wed 10am. NCAA First Four TODAY, First Round Thu-Fri." color="#ef4444"/>
+          <SH title="This Week" sub="Presales & onsales Mar 18–22" count={SCAN_DATA.thisWeek.length}/>
+          <AB emoji="🔴" title="THIS WEEK: Djo ARENA Tour, Lil Wayne NEW dates, BSB Sphere, Pogues, Gavin Adcock + March Madness First Round!" sub="Djo Amex presale TODAY Wed 8am. Lil Wayne Citi presale TODAY Wed 10am. Pogues presale TODAY Wed 10am. Gavin Adcock fan club TODAY 10am. Empire of the Sun venue presale TODAY. BSB/Brandi Carlile/Pretty Reckless presales live. Maniscalco LIVE — code SEBASTIAN. General onsales Fri Mar 20. NCAA First Round Thu-Fri, Second Round Sat-Sun." color="#ef4444"/>
           {renderCards(SCAN_DATA.thisWeek,"tw")}
         </>)}
 
