@@ -15,16 +15,16 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 18, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 18-22 Presales/Onsales",
+  lastRun: "March 19, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 19-22 · NEXT WEEK: Mar 23-29",
   nextWeek: [
     {
       name: "🏀 March Madness — Sweet 16 & Elite Eight (Mar 26-29)", tier: "S", score: 95, category: "College Basketball — Deep Tournament Rounds", genre: "Sports",
       ticketLink: "https://www.ncaa.com/march-madness",
       streams: "#1 seeds: Duke, Arizona, Michigan, Florida. Sweet 16 Thu-Fri Mar 26-27. Elite Eight Sat-Sun Mar 28-29.", lastTour: "Annual", scarcity: "EXTREME — By Sweet 16, Cinderella stories are established. Demand spikes exponentially each round. Arizona undefeated narrative = nuclear demand in their region.",
       venueSize: "Arena (15-20K cap)", saleStatus: "🔴 SWEET 16 MAR 26-27 — ELITE EIGHT MAR 28-29",
-      saleDetails: "Sweet 16: Thu Mar 26 & Fri Mar 27 at regional sites. Elite Eight: Sat Mar 28 & Sun Mar 29. Final Four: Apr 4 in San Antonio. Monitor first/second round results THIS WEEK (Mar 17-22) — upsets create demand spikes for Sweet 16 venues. If Arizona stays undefeated, their regional site = most expensive ticket in the tournament.",
+      saleDetails: "Sweet 16: Thu Mar 26 & Fri Mar 27 at regional sites. Elite Eight: Sat Mar 28 & Sun Mar 29. Final Four: Apr 4 in San Antonio. First/Second round results (Mar 19-22) determine Sweet 16 matchups — upsets create demand spikes for Sweet 16 venues. If Arizona stays undefeated, their regional site = most expensive ticket in the tournament.",
       reasoning: "Sweet 16 and Elite Eight are where March Madness secondary market PEAKS for per-game value. The bracket will be half-resolved — Cinderella stories established, blue-blood matchups confirmed. Arizona's undefeated run (if it continues through first/second rounds) will make their regional site the hottest ticket. Duke as #1 seed in their region draws massive alumni travel demand. BUY Sweet 16 tickets IMMEDIATELY after first-round upsets when prices haven't adjusted yet.",
-      action: "🚨 WATCH FIRST ROUND RESULTS THU-FRI — Buy Sweet 16 tickets at sites where upsets create Cinderella narratives. Arizona's region = highest premium if they advance. Final Four San Antonio tickets rising daily.",
+      action: "🚨 WATCH FIRST/SECOND ROUND RESULTS THIS WEEK — Buy Sweet 16 tickets at sites where upsets create Cinderella narratives. Arizona's region = highest premium if they advance. Final Four San Antonio tickets rising daily.",
       targetCities: [
         {emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 4 & 6",why:"Final Four + Championship. Buy NOW — prices only go up from here."},
       ],
@@ -40,24 +40,44 @@ const SCAN_DATA = {
       action: "🟡 BUY premium seats for Giants vs Yankees Opening Night if available below market. Prices spike final 48 hours before game.",
       region: "NA"
     },
+    {
+      name: "Disney Worlds Collide Concert Tour 2026 (PRESALE MON MAR 23)", tier: "A", score: 80, category: "Family Arena Tour — Disney Channel Stars", genre: "Pop / Family",
+      ticketLink: "https://www.worldscollidetour.com",
+      streams: "Stars from Descendants, ZOMBIES, Camp Rock. 48 arenas across US, Canada, Mexico.", lastTour: "2025 (previous Worlds Collide — strong sales)", scarcity: "HIGH — Disney IP + family demo buys early. 48-date arena routing. VIP packages with cast Q&A.",
+      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 DISNEY+ PERKS PRESALE MON MAR 23 10AM — GENERAL ONSALE FRI MAR 27",
+      saleDetails: "Disney+ Perks presale Mon Mar 23 10am local. Additional venue presales through week. General onsale Fri Mar 27 10am local. Fall 2026 dates across 48 arenas in US, Canada, Mexico. VIP packages include cast Q&A.",
+      reasoning: "Disney Worlds Collide is a family demo goldmine. Parents buy in groups of 4-6 at premium prices. Descendants/ZOMBIES/Camp Rock stars have massive Gen-Z and Gen-Alpha followings. 48-date arena routing means this is a major production. Disney+ presale gives subscribers early access — millions of Disney+ families will be competing for first picks. VIP packages with cast meet & greet will command huge secondary premiums.",
+      action: "🔴 DISNEY+ PRESALE MON MAR 23 10AM — Target VIP packages (cast Q&A = massive family premium). Family demo buys early and pays full price.",
+      region: "NA"
+    },
+    {
+      name: "Red Rocks — CRANKDAT (Mar 27) + Ravenscoon & Jantsen (Mar 28)", tier: "B+", score: 74, category: "Electronic — Bass Music Weekend", genre: "Bass / Dubstep",
+      ticketLink: "https://www.redrocksonline.com",
+      streams: "Denver bass community is one of the strongest in the country.", lastTour: "Annual", scarcity: "MODERATE — Red Rocks early season shows. Back-to-back bass nights.",
+      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🟢 ON SALE NOW",
+      saleDetails: "CRANKDAT Fri Mar 27 7pm — support: Dr. Fresch, Smoakland, Capochino, HerShe. Ravenscoon & Jantsen Sat Mar 28 6pm — support: WonkyWilla, Jason Leech, CHOZEN b2b Noetika. Both via RedRocksOnline.com.",
+      reasoning: "Back-to-back bass nights at Red Rocks next weekend. Denver bass community is reliable. Saturday night show historically commands higher premium. Early season Red Rocks energy.",
+      action: "🟡 LOW RISK — Buy at face for the Sat night show. Bass community is reliable at Red Rocks.",
+      region: "NA"
+    },
   ],
   thisWeek: [
     {
-      name: "NEEDTOBREATHE — The Long Surrender Tour (PRESALES THIS WEEK)", tier: "A", score: 82, category: "Christian Rock / Anthem Rock — Amphitheater", genre: "Rock / Christian Rock / Anthem Rock", ticketLink: "https://www.ticketmaster.com/needtobreathe-tickets/artist/1101640",
+      name: "NEEDTOBREATHE — The Long Surrender Tour", tier: "A", score: 82, category: "Christian Rock / Anthem Rock — Amphitheater", genre: "Rock / Christian Rock / Anthem Rock", ticketLink: "https://www.ticketmaster.com/needtobreathe-tickets/artist/1101640",
       streams: "5M+ monthly. Grammy-nominated. 'Brother,' 'Something Beautiful' crossover hits. Massive Christian rock + mainstream crossover.", lastTour: "2025", scarcity: "HIGH — Amphitheater routing. Christian rock fanbase buys early and pays premium. Family-friendly demo = groups of 4-6.",
-      venueSize: "Amphitheater (5-10K cap)", saleStatus: "🔴 ARTIST PRESALE TUE MAR 17 10AM — GENERAL ONSALE FRI MAR 20",
-      saleDetails: "Fan club presale Mon Mar 16 12pm ET (Insiders). Artist presale Tue Mar 17 10am local. Venue presales Wed Mar 18 10am local. Spotify presale Thu Mar 19 10am local. General onsale Fri Mar 20 10am local. Summer 2026 dates.",
-      reasoning: "NEEDTOBREATHE fills amphitheaters consistently. The Christian rock crossover demo is underserved by brokers — these fans buy in groups (church groups, families), pay full price, and don't negotiate. Amphitheater routing means tight supply. Multiple presale windows give you 4 shots before general.",
-      action: "🔴 HIT ARTIST PRESALE TUE 10AM. Target: Southeast amphitheaters (core demo), any venue under 8K cap.",
+      venueSize: "Amphitheater (5-10K cap)", saleStatus: "🔴 SPOTIFY PRESALE TODAY THU MAR 19 10AM — GENERAL ONSALE FRI MAR 20",
+      saleDetails: "Fan club presale Mon Mar 16 ✅. Artist presale Tue Mar 17 ✅. Venue presales Wed Mar 18 ✅. Spotify presale TODAY Thu Mar 19 10am local. General onsale Fri Mar 20 10am local. Summer 2026 dates.",
+      reasoning: "NEEDTOBREATHE fills amphitheaters consistently. The Christian rock crossover demo is underserved by brokers — these fans buy in groups (church groups, families), pay full price, and don't negotiate. Amphitheater routing means tight supply. Spotify presale TODAY is the last shot before general Friday.",
+      action: "🔴 SPOTIFY PRESALE TODAY THU 10AM — last presale before general Fri. Target: Southeast amphitheaters (core demo), any venue under 8K cap.",
       region: "NA"
     },
     {
       name: "Empire of the Sun w/ Polo & Pan — Ask That God: Afterlife Tour", tier: "A", score: 84, category: "Electronic / Synth-Pop — Tour", genre: "Electronic / Synth-Pop / Indie Dance", ticketLink: "https://www.ticketmaster.com/empire-of-the-sun-tickets/artist/1265507",
       streams: "4M+ monthly. 'Walking on a Dream' is an anthem. Polo & Pan as support = dream double bill for indie electronic fans.", lastTour: "2024-25 (Ask That God World Tour — SOLD OUT)", scarcity: "HIGH — Previous tour sold out. Polo & Pan co-bill doubles demand. Amphitheater/theater routing.",
-      venueSize: "Theater / Amphitheater (3-8K cap)", saleStatus: "🔴 ARTIST PRESALE TUE MAR 17 10AM — VENUE PRESALE THU MAR 18",
-      saleDetails: "Register at livemu.sc/empireofthesun (deadline was Mar 15). Artist presale Tue Mar 17 10am. Venue presale Thu Mar 18 10am. General onsale Fri Mar 20 10am local. No presale code needed for Ticketmaster artist presale — access tied to account. Summer/fall 2026 NA dates.",
-      reasoning: "Empire of the Sun's 2024/25 tour SOLD OUT — confirmed demand. Adding Polo & Pan as support is genius — two indie electronic acts that share the exact same audience. This is essentially a mini-festival on a theater/amphitheater stage. The previous sellout means brokers should be all over this. No code needed for artist presale = easy entry.",
-      action: "🔴 ARTIST PRESALE TUE 10AM — No code needed (Ticketmaster account-based). Previous tour sold out = confirmed demand. Buy confidently.",
+      venueSize: "Theater / Amphitheater (3-8K cap)", saleStatus: "🔴 PRESALES ACTIVE — GENERAL ONSALE FRI MAR 20",
+      saleDetails: "Artist presale Tue Mar 17 ✅. Venue presale Thu Mar 18 ✅. General onsale Fri Mar 20 10am local. No presale code needed for Ticketmaster artist presale — access tied to account. Summer/fall 2026 NA dates.",
+      reasoning: "Empire of the Sun's 2024/25 tour SOLD OUT — confirmed demand. Adding Polo & Pan as support is genius — two indie electronic acts that share the exact same audience. This is essentially a mini-festival on a theater/amphitheater stage. The previous sellout means brokers should be all over this. General onsale Friday is the last entry point.",
+      action: "🔴 GENERAL ONSALE FRI MAR 20 10AM — Previous tour sold out = confirmed demand. Buy confidently.",
       region: "NA"
     },
     {
@@ -71,12 +91,12 @@ const SCAN_DATA = {
       region: "NA"
     },
     {
-      name: "The Pogues — 2026 US Tour (PRESALE WED MAR 18)", tier: "A", score: 81, category: "Celtic Punk Legends — Reunion", genre: "Celtic Punk / Folk Rock", ticketLink: "https://www.ticketmaster.com/the-pogues-tickets/artist/735905",
+      name: "The Pogues — 2026 US Tour", tier: "A", score: 81, category: "Celtic Punk Legends — Reunion", genre: "Celtic Punk / Folk Rock", ticketLink: "https://www.ticketmaster.com/the-pogues-tickets/artist/735905",
       streams: "3M+ monthly but LEGACY DEMAND — 'Fairytale of New York' is one of the most-played Christmas songs ever.", lastTour: "Limited dates in recent years", scarcity: "HIGH — Theater/venue routing. Celtic punk demo is fiercely loyal. St. Patrick's Day proximity boosts Irish music demand.",
-      venueSize: "Theater (2-5K cap)", saleStatus: "🔴 PRESALE WED MAR 18 10AM — GENERAL ONSALE FRI MAR 20",
-      saleDetails: "Presales start Wednesday March 18 10am local. General sale Friday March 20 10am local. US dates TBA.",
-      reasoning: "The Pogues are icons — Shane MacGowan's legacy + the band continuing is a draw for every Celtic punk fan, every Irish-American, every 'Fairytale of New York' nostalgist. Theater routing means brutal scarcity. The fact that this drops right after St. Patrick's Day weekend keeps Irish music energy high.",
-      action: "🔴 PRESALE WED 10AM — Theater dates will be tight. Target: Boston, NYC, Chicago (big Irish-American demos).",
+      venueSize: "Theater (2-5K cap)", saleStatus: "🔴 PRESALE ACTIVE — GENERAL ONSALE FRI MAR 20",
+      saleDetails: "Presales started Wed Mar 18 ✅. General sale Friday March 20 10am local. US dates TBA.",
+      reasoning: "The Pogues are icons — Shane MacGowan's legacy + the band continuing is a draw for every Celtic punk fan, every Irish-American, every 'Fairytale of New York' nostalgist. Theater routing means brutal scarcity. Dropped right after St. Patrick's Day weekend — Irish music energy still high.",
+      action: "🔴 GENERAL ONSALE FRI MAR 20 — Theater dates will be tight. Target: Boston, NYC, Chicago (big Irish-American demos).",
       region: "NA"
     },
     {
@@ -91,10 +111,10 @@ const SCAN_DATA = {
     {
       name: "🏀 March Madness — NCAA Tournament (FIRST FOUR + FIRST ROUND THIS WEEK)", tier: "S", score: 95, category: "College Basketball — National Tournament", genre: "Sports", ticketLink: "https://www.ncaa.com/march-madness",
       streams: "68-team bracket. #1 seeds: Duke, Arizona, Michigan, Florida. First Four Tue-Wed, First Round Thu-Fri, Second Round Sat-Sun.", lastTour: "Annual", scarcity: "EXTREME — Selection Sunday was yesterday (Mar 15). Bracket is SET. First Four in Dayton Tue-Wed. First Round at 8 sites Thu-Fri. Demand spikes for Cinderella stories.",
-      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 FIRST FOUR TODAY WED — FIRST ROUND THU-FRI — SECONDARY ACTIVE",
-      saleDetails: "First Four: Tue Mar 17 & Wed Mar 18 (TODAY) at UD Arena, Dayton OH. First Round: Thu Mar 19 & Fri Mar 20 at 8 sites nationwide. Second Round: Sat Mar 21 & Sun Mar 22. Sweet 16: Mar 26-27. Elite 8: Mar 28-29. Final Four: Apr 4 in San Antonio.",
-      reasoning: "March Madness is the biggest single-event ticket opportunity of the year. The bracket just dropped — Cinderella stories will emerge by Thursday that spike demand for specific sites. First round sites rotate annually so each host city has pent-up demand. The secondary market moves FAST once upsets happen — prices for next-round games spike within hours of a buzzer-beater. Duke/Arizona/Michigan/Florida as #1 seeds means those fan bases are buying everything.",
-      action: "🚨 MONITOR FIRST FOUR RESULTS TUE-WED. Buy second-round tickets at sites where Cinderellas land. Prices spike 2-5x after upsets. San Antonio Final Four tickets are already premium.",
+      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 FIRST ROUND TODAY THU-FRI — SECOND ROUND SAT-SUN — SECONDARY ACTIVE",
+      saleDetails: "First Four: Tue Mar 17 & Wed Mar 18 ✅ (complete). First Round: TODAY Thu Mar 19 & Fri Mar 20 at 8 sites nationwide. Second Round: Sat Mar 21 & Sun Mar 22. Sweet 16: Mar 26-27. Elite 8: Mar 28-29. Final Four: Apr 4 in San Antonio.",
+      reasoning: "March Madness is the biggest single-event ticket opportunity of the year. First Round starts TODAY — Cinderella stories will emerge that spike demand for Sweet 16 sites. The secondary market moves FAST once upsets happen — prices for next-round games spike within hours of a buzzer-beater. Duke/Arizona/Michigan/Florida as #1 seeds means those fan bases are buying everything. BUY Sweet 16 tickets at regional sites where upsets happen.",
+      action: "🚨 FIRST ROUND TODAY — Watch for upsets. Buy Sweet 16 tickets at sites where Cinderellas land. Prices spike 2-5x after buzzer-beaters. San Antonio Final Four tickets already premium.",
       targetCities: [
         {emoji:"🏀",city:"Dayton, OH",venue:"UD Arena",date:"Mar 17-18",why:"First Four. Always sells. Small arena = tight supply."},
         {emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 4",why:"Final Four. Premium event. Buy now before Sweet 16 demand spikes."},
@@ -113,10 +133,10 @@ const SCAN_DATA = {
     {
       name: "Backstreet Boys — Final Sphere Dates (PRESALE TODAY)", tier: "S", score: 91, category: "Pop Icons — Sphere Residency Final Run", genre: "Pop", ticketLink: "https://www.ticketmaster.com/backstreet-boys-tickets/artist/848830",
       streams: "575K+ fans across 35 sold-out Sphere shows. First act to sell out the Sphere.", lastTour: "2025-26 (Into the Millennium — Sphere)", scarcity: "EXTREME — Final summer 2026 dates at Sphere. 35 shows already sold out. Jul-Aug dates including Jul 11, 12, 18, 19 and Aug 15, 16, 21, 22.",
-      venueSize: "Sphere Las Vegas (~18K cap)", saleStatus: "🔴 FAN CLUB PRESALE TODAY TUE MAR 17 10AM — ONSALE FRI MAR 20",
-      saleDetails: "BSB Fan Club presale TODAY Tue Mar 17 10am. Additional presales through week. General onsale Fri Mar 20 10am local. FINAL summer dates: Jul 11, 12, 18, 19, Aug 15, 16, 21, 22. Single-night and 2-night packages available.",
+      venueSize: "Sphere Las Vegas (~18K cap)", saleStatus: "🔴 PRESALES ACTIVE — GENERAL ONSALE FRI MAR 20",
+      saleDetails: "BSB Fan Club presale Tue Mar 17 ✅. Additional presales through week. General onsale Fri Mar 20 10am local. FINAL summer dates: Jul 11, 12, 18, 19, Aug 15, 16, 21, 22. Single-night and 2-night packages available.",
       reasoning: "BSB became the FIRST act to sell out the Sphere — 35 shows, 575K+ fans. These are the FINAL summer dates, which means 'last chance' energy drives premium. The Sphere venue premium alone is massive (proven by U2, Metallica announcements). BSB's millennial fanbase (30-45) has peak disposable income. Jul/Aug dates = Vegas summer tourism overlap. Every previous BSB Sphere show sold out.",
-      action: "🚨 FAN CLUB PRESALE TODAY 10AM — Final Sphere dates = last chance premium. Every previous show sold out. Buy 2-night packages for maximum flip.",
+      action: "🚨 GENERAL ONSALE FRI MAR 20 — Final Sphere dates = last chance premium. Every previous show sold out. Buy 2-night packages for maximum flip.",
       targetCities: [
         {emoji:"🎰",city:"Las Vegas, NV",venue:"Sphere (Jul 11-12)",date:"Jul 11-12",why:"First weekend of final run. Opening pair will have announcement buzz premium."},
         {emoji:"🎰",city:"Las Vegas, NV",venue:"Sphere (Aug 21-22)",date:"Aug 21-22",why:"FINAL WEEKEND. Last-ever BSB Sphere shows = highest premium of the run."},
@@ -126,19 +146,19 @@ const SCAN_DATA = {
     {
       name: "Brandi Carlile — The Human Tour (Fall Extension)", tier: "A", score: 83, category: "Americana/Rock — Amphitheater", genre: "Americana / Rock / Folk", ticketLink: "https://www.ticketmaster.com/brandi-carlile-tickets/artist/1076383",
       streams: "8M+ monthly. Grammy powerhouse (8 wins). 'The Story' is a generational anthem.", lastTour: "2025-26 (The Human Tour — spring/summer)", scarcity: "HIGH — Fall NA extension with amphitheater/arena routing. Red Rocks travel packages available. The Head and The Heart + I'm With Her on select dates.",
-      venueSize: "Amphitheater / Arena (5-15K cap)", saleStatus: "🔴 BRAMILY PRESALE TODAY TUE MAR 17 — ONSALE FRI MAR 20",
-      saleDetails: "Bramily fan club presale TODAY Tue Mar 17 10am local. Artist presale Wed Mar 18 10am. Amex presale Wed Mar 18 10am. General onsale Fri Mar 20 10am local. Fall 2026 NA dates added. Red Rocks weekend with travel packages. The Head and The Heart + I'm With Her supporting select dates.",
+      venueSize: "Amphitheater / Arena (5-15K cap)", saleStatus: "🔴 PRESALES ACTIVE — ONSALE FRI MAR 20",
+      saleDetails: "Bramily fan club presale Tue Mar 17 ✅. Artist presale Wed Mar 18 ✅. Amex presale Wed Mar 18 ✅. General onsale Fri Mar 20 10am local. Fall 2026 NA dates added. Red Rocks weekend with travel packages. The Head and The Heart + I'm With Her supporting select dates.",
       reasoning: "Brandi Carlile is a touring machine — 8 Grammys, sells out amphitheaters consistently. The Head and The Heart as support is a STACKED bill for the Americana/folk demo. Red Rocks shows will command highest premium. Fall extension means she'll have been touring all year building demand. Her demo (30-55 women, high income) buys premium seats and full-price secondary.",
-      action: "🔴 BRAMILY PRESALE TODAY — Target Red Rocks dates (travel packages = premium). Amphitheater routing with THATH support = double-headliner value.",
+      action: "🔴 GENERAL ONSALE FRI MAR 20 — Target Red Rocks dates (travel packages = premium). Amphitheater routing with THATH support = double-headliner value.",
       region: "NA"
     },
     {
       name: "The Pretty Reckless — Dear God Tour + AC/DC Support", tier: "A", score: 80, category: "Hard Rock — Theater/Stadium", genre: "Hard Rock / Alternative", ticketLink: "https://www.ticketmaster.com/the-pretty-reckless-tickets/artist/1364857",
       streams: "5M+ monthly. Taylor Momsen-led. 4 #1 Mainstream Rock singles. New album 'Dear God' incoming.", lastTour: "2024-25", scarcity: "HIGH — Mix of headline theater dates (1-3K cap) AND opening for AC/DC at stadiums. Theater dates = tight supply. AC/DC support dates = massive exposure.",
-      venueSize: "Theater (1-3K cap) + Stadium (AC/DC dates)", saleStatus: "🔴 ARTIST PRESALE TODAY TUE MAR 17 10AM — ONSALE FRI MAR 20",
-      saleDetails: "Artist presale TODAY Tue Mar 17 10am. VIP packages via Sound Rink starting Mar 17. General onsale Fri Mar 20 10am local. Headline dates: Aug-Sep across NA (Egyptian Room Indianapolis, House of Blues Cleveland, Hampton Beach Casino, Citizens House of Blues Boston, Fillmore Silver Spring). Also opening for AC/DC at stadiums (MetLife, Lincoln Financial Field, The Dome STL, Rogers Stadium Toronto).",
+      venueSize: "Theater (1-3K cap) + Stadium (AC/DC dates)", saleStatus: "🔴 PRESALES ACTIVE — ONSALE FRI MAR 20",
+      saleDetails: "Artist presale Tue Mar 17 ✅. VIP packages via Sound Rink ✅. General onsale Fri Mar 20 10am local. Headline dates: Aug-Sep across NA (Egyptian Room Indianapolis, House of Blues Cleveland, Hampton Beach Casino, Citizens House of Blues Boston, Fillmore Silver Spring). Also opening for AC/DC at stadiums (MetLife, Lincoln Financial Field, The Dome STL, Rogers Stadium Toronto).",
       reasoning: "Pretty Reckless headlining theaters (1-3K cap) while ALSO opening for AC/DC at stadiums is the PERFECT pipeline setup. Every night they play to 50K+ AC/DC fans, then those fans want to see them headline in a 2K room. Theater dates will sell out on the AC/DC exposure wave. Egyptian Room (500 cap), Hampton Beach Casino (~800 cap) = extremely tight supply. New album 'Dear God' cycle adds momentum.",
-      action: "🔴 PRESALE TODAY 10AM — Target smallest headline venues: Egyptian Room Indianapolis, Hampton Beach Casino NH. AC/DC support exposure will spike demand for these intimate dates.",
+      action: "🔴 ONSALE FRI MAR 20 — Target smallest headline venues: Egyptian Room Indianapolis, Hampton Beach Casino NH. AC/DC support exposure will spike demand for these intimate dates.",
       targetCities: [
         {emoji:"🎸",city:"Indianapolis, IN",venue:"Egyptian Room (~500 cap)",date:"Sep 9",why:"500 cap room for a band opening AC/DC stadiums. This will sell out instantly."},
         {emoji:"🏖️",city:"Hampton, NH",venue:"Hampton Beach Casino (~800 cap)",date:"Sep 22",why:"Tiny beach venue. New England rock demand compressed."},
@@ -149,10 +169,10 @@ const SCAN_DATA = {
     {
       name: "Djo (Joe Keery) — Summer 2026 Headline Tour w/ Pond", tier: "S", score: 89, category: "Indie Pop / Synth-Rock — Arena Headline", genre: "Indie Pop / Synth-Rock", ticketLink: "https://www.ticketmaster.com/djo-tickets/artist/2681498",
       streams: "28M+ monthly. 'End of Beginning' 1.5B+ streams. Stranger Things star → legit music headliner.", lastTour: "2025 (Back On You Tour — sold out, venue upgrades)", scarcity: "EXTREME — Arena routing (Kaseya Center, State Farm Arena, Xfinity Mobile Arena). 28M listeners finally getting arena-sized venues. Pond supporting.",
-      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 AMEX PRESALE WED MAR 18 8AM — GENERAL ONSALE FRI MAR 20 10AM",
-      saleDetails: "American Express presale Wed Mar 18 8am ET (Forest Hills Stadium). Artist presale active through week. General onsale Fri Mar 20 10am local. Summer 2026: Jul 6-7 Miami (Kaseya Center), Jul 9 Tampa, Jul 11-12 Atlanta (State Farm Arena), Jul 14 Pittsburgh (Stage AE Outdoor), Jul 15 Philly, Jul 17 Forest Hills NY, Jul 19-20 Toronto, Jul 22 Detroit, Jul 24 Chicago, Jul 26 Denver, Jul 28 Salt Lake City, Jul 29 Portland, Jul 31 Richmond VA. Pond supporting on all dates.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 ARTIST PRESALE ACTIVE — GENERAL ONSALE FRI MAR 20 10AM",
+      saleDetails: "American Express presale Wed Mar 18 ✅. Artist presale Wed Mar 18 noon ✅ (active through week). General onsale Fri Mar 20 10am local. Summer 2026: Jul 6-7 Miami (Kaseya Center), Jul 9 Tampa, Jul 11-12 Atlanta (State Farm Arena), Jul 14 Pittsburgh (Stage AE Outdoor), Jul 15 Philly, Jul 17 Forest Hills NY, Jul 19-20 Toronto, Jul 22 Detroit, Jul 24 Chicago, Jul 26 Denver, Jul 28 Salt Lake City, Jul 29 Portland, Jul 31 Richmond VA. Pond supporting on all dates.",
       reasoning: "This is the BIGGEST streaming gap closure of 2026. Djo went from 3-5K cap headline rooms in 2025 to ARENAS. 28M monthly listeners finally getting arena-sized venues. 'End of Beginning' resurged to Global Top 10 after Stranger Things finale. Two-night stands in Miami and Atlanta signal massive confidence. Forest Hills Stadium NYC is a premium outdoor venue. SLC, Portland, Richmond are smaller markets where arena demand will be extreme. Pond as support adds credibility with psych-rock fans. This was our #1 streaming gap pick — NOW IT'S HAPPENING.",
-      action: "🚨 AMEX PRESALE WED 8AM — BUY EVERYTHING. This is the streaming gap play we've been waiting for. Target: SLC (dead zone), Richmond (small market arena), Pittsburgh (Stage AE outdoor = tight cap).",
+      action: "🚨 ARTIST PRESALE STILL ACTIVE — BUY EVERYTHING. General onsale Fri 10am. This is the streaming gap play we've been waiting for. Target: SLC (dead zone), Richmond (small market arena), Pittsburgh (Stage AE outdoor = tight cap).",
       targetCities: [
         {emoji:"⛷️",city:"Salt Lake City, UT",venue:"TBA (Jul 28)",date:"Jul 28",why:"Mountain West dead zone. Only Intermountain date. 5-state funnel."},
         {emoji:"🎸",city:"Richmond, VA",venue:"Allianz Amphitheater (Jul 31)",date:"Jul 31",why:"Small market. Southeast corridor gap. Tour closer energy."},
@@ -164,10 +184,10 @@ const SCAN_DATA = {
     {
       name: "Lil Wayne — Tha Carter Celebration Tour (NEW DATES)", tier: "A", score: 83, category: "Hip-Hop Legend — Arena Tour", genre: "Hip-Hop / Rap", ticketLink: "https://www.ticketmaster.com/lil-wayne-tickets/artist/1075498",
       streams: "30M+ monthly. 'A Milli,' 'Lollipop,' Carter III-V catalog = legendary.", lastTour: "2025 (Welcome to Tha Carter Tour)", scarcity: "HIGH — Arena routing with 2 Chainz supporting. Nashville, San Antonio, Detroit (2 MI dates) newly added.",
-      venueSize: "Arena (12-20K cap)", saleStatus: "🔴 CITI PRESALE WED MAR 18 10AM — ARTIST PRESALE NOON — ONSALE FRI MAR 20",
-      saleDetails: "Citi presale Wed Mar 18 10am local. Artist presale Wed Mar 18 noon local. General onsale Fri Mar 20 10am local. NEW dates added: Nashville (Bridgestone Arena), San Antonio (Frost Bank Center Oct), Detroit area (2 Michigan dates). 2 Chainz supporting. Sign up for Frost Bank Center newsletter for presale access.",
+      venueSize: "Arena (12-20K cap)", saleStatus: "🔴 PRESALES ACTIVE — ONSALE FRI MAR 20",
+      saleDetails: "Citi presale Wed Mar 18 ✅. Artist presale Wed Mar 18 ✅. General onsale Fri Mar 20 10am local. NEW dates added: Nashville (Bridgestone Arena), San Antonio (Frost Bank Center Oct), Detroit area (2 Michigan dates). 2 Chainz supporting. Sign up for Frost Bank Center newsletter for presale access.",
       reasoning: "Lil Wayne adding dates mid-tour signals strong demand. Nashville Bridgestone and San Antonio Frost Bank Center are both premium venues. Two Michigan dates show Detroit-area demand is high enough to justify doubling up. 2 Chainz as support stacks the bill. Wayne's catalog spans generations — Carter III through Carter V gives him a 15-year fan age range (25-45). Presale structure is straightforward: Citi at 10am, artist at noon, general Friday.",
-      action: "🔴 CITI PRESALE WED 10AM — Target Nashville (country town loves hip-hop events = scarcity), San Antonio (underserved hip-hop market).",
+      action: "🔴 ONSALE FRI MAR 20 — Target Nashville (country town loves hip-hop events = scarcity), San Antonio (underserved hip-hop market).",
       targetCities: [
         {emoji:"🎸",city:"Nashville, TN",venue:"Bridgestone Arena",date:"TBA",why:"Hip-hop arena shows in Nashville are scarce. Country town demand for rap = premium."},
         {emoji:"🤠",city:"San Antonio, TX",venue:"Frost Bank Center (Oct)",date:"Oct TBA",why:"Underserved Texas hip-hop market between Austin and the border."},
@@ -177,19 +197,60 @@ const SCAN_DATA = {
     {
       name: "Gavin Adcock — The Day I Hang It Up Tour", tier: "B+", score: 75, category: "Country Breakout — Theater/Amphitheater", genre: "Country", ticketLink: "https://www.ticketmaster.com/gavin-adcock-tickets/artist/2989291",
       streams: "Rising fast. Country breakout with strong TikTok presence.", lastTour: "2025 (club dates)", scarcity: "MODERATE-HIGH — First major headline tour. Theater/amphitheater routing.",
-      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🔴 FAN CLUB PRESALE WED MAR 18 10AM — ONSALE FRI MAR 20",
-      saleDetails: "Gavin Adcock fan club presale Wed Mar 18 10am local. Additional presales through week. General onsale Fri Mar 20 10am local. The Day I Hang It Up Tour — dates TBA.",
+      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🔴 PRESALES ACTIVE — ONSALE FRI MAR 20",
+      saleDetails: "Gavin Adcock fan club presale Wed Mar 18 ✅. Additional presales through week. General onsale Fri Mar 20 10am local. The Day I Hang It Up Tour — dates TBA.",
       reasoning: "Country breakout announcing first major headline tour. Fan club presale structure suggests strong base. Theater/amphitheater routing for a rising country act = potential for tight supply as his audience grows between announcement and show dates. Country breakouts (see: Tucker Wetmore, Morgan Wallen trajectory) have the fastest venue-scaling in music.",
-      action: "🔴 FAN CLUB PRESALE WED 10AM — Buy small-market dates. Country breakouts scale fast — today's theaters are tomorrow's amphitheaters.",
+      action: "🔴 ONSALE FRI MAR 20 — Buy small-market dates. Country breakouts scale fast — today's theaters are tomorrow's amphitheaters.",
       region: "NA"
     },
     {
       name: "Metric — 2026 Tour", tier: "B+", score: 73, category: "Indie Rock — Theater/Arena", genre: "Indie Rock / Synth-Rock", ticketLink: "https://www.ticketmaster.com/metric-tickets/artist/862513",
       streams: "5M+ monthly. 'Gold Guns Girls,' 'Help I'm Alive' = indie rock anthems. Emily Haines-led.", lastTour: "2024-25", scarcity: "MODERATE — Theater/arena routing. Loyal indie rock fanbase.",
-      venueSize: "Theater / Arena (2-10K cap)", saleStatus: "🔴 PRESALE STARTED TUE MAR 17 10AM — ONSALE FRI MAR 20",
-      saleDetails: "Presale started Tue Mar 17 10am local. General onsale Fri Mar 20 10am local. 2026 tour dates across NA.",
+      venueSize: "Theater / Arena (2-10K cap)", saleStatus: "🔴 PRESALE ACTIVE — ONSALE FRI MAR 20",
+      saleDetails: "Presale started Tue Mar 17 ✅. General onsale Fri Mar 20 10am local. 2026 tour dates across NA.",
       reasoning: "Metric has a dedicated indie rock fanbase built over 20+ years. Emily Haines is an icon in the indie world. Their catalog ('Gold Guns Girls,' 'Help I'm Alive,' 'Breathing Underwater') holds up. Theater routing means tight supply for a band with arena-level name recognition in certain markets (Toronto, NYC, LA). Canadian dates will be strongest — Metric is Canadian royalty.",
       action: "🟡 BUY Toronto and Montreal dates — Metric is Canadian royalty. NYC/LA theater dates will also be tight.",
+      region: "NA"
+    },
+    {
+      name: "Bleachers — Forever Tour (PRESALE ACTIVE)", tier: "A", score: 85, category: "Indie Pop / Rock — Arena + Intimate", genre: "Indie Pop / Rock", ticketLink: "https://www.ticketmaster.com/bleachers-tickets/artist/1936172",
+      streams: "10M+ monthly. Jack Antonoff-led. 'I Wanna Get Better,' 'How Dare You Want More.' Taylor Swift/Lana Del Rey producer = massive crossover awareness.", lastTour: "2024-25", scarcity: "EXTREME — MSG headline + 5-night Troubadour LA residency (500 cap). Range from arenas to tiny clubs. Jack Antonoff committed to face-value tickets.",
+      venueSize: "MSG (20K) to Troubadour (500 cap)", saleStatus: "🔴 PRESALE WED MAR 18 10AM — GENERAL ONSALE FRI MAR 20",
+      saleDetails: "Presale started Wed Mar 18 10am ✅. General onsale Fri Mar 20 10am local. Dates: Jun 5 Chicago (Salt Shed), Jun 13 Philadelphia (Mann Center), Jun 16 Boston (MGM Music Hall at Fenway), Jun 20 Canandaigua NY (CMAC), Jun 23 NYC (Madison Square Garden), Sep 10-14 LA (Troubadour — 5 nights). Support: Wednesday, This Is Lorelei, American Football on select dates.",
+      reasoning: "Bleachers at MSG is already a big play, but the 5-night TROUBADOUR residency is INSANE. Troubadour is ~500 cap — Jack Antonoff playing an intimate room after headlining MSG. Those 5 Troubadour nights will be the hottest tickets in LA in September. American Football as support on select dates adds indie credibility. Antonoff is actively fighting scalpers — face-value commitment means lower initial cost, but secondary will still command premium for Troubadour shows. Salt Shed Chicago and Mann Center Philly are also strong plays.",
+      action: "🔴 PRESALE ACTIVE — ONSALE FRI MAR 20. Target: Troubadour LA residency (Sep 10-14) = 500 cap × 5 nights. MSG Jun 23 = iconic. American Football support dates = indie premium.",
+      targetCities: [
+        {emoji:"🎬",city:"Los Angeles, CA",venue:"Troubadour (Sep 10-14, 5 nights)",date:"Sep 10-14",why:"500 cap room for an MSG-level artist. 5-night residency. Each night will flip 5-10x. The hottest small-venue play of the summer."},
+        {emoji:"🗽",city:"New York, NY",venue:"Madison Square Garden (Jun 23)",date:"Jun 23",why:"Arena headline. Iconic venue. American Football supporting = stacked bill."},
+        {emoji:"🌬️",city:"Chicago, IL",venue:"Salt Shed (Jun 5)",date:"Jun 5",why:"Tour opener. Salt Shed is an excellent mid-cap venue. Wednesday supporting."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Pussycat Dolls — PCD Forever Tour (PRESALE ACTIVE)", tier: "A", score: 83, category: "Pop Icons — Reunion Tour", genre: "Pop / Dance-Pop", ticketLink: "https://www.ticketmaster.com/the-pussycat-dolls-tickets/artist/1012918",
+      streams: "8M+ monthly. 'Don't Cha,' 'Buttons,' 'When I Grow Up' = iconic. First reunion tour in 15+ years.", lastTour: "2009 (Doll Domination Tour — cancelled 2020 reunion due to COVID)", scarcity: "EXTREME — 53-date world tour. 15+ year touring gap. COVID cancelled their 2020 reunion. Pent-up demand is massive. Albums being reissued May 8.",
+      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 ARTIST PRESALE WED MAR 18 ✅ — GENERAL ONSALE FRI MAR 20",
+      saleDetails: "Artist presale Wed Mar 18 10am-2pm ✅. Additional presales through week. General onsale Fri Mar 20 10am local. 53-date world tour — NA, Europe, UK, Australia. PCD and Doll Domination albums reissued May 8. VIP packages available.",
+      reasoning: "The Pussycat Dolls reunion has been 6 years in the making (announced 2019, COVID cancelled 2020 dates). 15+ year gap since last tour creates enormous pent-up demand. Their millennial fanbase (28-40) has peak disposable income. 'Don't Cha' alone has 1B+ streams. Album reissues on May 8 will re-spike demand before shows. 53 dates is ambitious but reunion energy carries. The 2020 cancellation means fans have been WAITING — emotional buying.",
+      action: "🔴 ONSALE FRI MAR 20 — Reunion after 15+ years = emotional premium. Target: opening night and any arena under 15K cap for tighter supply.",
+      region: "NA"
+    },
+    {
+      name: "Undertale: Symphony of the Underground (ONSALE TODAY)", tier: "B+", score: 76, category: "Video Game Symphony — World Tour", genre: "Orchestral / Gaming", ticketLink: "https://undertalesymphony.com",
+      streams: "Undertale = 40M+ copies sold. Toby Fox's soundtrack is a cultural phenomenon. 'Megalovania' is iconic.", lastTour: "Never — First symphony world tour", scarcity: "HIGH — Gaming symphonies sell out instantly (Zelda, Final Fantasy precedent). World tour with limited dates per city.",
+      venueSize: "Concert Hall / Theater (2-5K cap)", saleStatus: "🔴 GENERAL ONSALE TODAY THU MAR 19 10AM LOCAL",
+      saleDetails: "Presale Tue-Wed Mar 17-18 ✅. GENERAL ONSALE TODAY Thu Mar 19 10am local. World tour dates — multiple cities globally. Gaming demo (18-35) buys impulsively.",
+      reasoning: "Gaming symphonies have proven massive demand — Zelda, Final Fantasy, Pokémon concerts sell out instantly. Undertale has a rabid fanbase and the soundtrack is genuinely beloved. First-ever symphony tour = historic. Concert hall routing (2-5K cap) means tight supply for a game with 40M+ players. The gaming-to-orchestra crossover demo is growing fast — Stardew Valley at Red Rocks proved this model.",
+      action: "🔴 ONSALE TODAY THU 10AM — Gaming symphonies sell out instantly. Buy immediately. If Stardew Valley at Red Rocks is any indicator, these will flip well.",
+      region: "NA"
+    },
+    {
+      name: "Andy Grammer — 2026 Tour w/ Walk Off The Earth (ONSALE FRI MAR 20)", tier: "B+", score: 72, category: "Pop / Singer-Songwriter — Amphitheater", genre: "Pop / Singer-Songwriter", ticketLink: "https://www.ticketmaster.com/andy-grammer-tickets/artist/1596498",
+      streams: "8M+ monthly. 'Honey I'm Good,' 'Keep Your Head Up' = radio staples. Walk Off The Earth as support = family-friendly double bill.", lastTour: "2025", scarcity: "MODERATE — Amphitheater routing. Family-friendly demo buys in groups.",
+      venueSize: "Amphitheater (3-8K cap)", saleStatus: "🟡 GENERAL ONSALE FRI MAR 20 10AM",
+      saleDetails: "General onsale Fri Mar 20 10am local. Walk Off The Earth supporting. Summer 2026 dates.",
+      reasoning: "Andy Grammer + Walk Off The Earth is a feel-good double bill that targets the family/date-night demo. Both acts have strong radio histories. Amphitheater routing in summer = reliable demand. Not a huge flip opportunity but steady face-to-modest-premium play.",
+      action: "🟡 ONSALE FRI MAR 20 — Solid double bill. Buy if you work the family amphitheater market.",
       region: "NA"
     },
   ],
@@ -763,10 +824,10 @@ const SCAN_DATA = {
     {
       name: "Djo (Joe Keery)", tier: "S", score: 92, category: "Support → Headline → ARENA", genre: "Indie Pop / Synth-Rock",
       streams: "28M+ monthly (Stranger Things finale surge)", parentTour: "Tame Impala — Deadbeat Tour (Jul 7 – Aug 19)",
-      venueSize: "ARENA HEADLINE ANNOUNCED — Kaseya Center, State Farm Arena, Forest Hills", saleStatus: "🔴 AMEX PRESALE WED MAR 18 — ONSALE FRI MAR 20",
-      saleDetails: "🚨 PIPELINE CONFIRMED — Djo skipped theaters entirely, went straight to ARENAS. Summer 2026 headline w/ Pond: Jul 6-7 Miami (Kaseya Center), Jul 11-12 Atlanta (State Farm Arena), Jul 17 Forest Hills NY, Jul 22 Detroit, Jul 24 Chicago, Jul 28 SLC, Jul 29 Portland. Amex presale Wed Mar 18 8am. General onsale Fri Mar 20.",
+      venueSize: "ARENA HEADLINE ANNOUNCED — Kaseya Center, State Farm Arena, Forest Hills", saleStatus: "🔴 PRESALES ACTIVE — ONSALE FRI MAR 20",
+      saleDetails: "🚨 PIPELINE CONFIRMED — Djo skipped theaters entirely, went straight to ARENAS. Summer 2026 headline w/ Pond: Jul 6-7 Miami (Kaseya Center), Jul 11-12 Atlanta (State Farm Arena), Jul 17 Forest Hills NY, Jul 22 Detroit, Jul 24 Chicago, Jul 28 SLC, Jul 29 Portland. Amex presale Wed Mar 18 ✅. Artist presale active. General onsale Fri Mar 20.",
       reasoning: "🏆 PIPELINE WIN — Our #1 pipeline pick DELIVERED. We predicted 3-5K theaters but Djo went straight to ARENAS (15-20K cap). The streaming gap was so extreme (28M listeners ÷ 3-5K cap = 5,600:1 ratio) that he skipped the theater step entirely. This validates the entire pipeline + streaming gap model. Every previous signal was correct: Stranger Things finale surge, UK sellouts, venue upgrades, Tame Impala exposure. The arena announcement is the payoff.",
-      action: "🚨 THIS IS THE PLAY — Amex presale WED MAR 18 8am. Buy SLC (dead zone), Richmond (small market), Pittsburgh (outdoor = tight cap). Pipeline + streaming gap + radio = TRIPLE SIGNAL CONFIRMED.",
+      action: "🚨 THIS IS THE PLAY — Presales active, onsale FRI MAR 20. Buy SLC (dead zone), Richmond (small market), Pittsburgh (outdoor = tight cap). Pipeline + streaming gap + radio = TRIPLE SIGNAL CONFIRMED.",
       pipelineFrom: "Tame Impala (arenas, 15-20K/night)",
       pipelineWindow: "Fall 2026",
       region: "NA"
@@ -834,9 +895,9 @@ const SCAN_DATA = {
       name: "Djo (Joe Keery)", tier: "S", score: 95, category: "Streaming Gap — CONFIRMED", genre: "Indie Pop / Synth-Rock",
       streams: "28M+ monthly listeners", lastTour: "2025 (Back On You Tour — sold out, venue upgrades)",
       gapRatio: "🏆 GAP CLOSED — 28M listeners → ARENA HEADLINE ANNOUNCED",
-      saleStatus: "🔴 AMEX PRESALE WED MAR 18 — ONSALE FRI MAR 20",
+      saleStatus: "🔴 PRESALES ACTIVE — ONSALE FRI MAR 20",
       reasoning: "🏆 MODEL VALIDATED. We identified the 5,600:1 gap ratio and predicted 5-10K cap venues. Djo went BIGGER — straight to arenas (15-20K). Kaseya Center Miami, State Farm Arena Atlanta, Forest Hills Stadium NYC. The gap was so extreme it skipped an entire venue tier. This is the case study that proves the streaming gap methodology works. Buy NOW.",
-      action: "🚨 GAP PLAY CONFIRMED — Amex presale WED MAR 18 8am. Arena dates with Pond. Buy everything. See thisWeek tab for full details.",
+      action: "🚨 GAP PLAY CONFIRMED — Presales active, onsale FRI MAR 20. Arena dates with Pond. Buy everything. See thisWeek tab for full details.",
       region: "NA"
     },
     {
@@ -947,8 +1008,8 @@ const SCAN_DATA = {
     {
       song: "End of Beginning (resurgence)", artist: "Djo", position: "Global Top 10 Spotify, cross-format",
       weeks: "Resurged Dec 2025 (Stranger Things finale)", trend: "🔺 RESURGING",
-      tourStatus: "🏆 ARENA HEADLINE ANNOUNCED — Summer 2026 w/ Pond. Amex presale Wed Mar 18. Onsale Fri Mar 20.",
-      signal: "🏆 TRIPLE SIGNAL CONFIRMED. Pipeline (Tame Impala support) + streaming gap (28M ÷ 3-5K = 5,600:1) + radio (AAA/Alt/Pop crossover) all predicted this. Djo skipped theaters entirely → arenas. BUY NOW.",
+      tourStatus: "🏆 ARENA HEADLINE ANNOUNCED — Summer 2026 w/ Pond. Presales active. Onsale Fri Mar 20.",
+      signal: "🏆 TRIPLE SIGNAL CONFIRMED. Pipeline (Tame Impala support) + streaming gap (28M ÷ 3-5K = 5,600:1) + radio (AAA/Alt/Pop crossover) all predicted this. Djo skipped theaters entirely → arenas. ONSALE FRI MAR 20.",
     },
   ],
 };
@@ -1264,14 +1325,14 @@ function OptimusDashboard() {
 
         {/* Tab content */}
         {tab==="thisweek"&&(<>
-          <SH title="This Week" sub="Presales & onsales Mar 18–22" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🔴" title="THIS WEEK: Djo ARENA Tour, Lil Wayne NEW dates, BSB Sphere, Pogues, Gavin Adcock + March Madness First Round!" sub="Djo Amex presale TODAY Wed 8am. Lil Wayne Citi presale TODAY Wed 10am. Pogues presale TODAY Wed 10am. Gavin Adcock fan club TODAY 10am. Empire of the Sun venue presale TODAY. BSB/Brandi Carlile/Pretty Reckless presales live. Maniscalco LIVE — code SEBASTIAN. General onsales Fri Mar 20. NCAA First Round Thu-Fri, Second Round Sat-Sun." color="#ef4444"/>
+          <SH title="This Week" sub="Presales & onsales Mar 19–22" count={SCAN_DATA.thisWeek.length}/>
+          <AB emoji="🔴" title="THIS WEEK: March Madness First Round TODAY + Massive General Onsale Friday Mar 20!" sub="NCAA First Round TODAY Thu-Fri. Undertale Symphony onsale TODAY 10am. NEEDTOBREATHE Spotify presale TODAY. MASSIVE onsale Fri Mar 20: Djo arenas, BSB Sphere, Bleachers (MSG + Troubadour!), Pussycat Dolls reunion, Lil Wayne, Brandi Carlile, Pretty Reckless, Empire of the Sun, Pogues, Gavin Adcock, Andy Grammer, Metric, Wilco. Maniscalco LIVE — code SEBASTIAN." color="#ef4444"/>
           {renderCards(SCAN_DATA.thisWeek,"tw")}
         </>)}
 
         {tab==="nextweek"&&(<>
-          <SH title="Next Week" sub="Onsales Mar 23–29" count={SCAN_DATA.nextWeek.length}/>
-          <AB emoji="🏀" title="NEXT WEEK: Sweet 16 (Mar 26-27) & Elite Eight (Mar 28-29) + MLB Opening Day (Mar 25-26)" sub="March Madness deep rounds — watch THIS WEEK's results to position for Sweet 16. Arizona undefeated chase = nuclear demand. MLB Opening Night: Giants vs Yankees at Oracle Park Mar 25." color="#f59e0b"/>
+          <SH title="Next Week" sub="Presales & onsales Mar 23–29" count={SCAN_DATA.nextWeek.length}/>
+          <AB emoji="🏀" title="NEXT WEEK: Sweet 16 (Mar 26-27), Elite Eight (Mar 28-29), MLB Opening Day (Mar 25-26), Disney Worlds Collide presale Mon Mar 23!" sub="March Madness deep rounds — watch THIS WEEK's first round results to position for Sweet 16. Arizona undefeated chase = nuclear demand. MLB Opening Night: Giants vs Yankees at Oracle Park Mar 25. Disney+ Perks presale Mon Mar 23. Red Rocks bass weekend Mar 27-28." color="#f59e0b"/>
           {renderCards(SCAN_DATA.nextWeek,"nw")}
         </>)}
 
