@@ -15,12 +15,69 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 19, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 19-22 · NEXT WEEK: Mar 23-29",
+  lastRun: "March 23, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 23-29 · NEXT WEEK: Mar 30 – Apr 5",
   nextWeek: [
+
+    {
+      name: "🏀 NCAA Final Four — San Antonio (Apr 4 & 6)", tier: "S", score: 97, category: "College Basketball — Final Four & Championship", genre: "Sports",
+      ticketLink: "https://www.ncaa.com/march-madness",
+      streams: "Final Four Sat Apr 4, Championship Mon Apr 6 at Alamodome, San Antonio.", lastTour: "Annual", scarcity: "EXTREME — 70K+ cap Alamodome. Matchups set after Elite Eight (Mar 28-29). Demand spikes exponentially once semifinalists are known.",
+      venueSize: "Alamodome (70K+ cap)", saleStatus: "🔴 FINAL FOUR APR 4 — CHAMPIONSHIP APR 6 — SECONDARY ACTIVE",
+      saleDetails: "Final Four: Sat Apr 4 at Alamodome, San Antonio. Championship: Mon Apr 6. Elite Eight results (Mar 28-29) set the matchups. If Arizona remains undefeated, their semifinal = most expensive ticket. Secondary market prices will spike Sun Mar 29 once semifinalists are confirmed.",
+      reasoning: "Final Four is the crown jewel of March Madness secondary market. Alamodome at 70K+ cap seems large but national demand from 4 fanbases fills it. Arizona's undefeated chase (if still alive) makes this historically significant — prices will be astronomical. Buy IMMEDIATELY after Elite Eight results confirm matchups. Sunday Mar 29 evening through Monday morning is the buying window before prices fully adjust.",
+      action: "🚨 WATCH ELITE EIGHT RESULTS MAR 28-29 — Buy Final Four tickets IMMEDIATELY after semifinalists are set. Arizona undefeated = nuclear demand. Act Sunday night Mar 29 before prices adjust Monday.",
+      targetCities: [
+        {emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 4 & 6",why:"Final Four + Championship. Prices spike once Elite Eight results are in. Buy Sunday night Mar 29."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "INZO + What So Not — Red Rocks (Apr 3)", tier: "B+", score: 76, category: "Electronic — Viral Crossover", genre: "Bass / Future Bass",
+      ticketLink: "https://www.redrocksonline.com",
+      streams: "INZO's 'Overthinker' 500M+ streams. What So Not adds core EDM credibility.", lastTour: "2025", scarcity: "MODERATE — Red Rocks 9,525 cap. Wellness/meditation TikTok crossover audience.",
+      venueSize: "Red Rocks (9,525 cap)", saleStatus: "🟢 ON SALE NOW",
+      saleDetails: "Fri Apr 3, 6:00 PM. Support: Lumasi, Daggz, Common Creation, Spenny. Via RedRocksOnline.com.",
+      reasoning: "INZO's 'Overthinker' crossed from EDM into wellness/meditation TikTok — pulls non-traditional EDM demo. What So Not adds core credibility. Red Rocks at sunset with this music = spiritual experience. Unique crossover audience that traditional bass shows don't attract.",
+      action: "🟡 MODERATE BUY — Unique crossover audience. GA will move. Buy face and hold.",
+      region: "NA"
+    },
+    {
+      name: "Jill Scott — To Whom This May Concern World Tour (ON SALE)", tier: "A", score: 84, category: "R&B / Neo-Soul — Arena/Amphitheater", genre: "R&B / Neo-Soul",
+      ticketLink: "https://www.ticketmaster.com/jill-scott-tickets/artist/770081",
+      streams: "6M+ monthly. Grammy winner. 'A Long Walk,' 'Golden' = neo-soul anthems. 36-date world tour.", lastTour: "2023-24", scarcity: "HIGH — 36 dates across US, UK, Europe, South Africa. Multi-night stands in Nashville, DC, Atlanta, Brooklyn, LA, Chicago, Philadelphia (4 nights at The Met!).",
+      venueSize: "Theater / Arena (3-8K cap)", saleStatus: "🟢 ON SALE — PRESALES & GENERAL ONSALE COMPLETE",
+      saleDetails: "Artist presale Tue Mar 10 ✅ (code: SCOTT). SiriusXM presale Mar 10 ✅. General onsale Wed Mar 11 10am ✅. Tour: Jun 4 Nashville → Sep 3 Irving TX (US), then UK/Europe/South Africa. 4 nights at The Met Philadelphia (Jul 24-27). Multi-night Brooklyn, LA, Chicago, DC.",
+      reasoning: "Jill Scott is neo-soul royalty. 36-date world tour with multi-night stands signals confidence in demand. Philadelphia hometown run (4 nights at The Met) will be the hottest tickets — she's Philly's queen. The Met is ~3,500 cap × 4 nights = only 14K total Philly tickets for a massive fanbase. Brooklyn, DC, Atlanta multi-nights also strong. R&B/neo-soul demo (30-50, high income) pays premium.",
+      action: "🟢 ON SALE — Target Philadelphia Met (4 nights = hometown premium), Brooklyn, DC. R&B/neo-soul demo pays full price on secondary.",
+      targetCities: [
+        {emoji:"🔔",city:"Philadelphia, PA",venue:"The Met (Jul 24-27, 4 nights)",date:"Jul 24-27",why:"HOMETOWN. 4 nights × 3,500 cap = only 14K tickets for Philly's neo-soul queen."},
+        {emoji:"🗽",city:"Brooklyn, NY",venue:"Kings Theatre (multi-night)",date:"TBA",why:"NYC R&B demand in an intimate theater."},
+        {emoji:"🏛️",city:"Washington, DC",venue:"TBA (multi-night)",date:"TBA",why:"DMV R&B stronghold. Multi-night = high demand confirmed."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "J. Cole — The Fall-Off Tour (ON SALE — FINAL ALBUM)", tier: "S", score: 93, category: "Hip-Hop — Arena/Stadium World Tour", genre: "Hip-Hop / Rap",
+      ticketLink: "https://www.ticketmaster.com/j-cole-tickets/artist/1684730",
+      streams: "35M+ monthly. 'The Fall-Off' = 7th and FINAL album (Feb 6, 2026). First full global tour since 2017.", lastTour: "2017 (KOD Tour — last full global run)", scarcity: "EXTREME — 70+ dates globally. 'Final album' narrative = farewell energy. Tickets sold out rapidly in numerous cities during presale. 9-year touring gap for full world tour.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🟢 ON SALE — MANY DATES SOLD OUT",
+      saleDetails: "Presale Feb 17 ✅. General onsale Feb 20 ✅. Tour: Jul 11 Charlotte → Dec 12 Johannesburg. Multiple dates sold out during presale with fans reporting massive queues. 70+ dates across NA, Europe, UK, Africa, Asia, Australia.",
+      reasoning: "J. Cole marketed 'The Fall-Off' as his FINAL album — that's the magic word for secondary markets. First full world tour in 9 YEARS. 35M+ monthly listeners funneled into arena-cap venues. Multiple cities sold out on presale. The 'farewell' narrative will sustain premium pricing throughout the entire run. Charlotte opener (hometown) and Brooklyn will command highest premiums.",
+      action: "🟢 ON SALE — Many dates sold out. Buy remaining inventory or secondary. 'Final album' tour = sustained premium. Target: Charlotte (hometown opener), Brooklyn, any date still available at face.",
+      targetCities: [
+        {emoji:"🏁",city:"Charlotte, NC",venue:"Spectrum Center (Jul 11)",date:"Jul 11",why:"HOMETOWN opener. First full tour in 9 years starts here. Highest emotional premium."},
+        {emoji:"🗽",city:"Brooklyn, NY",venue:"Barclays Center (Jul 31)",date:"Jul 31",why:"NYC hip-hop capital. Dreamville energy."},
+        {emoji:"🍁",city:"Toronto, ON",venue:"Scotiabank Arena (Jul 27)",date:"Jul 27",why:"Born in Germany, raised in Fayetteville — but Toronto hip-hop demand is elite."},
+      ],
+      region: "NA"
+    },
+
+  ],
+  thisWeek: [
     {
       name: "Ella Mai — Do You Still Love Me? Tour (PRESALE THU MAR 19)", tier: "B", score: 72, category: "R&B — Theater/Amphitheater (VENUE UPGRADE RISK)", genre: "R&B / Pop / Soul", ticketLink: "https://www.ticketmaster.com/ella-mai-tickets/artist/2316283",
       streams: "9M monthly Spotify (corrected). Grammy winner ('Boo'd Up' — #5 Hot 100, RIAA Platinum). New album 'Do You Still Love Me?' debuted #44 Billboard 200 with 18K first-week units (DOWN from #15 last album). UK→US breakout (London-born). 1.4M TikTok, ~13.7M Instagram.", lastTour: "2023 (Heart On My Sleeve Tour — 80K tickets sold, House of Blues/club level 1.5-2.2K cap)", scarcity: "MODERATE — 28 dates but MAJOR venue upgrade: jumping from 1.5K clubs (2023) to 5-8.5K theaters/amphitheaters on a weaker album cycle. Strong R&B markets (NYC, ATL, LA, DC) should hold. Secondary markets (Milwaukee, Mesa, Cleveland, Columbus) are risky. Support: AMA + Girlfriend.",
-      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🟢 GENERAL ONSALE FRI MAR 20 10AM LOCAL — ARTIST PRESALE COMPLETE",
+      venueSize: "Theater / Amphitheater (2-5K cap)", saleStatus: "🟢 ON SALE — PRESALES & GENERAL ONSALE COMPLETE",
       saleDetails: "Artist presale Thu Mar 19 10am local (sign up at ellamai.com). Spotify presale same day. General onsale Fri Mar 20 10am local. 28 dates Jul 7 – Aug 28. Opens Toronto, closes Radio City Music Hall NYC.",
       reasoning: "⚠️ VENUE UPGRADE RISK: Jumping from 1.5K clubs (2023) to 5-8.5K cap on a weaker album (#44 BB200 vs #15 last time, 18K first-week units). 'Boo'd Up' catalog strength and 3-year touring gap create baseline demand, but 9M Spotify monthly doesn't fill 6K rooms everywhere. Strong R&B markets (NYC, ATL, LA, DC, Houston) will hold — secondary markets may have soft shows. Vivid Seats early secondary: $78 get-in / $162 avg. Radio City closer and Greek Theatre LA are the best secondary plays due to market size. Pittsburgh Stage AE outdoor (~5K) is a question mark — not a top R&B market.",
       action: "🔴 SIGN UP at ellamai.com NOW for presale Thu 10am. Target: Radio City (NYC closer), Greek Theatre (LA), Stage AE (home market!), Bill Graham (SF).",
@@ -39,7 +96,7 @@ const SCAN_DATA = {
       name: "🏀 March Madness — Sweet 16 & Elite Eight (Mar 26-29)", tier: "S", score: 95, category: "College Basketball — Deep Tournament Rounds", genre: "Sports",
       ticketLink: "https://www.ncaa.com/march-madness",
       streams: "#1 seeds: Duke, Arizona, Michigan, Florida. Sweet 16 Thu-Fri Mar 26-27. Elite Eight Sat-Sun Mar 28-29.", lastTour: "Annual", scarcity: "EXTREME — By Sweet 16, Cinderella stories are established. Demand spikes exponentially each round. Arizona undefeated narrative = nuclear demand in their region.",
-      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 SWEET 16 MAR 26-27 — ELITE EIGHT MAR 28-29",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 SWEET 16 THU-FRI MAR 26-27 — ELITE EIGHT SAT-SUN MAR 28-29",
       saleDetails: "Sweet 16: Thu Mar 26 & Fri Mar 27 at regional sites. Elite Eight: Sat Mar 28 & Sun Mar 29. Final Four: Apr 4 in San Antonio. First/Second round results (Mar 19-22) determine Sweet 16 matchups — upsets create demand spikes for Sweet 16 venues. If Arizona stays undefeated, their regional site = most expensive ticket in the tournament.",
       reasoning: "Sweet 16 and Elite Eight are where March Madness secondary market PEAKS for per-game value. The bracket will be half-resolved — Cinderella stories established, blue-blood matchups confirmed. Arizona's undefeated run (if it continues through first/second rounds) will make their regional site the hottest ticket. Duke as #1 seed in their region draws massive alumni travel demand. BUY Sweet 16 tickets IMMEDIATELY after first-round upsets when prices haven't adjusted yet.",
       action: "🚨 WATCH FIRST/SECOND ROUND RESULTS THIS WEEK — Buy Sweet 16 tickets at sites where upsets create Cinderella narratives. Arizona's region = highest premium if they advance. Final Four San Antonio tickets rising daily.",
@@ -79,7 +136,7 @@ const SCAN_DATA = {
       region: "NA"
     },
   ],
-  thisWeek: [
+  alreadyOnSale: [
     {
       name: "NEEDTOBREATHE — The Long Surrender Tour", tier: "A", score: 82, category: "Christian Rock / Anthem Rock — Amphitheater", genre: "Rock / Christian Rock / Anthem Rock", ticketLink: "https://www.ticketmaster.com/needtobreathe-tickets/artist/1101640",
       streams: "5M+ monthly. Grammy-nominated. 'Brother,' 'Something Beautiful' crossover hits. Massive Christian rock + mainstream crossover.", lastTour: "2025", scarcity: "HIGH — Amphitheater routing. Christian rock fanbase buys early and pays premium. Family-friendly demo = groups of 4-6.",
@@ -101,7 +158,7 @@ const SCAN_DATA = {
     {
       name: "Sebastian Maniscalco — 2026 Tour (PRESALE LIVE NOW)", tier: "S", score: 90, category: "Comedy Megastar — Arena", genre: "Comedy", ticketLink: "https://www.ticketmaster.com/sebastian-maniscalco-tickets/artist/1178795",
       streams: "NYT called him 'the hottest comic in America.' Multi-night arena runs. Massive Italian-American + mainstream crossover demo.", lastTour: "2025 (It Ain't Right Tour)", scarcity: "HIGH — Arena routing but comedy arenas sell differently than music. Premium sections go first. VIP packages available.",
-      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 ARTIST PRESALE LIVE — CODE: SEBASTIAN",
+      venueSize: "Arena (10-20K cap)", saleStatus: "🟢 ON SALE — CODE: SEBASTIAN STILL ACTIVE",
       saleDetails: "Artist presale LIVE NOW on Ticketmaster — code SEBASTIAN. General onsale running. Jones Beach added. Multiple presale windows. Summer/fall 2026 dates. SNL just did an impression of him (Mar 15) = demand spike.",
       reasoning: "Maniscalco is the top-grossing comedian in the game right now. Arena-level comedy is rare — only a handful of comics can fill 15K+ rooms. The SNL impression by Marcello Hernandez (just aired Mar 15) will spike casual fan awareness. Code SEBASTIAN is publicly known = easy presale access. Jones Beach outdoor show = interesting alternative to arena dates.",
       action: "🔴 USE CODE 'SEBASTIAN' NOW ON TICKETMASTER. Arena comedy premium is real. Target: any date in top-20 markets.",
@@ -129,7 +186,7 @@ const SCAN_DATA = {
     {
       name: "🏀 March Madness — NCAA Tournament (FIRST FOUR + FIRST ROUND THIS WEEK)", tier: "S", score: 95, category: "College Basketball — National Tournament", genre: "Sports", ticketLink: "https://www.ncaa.com/march-madness",
       streams: "68-team bracket. #1 seeds: Duke, Arizona, Michigan, Florida. First Four Tue-Wed, First Round Thu-Fri, Second Round Sat-Sun.", lastTour: "Annual", scarcity: "EXTREME — Selection Sunday was yesterday (Mar 15). Bracket is SET. First Four in Dayton Tue-Wed. First Round at 8 sites Thu-Fri. Demand spikes for Cinderella stories.",
-      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 FIRST ROUND FRI MAR 20 — SECOND ROUND SAT-SUN — SECONDARY ACTIVE",
+      venueSize: "Arena (10-20K cap)", saleStatus: "✅ FIRST/SECOND ROUND COMPLETE — SWEET 16 THIS WEEK",
       saleDetails: "First Four: Tue Mar 17 & Wed Mar 18 ✅ (complete). First Round: Fri Mar 20 at 8 sites nationwide. Second Round: Sat Mar 21 & Sun Mar 22. Sweet 16: Mar 26-27. Elite 8: Mar 28-29. Final Four: Apr 4 in San Antonio.",
       reasoning: "March Madness is the biggest single-event ticket opportunity of the year. First Round is underway — Cinderella stories will emerge that spike demand for Sweet 16 sites. The secondary market moves FAST once upsets happen — prices for next-round games spike within hours of a buzzer-beater. Duke/Arizona/Michigan/Florida as #1 seeds means those fan bases are buying everything. BUY Sweet 16 tickets at regional sites where upsets happen.",
       action: "🚨 FIRST ROUND FRI MAR 20 — Watch for upsets. Buy Sweet 16 tickets at sites where Cinderellas land. Prices spike 2-5x after buzzer-beaters. San Antonio Final Four tickets already premium.",
@@ -270,9 +327,7 @@ const SCAN_DATA = {
       reasoning: "Andy Grammer + Walk Off The Earth is a feel-good double bill that targets the family/date-night demo. Both acts have strong radio histories. Amphitheater routing in summer = reliable demand. Not a huge flip opportunity but steady face-to-modest-premium play.",
       action: "🟢 ON SALE NOW — Solid double bill. Buy face value if available. Family amphitheater market play.",
       region: "NA"
-    },
-  ],
-  alreadyOnSale: [
+    },,
 {
       name: "Gorillaz — The Mountain NA Tour (22 Arena Dates)", tier: "S", score: 92, category: "Alt-Rock Icons — Arena Tour", genre: "Alt-Rock / Electronic / Hip-Hop", ticketLink: "https://www.ticketmaster.com/gorillaz-tickets/artist/806811",
       streams: "25M+ monthly. New album 'The Mountain' (Feb 27). Animated icons — 2D, Murdoc, Noodle, Russel.", lastTour: "2022 (last extensive NA run)", scarcity: "EXTREME — 22 arena dates Sep 17 – Oct 31. First extensive NA run since 2022. MSG, United Center, Kia Forum, Climate Pledge. Little Simz + Deltron 3030 support. SNL debut this weekend.",
@@ -1343,14 +1398,14 @@ function OptimusDashboard() {
 
         {/* Tab content */}
         {tab==="thisweek"&&(<>
-          <SH title="This Week" sub="Presales & onsales Mar 19–22" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🔴" title="THIS WEEK: March Madness First Round FRI MAR 20 + Massive General Onsale TODAY!" sub="NCAA First Round FRI MAR 20. Undertale Symphony onsale complete. NEEDTOBREATHE presales complete. MASSIVE onsale TODAY Fri Mar 20: Djo arenas, BSB Sphere, Bleachers (MSG + Troubadour!), Pussycat Dolls reunion, Lil Wayne, Brandi Carlile, Pretty Reckless, Empire of the Sun, Pogues, Gavin Adcock, Andy Grammer, Metric, Wilco. Maniscalco LIVE — code SEBASTIAN." color="#ef4444"/>
+          <SH title="This Week" sub="Presales & onsales Mar 23–29" count={SCAN_DATA.thisWeek.length}/>
+          <AB emoji="🏀" title="THIS WEEK: Sweet 16 (Mar 26-27), Elite Eight (Mar 28-29), MLB Opening Day (Mar 25-26), Disney Worlds Collide Presale TODAY!" sub="March Madness deep rounds — Sweet 16 Thu-Fri, Elite Eight Sat-Sun. Arizona undefeated chase = nuclear demand. MLB Opening Night: Giants vs Yankees at Oracle Park Mar 25. Disney+ Perks presale MON MAR 23 10am. Red Rocks bass weekend Mar 27-28. Ella Mai onsale complete." color="#ef4444"/>
           {renderCards(SCAN_DATA.thisWeek,"tw")}
         </>)}
 
         {tab==="nextweek"&&(<>
-          <SH title="Next Week" sub="Presales & onsales Mar 23–29" count={SCAN_DATA.nextWeek.length}/>
-          <AB emoji="🏀" title="NEXT WEEK: Sweet 16 (Mar 26-27), Elite Eight (Mar 28-29), MLB Opening Day (Mar 25-26), Disney Worlds Collide presale Mon Mar 23!" sub="March Madness deep rounds — watch THIS WEEK's first round results to position for Sweet 16. Arizona undefeated chase = nuclear demand. MLB Opening Night: Giants vs Yankees at Oracle Park Mar 25. Disney+ Perks presale Mon Mar 23. Red Rocks bass weekend Mar 27-28." color="#f59e0b"/>
+          <SH title="Next Week" sub="Presales & onsales Mar 30 – Apr 5" count={SCAN_DATA.nextWeek.length}/>
+          <AB emoji="🏀" title="NEXT WEEK: NCAA Final Four in San Antonio (Apr 4 & 6)! INZO + What So Not at Red Rocks (Apr 3). J. Cole & Jill Scott on sale." sub="Final Four is the crown jewel — buy IMMEDIATELY after Elite Eight results (Mar 28-29) confirm semifinalists. Arizona undefeated = historic ticket prices. INZO's wellness/meditation crossover at Red Rocks Fri Apr 3. J. Cole 'final album' tour and Jill Scott world tour both on sale with strong secondary demand." color="#f59e0b"/>
           {renderCards(SCAN_DATA.nextWeek,"nw")}
         </>)}
 
