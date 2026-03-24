@@ -15,7 +15,7 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 23, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 23-29 · NEXT WEEK: Mar 30 – Apr 5",
+  lastRun: "March 24, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 24-30 · NEXT WEEK: Mar 31 – Apr 6",
   nextWeek: [
 
     {
@@ -74,6 +74,21 @@ const SCAN_DATA = {
 
   ],
   thisWeek: [
+    {
+      name: "JAY-Z — Yankee Stadium Anniversary Shows (ONSALE TODAY MAR 24)", tier: "S", score: 96, category: "Hip-Hop Icon — Stadium Anniversary", genre: "Hip-Hop / Rap",
+      ticketLink: "https://www.ticketmaster.com/jay-z-tickets/artist/772601",
+      streams: "40M+ monthly. 'Reasonable Doubt' (30th) and 'The Blueprint' (25th) anniversaries. Greatest rapper alive debate. 23 Grammys.", lastTour: "2017 (4:44 Tour — last full solo tour)", scarcity: "EXTREME — Only 2 nights at Yankee Stadium (~50K cap each). 'JAŸ-Z 30' Fri Jul 10 celebrating Reasonable Doubt 30th anniversary. 'JAŸ-Z 25' Sat Jul 11 celebrating The Blueprint 25th. First solo tour in 9 YEARS. Stadium-level demand compressed into 2 nights.",
+      venueSize: "Yankee Stadium (~50K cap)", saleStatus: "🔴 GENERAL ONSALE TODAY TUE MAR 24 10AM ET",
+      saleDetails: "Citi presale Mon Mar 23 10am ET ✅. Roc Nation / Live Nation / Yankees presales Mon Mar 23 1pm ET ✅. GENERAL ONSALE TODAY Tue Mar 24 at 10am ET via ticketmaster.com and yankees.com. Two nights: 'JAŸ-Z 30' Fri Jul 10 (Reasonable Doubt 30th anniversary), 'JAŸ-Z 25' Sat Jul 11 (The Blueprint 25th anniversary). Yankee Stadium, Bronx NY.",
+      reasoning: "JAY-Z hasn't done a full solo tour since 2017's 4:44 Tour — that's a 9-YEAR gap. These are his FIRST solo headlining stadium shows in nearly a decade. Celebrating Reasonable Doubt (widely considered the greatest hip-hop debut ever) and The Blueprint (which launched Kanye as a producer and defined early 2000s rap). Yankee Stadium at ~50K cap × 2 nights = only ~100K total tickets for arguably the most important living rapper. The album-specific theme means each night gets a unique setlist — completist demand for both. NYC hip-hop royalty playing in the Bronx (birthplace of hip-hop) adds cultural significance. Secondary market will be NUCLEAR.",
+      action: "🚨 GENERAL ONSALE TODAY 10AM ET — Buy BOTH nights immediately. Reasonable Doubt night (Jul 10) = rarer catalog, higher collector premium. Blueprint night (Jul 11) = more mainstream hits. NYC hip-hop demand + 9-year gap + stadium scarcity = instant sellout.",
+      targetCities: [
+        {emoji:"🗽",city:"Bronx, NY",venue:"Yankee Stadium (Jul 10 — JAŸ-Z 30)",date:"Jul 10",why:"Reasonable Doubt 30th. Rarer catalog = collector premium. Hip-hop in the Bronx = historic."},
+        {emoji:"🗽",city:"Bronx, NY",venue:"Yankee Stadium (Jul 11 — JAŸ-Z 25)",date:"Jul 11",why:"The Blueprint 25th. More mainstream hits. Saturday night = higher casual demand."},
+      ],
+      presales: [{type:"Citi Presale",code:"Via Citi card",date:"Mon Mar 23 10am ET ✅"},{type:"Roc Nation / Live Nation / Yankees",code:"Via respective platforms",date:"Mon Mar 23 1pm ET ✅"},{type:"General Onsale",code:"N/A",date:"Tue Mar 24 10am ET — TODAY"}],
+      region: "NA"
+    },
     {
       name: "Ella Mai — Do You Still Love Me? Tour (PRESALE THU MAR 19)", tier: "B", score: 72, category: "R&B — Theater/Amphitheater (VENUE UPGRADE RISK)", genre: "R&B / Pop / Soul", ticketLink: "https://www.ticketmaster.com/ella-mai-tickets/artist/2316283",
       streams: "9M monthly Spotify (corrected). Grammy winner ('Boo'd Up' — #5 Hot 100, RIAA Platinum). New album 'Do You Still Love Me?' debuted #44 Billboard 200 with 18K first-week units (DOWN from #15 last album). UK→US breakout (London-born). 1.4M TikTok, ~13.7M Instagram.", lastTour: "2023 (Heart On My Sleeve Tour — 80K tickets sold, House of Blues/club level 1.5-2.2K cap)", scarcity: "MODERATE — 28 dates but MAJOR venue upgrade: jumping from 1.5K clubs (2023) to 5-8.5K theaters/amphitheaters on a weaker album cycle. Strong R&B markets (NYC, ATL, LA, DC) should hold. Secondary markets (Milwaukee, Mesa, Cleveland, Columbus) are risky. Support: AMA + Girlfriend.",
@@ -137,6 +152,20 @@ const SCAN_DATA = {
     },
   ],
   alreadyOnSale: [
+    {
+      name: "BTS — ARIRANG World Tour (SOLD OUT MOST DATES)", tier: "S", score: 97, category: "K-Pop Global Phenomenon — Stadium World Tour", genre: "K-Pop / Pop",
+      ticketLink: "https://www.ticketmaster.com/bts-tickets/artist/2110227",
+      streams: "60M+ monthly. First group tour after military service completion. 'Arirang' album dropped Mar 20. 82+ dates, 34 cities, 23 countries.", lastTour: "2022 (Permission to Dance on Stage — last group dates before enlistment)", scarcity: "NUCLEAR — 3+ year hiatus for military service. Most dates sold out within minutes of onsale. Allegiant Stadium Las Vegas, SoFi Stadium LA, MetLife Stadium NJ among NA dates. ARMY fanbase is the most organized ticket-buying force in music.",
+      venueSize: "Stadium (40-70K cap)", saleStatus: "🔴 SOLD OUT MOST DATES — SECONDARY ONLY",
+      saleDetails: "ARMY Membership presale Jan 22-23 ✅. General onsale late Jan ✅. Most NA dates SOLD OUT within minutes. Tour starts Apr 9 in Goyang, South Korea. NA dates include: Allegiant Stadium Las Vegas (May 24), SoFi Stadium LA, MetLife Stadium NJ, and more. 82+ dates across 34 cities in 23 countries through 2027. Album 'Arirang' released Mar 20, 2026.",
+      reasoning: "BTS returning from military service is the single biggest event in global pop music in 2026. 3+ year touring gap created the most pent-up demand in concert history. ARMY is the most organized fanbase — they sold out stadiums worldwide in minutes. Secondary market prices are already astronomical. The 'Arirang' album (released Mar 20) is their first in 5+ years. 82+ dates seems like a lot but global demand from 34 cities worth of ARMY is essentially infinite. Every NA stadium date will command massive secondary premiums.",
+      action: "🔴 SOLD OUT — Secondary market only. Prices will fluctuate as tour progresses. Target: any date where casual fans listed below market. StubHub/Vivid Seats/SeatGeek.",
+      targetCities: [
+        {emoji:"🎰",city:"Las Vegas, NV",venue:"Allegiant Stadium (May 24)",date:"May 24",why:"Vegas tourism overlap. Stadium cap helps but still sold out."},
+        {emoji:"🗽",city:"East Rutherford, NJ",venue:"MetLife Stadium",date:"TBA",why:"NYC metro ARMY demand is massive. MetLife at 82K cap = most tickets available."},
+      ],
+      region: "NA"
+    },
     {
       name: "NEEDTOBREATHE — The Long Surrender Tour", tier: "A", score: 82, category: "Christian Rock / Anthem Rock — Amphitheater", genre: "Rock / Christian Rock / Anthem Rock", ticketLink: "https://www.ticketmaster.com/needtobreathe-tickets/artist/1101640",
       streams: "5M+ monthly. Grammy-nominated. 'Brother,' 'Something Beautiful' crossover hits. Massive Christian rock + mainstream crossover.", lastTour: "2025", scarcity: "HIGH — Amphitheater routing. Christian rock fanbase buys early and pays premium. Family-friendly demo = groups of 4-6.",
@@ -1398,13 +1427,13 @@ function OptimusDashboard() {
 
         {/* Tab content */}
         {tab==="thisweek"&&(<>
-          <SH title="This Week" sub="Presales & onsales Mar 23–29" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🏀" title="THIS WEEK: Sweet 16 (Mar 26-27), Elite Eight (Mar 28-29), MLB Opening Day (Mar 25-26), Disney Worlds Collide Presale TODAY!" sub="March Madness deep rounds — Sweet 16 Thu-Fri, Elite Eight Sat-Sun. Arizona undefeated chase = nuclear demand. MLB Opening Night: Giants vs Yankees at Oracle Park Mar 25. Disney+ Perks presale MON MAR 23 10am. Red Rocks bass weekend Mar 27-28. Ella Mai onsale complete." color="#ef4444"/>
+          <SH title="This Week" sub="Presales & onsales Mar 24–30" count={SCAN_DATA.thisWeek.length}/>
+          <AB emoji="🚨" title="THIS WEEK: JAY-Z Yankee Stadium ONSALE TODAY 10AM ET! Sweet 16 (Mar 26-27), Elite Eight (Mar 28-29), MLB Opening Day (Mar 25-26)" sub="JAY-Z's first solo shows in 9 YEARS — 'JAŸ-Z 30' and 'JAŸ-Z 25' at Yankee Stadium Jul 10-11. General onsale TODAY Tue Mar 24 10am ET. March Madness Sweet 16 Thu-Fri, Elite Eight Sat-Sun. MLB Opening Night: Giants vs Yankees Mar 25. Disney Worlds Collide general onsale Fri Mar 27. BTS ARIRANG tour sold out most dates — secondary only." color="#ef4444"/>
           {renderCards(SCAN_DATA.thisWeek,"tw")}
         </>)}
 
         {tab==="nextweek"&&(<>
-          <SH title="Next Week" sub="Presales & onsales Mar 30 – Apr 5" count={SCAN_DATA.nextWeek.length}/>
+          <SH title="Next Week" sub="Presales & onsales Mar 31 – Apr 6" count={SCAN_DATA.nextWeek.length}/>
           <AB emoji="🏀" title="NEXT WEEK: NCAA Final Four in San Antonio (Apr 4 & 6)! INZO + What So Not at Red Rocks (Apr 3). J. Cole & Jill Scott on sale." sub="Final Four is the crown jewel — buy IMMEDIATELY after Elite Eight results (Mar 28-29) confirm semifinalists. Arizona undefeated = historic ticket prices. INZO's wellness/meditation crossover at Red Rocks Fri Apr 3. J. Cole 'final album' tour and Jill Scott world tour both on sale with strong secondary demand." color="#f59e0b"/>
           {renderCards(SCAN_DATA.nextWeek,"nw")}
         </>)}
