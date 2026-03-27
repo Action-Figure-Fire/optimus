@@ -15,7 +15,7 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 26, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 26-30 · NEXT WEEK: Mar 31 – Apr 6",
+  lastRun: "March 27, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 26-30 · NEXT WEEK: Mar 31 – Apr 6",
   nextWeek: [
 
     {
@@ -124,7 +124,7 @@ const SCAN_DATA = {
       name: "Kesha — The Freedom Tour (PRESALE TODAY MAR 25)", tier: "A", score: 84, category: "Pop — Amphitheater Summer Tour", genre: "Pop / Dance-Pop",
       ticketLink: "https://www.ticketmaster.com/kesha-tickets/artist/1413109",
       streams: "12M+ monthly. 'TiK ToK,' 'We R Who We R,' 'Praying' = multi-era anthems. Independence narrative.", lastTour: "2024 (Gag Order Tour)", scarcity: "HIGH — 25-date amphitheater routing. Chromeo supporting most dates. May 23 Chula Vista → Aug 30 Noblesville. Red Rocks stop.",
-      venueSize: "Amphitheater (5-15K cap)", saleStatus: "🔴 GENERAL ONSALE FRI MAR 27 10AM LOCAL",
+      venueSize: "Amphitheater (5-15K cap)", saleStatus: "🔴 GENERAL ONSALE TODAY FRI MAR 27 10AM LOCAL",
       saleDetails: "Citi presale Tue Mar 24 10am ✅. Artist presale Wed Mar 25 10am ✅. General onsale Fri Mar 27 10am local. 25 dates: May 23 Chula Vista → Aug 30 Noblesville. Chromeo supporting most dates. Sizzy Rocket, MEEK, Erika Jayne on selects.",
       reasoning: "Kesha's Freedom Tour is her victory lap — independence narrative + massive catalog ('TiK ToK' 1B+ streams). Amphitheater routing with Chromeo support is a stacked summer bill. Red Rocks stop = premium. Toronto only Canadian date = demand funnel. Demo (25-40, female-skewing) buys in groups and pays full price.",
       action: "🔴 GENERAL ONSALE FRI MAR 27 10AM — Target: Red Rocks, Toronto (only Canada date).",
@@ -139,7 +139,7 @@ const SCAN_DATA = {
       name: "311 & Dirty Heads — So Glad You Made It Tour (PRESALE TODAY MAR 25)", tier: "A", score: 80, category: "Rock/Reggae — Summer Co-Headline", genre: "Rock / Reggae / Hip-Hop",
       ticketLink: "https://www.ticketmaster.com/311-tickets/artist/353",
       streams: "311: 5M+. Dirty Heads: 4M+. Support: Ocean Alley, Atmosphere, ROME (ex-Sublime).", lastTour: "311: 2025. Dirty Heads: 2024-25", scarcity: "HIGH — 30+ amphitheater dates Jul 11 Shakopee MN → Aug 30 West Palm Beach. New Dirty Heads album '7 Seas' Jun 12.",
-      venueSize: "Amphitheater (8-20K cap)", saleStatus: "🔴 GENERAL ONSALE FRI MAR 27 10AM LOCAL",
+      venueSize: "Amphitheater (8-20K cap)", saleStatus: "🔴 GENERAL ONSALE TODAY FRI MAR 27 10AM LOCAL",
       saleDetails: "Citi presale Tue Mar 24 ✅. Artist presale Wed Mar 25 10am ✅. Live Nation presale Thu Mar 26 10am. General onsale Fri Mar 27 10am. 30+ dates: Shakopee, Chicago, Grantville PA, Jones Beach NY, Atlantic City, Syracuse, Columbia MD, Pittsburgh, Toronto, Indianapolis, Denver, Austin, and more.",
       reasoning: "Proven co-headline pairing. ROME (ex-Sublime) on all dates + rotating Ocean Alley / Atmosphere support. Dirty Heads new album drops month before tour. Summer amphitheater routing is perfect. Jones Beach and Columbia MD will draw huge regional crowds.",
       action: "🔴 GENERAL ONSALE FRI MAR 27 10AM — Target: Jones Beach NY, any Atmosphere-supported date (Aug 11+).",
@@ -154,7 +154,7 @@ const SCAN_DATA = {
       name: "TLC & Salt-N-Pepa w/ En Vogue — It's Iconic Tour (ONSALE THU MAR 26)", tier: "A", score: 83, category: "R&B/Hip-Hop Legends — Co-Headline", genre: "R&B / Hip-Hop / Pop",
       ticketLink: "https://www.ticketmaster.com/tlc-tickets/artist/770160",
       streams: "TLC: 10M+. Salt-N-Pepa: 3M+. En Vogue: 2M+. Combined 90s nostalgia powerhouse.", lastTour: "TLC: 2024. Salt-N-Pepa: limited", scarcity: "HIGH — 32-city tour Aug 15 Franklin TN → Oct 11 Concord CA. First-ever co-headline. iHeart Awards performance Mar 26 = promo fuel.",
-      venueSize: "Amphitheater / Arena (8-20K cap)", saleStatus: "🔴 🔴 GENERAL ONSALE TODAY THU MAR 26 10AM LOCAL",
+      venueSize: "Amphitheater / Arena (8-20K cap)", saleStatus: "🟢 GENERAL ONSALE THU MAR 26 ✅ COMPLETE",
       saleDetails: "Citi presale Tue Mar 24 ✅. Artist presale Tue Mar 24 noon ✅. Live Nation presale Wed Mar 25 10am. General onsale Thu Mar 26 10am. 32 dates: Franklin TN, Noblesville, Cincinnati, Clarkston MI, Burgettstown PA, Saratoga Springs, Uncasville CT, Mansfield MA, Darien Center NY, Toronto, through Oct 11 Concord CA. iHeart Awards performance Mar 26 on FOX.",
       reasoning: "Three iconic 90s acts on one ticket. TLC ('No Scrubs'), Salt-N-Pepa ('Push It'), En Vogue ('Free Your Mind') — greatest hits amphitheater experience. 35-55 female demo with highest disposable income. iHeart Awards performance on onsale day = massive demand spike.",
       action: "🔴 GENERAL ONSALE THU MAR 26 10AM — Target: Pine Knob MI, Toronto (only Canada), opening night Franklin TN.",
@@ -196,7 +196,7 @@ const SCAN_DATA = {
       name: "Tank and the Bangas — Summer/Fall 2026 (PRESALES THIS WEEK)", tier: "B+", score: 73, category: "R&B/Soul — Theater/Club", genre: "R&B / Soul / Funk",
       ticketLink: "https://www.ticketmaster.com/tank-and-the-bangas-tickets/artist/2127903",
       streams: "1.5M+ monthly. Grammy-winning. NPR Tiny Desk breakout. New album 'The Last Balloon.'", lastTour: "2025", scarcity: "MODERATE — Club/theater routing (500-2K cap): NYC, Asheville, Boston, Detroit, Pittsburgh, DC, Minneapolis, Chicago, St. Louis, SF.",
-      venueSize: "Club / Theater (500-2K cap)", saleStatus: "🔴 GENERAL ONSALE FRI MAR 27",
+      venueSize: "Club / Theater (500-2K cap)", saleStatus: "🔴 GENERAL ONSALE TODAY FRI MAR 27",
       saleDetails: "Venue presales Mon Mar 24 ✅. Spotify presale Wed Mar 25 ✅. All presales end Fri Mar 27 9am. General onsale Fri Mar 27. Fall: Oct 15 Atlanta → Nov 21. Summer dates in June.",
       reasoning: "Grammy winners in sub-1K rooms = extreme scarcity. Off Broadway STL (~400 cap), Fine Line MPLS (~650 cap), August Hall SF (~1K). Tiny venues for Grammy-winning act = reliable sellouts.",
       action: "🔴 GENERAL ONSALE FRI MAR 27 — Target smallest venues.",
@@ -245,7 +245,7 @@ const SCAN_DATA = {
       name: "Disney Worlds Collide Concert Tour 2026 (PRESALE MON MAR 23)", tier: "A", score: 80, category: "Family Arena Tour — Disney Channel Stars", genre: "Pop / Family",
       ticketLink: "https://www.worldscollidetour.com",
       streams: "Stars from Descendants, ZOMBIES, Camp Rock. 48 arenas across US, Canada, Mexico.", lastTour: "2025 (previous Worlds Collide — strong sales)", scarcity: "HIGH — Disney IP + family demo buys early. 48-date arena routing. VIP packages with cast Q&A.",
-      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 DISNEY+ PERKS PRESALE MON MAR 23 10AM — GENERAL ONSALE FRI MAR 27",
+      venueSize: "Arena (10-20K cap)", saleStatus: "🔴 DISNEY+ PRESALE MON MAR 23 ✅ — GENERAL ONSALE TODAY FRI MAR 27",
       saleDetails: "Disney+ Perks presale Mon Mar 23 10am local. Additional venue presales through week. General onsale Fri Mar 27 10am local. Fall 2026 dates across 48 arenas in US, Canada, Mexico. VIP packages include cast Q&A.",
       reasoning: "Disney Worlds Collide is a family demo goldmine. Parents buy in groups of 4-6 at premium prices. Descendants/ZOMBIES/Camp Rock stars have massive Gen-Z and Gen-Alpha followings. 48-date arena routing means this is a major production. Disney+ presale gives subscribers early access — millions of Disney+ families will be competing for first picks. VIP packages with cast meet & greet will command huge secondary premiums.",
       action: "🔴 DISNEY+ PRESALE MON MAR 23 10AM — Target VIP packages (cast Q&A = massive family premium). Family demo buys early and pays full price.",
@@ -265,18 +265,18 @@ const SCAN_DATA = {
       name: "Bob Dylan — 2026 Summer Tour w/ Lucinda Williams & John Doe Folk Trio (PRESALE TODAY)", tier: "A", score: 82, category: "Rock Legend — Amphitheater/Theater Summer Tour", genre: "Folk / Rock / Americana",
       ticketLink: "https://bobdylan.com/on-tour",
       streams: "25M+ monthly. Nobel Prize. 'Rough and Rowdy Ways' era touring since 2021. Greatest living songwriter.", lastTour: "2024-26 (Rough and Rowdy Ways — continuous)", scarcity: "HIGH — Outdoor summer dates with Lucinda Williams + John Doe Folk Trio support. West Coast + summer routing announced Mar 25.",
-      venueSize: "Amphitheater / Theater (3-8K cap)", saleStatus: "🔴 VENUE PRESALE TODAY THU MAR 26 10AM — GENERAL ONSALE FRI MAR 27",
+      venueSize: "Amphitheater / Theater (3-8K cap)", saleStatus: "🟢 VENUE/AEG PRESALE THU MAR 26 ✅ — GENERAL ONSALE TODAY FRI MAR 27",
       saleDetails: "Venue presale TODAY Thu Mar 26 10am local — code: HARDRAIN. AEG presale also today — code: BABYBLUE. General onsale Fri Mar 27 10am local at bobdylan.com/on-tour. Santa Barbara onsale Sat Mar 28. Summer dates with Lucinda Williams & John Doe Folk Trio. Currently on tour (started Omaha Mar 21).",
       reasoning: "Bob Dylan is touring continuously in the Rough and Rowdy Ways era and just added summer outdoor dates with Lucinda Williams as support — a STACKED Americana bill. Dylan at outdoor amphitheaters is a different (premium) experience vs. his indoor theater dates. Lucinda Williams adds enormous value — her own headline tours sell out 2-3K rooms. Combined bill at amphitheater pricing = strong value. Dylan's 80+ demo has peak disposable income and buys premium seats. The 'any show could be the last' narrative has been real for 20 years but every year it becomes more true.",
       action: "🔴 PRESALE TODAY 10AM — Code HARDRAIN (venue) / BABYBLUE (AEG). General onsale Fri Mar 27. Target outdoor amphitheater dates — premium experience.",
-      presales: [{type:"Venue Presale",code:"HARDRAIN",date:"Thu Mar 26 10am — TODAY"},{type:"AEG Presale",code:"BABYBLUE",date:"Thu Mar 26 10am — TODAY"},{type:"General Onsale",code:"N/A",date:"Fri Mar 27 10am"}],
+      presales: [{type:"Venue Presale",code:"HARDRAIN",date:"Thu Mar 26 10am ✅"},{type:"AEG Presale",code:"BABYBLUE",date:"Thu Mar 26 10am ✅"},{type:"General Onsale",code:"N/A",date:"Fri Mar 27 10am — TODAY"}],
       region: "NA"
     },
     {
       name: "Jack Harlow — Monica Tour (PRESALE TODAY)", tier: "A", score: 83, category: "Hip-Hop — Arena/Theater NA Tour", genre: "Hip-Hop / R&B",
       ticketLink: "https://www.ticketmaster.com/jack-harlow-tickets/artist/2594498",
       streams: "20M+ monthly. New R&B-leaning album 'Monica' recorded at Electric Lady Studios NYC. 'First Class' 1B+ streams.", lastTour: "2023 (Jackman Tour)", scarcity: "HIGH — 25+ NA dates Aug 4 Brooklyn → Sep 21 Oakland. Brooklyn Paramount opener = intimate (2K cap). Mix of arenas and theaters.",
-      venueSize: "Theater / Arena (2-20K cap)", saleStatus: "🔴 ARTIST & CITI PRESALE TODAY THU MAR 26 10AM — GENERAL ONSALE FRI MAR 27",
+      venueSize: "Theater / Arena (2-20K cap)", saleStatus: "🟢 ARTIST/CITI PRESALE THU MAR 26 ✅ — GENERAL ONSALE TODAY FRI MAR 27",
       saleDetails: "Artist presale TODAY Thu Mar 26 10am local. Citi presale TODAY Thu Mar 26 10am. General onsale Fri Mar 27 10am via Ticketmaster. Tour: Aug 4 Brooklyn (Brooklyn Paramount) → Sep 21 Oakland. Stops: Chicago, Detroit, Philadelphia, Toronto, Boston, Atlanta, Houston, Denver, San Diego, LA, Louisville (hometown).",
       reasoning: "Jack Harlow pivoted to R&B with 'Monica' (recorded at Electric Lady Studios) — artistic reinvention tours generate strong curiosity demand. Opening at Brooklyn Paramount (~2K cap) is a TINY room for an arena-level rapper — that opener will sell out instantly and flip hard. Louisville hometown date will be emotional premium. The R&B pivot may confuse casual fans but core fanbase (18-30, hip-hop/pop crossover) will show up. Mix of theaters and arenas means some dates have extreme scarcity.",
       action: "🔴 PRESALE TODAY 10AM — Brooklyn Paramount opener (Aug 4) = 2K cap for arena-level rapper. INSTANT SELLOUT. Louisville hometown = emotional premium. General onsale Fri Mar 27.",
@@ -285,7 +285,7 @@ const SCAN_DATA = {
         {emoji:"🏇",city:"Louisville, KY",venue:"TBA",date:"TBA",why:"HOMETOWN. Kentucky native. Emotional premium. Louisville fans will pay anything."},
         {emoji:"🌉",city:"Oakland, CA",venue:"TBA (Sep 21)",date:"Sep 21",why:"Tour closer energy. Bay Area hip-hop demand."},
       ],
-      presales: [{type:"Artist Presale",code:"Via Ticketmaster",date:"Thu Mar 26 10am — TODAY"},{type:"Citi Presale",code:"Via Citi card",date:"Thu Mar 26 10am — TODAY"},{type:"General Onsale",code:"N/A",date:"Fri Mar 27 10am"}],
+      presales: [{type:"Artist Presale",code:"Via Ticketmaster",date:"Thu Mar 26 10am ✅"},{type:"Citi Presale",code:"Via Citi card",date:"Thu Mar 26 10am ✅"},{type:"General Onsale",code:"N/A",date:"Fri Mar 27 10am — TODAY"}],
       region: "NA"
     },
   ],
