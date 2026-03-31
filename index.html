@@ -15,17 +15,17 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 30, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 30 – Apr 5 · NEXT WEEK: Apr 6 – Apr 12",
+  lastRun: "March 31, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 31 – Apr 6 · NEXT WEEK: Apr 7 – Apr 13",
   nextWeek: [
     {
-      name: "🏀 NCAA Championship Game — San Antonio (Apr 6)", tier: "S", score: 97, category: "College Basketball — National Championship", genre: "Sports",
+      name: "🏀 NCAA Championship Game — San Antonio (Apr 7)", tier: "S", score: 97, category: "College Basketball — National Championship", genre: "Sports",
       ticketLink: "https://www.ncaa.com/march-madness",
-      streams: "Championship Mon Apr 6 at Alamodome, San Antonio.", lastTour: "Annual", scarcity: "EXTREME — 70K+ cap Alamodome. Championship game = peak secondary pricing.",
-      venueSize: "Alamodome (70K+ cap)", saleStatus: "🔴 CHAMPIONSHIP APR 6 — SECONDARY ACTIVE",
-      saleDetails: "Championship: Mon Apr 6 at Alamodome. Final Four semifinalists play Sat Apr 4 — winners meet Monday.",
-      reasoning: "Championship game is the single most expensive ticket in college basketball. Once Saturday's semifinal winners are known, Sunday is the final buying window.",
-      action: "🚨 BUY CHAMPIONSHIP TICKETS AFTER SAT APR 4 SEMIS — Sunday Apr 5 is the window before Monday price spike.",
-      targetCities: [{emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 6",why:"Championship game. Buy Sunday after semis."}],
+      streams: "Championship Mon Apr 7 at Alamodome, San Antonio.", lastTour: "Annual", scarcity: "EXTREME — 70K+ cap Alamodome. Championship game = peak secondary pricing.",
+      venueSize: "Alamodome (70K+ cap)", saleStatus: "🔴 CHAMPIONSHIP APR 7 — SECONDARY ACTIVE",
+      saleDetails: "Final Four Sat Apr 5: Arizona vs Michigan, UConn vs Illinois. Championship Mon Apr 7. Winners of Saturday semis meet Monday night.",
+      reasoning: "Final Four is SET: #1 Arizona vs #2 Michigan, UConn (3rd Final Four in 4 years — epic comeback vs Duke) vs Illinois. Championship game is the single most expensive ticket in college basketball. Sunday Apr 6 is the buying window between semis and championship.",
+      action: "🚨 BUY CHAMPIONSHIP TICKETS AFTER SAT APR 5 SEMIS — Sunday Apr 6 is the window before Monday price spike. Arizona undefeated narrative = nuclear demand if they make final.",
+      targetCities: [{emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 7",why:"Championship game. Buy Sunday after semis. Arizona undefeated chase = highest demand."}],
       region: "NA"
     },
     {
@@ -163,14 +163,14 @@ const SCAN_DATA = {
       region: "NA"
     },
     {
-      name: "🏀 NCAA Final Four — San Antonio (Apr 4)", tier: "S", score: 97, category: "College Basketball — Final Four", genre: "Sports",
+      name: "🏀 NCAA Final Four — San Antonio (Apr 5)", tier: "S", score: 97, category: "College Basketball — Final Four", genre: "Sports",
       ticketLink: "https://www.ncaa.com/march-madness",
-      streams: "Final Four Sat Apr 4 at Alamodome. Semifinalists confirmed.", lastTour: "Annual", scarcity: "EXTREME — 70K+ cap Alamodome. Secondary prices adjusting.",
-      venueSize: "Alamodome (70K+ cap)", saleStatus: "🔴 FINAL FOUR SAT APR 4 — SECONDARY ACTIVE",
-      saleDetails: "Final Four: Sat Apr 4 at Alamodome. Semifinalists confirmed after Elite Eight. Secondary market active. Championship Mon Apr 6.",
-      reasoning: "Final Four is the crown jewel of March Madness secondary market. Prices rising daily toward Saturday.",
-      action: "🚨 FINAL FOUR THIS SATURDAY — Buy secondary NOW before final price surge.",
-      targetCities: [{emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 4",why:"Final Four THIS SATURDAY."}],
+      streams: "Final Four Sat Apr 5 at Alamodome. TEAMS SET: Arizona vs Michigan, UConn vs Illinois.", lastTour: "Annual", scarcity: "EXTREME — 70K+ cap Alamodome. Arizona undefeated = nuclear demand.",
+      venueSize: "Alamodome (70K+ cap)", saleStatus: "🔴 FINAL FOUR SAT APR 5 — SECONDARY SURGING",
+      saleDetails: "Final Four: Sat Apr 5 at Alamodome. Arizona (undefeated #1) vs Michigan (#2). UConn (epic Duke comeback) vs Illinois. Championship Mon Apr 7. All four fanbases are MASSIVE — Arizona chasing undefeated title, UConn dynasty run, Michigan blue-blood, Illinois Big Ten power.",
+      reasoning: "Final Four teams are SET and it's a DREAM matchup. Arizona still undefeated chasing perfection. UConn going for 3rd Final Four in 4 years after legendary comeback vs Duke. Michigan and Illinois bring Big Ten passion. Four massive fanbases = extreme secondary demand. Prices rising daily.",
+      action: "🚨 FINAL FOUR THIS SATURDAY — Buy secondary NOW. Arizona undefeated narrative makes this the most expensive Final Four in years.",
+      targetCities: [{emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 5",why:"Final Four THIS SATURDAY. Arizona undefeated + UConn dynasty + Michigan/Illinois = insane demand."}],
       region: "NA"
     },
     {
@@ -232,6 +232,36 @@ const SCAN_DATA = {
       saleDetails: "All presales and general onsale complete ✅.",
       reasoning: "Jack Harlow's 'Monica' era = mature evolution. Louisville hometown show = premium. Theater routing in some markets = intimate premium.",
       action: "🟢 ON SALE — Buy at face. Louisville hometown = highest demand.",
+      region: "NA"
+    },
+    {
+      name: "Benson Boone — Wanted Man Tour (PRESALE WED APR 1)", tier: "S", score: 90, category: "Pop Megastar — Arena Tour", genre: "Pop / Singer-Songwriter",
+      ticketLink: "https://www.ticketmaster.com/benson-boone-tickets/artist/2764498",
+      streams: "55M+ monthly. 'Beautiful Things' 2B+ streams. 'Mystical Magical' era. Grammy-nominated.", lastTour: "2025 (Fireworks & Rollerblades Tour — sold out arenas)", scarcity: "EXTREME — 32-date US arena tour Jul–Sep. Barclays Center, TD Garden, Prudential Center, Crypto.com Arena.",
+      venueSize: "Arena (15-20K cap)", saleStatus: "🔴 ARTIST PRESALE WED APR 1 11AM — GENERAL ONSALE FRI APR 3 11AM",
+      saleDetails: "Register at Benson's website for presale access. Artist presale Wed Apr 1 11am local. General onsale Fri Apr 3 11am local via Ticketmaster. 32 dates: Jul 2026 through Sep 2026. Major venues: Barclays Center NYC, TD Garden Boston, Prudential Center Newark, Crypto.com Arena LA, United Center Chicago.",
+      reasoning: "Benson Boone is one of the biggest pop artists in the world right now. 55M+ monthly Spotify listeners. 'Beautiful Things' was the #1 song globally. Arena tour = confirmed demand at the highest level. His demographic (16-28, heavily female) buys impulsively and pays premium. 32 dates across the US with no support acts announced yet = solo headline energy. This is a tier-1 presale event.",
+      action: "🔴 REGISTER FOR PRESALE NOW — Artist presale Wed Apr 1 11am. Target: smaller market arenas for best margins.",
+      targetCities: [
+        {emoji:"🗽",city:"New York, NY",venue:"Barclays Center",date:"TBA",why:"NYC metro demand. Arena will sell out."},
+        {emoji:"🎬",city:"Los Angeles, CA",venue:"Crypto.com Arena",date:"TBA",why:"LA closer energy potential."},
+      ],
+      presales: [{type:"Artist Presale",code:"Via website registration",date:"Wed Apr 1 11am"},{type:"General Onsale",code:"N/A",date:"Fri Apr 3 11am"}],
+      region: "NA"
+    },
+    {
+      name: "Kali Uchis — For The Girls Tour (PRESALE TODAY MAR 31)", tier: "A", score: 85, category: "Latin/R&B — Amphitheater Tour", genre: "R&B / Latin Pop / Alternative",
+      ticketLink: "https://www.ticketmaster.com/kali-uchis-tickets/artist/2281227",
+      streams: "30M+ monthly. 'Telepatía' 1.5B+ streams. 'Orquídeas' Grammy-winning album.", lastTour: "2024-25 (Latin America — $492K gross at Bogotá alone)", scarcity: "HIGH — 20+ date NA amphitheater tour. Mariah the Scientist + Laila! support. Red Rocks May 26.",
+      venueSize: "Amphitheater (5-15K cap)", saleStatus: "🔴 ARTIST PRESALE TODAY MAR 31 10AM — GENERAL ONSALE THU APR 2",
+      saleDetails: "Artist presale Mon Mar 31 10am local. General onsale Thu Apr 2 10am local via Ticketmaster. Tour: May 23 Chicago (Sueños Festival) → Jun/Jul dates TBA. Red Rocks May 26 with Mariah the Scientist + Laila! support. Also: Albuquerque, Rogers AR, Maryland Heights MO, and more.",
+      reasoning: "Kali Uchis is a crossover powerhouse — bilingual artist with massive Latin AND R&B/alt fanbases. 'Telepatía' was a global phenomenon. Grammy winner. Amphitheater routing is the sweet spot for her demand level. Red Rocks show will be premium. Mariah the Scientist as support doubles the R&B draw. Latin America grosses prove touring demand ($492K on 7,111 tickets in Bogotá alone).",
+      action: "🔴 PRESALE TODAY MAR 31 10AM — Target Red Rocks May 26. Bilingual fanbase = deep demand pool.",
+      targetCities: [
+        {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks (May 26)",date:"May 26",why:"Red Rocks + Kali Uchis = premium. Mariah the Scientist support."},
+        {emoji:"🌵",city:"Albuquerque, NM",venue:"First Financial Amphitheater (May 27)",date:"May 27",why:"Strong Latin market. Back-to-back with Red Rocks."},
+      ],
+      presales: [{type:"Artist Presale",code:"Via Ticketmaster",date:"Mon Mar 31 10am"},{type:"General Onsale",code:"N/A",date:"Thu Apr 2 10am"}],
       region: "NA"
     },
   ],
@@ -297,15 +327,14 @@ const SCAN_DATA = {
       region: "NA"
     },
     {
-      name: "🏀 March Madness — NCAA Tournament (FIRST FOUR + FIRST ROUND THIS WEEK)", tier: "S", score: 95, category: "College Basketball — National Tournament", genre: "Sports", ticketLink: "https://www.ncaa.com/march-madness",
-      streams: "68-team bracket. #1 seeds: Duke, Arizona, Michigan, Florida. First Four Tue-Wed, First Round Thu-Fri, Second Round Sat-Sun.", lastTour: "Annual", scarcity: "EXTREME — Selection Sunday was yesterday (Mar 15). Bracket is SET. First Four in Dayton Tue-Wed. First Round at 8 sites Thu-Fri. Demand spikes for Cinderella stories.",
-      venueSize: "Arena (10-20K cap)", saleStatus: "✅ FIRST/SECOND ROUND COMPLETE — SWEET 16 THIS WEEK",
-      saleDetails: "First Four: Tue Mar 17 & Wed Mar 18 ✅ (complete). First Round: Fri Mar 20 at 8 sites nationwide. Second Round: Sat Mar 21 & Sun Mar 22. Sweet 16: Mar 26-27. Elite 8: Mar 28-29. Final Four: Apr 4 in San Antonio.",
-      reasoning: "March Madness is the biggest single-event ticket opportunity of the year. First Round is underway — Cinderella stories will emerge that spike demand for Sweet 16 sites. The secondary market moves FAST once upsets happen — prices for next-round games spike within hours of a buzzer-beater. Duke/Arizona/Michigan/Florida as #1 seeds means those fan bases are buying everything. BUY Sweet 16 tickets at regional sites where upsets happen.",
-      action: "🚨 FIRST ROUND FRI MAR 20 — Watch for upsets. Buy Sweet 16 tickets at sites where Cinderellas land. Prices spike 2-5x after buzzer-beaters. San Antonio Final Four tickets already premium.",
+      name: "🏀 NCAA Tournament — FINAL FOUR SET (Apr 5 San Antonio)", tier: "S", score: 97, category: "College Basketball — Final Four Weekend", genre: "Sports", ticketLink: "https://www.ncaa.com/march-madness",
+      streams: "FINAL FOUR: Arizona vs Michigan, UConn vs Illinois. Championship Mon Apr 7.", lastTour: "Annual", scarcity: "EXTREME — Arizona UNDEFEATED. UConn epic comeback vs Duke. Four massive fanbases.",
+      venueSize: "Alamodome (70K+ cap)", saleStatus: "🔴 FINAL FOUR SAT APR 5 — SECONDARY SURGING",
+      saleDetails: "FINAL FOUR SET: #1 Arizona vs #2 Michigan, UConn vs Illinois. Sat Apr 5 at Alamodome, San Antonio. Championship Mon Apr 7. UConn stunned #1 Duke 73-72 on Braylon Mullins' buzzer-beater 3 (down 15 at half). Michigan crushed Tennessee 95-62. Arizona still UNDEFEATED.",
+      reasoning: "This is one of the best Final Fours in years. Arizona chasing undefeated perfection (last: Indiana 2025). UConn going for 3rd Final Four in 4 years with arguably the greatest comeback in tournament history. Michigan blue-blood energy. Illinois Big Ten passion. Four MASSIVE fanbases converging on San Antonio = secondary prices surging daily. Championship game will be nuclear if Arizona makes it.",
+      action: "🚨 FINAL FOUR THIS SATURDAY APR 5 — Buy secondary NOW before final surge. Championship Mon Apr 7 = buy Sunday after semis. Arizona undefeated chase = most expensive Final Four in years.",
       targetCities: [
-        {emoji:"🏀",city:"Dayton, OH",venue:"UD Arena",date:"Mar 17-18",why:"First Four. Always sells. Small arena = tight supply."},
-        {emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 4",why:"Final Four. Premium event. Buy now before Sweet 16 demand spikes."},
+        {emoji:"🏀",city:"San Antonio, TX",venue:"Alamodome",date:"Apr 5 & 7",why:"Final Four Sat + Championship Mon. Arizona undefeated narrative = peak demand."},
       ],
       region: "NA"
     },
@@ -454,6 +483,21 @@ const SCAN_DATA = {
         {emoji:"🌲",city:"Oakland, CA",venue:"Oakland Arena (Oct 28)",date:"Oct 28",why:"Not SF proper — Oakland Arena is smaller/less broker attention than Chase Center. Bay Area demand compressed."},
         {emoji:"🏔️",city:"Denver, CO",venue:"Ball Arena (Oct 18)",date:"Oct 18",why:"Only Mountain West date. CO/UT/NM/WY all funnel here. Gorillaz + Denver = perfect vibe match."},
         {emoji:"⛷️",city:"Salt Lake City, UT",venue:"Delta Center (Oct 20)",date:"Oct 20",why:"Small market between Denver and Phoenix. Mormon millennial demo + college crowd. Zero broker competition."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Jungle — Sunshine World Tour (22 NA Dates)", tier: "A", score: 85, category: "Electronic / Funk — Arena Tour", genre: "Electronic / Funk / Neo-Soul",
+      ticketLink: "https://www.ticketmaster.com/jungle-tickets/artist/1918498",
+      streams: "12M+ monthly. 'Back on 74,' 'Busy Earnin,' 'Keep Moving' = festival staples. New album 'Sunshine' announced.", lastTour: "2024-25 (Volcano Tour — sold out theaters/amphitheaters)", scarcity: "HIGH — Upgraded to ARENAS. Crypto.com Arena LA, Climate Pledge Arena Seattle, United Center Chicago. Greek Theatre SF. Santa Barbara Bowl.",
+      venueSize: "Arena (8-20K cap)", saleStatus: "🟢 ON SALE — GENERAL ONSALE MAR 27 COMPLETE",
+      saleDetails: "General onsale Fri Mar 27 10am local ✅. 5th album 'Sunshine' announced with single 'Carry On'. NA dates Sep 9 Minneapolis → Oct 10 Crypto.com Arena LA. Also: Brooklyn Paramount, Greek Theatre SF, Santa Barbara Bowl, Climate Pledge Arena Seattle.",
+      reasoning: "Jungle upgrading from theaters/amphitheaters to ARENAS is a major move. Crypto.com Arena LA is a statement. Their live show is legendary — full band with dancers. 'Sunshine' album cycle will build demand through summer. Santa Barbara Bowl and Greek Theatre dates are the premium plays (outdoor venues with tight caps). Brooklyn Paramount (2K cap) is absurdly small for a band playing arenas = instant sellout.",
+      action: "🟢 ONSALE COMPLETE — Target: Brooklyn Paramount (2K cap = nuclear scarcity), Santa Barbara Bowl, Greek Theatre SF. Buy on secondary.",
+      targetCities: [
+        {emoji:"🗽",city:"Brooklyn, NY",venue:"Brooklyn Paramount (~2K cap)",date:"TBA",why:"2K cap for an arena-level act. Instant sellout. Will flip 3-5x."},
+        {emoji:"🎬",city:"Los Angeles, CA",venue:"Crypto.com Arena (Oct 10)",date:"Oct 10",why:"Arena headline. Statement show."},
+        {emoji:"🌊",city:"Santa Barbara, CA",venue:"Santa Barbara Bowl (Oct 9)",date:"Oct 9",why:"Boutique outdoor venue. Premium."},
       ],
       region: "NA"
     },
@@ -781,20 +825,13 @@ const SCAN_DATA = {
       action: "BUY PRESALE FEB 17 — Two nights = they expect to sell both. Night 1 typically sells faster. Good flip potential for a folk act with loyal following.",
       region: "NA"
     },
+    /* CRANKDAT (Mar 27) and Ravenscoon & Jantsen (Mar 28) — EXPIRED, cleared Mar 31 scan */
     {
-      name: "CRANKDAT", tier: "B", score: 72, category: "Electronic — Bass Music", genre: "Bass / Dubstep",
-      showDate: "Mar 27, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Fri Mar 27, 7:00 PM. Support: Dr. Fresch, Smoakland, Capochino, HerShe. Via RedRocksOnline.com.",
-      reasoning: "CRANKDAT headlining Red Rocks is a venue upgrade milestone. Dr. Fresch support adds credibility. Denver bass community is one of the strongest in the country. Early season Red Rocks energy.",
-      action: "MONITOR — Buy at face, flip modest premium. Bass community is reliable.",
-      region: "NA"
-    },
-    {
-      name: "Ravenscoon & Jantsen", tier: "B", score: 69, category: "Electronic — Bass Music", genre: "Bass / Dubstep",
-      showDate: "Mar 28, 2026", saleStatus: "🟢 ON SALE NOW",
-      saleDetails: "Sat Mar 28, 6:00 PM. Support: WonkyWilla, Jason Leech, CHOZEN b2b Noetika, DEV. Via RedRocksOnline.com.",
-      reasoning: "Co-headline on Saturday night. Denver bass community is loyal. Saturday Red Rocks shows rarely lose money.",
-      action: "LOW RISK — Buy small allocation at face. Saturday slot helps.",
+      name: "Kali Uchis — For The Girls Tour", tier: "A", score: 84, category: "Latin/R&B Crossover", genre: "R&B / Latin Pop",
+      showDate: "May 26, 2026", saleStatus: "🔴 PRESALE MAR 31 — ONSALE APR 2",
+      saleDetails: "Tue May 26, 7:00 PM. Support: Mariah the Scientist, Laila! Artist presale Mon Mar 31 10am. General onsale Thu Apr 2 10am via RedRocksOnline.com / AXS.",
+      reasoning: "Kali Uchis at Red Rocks is a premium pairing. 30M+ monthly listeners. Bilingual fanbase (English + Spanish) doubles demand pool. Mariah the Scientist support = stacked R&B bill. Red Rocks sunset + 'Telepatía' = spiritual experience.",
+      action: "🔴 PRESALE TODAY MAR 31 10AM — Bilingual crossover at Red Rocks. Buy immediately.",
       region: "NA"
     },
     {
