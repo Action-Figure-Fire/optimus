@@ -15,8 +15,20 @@
 const { useState, useMemo } = React;
 
 const SCAN_DATA = {
-  lastRun: "March 31, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 31 – Apr 6 · NEXT WEEK: Apr 7 – Apr 13",
+  lastRun: "April 1, 2026 — Weekly Optimus Scan · THIS WEEK: Mar 31 – Apr 6 · NEXT WEEK: Apr 7 – Apr 13",
   nextWeek: [
+    {
+      name: "Céline Dion — PARIS 2026 (PRESALE APR 7 · ONSALE APR 10)", tier: "S", score: 98, category: "Pop Legend — Historic Comeback", genre: "Pop / Vocal",
+      ticketLink: "https://paris.celinedion.com/?lang=en",
+      streams: "30M+ monthly. Global icon. First concerts since 2020. Stiff-person syndrome comeback = most emotional return in music history.", lastTour: "2020 (Courage World Tour — cut short by illness)", scarcity: "NUCLEAR — Only 10 dates at Paris La Défense Arena (Sep 12 – Oct 14, 2026). 40K cap but global demand is infinite. Fair AXS lottery system = not guaranteed even with registration.",
+      venueSize: "Paris La Défense Arena (~40K cap)", saleStatus: "🔴 REGISTER BY APR 2 7PM CEST — PRESALE APR 7 — GENERAL ONSALE APR 10",
+      saleDetails: "Registration via Fair AXS until Thu Apr 2 at 7:00 PM CEST (1:00 PM EDT). Lottery results emailed Mon Apr 6. Artist presale Tue Apr 7 10:00 AM CEST. General onsale Fri Apr 10 10:00 AM CEST. Max 6 tickets per order. Sold via AXS, Ticketmaster France, and Fnac Spectacles. 10 exclusive dates: Sep 12 – Oct 14, 2026.",
+      reasoning: "This is the single biggest ticket event in the world right now. Céline Dion announced her return on her birthday (Mar 30) beneath the Eiffel Tower. She hasn't performed since 2020 due to stiff-person syndrome. The emotional narrative is unprecedented — the entire world is watching. Only 10 dates in Paris means ~400K tickets for billions of global fans. Fair AXS lottery means registration doesn't guarantee access. Secondary will be astronomical. Even from NA, fans will fly to Paris for this.",
+      action: "🚨 REGISTER NOW at paris.celinedion.com — Deadline Thu Apr 2 7PM CEST (1PM EDT). Presale Apr 7. This will be the most expensive secondary ticket of 2026.",
+      targetCities: [{emoji:"🗼",city:"Paris, France",venue:"Paris La Défense Arena",date:"Sep 12 – Oct 14",why:"Only venue. 10 dates. Global demand into one city. Secondary will be 5-10x face."}],
+      presales: [{type:"Fair AXS Presale",code:"Registration lottery (deadline Apr 2)",date:"Tue Apr 7 10am CEST"},{type:"General Onsale",code:"N/A",date:"Fri Apr 10 10am CEST"}],
+      region: "EU"
+    },
     {
       name: "🏀 NCAA Championship Game — San Antonio (Apr 7)", tier: "S", score: 97, category: "College Basketball — National Championship", genre: "Sports",
       ticketLink: "https://www.ncaa.com/march-madness",
@@ -75,13 +87,13 @@ const SCAN_DATA = {
   ],
   thisWeek: [
     {
-      name: "Muse — The Wow Signal Tour (PRESALE TOMORROW MAR 31)", tier: "S", score: 91, category: "Alt-Rock Icons — Amphitheater NA Tour", genre: "Alt-Rock / Electronic / Progressive",
+      name: "Muse — The Wow Signal Tour (GENERAL ONSALE FRI APR 3)", tier: "S", score: 91, category: "Alt-Rock Icons — Amphitheater NA Tour", genre: "Alt-Rock / Electronic / Progressive",
       ticketLink: "https://www.ticketmaster.com/muse-tickets/artist/1400322",
       streams: "20M+ monthly. New album 'The Wow! Signal' drops Jun 26. Bloc Party + Portugal. The Man + The Temper Trap support.", lastTour: "2023 (Will of the People Tour)", scarcity: "HIGH — NA amphitheater routing starting Jul 2. Triple-headliner value.",
-      venueSize: "Amphitheater (10-20K cap)", saleStatus: "🔴 ARTIST PRESALE TUE MAR 31 12PM — GENERAL ONSALE FRI APR 3",
-      saleDetails: "Artist presale Tue Mar 31 12pm local (sign up at Muse's site). All presales end Thu Apr 2 11:59pm. General onsale Fri Apr 3 10am. Tour starts Jul 2. Cities: LA (Hollywood Bowl Aug 31), San Diego, Austin, Atlanta, Milwaukee, St. Louis, and more.",
+      venueSize: "Amphitheater (10-20K cap)", saleStatus: "🔴 PRESALES ACTIVE — GENERAL ONSALE FRI APR 3 10AM",
+      saleDetails: "Artist presale Tue Mar 31 12pm ✅ COMPLETE. All presales end Thu Apr 2 11:59pm. General onsale Fri Apr 3 10am local. Tour starts Jul 2. Cities: LA (Hollywood Bowl Aug 31), San Diego, Austin, Atlanta, Milwaukee, St. Louis, and more.",
       reasoning: "Muse at amphitheaters is a MASSIVE undersell — this band fills stadiums in Europe. Bloc Party + Portugal. The Man on select dates = triple-headliner. Hollywood Bowl show is the crown jewel. New album Jun 26, perfectly timed 1 week before tour.",
-      action: "🔴 SIGN UP FOR ARTIST PRESALE NOW — Code sent 1-2 hours before sale. Presale TOMORROW Mar 31 12pm. Target: Hollywood Bowl.",
+      action: "🔴 ARTIST PRESALE COMPLETE — Additional presales through Thu Apr 2. GENERAL ONSALE FRI APR 3 10AM. Target: Hollywood Bowl.",
       targetCities: [
         {emoji:"🎬",city:"Los Angeles, CA",venue:"Hollywood Bowl (Aug 31)",date:"Aug 31",why:"Hollywood Bowl + Muse = premium. Iconic venue."},
         {emoji:"🎸",city:"Milwaukee, WI",venue:"American Family Insurance Amphitheatre",date:"TBA",why:"Upper Midwest vacuum."},
@@ -90,13 +102,13 @@ const SCAN_DATA = {
       region: "NA"
     },
     {
-      name: "Weezer — The Gathering (PRESALE TOMORROW MAR 31)", tier: "A", score: 85, category: "Alt-Rock — Arena Tour", genre: "Alt-Rock / Indie Rock",
+      name: "Weezer — The Gathering (GENERAL ONSALE FRI APR 3)", tier: "A", score: 85, category: "Alt-Rock — Arena Tour", genre: "Alt-Rock / Indie Rock",
       ticketLink: "https://www.ticketmaster.com/weezer-tickets/artist/735648",
       streams: "15M+ monthly. 16th studio album teased. New single 'Shine Again' drops Apr 1. The Shins + Silversun Pickups support.", lastTour: "2024 (Voyage to the Blue Planet)", scarcity: "HIGH — 32-date NA arena tour Sep 8 Sacramento → Oct 24 LA (Crypto.com Arena).",
-      venueSize: "Arena (12-20K cap)", saleStatus: "🔴 PRESALE TUE MAR 31 10AM — GENERAL ONSALE FRI APR 3",
-      saleDetails: "Verizon presale Tue Mar 31 10am local. General onsale Fri Apr 3 10am. 32 dates Sep 8 Sacramento → Oct 24 LA. Support: The Shins + Silversun Pickups.",
+      venueSize: "Arena (12-20K cap)", saleStatus: "🔴 PRESALES ACTIVE — GENERAL ONSALE FRI APR 3 10AM",
+      saleDetails: "Verizon/Citi presale Tue Mar 31 10am ✅ COMPLETE. Additional presales through Thu Apr 2. General onsale Fri Apr 3 10am local. 32 dates Sep 8 Sacramento → Oct 24 LA. Support: The Shins + Silversun Pickups.",
       reasoning: "Weezer + The Shins + Silversun Pickups is the ultimate 2000s alt-rock triple bill. 30-40 demo with peak disposable income. LA closer at Crypto.com Arena = premium.",
-      action: "🔴 PRESALE TOMORROW TUE MAR 31 10AM — Triple alt-rock bill. Target: LA closer (Oct 24), Portland, Denver.",
+      action: "🔴 PRESALES ACTIVE — General onsale FRI APR 3 10AM. Triple alt-rock bill. Target: LA closer (Oct 24), Portland, Denver.",
       targetCities: [
         {emoji:"🎬",city:"Los Angeles, CA",venue:"Crypto.com Arena (Oct 24)",date:"Oct 24",why:"TOUR CLOSER. LA hometown energy."},
         {emoji:"🌲",city:"Portland, OR",venue:"TBA",date:"TBA",why:"PNW alt-rock stronghold."},
@@ -134,13 +146,13 @@ const SCAN_DATA = {
       region: "NA"
     },
     {
-      name: "NieR:Orchestra Concert 12026 [YoRHa] — US Tour (PRESALE MAR 31)", tier: "A", score: 82, category: "Video Game Symphony — World Tour", genre: "Orchestral / Gaming",
+      name: "NieR:Orchestra Concert 12026 [YoRHa] — US Tour (ONSALE FRI APR 3)", tier: "A", score: 82, category: "Video Game Symphony — World Tour", genre: "Orchestral / Gaming",
       ticketLink: "https://www.square-enix-games.com/en_US/games/nier",
       streams: "NieR franchise 10M+ copies sold. Yoko Taro cult following.", lastTour: "2024 (sold out)", scarcity: "EXTREME — Gaming symphonies sell out instantly. 9 US cities. Concert hall routing (2-3K cap).",
-      venueSize: "Concert Hall (2-3K cap)", saleStatus: "🔴 PRESALE TUE MAR 31 — GENERAL ONSALE FRI APR 3",
-      saleDetails: "Presale Tue Mar 31 via Square Enix / venue partners. General onsale Fri Apr 3. Tour: Aug 7-8 Seattle, then Chicago, Atlanta, Denver, LA, Boston, Houston, DC, San Jose.",
+      venueSize: "Concert Hall (2-3K cap)", saleStatus: "🔴 PRESALE COMPLETE — GENERAL ONSALE FRI APR 3",
+      saleDetails: "Presale Tue Mar 31 ✅ COMPLETE. General onsale Fri Apr 3 10am local. Tour: Aug 7-8 Seattle, then Chicago, Atlanta, Denver, LA, Boston, Houston, DC, San Jose.",
       reasoning: "Previous NieR:Orchestra tour SOLD OUT. Concert hall routing (2-3K cap) for 10M+ player franchise = brutal scarcity.",
-      action: "🔴 PRESALE TOMORROW MAR 31 — Gaming symphonies sell out instantly. Buy ALL dates you can access.",
+      action: "🔴 PRESALE COMPLETE — GENERAL ONSALE FRI APR 3. Gaming symphonies sell out instantly. Buy ALL dates on Friday.",
       targetCities: [
         {emoji:"🎮",city:"Seattle, WA",venue:"McCaw Hall (Aug 7-8)",date:"Aug 7-8",why:"Tour opener."},
         {emoji:"🏔️",city:"Denver, CO",venue:"TBA",date:"TBA",why:"Less obvious gaming market."},
@@ -149,13 +161,13 @@ const SCAN_DATA = {
       region: "NA"
     },
     {
-      name: "Kanye West (Ye) — SoFi Stadium LA (SHOWS THIS WEEK Apr 1 & 3)", tier: "S", score: 95, category: "Hip-Hop Icon — Stadium Homecoming", genre: "Hip-Hop / Rap",
+      name: "Kanye West (Ye) — SoFi Stadium LA (TONIGHT APR 1 & THU APR 3)", tier: "S", score: 95, category: "Hip-Hop Icon — Stadium Homecoming", genre: "Hip-Hop / Rap",
       ticketLink: "https://www.ticketmaster.com/ye-tickets/artist/767396",
       streams: "55M+ monthly. First LA shows in 5 YEARS. 'TOUR 2026' world tour kicks off.", lastTour: "2022 (limited)", scarcity: "EXTREME — Apr 3 SOLD OUT. Apr 1 nearly sold out.",
       venueSize: "SoFi Stadium (~70K cap)", saleStatus: "🔴 APR 3 SOLD OUT — APR 1 LAST TICKETS — SHOWS THIS WEEK",
       saleDetails: "Apr 1 (Tuesday) and Apr 3 (Thursday) at SoFi Stadium. Apr 3 SOLD OUT. Apr 1 has final tickets on Ticketmaster. Secondary active.",
-      reasoning: "Shows are THIS WEEK. First LA shows in 5 YEARS. Apr 3 sold out — Apr 1 is last chance at face. Both shows will be cultural events.",
-      action: "🔴 SHOWS THIS WEEK — Apr 1 last tickets at face. Apr 3 secondary only. ACT NOW.",
+      reasoning: "Shows are THIS WEEK. First LA shows in 5 YEARS. Apr 3 sold out — Apr 1 is TONIGHT, last chance at face. Both shows will be cultural events.",
+      action: "🔴 APR 1 IS TONIGHT — Last tickets at face value. Apr 3 secondary only. ACT NOW.",
       targetCities: [
         {emoji:"🎬",city:"Inglewood, CA",venue:"SoFi Stadium (Apr 1)",date:"Apr 1",why:"LAST TICKETS at face value."},
         {emoji:"🎬",city:"Inglewood, CA",venue:"SoFi Stadium (Apr 3)",date:"Apr 3",why:"SOLD OUT. Secondary only."},
@@ -250,13 +262,27 @@ const SCAN_DATA = {
       region: "NA"
     },
     {
-      name: "Kali Uchis — For The Girls Tour (PRESALE TODAY MAR 31)", tier: "A", score: 85, category: "Latin/R&B — Amphitheater Tour", genre: "R&B / Latin Pop / Alternative",
+      name: "LA28 Olympics — Locals Presale (APR 2-6) & General Sale (APR 9)", tier: "S", score: 94, category: "Olympics — Historic Ticket Drop", genre: "Sports / Olympics",
+      ticketLink: "https://la28.org/en/ticketing.html",
+      streams: "2028 Los Angeles Olympics. 1M+ tickets at $28. First US Summer Olympics since 1996.", lastTour: "N/A — Once in a generation", scarcity: "EXTREME — LA & OKC locals presale Apr 2-6. General onsale Apr 9. 12-ticket max per person across all sports. Verified resale program opening 2027.",
+      venueSize: "Various (10K-100K cap)", saleStatus: "🔴 LOCALS PRESALE APR 2-6 — GENERAL ONSALE APR 9",
+      saleDetails: "LA & OKC Locals Presale: Apr 2-6 (must be registered, notification emails Mar 31-Apr 4, selected buyers get 48-hour purchase windows). General public onsale: Apr 9 via la28.org. 12-ticket max per fan across all sports + 12 for soccer. 1M tickets at $28 entry level. Verified resale via StubHub/SeatGeek/Vivid Seats opening 2027.",
+      reasoning: "First US Summer Olympics since 1996 (Atlanta). LA28 is THE ticket event of the decade. 1M tickets at $28 is the headline, but premium events (gymnastics, basketball, track & field finals, opening/closing ceremonies) will command massive secondary premiums. The locals presale (Apr 2-6) gives SoCal and OKC residents first crack — this is the window. General onsale Apr 9 will crash servers. 12-ticket limit is generous. Verified resale not until 2027 = long hold but guaranteed demand.",
+      action: "🚨 REGISTER NOW at la28.org — Locals presale STARTS APR 2. General onsale APR 9. Target: gymnastics, basketball, track & field finals, opening ceremony. 12-ticket max = buy full allotment.",
+      targetCities: [
+        {emoji:"🏅",city:"Los Angeles, CA",venue:"Various venues",date:"Jul-Aug 2028",why:"Host city. Every venue will be premium. Gymnastics at Crypto.com Arena = nuclear demand."},
+        {emoji:"⚾",city:"Oklahoma City, OK",venue:"Softball/Canoe Slalom venues",date:"Jul-Aug 2028",why:"OKC locals presale included. Niche sports = lower face, potential flip."},
+      ],
+      region: "NA"
+    },
+    {
+      name: "Kali Uchis — For The Girls Tour (ONSALE THU APR 2)", tier: "A", score: 85, category: "Latin/R&B — Amphitheater Tour", genre: "R&B / Latin Pop / Alternative",
       ticketLink: "https://www.ticketmaster.com/kali-uchis-tickets/artist/2281227",
       streams: "30M+ monthly. 'Telepatía' 1.5B+ streams. 'Orquídeas' Grammy-winning album.", lastTour: "2024-25 (Latin America — $492K gross at Bogotá alone)", scarcity: "HIGH — 20+ date NA amphitheater tour. Mariah the Scientist + Laila! support. Red Rocks May 26.",
-      venueSize: "Amphitheater (5-15K cap)", saleStatus: "🔴 ARTIST PRESALE TODAY MAR 31 10AM — GENERAL ONSALE THU APR 2",
-      saleDetails: "Artist presale Mon Mar 31 10am local. General onsale Thu Apr 2 10am local via Ticketmaster. Tour: May 23 Chicago (Sueños Festival) → Jun/Jul dates TBA. Red Rocks May 26 with Mariah the Scientist + Laila! support. Also: Albuquerque, Rogers AR, Maryland Heights MO, and more.",
+      venueSize: "Amphitheater (5-15K cap)", saleStatus: "🔴 ARTIST PRESALE COMPLETE — GENERAL ONSALE THU APR 2 10AM",
+      saleDetails: "Artist presale Mon Mar 31 10am ✅ COMPLETE. General onsale Thu Apr 2 10am local via Ticketmaster. Tour: May 23 Chicago (Sueños Festival) → Jun/Jul dates TBA. Red Rocks May 26 with Mariah the Scientist + Laila! support. Also: Albuquerque, Rogers AR, Maryland Heights MO, and more.",
       reasoning: "Kali Uchis is a crossover powerhouse — bilingual artist with massive Latin AND R&B/alt fanbases. 'Telepatía' was a global phenomenon. Grammy winner. Amphitheater routing is the sweet spot for her demand level. Red Rocks show will be premium. Mariah the Scientist as support doubles the R&B draw. Latin America grosses prove touring demand ($492K on 7,111 tickets in Bogotá alone).",
-      action: "🔴 PRESALE TODAY MAR 31 10AM — Target Red Rocks May 26. Bilingual fanbase = deep demand pool.",
+      action: "🔴 PRESALE COMPLETE — GENERAL ONSALE THU APR 2 10AM. Target Red Rocks May 26. Bilingual fanbase = deep demand pool.",
       targetCities: [
         {emoji:"🏔️",city:"Morrison, CO",venue:"Red Rocks (May 26)",date:"May 26",why:"Red Rocks + Kali Uchis = premium. Mariah the Scientist support."},
         {emoji:"🌵",city:"Albuquerque, NM",venue:"First Financial Amphitheater (May 27)",date:"May 27",why:"Strong Latin market. Back-to-back with Red Rocks."},
@@ -828,10 +854,10 @@ const SCAN_DATA = {
     /* CRANKDAT (Mar 27) and Ravenscoon & Jantsen (Mar 28) — EXPIRED, cleared Mar 31 scan */
     {
       name: "Kali Uchis — For The Girls Tour", tier: "A", score: 84, category: "Latin/R&B Crossover", genre: "R&B / Latin Pop",
-      showDate: "May 26, 2026", saleStatus: "🔴 PRESALE MAR 31 — ONSALE APR 2",
-      saleDetails: "Tue May 26, 7:00 PM. Support: Mariah the Scientist, Laila! Artist presale Mon Mar 31 10am. General onsale Thu Apr 2 10am via RedRocksOnline.com / AXS.",
+      showDate: "May 26, 2026", saleStatus: "🔴 PRESALE COMPLETE — ONSALE THU APR 2 10AM",
+      saleDetails: "Tue May 26, 7:00 PM. Support: Mariah the Scientist, Laila! Artist presale Mon Mar 31 ✅ COMPLETE. General onsale Thu Apr 2 10am via RedRocksOnline.com / AXS.",
       reasoning: "Kali Uchis at Red Rocks is a premium pairing. 30M+ monthly listeners. Bilingual fanbase (English + Spanish) doubles demand pool. Mariah the Scientist support = stacked R&B bill. Red Rocks sunset + 'Telepatía' = spiritual experience.",
-      action: "🔴 PRESALE TODAY MAR 31 10AM — Bilingual crossover at Red Rocks. Buy immediately.",
+      action: "🔴 PRESALE COMPLETE — GENERAL ONSALE THU APR 2 10AM. Bilingual crossover at Red Rocks. Buy immediately on Thursday.",
       region: "NA"
     },
     {
@@ -1548,14 +1574,14 @@ function OptimusDashboard() {
 
         {/* Tab content */}
         {tab==="thisweek"&&(<>
-          <SH title="This Week" sub="Presales & onsales Mar 24–30" count={SCAN_DATA.thisWeek.length}/>
-          <AB emoji="🚨" title="THIS WEEK: TLC/Salt-N-Pepa ONSALE TODAY! Bob Dylan & Jack Harlow PRESALES TODAY! Sweet 16 TODAY & FRI, Elite Eight SAT-SUN" sub="JAY-Z Yankee Stadium SOLD OUT all 3 nights. TLC/Salt-N-Pepa/En Vogue 'It's Iconic' general onsale TODAY 10am (iHeart Awards on FOX tonight = demand spike!). Bob Dylan summer tour presale TODAY code HARDRAIN. Jack Harlow 'Monica' tour presale TODAY. Kesha & 311/Dirty Heads general onsale Fri Mar 27. Disney Worlds Collide onsale Fri Mar 27. Sweet 16 games TODAY & FRI. MLB Opening Day slate TODAY." color="#ef4444"/>
+          <SH title="This Week" sub="Presales & onsales Mar 31 – Apr 6" count={SCAN_DATA.thisWeek.length}/>
+          <AB emoji="🚨" title="THIS WEEK: Lily Allen & Benson Boone PRESALES TODAY APR 1! IVE onsale Thu Apr 2! Ye SoFi TONIGHT! MEGA Friday Apr 3 onsales! Final Four Sat Apr 5! LA28 Olympics presale Apr 2!" sub="Lily Allen arena tour presale TODAY 10am (no code — tied to Ticketmaster account via livemu.sc/lilyallen). Benson Boone 'Wanted Man' presale TODAY 11am. IVE K-pop onsale Thu Apr 2 3pm (NO PRESALE — all demand hits at once). Muse/Weezer/NieR general onsales ALL on Fri Apr 3. Ye at SoFi TONIGHT (last face-value tix). NCAA Final Four Sat Apr 5 in San Antonio. LA28 Olympics locals presale starts Apr 2. Register for Céline Dion Paris by Apr 2!" color="#ef4444"/>
           {renderCards(SCAN_DATA.thisWeek,"tw")}
         </>)}
 
         {tab==="nextweek"&&(<>
-          <SH title="Next Week" sub="Presales & onsales Mar 31 – Apr 6" count={SCAN_DATA.nextWeek.length}/>
-          <AB emoji="🏀" title="NEXT WEEK: Kanye West SoFi Apr 1 & 3! NCAA Final Four Apr 4 & 6! NieR:Orchestra presale Mar 31! INZO + What So Not Red Rocks Apr 3." sub="Ye's first LA shows in 5 years — Apr 3 SOLD OUT, limited Apr 1 tickets remain. Final Four is the crown jewel — buy IMMEDIATELY after Elite Eight results (Mar 28-29). NieR:Orchestra US tour presale Mon Mar 31 (gaming symphonies sell out instantly). J. Cole 'final album' tour and Jill Scott world tour strong secondary demand." color="#f59e0b"/>
+          <SH title="Next Week" sub="Presales & onsales Apr 7 – Apr 13" count={SCAN_DATA.nextWeek.length}/>
+          <AB emoji="🗼" title="NEXT WEEK: Céline Dion Paris presale APR 7! NCAA Championship APR 7! BTS tour starts APR 9! LA28 Olympics general onsale APR 9!" sub="Céline Dion's historic comeback — 10 Paris dates announced on her birthday. Presale Apr 7 via Fair AXS lottery (register by Apr 2!). General onsale Apr 10. NCAA Championship Mon Apr 7 — buy Sunday after semis. BTS ARIRANG World Tour kicks off Apr 9 in Goyang. LA28 Olympics general ticket sale begins Apr 9 (locals presale Apr 2-6). Feid Falxo Tour starts Apr 7 Orlando." color="#f59e0b"/>
           {renderCards(SCAN_DATA.nextWeek,"nw")}
         </>)}
 
